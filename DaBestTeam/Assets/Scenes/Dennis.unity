@@ -498,7 +498,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 26.991467
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -524,12 +524,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1505324432}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.000000021855694, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1488328892957255588}
+  m_Father: {fileID: 1488328892957255590}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1505324436
 MonoBehaviour:
@@ -2057,7 +2057,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1488328892957255580}
-  - {fileID: 1505324435}
   m_Father: {fileID: 1488328892957255590}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1488328892957255590
@@ -2074,6 +2073,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1488328892957255586}
+  - {fileID: 1505324435}
   - {fileID: 1488328892957255588}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2680,7 +2680,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1488328892957255590}
-  - component: {fileID: 1488328892957424201}
   - component: {fileID: 1488328892957424200}
   - component: {fileID: 1488328892957424199}
   - component: {fileID: 1488328892957424203}
@@ -2738,22 +2737,6 @@ MonoBehaviour:
   shootDamage: 1
   shootDistance: 20
   shootRate: 1
---- !u!114 &1488328892957424201
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1488328892957424198}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 075e423511c087e42b7e10070cd74a7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sensitivity: 600
-  lockVertMin: -90
-  lockVertMax: 90
-  intertY: 0
 --- !u!1 &1488328892957424202
 GameObject:
   m_ObjectHideFlags: 0
