@@ -5,6 +5,8 @@ using UnityEngine;
 public class playerController : MonoBehaviour, IDamage
 {
     [SerializeField] CharacterController controller;
+    [SerializeField] Transform shootPosition;
+
 
     [SerializeField] int HP;
     [SerializeField] float playerSpeed;
@@ -12,6 +14,7 @@ public class playerController : MonoBehaviour, IDamage
     [SerializeField] float jumpForce;
     [SerializeField] float gravity;
 
+    [SerializeField] GameObject bullet;
     [SerializeField] int shootDamage;
     [SerializeField] int shootDistance;
     [SerializeField] float shootRate;
@@ -62,18 +65,7 @@ public class playerController : MonoBehaviour, IDamage
     IEnumerator shoot()
     {
         isShooting = true;
-        RaycastHit hit;
-        if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDistance))
-        {
-            Debug.Log(hit.collider.name);
-
-            IDamage dmg = hit.collider.GetComponent<IDamage>();
-
-            if (hit.transform != transform && dmg != null)
-            {
-                dmg.takeDamage(shootDamage);
-            }
-        }
+        Instantiate(bullet, shootPosition.position, transform.rotation);
         yield return new WaitForSeconds(shootRate);
         isShooting = false;
 
@@ -88,4 +80,6 @@ public class playerController : MonoBehaviour, IDamage
             gameManager.instance.youLose();
         }
     }
+
+
 }
