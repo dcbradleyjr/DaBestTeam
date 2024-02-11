@@ -24,20 +24,13 @@ public class playerController : MonoBehaviour, IDamage
     int jumpCount;
     bool isShooting;
 
-    void Start()
-    {
-
-    }
-
     void Update()
     {
-        
-            Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDistance, Color.red);
-            movement();
-            if (Input.GetButton("Shoot") && !isShooting)
-            {
-                StartCoroutine(shoot());
-            }
+        movement();
+        if (Input.GetButton("Shoot") && !isShooting)
+         {
+             StartCoroutine(shoot());
+         }
         
     }
     void movement()
@@ -61,14 +54,12 @@ public class playerController : MonoBehaviour, IDamage
         controller.Move(playerVelocity * Time.deltaTime);
     }
 
-
     IEnumerator shoot()
     {
         isShooting = true;
         Instantiate(bullet, shootPosition.position, transform.rotation);
         yield return new WaitForSeconds(shootRate);
         isShooting = false;
-
     }
 
     public void takeDamage(int amount)
@@ -80,6 +71,4 @@ public class playerController : MonoBehaviour, IDamage
             gameManager.instance.youLose();
         }
     }
-
-
 }
