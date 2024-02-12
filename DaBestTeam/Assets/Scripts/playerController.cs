@@ -5,7 +5,6 @@ using UnityEngine;
 public class playerController : MonoBehaviour, IDamage
 {
     [SerializeField] CharacterController controller;
-    [SerializeField] Transform shootPosition;
 
 
     [SerializeField] int HP;
@@ -14,23 +13,13 @@ public class playerController : MonoBehaviour, IDamage
     [SerializeField] float jumpForce;
     [SerializeField] float gravity;
 
-    [SerializeField] GameObject bullet;
-    [SerializeField] int shootDamage;
-    [SerializeField] int shootDistance;
-    [SerializeField] float shootRate;
-
     Vector3 move;
     Vector3 playerVelocity;
     int jumpCount;
-    bool isShooting;
 
     void Update()
     {
         movement();
-        if (Input.GetButton("Shoot") && !isShooting)
-         {
-             StartCoroutine(shoot());
-         }
         
     }
     void movement()
@@ -54,13 +43,7 @@ public class playerController : MonoBehaviour, IDamage
         controller.Move(playerVelocity * Time.deltaTime);
     }
 
-    IEnumerator shoot()
-    {
-        isShooting = true;
-        Instantiate(bullet, shootPosition.position, transform.rotation);
-        yield return new WaitForSeconds(shootRate);
-        isShooting = false;
-    }
+
 
     public void takeDamage(int amount)
     {
