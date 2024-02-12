@@ -326,7 +326,7 @@ MonoBehaviour:
   shootPosition: {fileID: 4767183461348566487}
   bullet: {fileID: 3849281360500067930, guid: 3740d736a9ab1cd45bd142cf8073fc24, type: 3}
   shootDist: 5
-  shootRate: 0.2
+  shootRate: 0.5
   shootDamage: 1
   clipSize: 6
 --- !u!4 &4310502467868577945 stripped

@@ -58,7 +58,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 9047223077536168047}
   damageAmount: 1
-  speed: 25
+  speed: 100
   destroyTime: 3
 --- !u!135 &2075476507093813250
 SphereCollider:
@@ -79,7 +79,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.1
+  m_Radius: 0.2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &9047223077536168047
 Rigidbody:
