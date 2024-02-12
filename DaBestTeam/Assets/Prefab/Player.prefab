@@ -1140,6 +1140,7 @@ GameObject:
   m_Component:
   - component: {fileID: 598564904157883140}
   - component: {fileID: 4141498676706649982}
+  - component: {fileID: 2777525388764057268}
   - component: {fileID: 7662760834589073060}
   - component: {fileID: 4395876003859725158}
   m_Layer: 0
@@ -1181,16 +1182,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 7662760834589073060}
-  shootPosition: {fileID: 4767183461348566487}
   HP: 10
   playerSpeed: 5
   jumpMax: 2
   jumpForce: 10
   gravity: -25
+--- !u!114 &2777525388764057268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5242990077541902587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb9bfd68eb752e4eb7a4b7c639f377f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootPosition: {fileID: 4767183461348566487}
   bullet: {fileID: 3849281360500067930, guid: 3740d736a9ab1cd45bd142cf8073fc24, type: 3}
+  shootDist: 5
+  shootRate: 0.2
   shootDamage: 1
-  shootDistance: 20
-  shootRate: 1
+  clipSize: 6
 --- !u!143 &7662760834589073060
 CharacterController:
   m_ObjectHideFlags: 0

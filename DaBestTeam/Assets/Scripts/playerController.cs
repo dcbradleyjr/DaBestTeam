@@ -43,8 +43,6 @@ public class playerController : MonoBehaviour, IDamage
         controller.Move(playerVelocity * Time.deltaTime);
     }
 
-
-
     public void takeDamage(int amount)
     {
         HP -= amount;

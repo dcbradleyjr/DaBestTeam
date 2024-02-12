@@ -14,6 +14,7 @@ public class playerGun : MonoBehaviour
     [SerializeField] int clipSize;
 
     bool isShooting;
+    bool isReloading;
     int maxClipSize;
 
     // Start is called before the first frame update
@@ -25,11 +26,11 @@ public class playerGun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (clipSize <= 0 || Input.GetButton("Reload"))
+        if (clipSize <= 0 && !isReloading || Input.GetButton("Reload") && !isReloading)
         {
             StartCoroutine(reloadGun());
         }
-        else if (Input.GetButton("Shoot") && !isShooting)
+        else if (Input.GetButton("Shoot") && !isShooting && clipSize > 0)
         {
             StartCoroutine(shoot());
         }
@@ -39,14 +40,16 @@ public class playerGun : MonoBehaviour
     {
         isShooting = true;
         Instantiate(bullet, shootPosition.position, transform.rotation);
-        yield return new WaitForSeconds(shootRate);
         clipSize--;
+        yield return new WaitForSeconds(shootRate);
         isShooting = false;
     }
 
     IEnumerator reloadGun()
     {
+        isReloading = true;
         yield return new WaitForSeconds(3.0f);
         clipSize = maxClipSize;
+        isReloading = false;
     }
 }
