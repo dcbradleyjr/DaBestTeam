@@ -12,6 +12,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuLose;
 
     public GameObject player;
+    public Transform playerHead;
 
     public bool isPaused;
     int enemyCount;
@@ -21,6 +22,7 @@ public class gameManager : MonoBehaviour
     {
         instance = this;
         player = GameObject.FindWithTag("Player");
+        playerHead = player.transform.Find("HeadPosition");
     }
 
     // Update is called once per frame
@@ -33,9 +35,6 @@ public class gameManager : MonoBehaviour
             menuActive.SetActive(isPaused);
         }
     }
-
-
-
 
     public void statePaused()
     {

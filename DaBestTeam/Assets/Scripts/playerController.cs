@@ -5,6 +5,7 @@ using UnityEngine;
 public class playerController : MonoBehaviour, IDamage
 {
     [SerializeField] CharacterController controller;
+    [SerializeField] Transform headPosition;
 
 
     [SerializeField] int HP;
