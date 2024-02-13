@@ -243,15 +243,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4141498676706649982, guid: d9b101502159e85449ad53504ffa65c2, type: 3}
       propertyPath: HP
-      value: 3
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4141498676706649982, guid: d9b101502159e85449ad53504ffa65c2, type: 3}
       propertyPath: headPosition
       value: 
       objectReference: {fileID: 1879228969}
     - target: {fileID: 4395876003859725158, guid: d9b101502159e85449ad53504ffa65c2, type: 3}
+      propertyPath: m_Height
+      value: 0.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 4395876003859725158, guid: d9b101502159e85449ad53504ffa65c2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4395876003859725158, guid: d9b101502159e85449ad53504ffa65c2, type: 3}
       propertyPath: m_Center.z
-      value: -0.65
+      value: -0.8
       objectReference: {fileID: 0}
     - target: {fileID: 5242990077541902587, guid: d9b101502159e85449ad53504ffa65c2, type: 3}
       propertyPath: m_Name

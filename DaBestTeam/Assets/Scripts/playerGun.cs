@@ -27,11 +27,11 @@ public class playerGun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (clipSize <= 0 && !isReloading || Input.GetButtonDown("Reload") && !isReloading)
+        if (clipSize <= 0 && !isReloading || Input.GetButtonDown("Reload") && !isReloading && clipSize != maxClipSize)
         {
             StartCoroutine(reloadGun());
         }
-        else if (Input.GetButtonDown("Shoot") && !isShooting && clipSize > 0)
+        else if (Input.GetButtonDown("Shoot") && !isShooting && clipSize > 0 && !isReloading)
         {
             StartCoroutine(shoot());
         }
