@@ -21,6 +21,8 @@ public class gameManager : MonoBehaviour
 
     public GameObject player;
     public Transform playerHead;
+    public GameObject SpawnPoint;
+    public playerController playerScript;
 
     public bool isPaused;
     int enemyCount;
@@ -31,6 +33,8 @@ public class gameManager : MonoBehaviour
         instance = this;
         player = GameObject.FindWithTag("Player");
         playerHead = player.transform.Find("HeadPosition");
+        SpawnPoint = GameObject.FindWithTag("SpawnPoint");
+        playerScript = player.GetComponent<playerController>();
     }
 
     // Update is called once per frame

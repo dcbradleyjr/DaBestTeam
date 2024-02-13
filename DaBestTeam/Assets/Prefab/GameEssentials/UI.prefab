@@ -592,6 +592,8 @@ MonoBehaviour:
   ReloadIndicator: {fileID: 5395353562686141183}
   player: {fileID: 0}
   playerHead: {fileID: 0}
+  SpawnPoint: {fileID: 0}
+  playerScript: {fileID: 0}
   isPaused: 0
 --- !u!114 &1011515016002279107
 MonoBehaviour:
@@ -1341,7 +1343,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1011515016002279107}
         m_TargetAssemblyTypeName: buttonFunctions, Assembly-CSharp
-        m_MethodName: resume
+        m_MethodName: respawn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

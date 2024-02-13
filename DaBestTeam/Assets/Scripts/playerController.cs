@@ -22,7 +22,7 @@ public class playerController : MonoBehaviour, IDamage
     void Start()
     {
         HPOriginal = HP;
-        updateUI();
+        Respawn();
     }
 
     void Update()
@@ -72,5 +72,14 @@ public class playerController : MonoBehaviour, IDamage
         gameManager.instance.FlashDMGPanel.SetActive(true);
         yield return new WaitForSeconds(0.1f);
         gameManager.instance.FlashDMGPanel.SetActive(false);
+    }
+
+    public void Respawn()
+    {
+        HP = HPOriginal;
+        updateUI();
+        controller.enabled = false;
+        transform.position = gameManager.instance.SpawnPoint.transform.position;
+        controller.enabled = true;
     }
 }
