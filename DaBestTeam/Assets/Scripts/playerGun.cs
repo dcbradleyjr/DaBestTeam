@@ -21,6 +21,7 @@ public class playerGun : MonoBehaviour
     void Start()
     {
         maxClipSize = clipSize;
+        updateUI();
     }
 
     // Update is called once per frame
@@ -41,6 +42,7 @@ public class playerGun : MonoBehaviour
         isShooting = true;
         Instantiate(bullet, shootPosition.position, transform.rotation);
         clipSize--;
+        updateUI();
         yield return new WaitForSeconds(shootRate);
         isShooting = false;
     }
@@ -48,8 +50,29 @@ public class playerGun : MonoBehaviour
     IEnumerator reloadGun()
     {
         isReloading = true;
+        StartCoroutine(reloadingVisuals());
         yield return new WaitForSeconds(3.0f);
         clipSize = maxClipSize;
+        updateUI();
         isReloading = false;
+    }
+
+    void updateUI()
+    {
+        gameManager.instance.MagazineCount.text = clipSize.ToString();
+        gameManager.instance.MagazineMax.text = maxClipSize.ToString();
+    }
+
+    IEnumerator reloadingVisuals()
+    {
+        gameManager.instance.ReloadIndicator.text = "Reloading";
+        yield return new WaitForSeconds(0.7f);
+        gameManager.instance.ReloadIndicator.text = "Reloading.";
+        yield return new WaitForSeconds(0.7f);
+        gameManager.instance.ReloadIndicator.text = "Reloading..";
+        yield return new WaitForSeconds(0.7f);
+        gameManager.instance.ReloadIndicator.text = "Reloading...";
+        yield return new WaitForSeconds(0.7f);
+        gameManager.instance.ReloadIndicator.text = "";
     }
 }

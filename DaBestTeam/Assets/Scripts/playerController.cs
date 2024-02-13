@@ -17,6 +17,13 @@ public class playerController : MonoBehaviour, IDamage
     Vector3 move;
     Vector3 playerVelocity;
     int jumpCount;
+    int HPOriginal;
+
+    void Start()
+    {
+        HPOriginal = HP;
+        updateUI();
+    }
 
     void Update()
     {
@@ -47,10 +54,23 @@ public class playerController : MonoBehaviour, IDamage
     public void takeDamage(int amount)
     {
         HP -= amount;
-
+        updateUI();
+        StartCoroutine(flashDMG());
         if (HP <= 0)
         {
             gameManager.instance.youLose();
         }
+    }
+
+    void updateUI()
+    {
+        gameManager.instance.playerHPBar.fillAmount = (float)HP / HPOriginal;
+    }
+
+    IEnumerator flashDMG()
+    {
+        gameManager.instance.FlashDMGPanel.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        gameManager.instance.FlashDMGPanel.SetActive(false);
     }
 }

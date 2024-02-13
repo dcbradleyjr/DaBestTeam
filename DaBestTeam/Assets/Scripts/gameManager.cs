@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class gameManager : MonoBehaviour
 {
@@ -10,6 +12,12 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
+
+    public Image playerHPBar;
+    public GameObject FlashDMGPanel;
+    public TMP_Text MagazineMax;
+    public TMP_Text MagazineCount;
+    public TMP_Text ReloadIndicator;
 
     public GameObject player;
     public Transform playerHead;
