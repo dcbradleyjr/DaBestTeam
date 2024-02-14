@@ -232,17 +232,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4141498676706649982, guid: d9b101502159e85449ad53504ffa65c2, type: 3}
-      propertyPath: maxInteractDist
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 5242990077541902587, guid: d9b101502159e85449ad53504ffa65c2, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 7662760834589073060, guid: d9b101502159e85449ad53504ffa65c2, type: 3}
-      propertyPath: m_Radius
-      value: 0.35
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -436,8 +428,7 @@ PrefabInstance:
       value: UI
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 5404479552809369311, guid: 14eaaf174e414634fa9c5056622ffb9f, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14eaaf174e414634fa9c5056622ffb9f, type: 3}
