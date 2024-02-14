@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Xml.Linq;
 
 public class gameManager : MonoBehaviour
 {
@@ -18,6 +19,10 @@ public class gameManager : MonoBehaviour
     public TMP_Text MagazineMax;
     public TMP_Text MagazineCount;
     public TMP_Text ReloadIndicator;
+    public TMP_Text keyCountDisplay;
+    public TMP_Text enemyCountDisplay;
+    public TMP_Text keyObtained;
+
 
     public GameObject player;
     public Transform playerHead;
@@ -26,6 +31,7 @@ public class gameManager : MonoBehaviour
 
     public bool isPaused;
     int enemyCount;
+    int keyCount;
 
     // Start is called before the first frame update
     void Awake()
@@ -66,18 +72,36 @@ public class gameManager : MonoBehaviour
         menuActive = null;
     }
 
-    public void updateGameGoal(int amount)
+    public void updateEnemyCount(int amount)
     {
         enemyCount += amount;
-
-        if (enemyCount <= 0)
+        enemyCountDisplay.text = enemyCount.ToString();
+        if (isObjectiveComplete())
         {
-            // you win!!
-            menuActive = menuWin;
-            menuActive.SetActive(true);
-            statePaused();
+            youWin();
         }
     }
+    public void updateKeyCount(int amount,string myName)
+    {
+        keyCount += amount;
+        keyCountDisplay.text = keyCount.ToString();
+        if(amount == -1) 
+        StartCoroutine(pickupNotify(myName));
+
+
+        if(isObjectiveComplete())
+        {
+            youWin();
+        }
+    }
+
+    public void youWin()
+    {
+        // you win!!
+        menuActive = menuWin;
+        menuActive.SetActive(true);
+        statePaused();
+    } 
 
     public void youLose()
     {
@@ -86,4 +110,18 @@ public class gameManager : MonoBehaviour
         menuActive = menuLose;
         menuActive.SetActive(true);
     }
+
+    bool isObjectiveComplete()
+    {
+        if(enemyCount <= 0 && keyCount <= 0) return true;
+        else return false;
+    }
+
+    IEnumerator pickupNotify(string myName)
+    {
+        keyObtained.text = myName + " Obtained";
+        yield return new WaitForSeconds(1.3f);
+        keyObtained.text = "";
+    }
 }
+

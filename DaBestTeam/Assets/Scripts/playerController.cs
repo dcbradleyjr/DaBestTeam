@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-using UnityEditor.UI;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class playerController : MonoBehaviour, IDamage
@@ -32,8 +32,8 @@ public class playerController : MonoBehaviour, IDamage
     {
         movement();
 
-       // if (Input.GetButtonDown("Interact"))
-       //     interact();
+        if (Input.GetButtonDown("Interact"))
+        interact();
     }
     void movement()
     {
@@ -56,20 +56,19 @@ public class playerController : MonoBehaviour, IDamage
         controller.Move(playerVelocity * Time.deltaTime);
     }
 
-    /*void interact()
+    void interact()
     {
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, maxInteractDist))
         {
+            Debug.Log(hit.collider.name);
             IInteract interact = hit.collider.GetComponent<IInteract>();
-            if( interact != null )
+            if(interact != null )
             {
-                controller.GetComponent<playerInventory>().AddToInventory(hit.collider.name);
-                Destroy(hit.collider.gameObject);
+                interact.collect();
             }
         }
     }
-    */
 
     public void takeDamage(int amount)
     {

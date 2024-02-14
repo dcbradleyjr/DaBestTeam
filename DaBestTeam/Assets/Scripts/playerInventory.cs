@@ -8,10 +8,10 @@ public class playerInventory : MonoBehaviour
 {
     [SerializeField] GameObject[] inventoryItems;
 
+
+    /*
     bool[] inventory;
 
-    
-        
     // Start is called before the first frame update
     void Start()
     {
@@ -45,5 +45,6 @@ public class playerInventory : MonoBehaviour
             }
         }
     }
+    */
 
 }

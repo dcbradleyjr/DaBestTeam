@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IInteract
 {
-    void collect(GameObject obj);
+    void collect();
 }
