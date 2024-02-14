@@ -393,7 +393,7 @@ SkinnedMeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1905128552742582673}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -2032,8 +2032,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7339964596458632623}
   - component: {fileID: 5215617321728849169}
-  - component: {fileID: 8986321044951353444}
-  - component: {fileID: 2199070742475394627}
+  - component: {fileID: 4085885832562651190}
+  - component: {fileID: 8332657266621612571}
   m_Layer: 0
   m_Name: Player 3D Dummy
   m_TagString: Player
@@ -2081,7 +2081,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!143 &8986321044951353444
+--- !u!143 &4085885832562651190
 CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2101,13 +2101,13 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 3
   m_Height: 2
-  m_Radius: 0.5
+  m_Radius: 0.1
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2199070742475394627
+--- !u!114 &8332657266621612571
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2119,7 +2119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 197d25fc14456b44480051a92bd6a8bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 8986321044951353444}
+  controller: {fileID: 4085885832562651190}
   headPosition: {fileID: 177229622645863927}
   HP: 10
   playerSpeed: 10
@@ -2250,7 +2250,7 @@ Transform:
   m_GameObject: {fileID: 9013720963315966733}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.09037334, z: -0, w: 0.99590796}
-  m_LocalPosition: {x: 0.054, y: 0.648, z: -0.019}
+  m_LocalPosition: {x: -0.025, y: 0.648, z: 0.416}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
