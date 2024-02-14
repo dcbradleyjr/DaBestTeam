@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.UI;
 using UnityEngine;
 
 public class playerController : MonoBehaviour, IDamage
@@ -13,6 +15,7 @@ public class playerController : MonoBehaviour, IDamage
     [SerializeField] float jumpMax;
     [SerializeField] float jumpForce;
     [SerializeField] float gravity;
+    [SerializeField] float maxInteractDist;
 
     Vector3 move;
     Vector3 playerVelocity;
@@ -28,7 +31,9 @@ public class playerController : MonoBehaviour, IDamage
     void Update()
     {
         movement();
-        
+
+       // if (Input.GetButtonDown("Interact"))
+       //     interact();
     }
     void movement()
     {
@@ -50,6 +55,21 @@ public class playerController : MonoBehaviour, IDamage
         playerVelocity.y += gravity * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
     }
+
+    /*void interact()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, maxInteractDist))
+        {
+            IInteract interact = hit.collider.GetComponent<IInteract>();
+            if( interact != null )
+            {
+                controller.GetComponent<playerInventory>().AddToInventory(hit.collider.name);
+                Destroy(hit.collider.gameObject);
+            }
+        }
+    }
+    */
 
     public void takeDamage(int amount)
     {
