@@ -14,7 +14,7 @@ public class pickUp : MonoBehaviour, IInteract
     }
 
 
-    public void collect()
+    public void interact()
     {
         gameManager.instance.updateKeyCount(-1, myName);
         Destroy(gameObject);

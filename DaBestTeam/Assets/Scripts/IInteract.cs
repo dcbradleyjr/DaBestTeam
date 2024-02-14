@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IInteract
 {
-    void collect();
+    void interact();
 }

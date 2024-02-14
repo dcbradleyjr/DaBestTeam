@@ -65,7 +65,7 @@ public class playerController : MonoBehaviour, IDamage
             IInteract interact = hit.collider.GetComponent<IInteract>();
             if(interact != null )
             {
-                interact.collect();
+                interact.interact();
             }
         }
     }
