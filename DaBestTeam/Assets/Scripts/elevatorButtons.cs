@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class elevatorButtons : MonoBehaviour
+public class elevatorButtons : MonoBehaviour, IInteract
 {
+
+    public elevatorScript elevator;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,4 +17,10 @@ public class elevatorButtons : MonoBehaviour
     {
         
     }
-}
+
+    public void interact()
+    {
+        elevator.ElevatorMovement();
+        elevator.isMoving = true;
+    }
+ }

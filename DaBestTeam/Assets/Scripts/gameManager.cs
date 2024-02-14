@@ -32,6 +32,8 @@ public class gameManager : MonoBehaviour
     public bool isPaused;
     int enemyCount;
     int keyCount;
+    int currentLevel;
+    bool isTransition;
 
     // Start is called before the first frame update
     void Awake()
@@ -115,6 +117,11 @@ public class gameManager : MonoBehaviour
     {
         if(enemyCount <= 0 && keyCount <= 0) return true;
         else return false;
+    }
+
+    void progressLevel()
+    {
+        currentLevel++;
     }
 
     IEnumerator pickupNotify(string myName)

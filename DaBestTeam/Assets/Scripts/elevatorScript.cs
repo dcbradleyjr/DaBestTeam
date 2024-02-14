@@ -1,12 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class elevatorScript : MonoBehaviour
 {
     public float speed;
+    public float wallSpeed;
     public int startingPoint;
     public Transform[] points;
+    public Transform pushWall;
+    public Transform endPoint;
+
+    public bool isMoving;
+
 
     private int i;
 
@@ -18,26 +25,28 @@ public class elevatorScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ElevatorMovement();
-    }
-
-    private void ElevatorMovement()
-    {
-
-        if (Vector3.Distance(transform.position, points[i].position) < 0.02f)
+        transform.position = Vector3.MoveTowards(transform.position, points[i].position, speed * Time.deltaTime);
+        if (isMoving)
         {
-            i++;
-            if (i == points.Length)
-            {
-                i = 0;
-            }
+            pushPlayer();
         }
 
-        transform.position = Vector3.MoveTowards(transform.position, points[i].position, speed * Time.deltaTime);
+
+    }
+
+    public void ElevatorMovement()
+    {
+        isMoving = true;
+        i++;
     }
 
     public void OnTriggerEnter(Collider other)
     {
-        
+
+    }
+
+    public void pushPlayer()
+    {
+        pushWall.position = Vector3.MoveTowards(pushWall.position, endPoint.position, wallSpeed * Time.deltaTime);
     }
 }
