@@ -20,7 +20,10 @@ public class elevatorButtons : MonoBehaviour, IInteract
 
     public void interact()
     {
-        elevator.ElevatorMovement();
-        elevator.isMoving = true;
+        if (gameManager.instance.canProgress)
+        {
+            elevator.ElevatorMovement();
+            elevator.isMoving = true;
+        }
     }
  }

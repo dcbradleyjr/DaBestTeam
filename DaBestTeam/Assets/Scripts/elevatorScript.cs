@@ -8,41 +8,36 @@ public class elevatorScript : MonoBehaviour
     public float speed;
     public float wallSpeed;
     public int startingPoint;
-    public Transform[] points;
+    public Transform start;
+    public Transform end;
     public Transform pushWall;
     public Transform endPoint;
 
     public bool isMoving;
 
 
-    private int i;
+    private Transform currentFloor;
 
     void Start()
     {
-        transform.position = points[startingPoint].position;
+        currentFloor = start;
+        transform.position = currentFloor.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, points[i].position, speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, currentFloor.position, speed * Time.deltaTime);
         if (isMoving)
         {
             pushPlayer();
         }
-
-
     }
 
     public void ElevatorMovement()
     {
         isMoving = true;
-        i++;
-    }
-
-    public void OnTriggerEnter(Collider other)
-    {
-
+        currentFloor = end;
     }
 
     public void pushPlayer()
