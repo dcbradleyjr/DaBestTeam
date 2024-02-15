@@ -8,6 +8,8 @@ public class startObjective : MonoBehaviour
     public GameObject enemies;
     public GameObject newSpawnPoint;
 
+    [SerializeField] int levelIndex;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -18,6 +20,7 @@ public class startObjective : MonoBehaviour
 
             GameObject spawnPoint = GameObject.FindWithTag("SpawnPoint");
             spawnPoint.transform.position = newSpawnPoint.transform.position;
+            gameManager.instance.currentLevel = levelIndex;
         }
     }
 }

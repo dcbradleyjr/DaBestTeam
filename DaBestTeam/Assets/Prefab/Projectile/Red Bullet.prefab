@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &4948576246533667522
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1486224580647746098, guid: 3740d736a9ab1cd45bd142cf8073fc24, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1486224580647746098, guid: 3740d736a9ab1cd45bd142cf8073fc24, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1486224580647746098, guid: 3740d736a9ab1cd45bd142cf8073fc24, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1486224580647746098, guid: 3740d736a9ab1cd45bd142cf8073fc24, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1486224580647746098, guid: 3740d736a9ab1cd45bd142cf8073fc24, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1486224580647746098, guid: 3740d736a9ab1cd45bd142cf8073fc24, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1486224580647746098, guid: 3740d736a9ab1cd45bd142cf8073fc24, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1486224580647746098, guid: 3740d736a9ab1cd45bd142cf8073fc24, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1486224580647746098, guid: 3740d736a9ab1cd45bd142cf8073fc24, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1486224580647746098, guid: 3740d736a9ab1cd45bd142cf8073fc24, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2083096858618024137, guid: 3740d736a9ab1cd45bd142cf8073fc24, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.b
+      value: 0.0039215744
+      objectReference: {fileID: 0}
+    - target: {fileID: 2083096858618024137, guid: 3740d736a9ab1cd45bd142cf8073fc24, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.g
+      value: 0.0039215744
+      objectReference: {fileID: 0}
+    - target: {fileID: 2083096858618024137, guid: 3740d736a9ab1cd45bd142cf8073fc24, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.r
+      value: 0.9254902
+      objectReference: {fileID: 0}
+    - target: {fileID: 3849281360500067930, guid: 3740d736a9ab1cd45bd142cf8073fc24, type: 3}
+      propertyPath: m_Name
+      value: Red Bullet
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3740d736a9ab1cd45bd142cf8073fc24, type: 3}

@@ -450,7 +450,7 @@ MonoBehaviour:
   HP: 3
   viewCone: 70
   targetFaceSpeed: 7
-  bullet: {fileID: 3849281360500067930, guid: 3740d736a9ab1cd45bd142cf8073fc24, type: 3}
+  bullet: {fileID: 3758160979051400433, guid: 982cba00ecede3f48b37cbe8d32821fd, type: 3}
   shootRate: 0.7
   HealthBar: {fileID: 8084164399098289147}
   EnemyUI: {fileID: 1740449018176088398}

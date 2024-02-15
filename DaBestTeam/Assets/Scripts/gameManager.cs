@@ -31,6 +31,7 @@ public class gameManager : MonoBehaviour
 
     public bool isPaused;
     public bool canProgress;
+    public int currentLevel;
 
     int enemyCount;
     int keyCount;
@@ -43,6 +44,7 @@ public class gameManager : MonoBehaviour
         playerHead = player.transform.Find("HeadPosition");
         SpawnPoint = GameObject.FindWithTag("SpawnPoint");
         playerScript = player.GetComponent<playerController>();
+        currentLevel = 1;
     }
 
     // Update is called once per frame
@@ -81,6 +83,8 @@ public class gameManager : MonoBehaviour
         if (isObjectiveComplete())
         {
             canProgress = true;
+            if (currentLevel == 3)
+                youWin();
         }
     }
     public void updateKeyCount(int amount,string myName)
@@ -94,6 +98,8 @@ public class gameManager : MonoBehaviour
         if(isObjectiveComplete())
         {
             canProgress = true;
+            if (currentLevel == 3)
+                youWin();
         }
     }
 
