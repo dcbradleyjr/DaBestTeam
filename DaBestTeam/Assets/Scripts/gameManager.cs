@@ -35,6 +35,7 @@ public class gameManager : MonoBehaviour
 
     int enemyCount;
     int keyCount;
+    int levelCount;
 
     // Start is called before the first frame update
     void Awake()
@@ -44,7 +45,6 @@ public class gameManager : MonoBehaviour
         playerHead = player.transform.Find("HeadPosition");
         SpawnPoint = GameObject.FindWithTag("SpawnPoint");
         playerScript = player.GetComponent<playerController>();
-        currentLevel = 1;
     }
 
     // Update is called once per frame
@@ -83,7 +83,7 @@ public class gameManager : MonoBehaviour
         if (isObjectiveComplete())
         {
             canProgress = true;
-            if (currentLevel == 3)
+            if (currentLevel == levelCount)
                 youWin();
         }
     }
@@ -98,9 +98,14 @@ public class gameManager : MonoBehaviour
         if(isObjectiveComplete())
         {
             canProgress = true;
-            if (currentLevel == 3)
+            if (currentLevel == levelCount)
                 youWin();
         }
+    }
+
+    public void updateLevelCount()
+    {
+        levelCount++;
     }
 
     public void youWin()

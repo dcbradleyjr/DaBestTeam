@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class startObjective : MonoBehaviour
+public class floorObjective : MonoBehaviour
 {
     public GameObject keys;
     public GameObject enemies;
     public GameObject newSpawnPoint;
 
-    [SerializeField] int levelIndex;
+    private void Start()
+    {
+        gameManager.instance.updateLevelCount();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -16,11 +19,11 @@ public class startObjective : MonoBehaviour
         { 
             keys.SetActive(true);
             enemies.SetActive(true);
+            gameManager.instance.currentLevel++;
             gameManager.instance.canProgress = false;
 
             GameObject spawnPoint = GameObject.FindWithTag("SpawnPoint");
             spawnPoint.transform.position = newSpawnPoint.transform.position;
-            gameManager.instance.currentLevel = levelIndex;
         }
     }
 }
