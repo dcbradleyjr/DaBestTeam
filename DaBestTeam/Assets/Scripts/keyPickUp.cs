@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class keyPickUp : MonoBehaviour, IInteract
 {
-    // Start is called before the first frame update
-
     [SerializeField] string myName;
-    [SerializeField] float rotSpeed = 90f;
-    [SerializeField] float bounceHeight = 0.3f;
-    [SerializeField] float bounceSpeed = 3f;
+    [SerializeField] float rotSpeed;
+    [SerializeField] float bounceHeight;
+    [SerializeField] float bounceSpeed;
 
-    [SerializeField] float viewRadius = 0.5f;
-    [SerializeField] float viewDistance = 3f;
+    [SerializeField] float viewRadius;
+    [SerializeField] float viewDistance;
 
     [SerializeField] GameObject interactPreview;
 
