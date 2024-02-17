@@ -27,11 +27,16 @@ public class elevatorScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, currentFloor.position, speed * Time.deltaTime);
+        ElevatorFloor();
         if (isMoving)
         {
             pushPlayer();
         }
+    }
+
+    private void ElevatorFloor()
+    {
+        transform.position = Vector3.MoveTowards(transform.position, currentFloor.position, speed * Time.deltaTime);
     }
 
     public void ElevatorMovement()
