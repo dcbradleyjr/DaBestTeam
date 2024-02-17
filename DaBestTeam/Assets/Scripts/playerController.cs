@@ -12,6 +12,7 @@ public class playerController : MonoBehaviour, IDamage
 
     [SerializeField] int HP;
     [SerializeField] float playerSpeed;
+    [SerializeField] float playerStrafe;
     [SerializeField] float jumpMax;
     [SerializeField] float jumpForce;
     [SerializeField] float gravity;
@@ -43,7 +44,7 @@ public class playerController : MonoBehaviour, IDamage
             playerVelocity = Vector3.zero;
         }
 
-        move = Input.GetAxis("Horizontal") * transform.right + Input.GetAxis("Vertical") * transform.forward;
+        move = (Input.GetAxis("Horizontal") * transform.right * playerStrafe) + Input.GetAxis("Vertical") * transform.forward;
         controller.Move(move * playerSpeed * Time.deltaTime);
 
         if (Input.GetButtonDown("Jump") && jumpCount < jumpMax)
