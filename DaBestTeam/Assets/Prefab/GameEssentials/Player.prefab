@@ -84,6 +84,7 @@ MonoBehaviour:
   headPosition: {fileID: 5172629654209308403}
   HP: 10
   playerSpeed: 5
+  playerStrafe: 0.75
   jumpMax: 2
   jumpForce: 10
   gravity: -25
@@ -256,7 +257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 075e423511c087e42b7e10070cd74a7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensitivity: 160
+  sensitivity: 600
   lockVertMin: -90
   lockVertMax: 90
   intertY: 0
