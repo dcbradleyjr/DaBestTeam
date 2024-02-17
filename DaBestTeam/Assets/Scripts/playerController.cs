@@ -17,6 +17,8 @@ public class playerController : MonoBehaviour, IDamage
     [SerializeField] float jumpForce;
     [SerializeField] float gravity;
     [SerializeField] float maxInteractDist;
+    [SerializeField] float maxInteractRadius;
+
 
     Vector3 move;
     Vector3 playerVelocity;
@@ -60,7 +62,8 @@ public class playerController : MonoBehaviour, IDamage
     void interact()
     {
         RaycastHit hit;
-        if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, maxInteractDist))
+        Ray ray = Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f));
+        if (Physics.SphereCast(ray, maxInteractRadius, out hit, maxInteractDist))
         {
             Debug.Log(hit.collider.name);
             IInteract interact = hit.collider.GetComponent<IInteract>();

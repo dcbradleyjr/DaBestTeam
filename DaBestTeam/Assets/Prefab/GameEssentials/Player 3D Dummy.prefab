@@ -913,7 +913,8 @@ MonoBehaviour:
   jumpMax: 2
   jumpForce: 15
   gravity: -25
-  maxInteractDist: 0
+  maxInteractDist: 1
+  maxInteractRadius: 0.5
 --- !u!143 &2690054102202319614
 CharacterController:
   m_ObjectHideFlags: 0

@@ -32,17 +32,21 @@ PrefabInstance:
       propertyPath: myName
       value: Red Key
       objectReference: {fileID: 0}
+    - target: {fileID: 8696405660793418490, guid: 624d0313340469e49949baf792abf32a, type: 3}
+      propertyPath: rotSpeed
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 8806068796276134082, guid: 624d0313340469e49949baf792abf32a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -18.01
       objectReference: {fileID: 0}
     - target: {fileID: 8806068796276134082, guid: 624d0313340469e49949baf792abf32a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.67
       objectReference: {fileID: 0}
     - target: {fileID: 8806068796276134082, guid: 624d0313340469e49949baf792abf32a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -2.23
       objectReference: {fileID: 0}
     - target: {fileID: 8806068796276134082, guid: 624d0313340469e49949baf792abf32a, type: 3}
       propertyPath: m_LocalRotation.w
