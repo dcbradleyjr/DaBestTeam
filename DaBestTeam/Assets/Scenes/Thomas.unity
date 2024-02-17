@@ -456,6 +456,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4141498676706649982, guid: d9b101502159e85449ad53504ffa65c2, type: 3}
+      propertyPath: playerStrafe
+      value: 0.75
+      objectReference: {fileID: 0}
     - target: {fileID: 5242990077541902587, guid: d9b101502159e85449ad53504ffa65c2, type: 3}
       propertyPath: m_Name
       value: Player
@@ -728,10 +732,6 @@ PrefabInstance:
     - target: {fileID: 4357113268307947884, guid: 624d0313340469e49949baf792abf32a, type: 3}
       propertyPath: m_Name
       value: Blue Key
-      objectReference: {fileID: 0}
-    - target: {fileID: 4429305936786579170, guid: 624d0313340469e49949baf792abf32a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8806068796276134082, guid: 624d0313340469e49949baf792abf32a, type: 3}
       propertyPath: m_LocalPosition.x

@@ -52,6 +52,18 @@ PrefabInstance:
       propertyPath: myName
       value: Green Key
       objectReference: {fileID: 0}
+    - target: {fileID: 6354651075083976637, guid: 9924d91988f7b5147a5a3fe798564e87, type: 3}
+      propertyPath: m_Color.b
+      value: 0.09099349
+      objectReference: {fileID: 0}
+    - target: {fileID: 6354651075083976637, guid: 9924d91988f7b5147a5a3fe798564e87, type: 3}
+      propertyPath: m_Color.g
+      value: 0.9137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 6354651075083976637, guid: 9924d91988f7b5147a5a3fe798564e87, type: 3}
+      propertyPath: m_Color.r
+      value: 0.08235291
+      objectReference: {fileID: 0}
     - target: {fileID: 7674629409757977580, guid: 9924d91988f7b5147a5a3fe798564e87, type: 3}
       propertyPath: m_Name
       value: Green Key
