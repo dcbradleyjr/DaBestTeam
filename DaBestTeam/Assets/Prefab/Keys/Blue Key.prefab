@@ -117,6 +117,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myName: Blue Key
+  rotSpeed: 90
+  bounceHeight: 0.3
+  bounceSpeed: 3
 --- !u!65 &4979853158597205920
 BoxCollider:
   m_ObjectHideFlags: 0
