@@ -56953,6 +56953,10 @@ PrefabInstance:
       propertyPath: playerSpeed
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 6932623217078365716, guid: 441dbcc0887e18e4c8ed384942310cf6, type: 3}
+      propertyPath: maxInteractDist
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
