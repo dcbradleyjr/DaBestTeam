@@ -29,8 +29,13 @@ public class elevatorButtons : MonoBehaviour, IInteract
         ButtonText.text = floorName;
     }
 
-    public void OnPressed()
+    public void onPressed()
     {
-        LinkedController.SendElevatorTo(LinkedFloor);
+        if (Input.GetButtonDown("Interact"))
+        {
+            interact();
+            Debug.Log("I am pressed");
+            LinkedController.SendElevatorTo(LinkedFloor);
+        }
     }
 }

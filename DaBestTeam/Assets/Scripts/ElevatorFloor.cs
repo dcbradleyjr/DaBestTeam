@@ -34,7 +34,7 @@ public class ElevatorFloor : MonoBehaviour
             {
                 LinkedAnimator.ResetTrigger("Close");
                 LinkedAnimator.SetTrigger("Open");
-                //LinkedController.ActiveElevator.OpenDoors();
+                LinkedController.ActiveElevator.OpenDoors();
             }
         }
     }
@@ -53,11 +53,13 @@ public class ElevatorFloor : MonoBehaviour
 
     public void OnCallElevatorForUp()
     {
+        Debug.Log("I am going up!");
         LinkedController.CallElevator(this, true);
     }
 
     public void OnCallElevatorForDown()
     {
+        Debug.Log("I am going donw!");
         LinkedController.CallElevator(this, false);
     }
 

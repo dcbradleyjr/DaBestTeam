@@ -14,8 +14,8 @@ public class ElevatorController : MonoBehaviour
     {
         Debug.Log("Its here");
         // already at this floor
-        if (requestedFloor == ActiveElevator.CurrentFloor)
-            return;
+        /*if (requestedFloor == ActiveElevator.CurrentFloor)
+            return;*/
 
         LinkedElevator.MoveTo(requestedFloor);
     }
@@ -24,8 +24,8 @@ public class ElevatorController : MonoBehaviour
     {
         Debug.Log("Its here");
         // already at this floor
-        if (requestedFloor == ActiveElevator.CurrentFloor)
-            return;
+        /*if (requestedFloor == ActiveElevator.CurrentFloor)
+            return;*/
 
         LinkedElevator.MoveTo(requestedFloor);
     }
