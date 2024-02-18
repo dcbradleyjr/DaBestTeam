@@ -6,7 +6,7 @@ using UnityEngine;
 public class Elevator : MonoBehaviour
 {
     [SerializeField] ElevatorController LinkedController;
-    [SerializeField] ElevatorFloor StartingFloor;
+    [SerializeField] ElevatorManager StartingFloor;
     [SerializeField] float ElevatorSpeed = 2f;
     [SerializeField] Transform ElevatorUIRoot;
     [SerializeField] GameObject ElevatorUIButtonPrefab;
@@ -15,8 +15,8 @@ public class Elevator : MonoBehaviour
 
     public bool isMoving;
 
-    public ElevatorFloor CurrentFloor { get; private set; } = null;
-    public ElevatorFloor TargetFloor { get; private set; } = null;
+    public ElevatorManager CurrentFloor { get; private set; } = null;
+    public ElevatorManager TargetFloor { get; private set; } = null;
     public bool IsMoving { get; private set; } = false;
 
     private Transform currentFloor;//Temp
@@ -34,17 +34,17 @@ public class Elevator : MonoBehaviour
         CurrentFloor = StartingFloor;
 
         //add the floor buttons UI
-        FloorButtonCreator();
+        //FloorButtonCreator();
     }
 
-    private void FloorButtonCreator()
+    /*private void FloorButtonCreator()
     {
         foreach (var floor in LinkedController.Floors)
         {
             var elevatorUIGO = Instantiate(ElevatorUIButtonPrefab, ElevatorUIRoot);
-            elevatorUIGO.GetComponent<ElevatorUI_FloorButton>().Bind(floor, LinkedController, floor.DisplayName);
+            elevatorUIGO.GetComponent<elevatorButtons>().Bind(floor, LinkedController, floor.DisplayName);
         }
-    }
+    }*/
 
     // Update is called once per frame
     void FixedUpdate()
@@ -68,7 +68,7 @@ public class Elevator : MonoBehaviour
         }
     }
     //Tells it is moving and departed
-    public void MoveTo(ElevatorFloor targetFloor)
+    public void MoveTo(ElevatorManager targetFloor)
     {
         IsMoving = true;
         TargetFloor = targetFloor;
@@ -90,6 +90,5 @@ public class Elevator : MonoBehaviour
     public void ElevatorMovement()
     {
         isMoving = true;
-        currentFloor = end;
     }//Temp
 }

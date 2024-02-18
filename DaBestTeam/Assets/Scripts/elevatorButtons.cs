@@ -8,7 +8,7 @@ public class elevatorButtons : MonoBehaviour, IInteract
     [SerializeField] TextMeshProUGUI ButtonText;
 
     ElevatorController LinkedController;
-    ElevatorFloor LinkedFloor;
+    ElevatorManager LinkedFloor;
 
     public Elevator elevator;
 
@@ -21,8 +21,7 @@ public class elevatorButtons : MonoBehaviour, IInteract
         }
     }
 
-
-    public void Bind(ElevatorFloor linkedFloor, ElevatorController linkedController, string floorName)
+    public void Bind(ElevatorManager linkedFloor, ElevatorController linkedController, string floorName)
     {
         LinkedController = linkedController;
         LinkedFloor = linkedFloor;

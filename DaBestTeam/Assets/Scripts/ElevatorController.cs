@@ -5,12 +5,12 @@ using UnityEngine;
 public class ElevatorController : MonoBehaviour
 {
     [SerializeField] Elevator LinkedElevator;
-    [SerializeField] List<ElevatorFloor> ElevatorFloors;
+    [SerializeField] List<ElevatorManager> ElevatorFloors;
 
     public Elevator ActiveElevator => LinkedElevator;
-    public List<ElevatorFloor> Floors => ElevatorFloors;
+    public List<ElevatorManager> Floors => ElevatorFloors;
 
-    public void CallElevator(ElevatorFloor requestedFloor, bool isUp)
+    public void CallElevator(ElevatorManager requestedFloor, bool isMoving)
     {
         Debug.Log("Its here");
         // already at this floor
@@ -20,9 +20,9 @@ public class ElevatorController : MonoBehaviour
         LinkedElevator.MoveTo(requestedFloor);
     }
 
-    public void SendElevatorTo(ElevatorFloor requestedFloor)
+    public void SendElevatorTo(ElevatorManager requestedFloor)
     {
-        Debug.Log("Its here");
+        Debug.Log("Here we go!");
         // already at this floor
         if (requestedFloor == ActiveElevator.CurrentFloor)
             return;
