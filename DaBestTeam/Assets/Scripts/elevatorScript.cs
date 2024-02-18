@@ -6,11 +6,9 @@ using UnityEngine.UIElements;
 public class elevatorScript : MonoBehaviour
 {
     public float speed;
-    public float wallSpeed;
     public int startingPoint;
     public Transform start;
     public Transform end;
-    public Transform pushWall;
     public Transform endPoint;
 
     public bool isMoving;
@@ -27,16 +25,7 @@ public class elevatorScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ElevatorFloor();
-        if (isMoving)
-        {
-            pushPlayer();
-        }
-    }
-
-    private void ElevatorFloor()
-    {
-        transform.position = Vector3.MoveTowards(transform.position, currentFloor.position, speed * Time.deltaTime);
+       
     }
 
     public void ElevatorMovement()
@@ -45,8 +34,4 @@ public class elevatorScript : MonoBehaviour
         currentFloor = end;
     }
 
-    public void pushPlayer()
-    {
-        pushWall.position = Vector3.MoveTowards(pushWall.position, endPoint.position, wallSpeed * Time.deltaTime);
-    }
 }

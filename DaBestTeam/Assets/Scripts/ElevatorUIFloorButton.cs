@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class ElevatorUI_FloorButton : MonoBehaviour
+public class ElevatorUI_FloorButton : MonoBehaviour, IInteract
 {
     [SerializeField] TextMeshProUGUI ButtonText;
 
     ElevatorController LinkedController;
     ElevatorFloor LinkedFloor;
+
+    public elevatorScript elevator;
 
     public void Bind(ElevatorFloor linkedFloor, ElevatorController linkedController, string floorName)
     {
@@ -26,11 +28,28 @@ public class ElevatorUI_FloorButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        onPressed();
     }
 
-    public void OnPressed()
+    public void onPressed()
     {
-        LinkedController.SendElevatorTo(LinkedFloor);
+        if (Input.GetButtonDown("Interact"))
+        {
+            interact();
+            Debug.Log("I am pressed");
+            LinkedController.SendElevatorTo(LinkedFloor);
+        }
     }
+
+    public void interact()
+    {
+        if (gameManager.instance.canProgress)
+        {
+            elevator.ElevatorMovement();
+            elevator.isMoving = true;
+        }
+    }
+
+
+    
 }

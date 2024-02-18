@@ -27,7 +27,12 @@ public class Elevator : MonoBehaviour
         transform.position = new Vector3(transform.position.x, StartingFloor.TargetY, transform.position.z);
         CurrentFloor = StartingFloor;
 
-        //add the floor UI
+        //add the floor buttons UI
+        FloorButtonCreator();
+    }
+
+    private void FloorButtonCreator()
+    {
         foreach (var floor in LinkedController.Floors)
         {
             var elevatorUIGO = Instantiate(ElevatorUIButtonPrefab, ElevatorUIRoot);
@@ -56,7 +61,7 @@ public class Elevator : MonoBehaviour
             }
         }
     }
-
+    //Tells it is moving and departed
     public void MoveTo(ElevatorFloor targetFloor)
     {
         IsMoving = true;

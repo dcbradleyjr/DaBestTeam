@@ -51,16 +51,10 @@ public class ElevatorFloor : MonoBehaviour
         }
     }
 
-    public void OnCallElevatorForUp()
+    public void OnCallElevator()
     {
-        Debug.Log("I am going up!");
+        Debug.Log("I am on call!");
         LinkedController.CallElevator(this, true);
-    }
-
-    public void OnCallElevatorForDown()
-    {
-        Debug.Log("I am going donw!");
-        LinkedController.CallElevator(this, false);
     }
 
     public void OnElevatorDeparted(Elevator activeElevator)
