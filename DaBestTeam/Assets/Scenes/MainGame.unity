@@ -16049,6 +16049,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4288808390580362423, guid: eeee17899f2960041add60b6bda3a341, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnCallElevator
+      objectReference: {fileID: 0}
+    - target: {fileID: 4288808390580362423, guid: eeee17899f2960041add60b6bda3a341, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ElevatorManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 6043257553534361067, guid: eeee17899f2960041add60b6bda3a341, type: 3}
       propertyPath: LinkedController
       value: 
@@ -16079,7 +16087,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8627757252587551004, guid: eeee17899f2960041add60b6bda3a341, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -11.33
+      value: -3.14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

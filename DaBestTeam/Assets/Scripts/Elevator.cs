@@ -87,8 +87,5 @@ public class Elevator : MonoBehaviour
         LinkedAnimator.SetTrigger("Close");
     }
 
-    public void ElevatorMovement()
-    {
-        isMoving = true;
-    }//Temp
+   
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class elevatorButtons : MonoBehaviour, IInteract
+public class elevatorButtons : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI ButtonText;
 
@@ -12,14 +12,7 @@ public class elevatorButtons : MonoBehaviour, IInteract
 
     public Elevator elevator;
 
-    public void interact()
-    {
-        if (gameManager.instance.canProgress)
-        {
-            elevator.ElevatorMovement();
-            elevator.isMoving = true;
-        }
-    }
+    
 
     public void Bind(ElevatorManager linkedFloor, ElevatorController linkedController, string floorName)
     {
@@ -32,7 +25,6 @@ public class elevatorButtons : MonoBehaviour, IInteract
     {
         if (Input.GetButtonDown("Interact"))
         {
-            interact();
             Debug.Log("I am pressed");
             LinkedController.SendElevatorTo(LinkedFloor);
         }
