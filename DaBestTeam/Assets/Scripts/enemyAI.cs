@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 
-public class enemyAI : MonoBehaviour, IDamage
+public class enemyAI : MonoBehaviour, IDamage, IPatrol
 {
     [SerializeField] Renderer model;
     [SerializeField] NavMeshAgent agent;
@@ -19,7 +21,16 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] GameObject bullet;
     [SerializeField] float shootRate;
 
-    public Image HealthBar;
+    [SerializeField] bool canPatrol;
+    [SerializeField] int waitTimeAtDest;
+    public Transform[] waypoints;
+    int currentWaypointIndex;
+    float waitTime = 2.0f;
+    float remainingTime;
+    bool isPatrolling;
+    Vector3 posBeforeSeePlayer;
+    
+    public UnityEngine.UI.Image HealthBar;
     public GameObject EnemyUI;
 
     bool isShooting;
@@ -33,13 +44,47 @@ public class enemyAI : MonoBehaviour, IDamage
         gameManager.instance.updateEnemyCount(1);
         HPOriginal = HP;
         updateUI();
+        isPatrolling = canPatrol; //if canPatrol is set to true, they will begin patrolling
+        remainingTime = waitTime; //set wait time at each destination to the remaining time value
+        if(isPatrolling)
+            agent.SetDestination(waypoints[currentWaypointIndex].position); //will move towards the patrol point if they can patrol
+
+        posBeforeSeePlayer = Vector3.zero;
     }
 
     void Update()
     {
         if (playerInRange && canSeePlayer())
         {
+            if (canPatrol)
+                isPatrolling = false;
+        }
+        else
+        {
+            if (posBeforeSeePlayer != Vector3.zero)
+            {
+                if (remainingTime <= 0)
+                {
+                    agent.SetDestination(posBeforeSeePlayer);
+                    if (agent.remainingDistance <= agent.stoppingDistance)
+                    {
+                        posBeforeSeePlayer = Vector3.zero;
+                        isPatrolling = true;
+                        remainingTime = waitTime;
+                    }
+                }
+                else
+                {
+                    remainingTime -= Time.deltaTime;
+                }
 
+            }
+            else
+            {
+                if (canPatrol)
+                    if (isPatrolling)
+                        patrol();
+            }
         }
     }
 
@@ -59,12 +104,16 @@ public class enemyAI : MonoBehaviour, IDamage
                 {
                     StartCoroutine(shoot());
                 }
+                if (posBeforeSeePlayer == Vector3.zero)
+                    posBeforeSeePlayer = agent.transform.position;
+
                 if (agent.remainingDistance < agent.stoppingDistance)
                     faceTarget();
                 return true;
             }
         }
         return false;
+
     }
 
     void faceTarget()
@@ -104,6 +153,34 @@ public class enemyAI : MonoBehaviour, IDamage
             gameManager.instance.updateEnemyCount(-1);
         }
     }
+
+    public void patrol()
+    {
+        if (agent.remainingDistance <= agent.stoppingDistance)
+        {
+            if (remainingTime <= 0)
+            {
+                NextPoint();
+                remainingTime = waitTime;
+            }
+            else
+            {
+                remainingTime -= Time.deltaTime;
+            }
+        }
+        else
+        {
+            agent.SetDestination(waypoints[currentWaypointIndex].position);
+        }
+    }
+
+    public void NextPoint()
+    {
+        currentWaypointIndex = (currentWaypointIndex + 1) % waypoints.Length;
+        agent.SetDestination(waypoints[currentWaypointIndex].position);
+    }
+
+
 
     IEnumerator flashMat()
     {

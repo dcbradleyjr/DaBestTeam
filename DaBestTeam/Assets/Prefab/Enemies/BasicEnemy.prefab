@@ -350,15 +350,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8cf152a0a06b3dc47a7c6d40918d95a9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.392
+      value: -6.423131
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8cf152a0a06b3dc47a7c6d40918d95a9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1.7885281
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8cf152a0a06b3dc47a7c6d40918d95a9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.835
+      value: -5.761
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8cf152a0a06b3dc47a7c6d40918d95a9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -366,15 +366,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8cf152a0a06b3dc47a7c6d40918d95a9, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8cf152a0a06b3dc47a7c6d40918d95a9, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8cf152a0a06b3dc47a7c6d40918d95a9, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8cf152a0a06b3dc47a7c6d40918d95a9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -452,6 +452,9 @@ MonoBehaviour:
   targetFaceSpeed: 7
   bullet: {fileID: 3758160979051400433, guid: 982cba00ecede3f48b37cbe8d32821fd, type: 3}
   shootRate: 0.7
+  canPatrol: 0
+  waitTimeAtDest: 2
+  waypoints: []
   HealthBar: {fileID: 8084164399098289147}
   EnemyUI: {fileID: 1740449018176088398}
 --- !u!195 &8303394739943037380
