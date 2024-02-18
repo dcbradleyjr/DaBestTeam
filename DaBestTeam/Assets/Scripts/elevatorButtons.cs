@@ -10,7 +10,7 @@ public class elevatorButtons : MonoBehaviour, IInteract
     ElevatorController LinkedController;
     ElevatorFloor LinkedFloor;
 
-    public elevatorScript elevator;
+    public Elevator elevator;
 
     public void interact()
     {

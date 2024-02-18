@@ -10,7 +10,7 @@ public class ElevatorUI_FloorButton : MonoBehaviour, IInteract
     ElevatorController LinkedController;
     ElevatorFloor LinkedFloor;
 
-    public elevatorScript elevator;
+    public Elevator elevator;
 
     public void Bind(ElevatorFloor linkedFloor, ElevatorController linkedController, string floorName)
     {
@@ -49,7 +49,4 @@ public class ElevatorUI_FloorButton : MonoBehaviour, IInteract
             elevator.isMoving = true;
         }
     }
-
-
-    
 }

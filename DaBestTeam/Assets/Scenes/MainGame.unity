@@ -10225,7 +10225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b01432a650b83e24eb046cd07b3cc635, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LinkedElevator: {fileID: 5322275177906368750}
+  LinkedElevator: {fileID: 8544869745119985084}
   ElevatorFloors:
   - {fileID: 521830586}
   - {fileID: 1060367038}
@@ -16076,6 +16076,10 @@ PrefabInstance:
     - target: {fileID: 8231989964996029219, guid: eeee17899f2960041add60b6bda3a341, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8627757252587551004, guid: eeee17899f2960041add60b6bda3a341, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -11.33
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -42626,7 +42630,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3976048127273107460}
+  - {fileID: 6378867631764602491}
   - {fileID: 578640377}
   - {fileID: 1060367039}
   - {fileID: 521830587}
@@ -58358,6 +58362,8 @@ GameObject:
   - component: {fileID: 8544869745119985083}
   - component: {fileID: 7568792657187884283}
   - component: {fileID: 7002756915883377086}
+  - component: {fileID: 8544869745119985084}
+  - component: {fileID: 8544869745119985085}
   m_Layer: 0
   m_Name: ElevatorStructure
   m_TagString: Untagged
@@ -58365,22 +58371,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3976048127273107460
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8553696464805685204}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -27.219, y: -7.02, z: 8.57}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 6378867631764602491}
-  m_Father: {fileID: 1545444656}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &4056295326014526768
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -58431,7 +58421,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7111628909484571710}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: b651af82bd1db2c49b80d72c79c41bd0, type: 2}
   m_CullingMode: 0
@@ -58509,23 +58499,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7613812823107978433}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5322275177906368750
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8553696464805685204}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a8e8c39d0f381748b6f899a85869a3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LinkedController: {fileID: 350737852}
-  StartingFloor: {fileID: 521830586}
-  ElevatorSpeed: 2
-  ElevatorUIRoot: {fileID: 0}
-  ElevatorUIButtonPrefab: {fileID: 3677944474345940493, guid: 6a1d59daf8679154bbd87894058dd07d, type: 3}
 --- !u!4 &5544350892671469730
 Transform:
   m_ObjectHideFlags: 0
@@ -58663,7 +58636,7 @@ Transform:
   m_GameObject: {fileID: 3814993152707894880}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 23.882141, y: -23.09, z: -8.18}
+  m_LocalPosition: {x: -3.3368568, y: -30.11, z: 0.3899994}
   m_LocalScale: {x: 6, y: 1, z: 6}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -58673,7 +58646,7 @@ Transform:
   - {fileID: 7151125409269246980}
   - {fileID: 6781545846291565521}
   - {fileID: 8597640421924626308}
-  m_Father: {fileID: 3976048127273107460}
+  m_Father: {fileID: 1545444656}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6543216596537774393
 GameObject:
@@ -59129,32 +59102,33 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3814993152707894880}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &8553696464805685204
-GameObject:
+--- !u!114 &8544869745119985084
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3976048127273107460}
-  - component: {fileID: 5322275177906368750}
-  - component: {fileID: 8553696464805685205}
-  m_Layer: 0
-  m_Name: Elevator
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!95 &8553696464805685205
+  m_GameObject: {fileID: 3814993152707894880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a8e8c39d0f381748b6f899a85869a3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LinkedController: {fileID: 350737852}
+  StartingFloor: {fileID: 521830586}
+  ElevatorSpeed: 2
+  ElevatorUIRoot: {fileID: 0}
+  ElevatorUIButtonPrefab: {fileID: 3677944474345940493, guid: 6a1d59daf8679154bbd87894058dd07d, type: 3}
+  isMoving: 0
+  end: {fileID: 0}
+--- !u!95 &8544869745119985085
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8553696464805685204}
+  m_GameObject: {fileID: 3814993152707894880}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: b651af82bd1db2c49b80d72c79c41bd0, type: 2}

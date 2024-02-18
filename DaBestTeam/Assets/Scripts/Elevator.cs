@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Elevator : MonoBehaviour
@@ -12,9 +13,14 @@ public class Elevator : MonoBehaviour
 
     Animator LinkedAnimator;
 
+    public bool isMoving;
+
     public ElevatorFloor CurrentFloor { get; private set; } = null;
     public ElevatorFloor TargetFloor { get; private set; } = null;
     public bool IsMoving { get; private set; } = false;
+
+    private Transform currentFloor;//Temp
+    public Transform end;//Temp
 
     private void Awake()
     {
@@ -80,4 +86,10 @@ public class Elevator : MonoBehaviour
         LinkedAnimator.ResetTrigger("Open");
         LinkedAnimator.SetTrigger("Close");
     }
+
+    public void ElevatorMovement()
+    {
+        isMoving = true;
+        currentFloor = end;
+    }//Temp
 }
