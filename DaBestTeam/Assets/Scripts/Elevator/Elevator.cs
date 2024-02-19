@@ -24,7 +24,7 @@ public class Elevator : MonoBehaviour
 
     private void Awake()
     {
-        /*LinkedAnimator = GetComponent<Animator>();*/
+        
     }
 
     // Start is called before the first frame update
@@ -33,18 +33,8 @@ public class Elevator : MonoBehaviour
         transform.position = new Vector3(transform.position.x, StartingFloor.TargetY, transform.position.z);
         CurrentFloor = StartingFloor;
 
-        //add the floor buttons UI
-        //FloorButtonCreator();
     }
 
-    /*private void FloorButtonCreator()
-    {
-        foreach (var floor in LinkedController.Floors)
-        {
-            var elevatorUIGO = Instantiate(ElevatorUIButtonPrefab, ElevatorUIRoot);
-            elevatorUIGO.GetComponent<elevatorButtons>().Bind(floor, LinkedController, floor.DisplayName);
-        }
-    }*/
 
     // Update is called once per frame
     void FixedUpdate()

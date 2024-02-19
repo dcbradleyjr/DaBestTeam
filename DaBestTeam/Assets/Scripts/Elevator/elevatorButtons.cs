@@ -9,12 +9,7 @@ public class elevatorButtons : MonoBehaviour, IInteract
 
     public ElevatorManager elevatorManager;
 
-    /*public void Bind(ElevatorManager linkedFloor, ElevatorController linkedController, string floorName)
-    {
-        LinkedController = linkedController;
-        LinkedFloor = linkedFloor;
-        ButtonText.text = floorName;
-    }*/
+    
 
     public void interact()
     {

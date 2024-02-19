@@ -57880,6 +57880,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: ElevatorStructure
       objectReference: {fileID: 0}
+    - target: {fileID: 3700462052624189670, guid: 1d7e6b79d0fbfd24bb44effe1d5c84c8, type: 3}
+      propertyPath: elevatorManager.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3700462052624189670, guid: 1d7e6b79d0fbfd24bb44effe1d5c84c8, type: 3}
+      propertyPath: elevatorManager.Array.data[0]
+      value: 
+      objectReference: {fileID: 521830586}
+    - target: {fileID: 3700462052624189670, guid: 1d7e6b79d0fbfd24bb44effe1d5c84c8, type: 3}
+      propertyPath: elevatorManager.Array.data[1]
+      value: 
+      objectReference: {fileID: 1060367038}
+    - target: {fileID: 3700462052624189670, guid: 1d7e6b79d0fbfd24bb44effe1d5c84c8, type: 3}
+      propertyPath: elevatorManager.Array.data[2]
+      value: 
+      objectReference: {fileID: 578640376}
     - target: {fileID: 7466374350463294359, guid: 1d7e6b79d0fbfd24bb44effe1d5c84c8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.3368568

@@ -6,14 +6,11 @@ using UnityEngine;
 public class ElevatorManager : MonoBehaviour
 {
     
-
     [SerializeField] string _DisplayName;
     [SerializeField] string SupportedTag = "Player";
     [SerializeField] ElevatorController LinkedController;
     [SerializeField] Transform ElevatorTarget;
 
-
-    
     Animator LinkedAnimator;
 
     public string DisplayName => _DisplayName;
@@ -71,12 +68,11 @@ public class ElevatorManager : MonoBehaviour
     //Arrived calls animator
     public void OnElevatorArrived(Elevator activeElevator)
     {
-        //if (Openers.Count > 0)
-        //{ 
+        
             Debug.Log("Step 7");
             LinkedAnimator.ResetTrigger("Close");
             LinkedAnimator.SetTrigger("Open");
             LinkedController.ActiveElevator.OpenDoors();
-        //}
+       
     }
 }
