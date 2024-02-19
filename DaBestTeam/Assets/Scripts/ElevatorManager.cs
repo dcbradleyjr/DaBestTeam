@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class ElevatorManager : MonoBehaviour
 {
-    public static ElevatorManager instance;
+    
 
     [SerializeField] string _DisplayName;
     [SerializeField] string SupportedTag = "Player";
@@ -20,19 +20,19 @@ public class ElevatorManager : MonoBehaviour
     public float TargetY => ElevatorTarget.position.y;
     [SerializeField] bool ElevatorPresent => LinkedController.ActiveElevator.CurrentFloor == this;
 
-    List<GameObject> Openers = new List<GameObject>();
+    /*List<GameObject> Openers = new List<GameObject>();*/
 
     private void Awake()
     {
         LinkedAnimator = GetComponent<Animator>();
-        instance = this;
+        
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(SupportedTag))
         {
-            Openers.Add(other.gameObject);
+            //Openers.Add(other.gameObject);
 
             if (ElevatorPresent)
             {
@@ -47,7 +47,7 @@ public class ElevatorManager : MonoBehaviour
     {
         if (other.CompareTag(SupportedTag))
         {
-            Openers.Remove(other.gameObject);
+            //Openers.Remove(other.gameObject);
 
             LinkedAnimator.ResetTrigger("Open");
             LinkedAnimator.SetTrigger("Close");
@@ -57,12 +57,13 @@ public class ElevatorManager : MonoBehaviour
     //Calls elevator to location
     public void OnCallElevator()
     {
-        Debug.Log("I am on call!");
+        Debug.Log("Step 2");
         LinkedController.CallElevator(this, true);
     }
     //Departed calls animator
     public void OnElevatorDeparted(Elevator activeElevator)
     {
+        Debug.Log("Step 6");
         LinkedAnimator.ResetTrigger("Open");
         LinkedAnimator.SetTrigger("Close");
         LinkedController.ActiveElevator.CloseDoors();
@@ -70,11 +71,12 @@ public class ElevatorManager : MonoBehaviour
     //Arrived calls animator
     public void OnElevatorArrived(Elevator activeElevator)
     {
-        if (Openers.Count > 0)
-        {
+        //if (Openers.Count > 0)
+        //{ 
+            Debug.Log("Step 7");
             LinkedAnimator.ResetTrigger("Close");
             LinkedAnimator.SetTrigger("Open");
             LinkedController.ActiveElevator.OpenDoors();
-        }
+        //}
     }
 }

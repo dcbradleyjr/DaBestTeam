@@ -11,7 +11,7 @@ public class Elevator : MonoBehaviour
     [SerializeField] Transform ElevatorUIRoot;
     [SerializeField] GameObject ElevatorUIButtonPrefab;
 
-    Animator LinkedAnimator;
+    [SerializeField] Animator LinkedAnimator;
 
     public bool isMoving;
 
@@ -24,7 +24,7 @@ public class Elevator : MonoBehaviour
 
     private void Awake()
     {
-        LinkedAnimator = GetComponent<Animator>();
+        /*LinkedAnimator = GetComponent<Animator>();*/
     }
 
     // Start is called before the first frame update
@@ -59,6 +59,7 @@ public class Elevator : MonoBehaviour
             //When we arrive
             if (Vector3.Distance(transform.position, targetLocation) < float.Epsilon)
             {
+                Debug.Log("I am not moving!");
                 IsMoving = false;
                 CurrentFloor = TargetFloor;
                 TargetFloor = null;
@@ -70,6 +71,7 @@ public class Elevator : MonoBehaviour
     //Tells it is moving and departed
     public void MoveTo(ElevatorManager targetFloor)
     {
+        Debug.Log("Step 4");
         IsMoving = true;
         TargetFloor = targetFloor;
         CurrentFloor.OnElevatorDeparted(this);
@@ -77,6 +79,7 @@ public class Elevator : MonoBehaviour
 
     public void OpenDoors()
     {
+        Debug.Log("I am trying to open");
         LinkedAnimator.ResetTrigger("Close");
         LinkedAnimator.SetTrigger("Open");
     }

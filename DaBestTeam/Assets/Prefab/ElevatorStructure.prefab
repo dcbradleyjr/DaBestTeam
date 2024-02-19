@@ -643,7 +643,6 @@ GameObject:
   - component: {fileID: 1746772380879624138}
   - component: {fileID: 5894069515331329329}
   - component: {fileID: 631135965442612548}
-  - component: {fileID: 2300305452639040646}
   m_Layer: 0
   m_Name: ElevatorStructure
   m_TagString: Untagged
@@ -659,7 +658,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3220232696610490068}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.3368568, y: -30.11, z: 0.3899994}
   m_LocalScale: {x: 6, y: 1, z: 6}
   m_ConstrainProportionsScale: 0
@@ -760,29 +759,9 @@ MonoBehaviour:
   ElevatorSpeed: 2
   ElevatorUIRoot: {fileID: 0}
   ElevatorUIButtonPrefab: {fileID: 3677944474345940493, guid: 6a1d59daf8679154bbd87894058dd07d, type: 3}
+  LinkedAnimator: {fileID: 6024790451806365844}
   isMoving: 0
   end: {fileID: 0}
---- !u!95 &2300305452639040646
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3220232696610490068}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b651af82bd1db2c49b80d72c79c41bd0, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4241320542520073389
 GameObject:
   m_ObjectHideFlags: 0
@@ -832,7 +811,7 @@ Animator:
   m_GameObject: {fileID: 4241320542520073389}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b651af82bd1db2c49b80d72c79c41bd0, type: 2}
+  m_Controller: {fileID: 9100000, guid: 1038b8fc1f6fade45a7c5ce8b68e17fe, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

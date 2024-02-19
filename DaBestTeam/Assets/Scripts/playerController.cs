@@ -72,7 +72,6 @@ public class playerController : MonoBehaviour, IDamage
                 interact.interact();
             }
         }
-
     }
 
     public void takeDamage(int amount)

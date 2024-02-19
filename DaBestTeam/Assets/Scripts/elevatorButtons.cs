@@ -3,30 +3,22 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class elevatorButtons : MonoBehaviour
+public class elevatorButtons : MonoBehaviour, IInteract
 {
     [SerializeField] TextMeshProUGUI ButtonText;
 
-    ElevatorController LinkedController;
-    ElevatorManager LinkedFloor;
+    public ElevatorManager elevatorManager;
 
-    public Elevator elevator;
-
-    
-
-    public void Bind(ElevatorManager linkedFloor, ElevatorController linkedController, string floorName)
+    /*public void Bind(ElevatorManager linkedFloor, ElevatorController linkedController, string floorName)
     {
         LinkedController = linkedController;
         LinkedFloor = linkedFloor;
         ButtonText.text = floorName;
-    }
+    }*/
 
-    public void onPressed()
+    public void interact()
     {
-        if (Input.GetButtonDown("Interact"))
-        {
-            Debug.Log("I am pressed");
-            LinkedController.SendElevatorTo(LinkedFloor);
-        }
+        Debug.Log("Step 1");
+        elevatorManager.OnCallElevator();
     }
 }

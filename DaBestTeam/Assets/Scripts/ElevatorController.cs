@@ -12,11 +12,11 @@ public class ElevatorController : MonoBehaviour
 
     public void CallElevator(ElevatorManager requestedFloor, bool isMoving)
     {
-        Debug.Log("Its here");
+        Debug.Log("Step 3");
         // already at this floor
-        if (requestedFloor == ActiveElevator.CurrentFloor)
-            return;
-
+        /*if (requestedFloor == ActiveElevator.CurrentFloor)
+            return;*/ //removed for ability to move elevator
+        
         LinkedElevator.MoveTo(requestedFloor);
     }
 

@@ -81,8 +81,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 4, y: 4, z: 6}
-  m_Center: {x: -1.23, y: 0, z: 0}
+  m_Size: {x: 4, y: 4, z: 4}
+  m_Center: {x: -1.23, y: 0, z: 0.02}
 --- !u!114 &6043257553534361067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -334,7 +334,7 @@ Transform:
   m_GameObject: {fileID: 1329649861157373998}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.70710677, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -1.409, y: 0.7649392, z: 2.094}
+  m_LocalPosition: {x: -1.409, y: -3.14, z: 2.094}
   m_LocalScale: {x: 1, y: 1.5625, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -672,8 +672,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6043257553534361067}
-        m_TargetAssemblyTypeName: ElevatorFloor, Assembly-CSharp
-        m_MethodName: OnCallElevatorForUp
+        m_TargetAssemblyTypeName: ElevatorManager, Assembly-CSharp
+        m_MethodName: OnCallElevator
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -831,6 +831,8 @@ GameObject:
   - component: {fileID: 5047324520432238109}
   - component: {fileID: 8751906334603022792}
   - component: {fileID: 6480151935743051154}
+  - component: {fileID: 2689276785886684403}
+  - component: {fileID: 8125389096433815988}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -922,6 +924,41 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!65 &2689276785886684403
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8521863215911829524}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 369.46484, y: 589.3549, z: 78.89359}
+  m_Center: {x: 23.110477, y: 5.717319, z: 33.765335}
+--- !u!114 &8125389096433815988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8521863215911829524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ce14cb529a5a034b844ef447719a8d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ButtonText: {fileID: 0}
+  elevatorManager: {fileID: 6043257553534361067}
 --- !u!1 &8537588671049889094
 GameObject:
   m_ObjectHideFlags: 0
