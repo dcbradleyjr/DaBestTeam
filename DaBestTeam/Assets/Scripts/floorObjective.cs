@@ -8,6 +8,7 @@ public class floorObjective : MonoBehaviour
     public GameObject enemies;
     public GameObject newSpawnPoint;
 
+
     private void Start()
     {
         gameManager.instance.updateLevelCount();
@@ -15,8 +16,13 @@ public class floorObjective : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        LevelProgressTrigger(other);
+    }
+
+    private void LevelProgressTrigger(Collider other)
+    {
         if (other.CompareTag("Player"))
-        { 
+        {
             keys.SetActive(true);
             enemies.SetActive(true);
             gameManager.instance.currentLevel++;
@@ -24,6 +30,7 @@ public class floorObjective : MonoBehaviour
 
             GameObject spawnPoint = GameObject.FindWithTag("SpawnPoint");
             spawnPoint.transform.position = newSpawnPoint.transform.position;
+            Destroy(gameObject);
         }
     }
 }
