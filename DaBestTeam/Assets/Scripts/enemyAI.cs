@@ -1,14 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 
 
-public class enemyAI : MonoBehaviour, IDamage, IPatrol
+public class enemyAI : MonoBehaviour, IDamage
 {
+    [SerializeField] Animator animator;
     [SerializeField] Renderer model;
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Transform shootPosition;
@@ -16,7 +16,12 @@ public class enemyAI : MonoBehaviour, IDamage, IPatrol
 
     [SerializeField] int HP;
     [SerializeField] int viewCone;
+    [SerializeField] int shootCone;
     [SerializeField] int targetFaceSpeed;
+    [SerializeField] int roamPauseTime;
+    [SerializeField] int roamDistance;
+    [SerializeField] int animSpeedTrans;
+
 
     [SerializeField] GameObject bullet;
     [SerializeField] float shootRate;
@@ -24,67 +29,57 @@ public class enemyAI : MonoBehaviour, IDamage, IPatrol
     [SerializeField] bool canPatrol;
     [SerializeField] int waitTimeAtDest;
     public Transform[] waypoints;
-    int currentWaypointIndex;
-    float waitTime = 2.0f;
-    float remainingTime;
-    bool isPatrolling;
-    Vector3 posBeforeSeePlayer;
     
     public UnityEngine.UI.Image HealthBar;
     public GameObject EnemyUI;
 
     bool isShooting;
     bool playerInRange;
+    bool destinationChosen;
     float angleToPlayer;
+    float stoppingDistanceOrig;
     Vector3 playerDirection;
+    Vector3 startingPosition;
     int HPOriginal;
 
     void Start()
     {
         gameManager.instance.updateEnemyCount(1);
         HPOriginal = HP;
+        startingPosition = transform.position;
+        stoppingDistanceOrig = agent.stoppingDistance;
         updateUI();
-        isPatrolling = canPatrol; //if canPatrol is set to true, they will begin patrolling
-        remainingTime = waitTime; //set wait time at each destination to the remaining time value
-        if(isPatrolling)
-            agent.SetDestination(waypoints[currentWaypointIndex].position); //will move towards the patrol point if they can patrol
-
-        posBeforeSeePlayer = Vector3.zero;
     }
 
     void Update()
     {
-        if (playerInRange && canSeePlayer())
+        float animSpeed = agent.velocity.normalized.magnitude;
+        animator.SetFloat("Speed", Mathf.Lerp(animator.GetFloat("Speed"), animSpeed, Time.deltaTime * animSpeedTrans));
+        if (playerInRange && !canSeePlayer())
         {
-            if (canPatrol)
-                isPatrolling = false;
+            StartCoroutine(roam());
         }
-        else
+       else if (!playerInRange)
         {
-            if (posBeforeSeePlayer != Vector3.zero)
-            {
-                if (remainingTime <= 0)
-                {
-                    agent.SetDestination(posBeforeSeePlayer);
-                    if (agent.remainingDistance <= agent.stoppingDistance)
-                    {
-                        posBeforeSeePlayer = Vector3.zero;
-                        isPatrolling = true;
-                        remainingTime = waitTime;
-                    }
-                }
-                else
-                {
-                    remainingTime -= Time.deltaTime;
-                }
+            StartCoroutine(roam());
+        }
+    }
 
-            }
-            else
-            {
-                if (canPatrol)
-                    if (isPatrolling)
-                        patrol();
-            }
+    IEnumerator roam()
+    {
+        if (agent.remainingDistance < 0.05f && !destinationChosen)
+        {
+            destinationChosen = true;
+            agent.stoppingDistance = 0;
+            yield return new WaitForSeconds(roamPauseTime);
+
+            Vector3 randomPos = Random.insideUnitSphere * roamDistance;
+            randomPos += startingPosition;
+
+            NavMeshHit hit;
+            NavMesh.SamplePosition(randomPos, out hit, roamDistance, 1);
+            agent.SetDestination(hit.position);
+            destinationChosen = false;
         }
     }
 
@@ -100,15 +95,14 @@ public class enemyAI : MonoBehaviour, IDamage, IPatrol
             if (hit.collider.CompareTag("Player") && angleToPlayer <= viewCone)
             {
                 agent.SetDestination(gameManager.instance.player.transform.position);
-                if (!isShooting)
+                if (!isShooting && angleToPlayer <= shootCone)
                 {
                     StartCoroutine(shoot());
                 }
-                if (posBeforeSeePlayer == Vector3.zero)
-                    posBeforeSeePlayer = agent.transform.position;
-
                 if (agent.remainingDistance < agent.stoppingDistance)
                     faceTarget();
+
+                agent.stoppingDistance = stoppingDistanceOrig;
                 return true;
             }
         }
@@ -135,6 +129,7 @@ public class enemyAI : MonoBehaviour, IDamage, IPatrol
         {
             playerInRange = false;
         }
+        agent.stoppingDistance = 0;
     }
 
     public void takeDamage(int amount)
@@ -153,34 +148,6 @@ public class enemyAI : MonoBehaviour, IDamage, IPatrol
             gameManager.instance.updateEnemyCount(-1);
         }
     }
-
-    public void patrol()
-    {
-        if (agent.remainingDistance <= agent.stoppingDistance)
-        {
-            if (remainingTime <= 0)
-            {
-                NextPoint();
-                remainingTime = waitTime;
-            }
-            else
-            {
-                remainingTime -= Time.deltaTime;
-            }
-        }
-        else
-        {
-            agent.SetDestination(waypoints[currentWaypointIndex].position);
-        }
-    }
-
-    public void NextPoint()
-    {
-        currentWaypointIndex = (currentWaypointIndex + 1) % waypoints.Length;
-        agent.SetDestination(waypoints[currentWaypointIndex].position);
-    }
-
-
 
     IEnumerator flashMat()
     {

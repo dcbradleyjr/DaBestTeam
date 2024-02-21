@@ -43740,6 +43740,18 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1008001955865914655, guid: 160e27c3c74573f4c8235dc8f762b40f, type: 3}
+      propertyPath: shootCone
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1008001955865914655, guid: 160e27c3c74573f4c8235dc8f762b40f, type: 3}
+      propertyPath: roamDistance
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1008001955865914655, guid: 160e27c3c74573f4c8235dc8f762b40f, type: 3}
+      propertyPath: roamPauseTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1008001955865914655, guid: 160e27c3c74573f4c8235dc8f762b40f, type: 3}
       propertyPath: waypoints.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -62073,6 +62085,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1481451042}
     m_Modifications:
+    - target: {fileID: 1008001955865914655, guid: 160e27c3c74573f4c8235dc8f762b40f, type: 3}
+      propertyPath: shootCone
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1008001955865914655, guid: 160e27c3c74573f4c8235dc8f762b40f, type: 3}
+      propertyPath: roamDistance
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1008001955865914655, guid: 160e27c3c74573f4c8235dc8f762b40f, type: 3}
+      propertyPath: roamPauseTime
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6277385224094894448, guid: 160e27c3c74573f4c8235dc8f762b40f, type: 3}
       propertyPath: m_Name
       value: BasicEnemy (1)
