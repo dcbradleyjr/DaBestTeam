@@ -19,7 +19,8 @@ public class Bullet : MonoBehaviour
         if(enemyBullet)
         rb.velocity = (gameManager.instance.player.transform.position - transform.position).normalized * speed;
         else 
-        rb.velocity = transform.forward * speed;
+            //using transform right instead of forward because weapons face the X axis. 
+        rb.velocity = transform.right * speed;
 
         Destroy(gameObject, destroyTime);
     }

@@ -19,15 +19,18 @@ public class gameManager : MonoBehaviour
     public TMP_Text MagazineMax;
     public TMP_Text MagazineCount;
     public TMP_Text ReloadIndicator;
+    public TMP_Text AmmoDivider;
     public TMP_Text keyCountDisplay;
     public TMP_Text enemyCountDisplay;
     public TMP_Text keyObtained;
 
 
     public GameObject player;
+    public GameObject playerGunSlot;
     public Transform playerHead;
     public GameObject SpawnPoint;
     public playerController playerScript;
+    public playerGun playerGun;
 
     public bool isPaused;
     public bool canProgress;
@@ -42,9 +45,11 @@ public class gameManager : MonoBehaviour
     {
         instance = this;
         player = GameObject.FindWithTag("Player");
+        playerGunSlot = GameObject.FindWithTag("WeaponSlot");
         playerHead = player.transform.Find("HeadPosition");
         SpawnPoint = GameObject.FindWithTag("SpawnPoint");
         playerScript = player.GetComponent<playerController>();
+        playerGun = playerGunSlot.GetComponent<playerGun>();
     }
 
     // Update is called once per frame

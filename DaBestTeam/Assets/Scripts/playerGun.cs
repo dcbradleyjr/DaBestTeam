@@ -7,15 +7,17 @@ public class playerGun : MonoBehaviour
 
     [SerializeField] Transform shootPosition;
 
+    [SerializeField] List<gunStats> gunList = new List<gunStats>();
+    [SerializeField] GameObject gunModel;
     [SerializeField] GameObject bullet;
-    [SerializeField] int shootDist;
     [SerializeField] float shootRate;
-    [SerializeField] int shootDamage;
+    [SerializeField] float reloadRate;
     [SerializeField] int clipSize;
 
     bool isShooting;
     bool isReloading;
     int maxClipSize;
+    int selectedGun;
 
     // Start is called before the first frame update
     void Start()
@@ -27,13 +29,20 @@ public class playerGun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (clipSize <= 0 && !isReloading || Input.GetButtonDown("Reload") && !isReloading && clipSize != maxClipSize)
+        if (!gameManager.instance.isPaused)
         {
-            StartCoroutine(reloadGun());
-        }
-        else if (Input.GetButtonDown("Shoot") && !isShooting && clipSize > 0 && !isReloading)
-        {
-            StartCoroutine(shoot());
+            if (gunList.Count > 0)
+            {
+                selectGun();
+                if (clipSize <= 0 && !isReloading || Input.GetButtonDown("Reload") && !isReloading && clipSize != maxClipSize)
+                {
+                    StartCoroutine(reloadGun());
+                }
+                else if (Input.GetButtonDown("Shoot") && !isShooting && clipSize > 0 && !isReloading)
+                {
+                    StartCoroutine(shoot());
+                }  
+            }
         }
     }
 
@@ -51,7 +60,7 @@ public class playerGun : MonoBehaviour
     {
         isReloading = true;
         StartCoroutine(reloadingVisuals());
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(reloadRate);
         clipSize = maxClipSize;
         updateUI();
         isReloading = false;
@@ -59,6 +68,19 @@ public class playerGun : MonoBehaviour
 
     void updateUI()
     {
+        if (maxClipSize == 0)
+        {
+            gameManager.instance.MagazineCount.gameObject.SetActive(false);
+            gameManager.instance.MagazineMax.gameObject.SetActive(false);
+            gameManager.instance.AmmoDivider.gameObject.SetActive(false);
+        }
+        else
+        {
+            gameManager.instance.MagazineCount.gameObject.SetActive(true);
+            gameManager.instance.MagazineMax.gameObject.SetActive(true);
+            gameManager.instance.AmmoDivider.gameObject.SetActive(true);
+        }
+
         gameManager.instance.MagazineCount.text = clipSize.ToString();
         gameManager.instance.MagazineMax.text = maxClipSize.ToString();
     }
@@ -66,13 +88,65 @@ public class playerGun : MonoBehaviour
     IEnumerator reloadingVisuals()
     {
         gameManager.instance.ReloadIndicator.text = "Reloading";
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(reloadRate / 4);
         gameManager.instance.ReloadIndicator.text = "Reloading.";
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(reloadRate / 4);
         gameManager.instance.ReloadIndicator.text = "Reloading..";
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(reloadRate / 4);
         gameManager.instance.ReloadIndicator.text = "Reloading...";
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(reloadRate / 4);
         gameManager.instance.ReloadIndicator.text = "";
+    }
+
+    public void getGunStats(gunStats gun)
+    {
+        gunList.Add(gun);
+
+        shootRate = gun.shootRate;
+        reloadRate = gun.reloadRate;
+        maxClipSize = gun.ammoMax;
+        clipSize = gun.ammoCur;
+        bullet = gun.bullet;
+
+        gunModel.GetComponent<MeshFilter>().sharedMesh = gun.model.GetComponent<MeshFilter>().sharedMesh;
+        gunModel.GetComponent<MeshRenderer>().sharedMaterial = gun.model.GetComponent<MeshRenderer>().sharedMaterial;
+
+        selectedGun = gunList.Count - 1;
+        updateUI();
+    }
+
+    void selectGun()
+    {
+        if (Input.GetAxis("Mouse ScrollWheel") > 0 && selectedGun < gunList.Count - 1)
+        {
+            saveAmmo();
+            selectedGun++;
+            changeGun();
+        }
+        else if (Input.GetAxis("Mouse ScrollWheel") < 0 && selectedGun > 0)
+        {
+            saveAmmo();
+            selectedGun--;
+            changeGun();
+        }
+    }
+
+    void changeGun()
+    {
+        shootRate = gunList[selectedGun].shootRate;
+        reloadRate = gunList[selectedGun].reloadRate;
+        maxClipSize = gunList[selectedGun].ammoMax;
+        clipSize = gunList[selectedGun].ammoCur;
+        bullet = gunList[selectedGun].bullet;
+
+        gunModel.GetComponent<MeshFilter>().sharedMesh = gunList[selectedGun].model.GetComponent<MeshFilter>().sharedMesh;
+        gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunList[selectedGun].model.GetComponent<MeshRenderer>().sharedMaterial;
+
+        updateUI();
+    }
+
+    void saveAmmo()
+    {
+        gunList[selectedGun].ammoCur = clipSize;
     }
 }
