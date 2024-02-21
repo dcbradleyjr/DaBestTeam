@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class playerGun : MonoBehaviour
 {
-
+    [Header("--Components--")]
     [SerializeField] Transform shootPosition;
-
-    [SerializeField] List<gunStats> gunList = new List<gunStats>();
     [SerializeField] GameObject gunModel;
     [SerializeField] GameObject bullet;
+
+    [Header("--Attributes--")]
+    [SerializeField] List<gunStats> gunList = new List<gunStats>();
     [SerializeField] float shootRate;
     [SerializeField] float reloadRate;
     [SerializeField] int clipSize;
@@ -33,7 +34,9 @@ public class playerGun : MonoBehaviour
         {
             if (gunList.Count > 0)
             {
+                if(!isReloading)
                 selectGun();
+
                 if (clipSize <= 0 && !isReloading || Input.GetButtonDown("Reload") && !isReloading && clipSize != maxClipSize)
                 {
                     StartCoroutine(reloadGun());
@@ -100,6 +103,9 @@ public class playerGun : MonoBehaviour
 
     public void getGunStats(gunStats gun)
     {
+        if (gunList.Count != 0)
+            saveAmmo();
+
         gunList.Add(gun);
 
         shootRate = gun.shootRate;

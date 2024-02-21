@@ -9,9 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 715955744551613543}
+  - component: {fileID: 6634760917669328840}
+  - component: {fileID: 1754833186414936823}
   - component: {fileID: 2194607760539870344}
   - component: {fileID: 143587149300516500}
-  - component: {fileID: 6634760917669328840}
   - component: {fileID: 153745248132966987}
   m_Layer: 0
   m_Name: Shotgun Pickup
@@ -28,13 +29,43 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1183116827182615173}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6.003, y: 0.95, z: 11.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6634760917669328840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1183116827182615173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d3141b212a949c458bb3c95bd6f99a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gun: {fileID: 11400000, guid: ad6c256f34cfb37459c226859657b7c5, type: 2}
+--- !u!114 &1754833186414936823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1183116827182615173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3845c7df261dd63428b9232b2bc8786a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotSpeedX: 1
+  rotSpeedY: 15
+  rotSpeedZ: 0
+  bounceHeight: 0
+  bounceSpeed: 0
 --- !u!33 &2194607760539870344
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -85,19 +116,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &6634760917669328840
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1183116827182615173}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d3141b212a949c458bb3c95bd6f99a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gun: {fileID: 11400000, guid: ad6c256f34cfb37459c226859657b7c5, type: 2}
 --- !u!135 &153745248132966987
 SphereCollider:
   m_ObjectHideFlags: 0

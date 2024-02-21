@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1486224580647746098}
   - component: {fileID: 6330736615783358102}
   - component: {fileID: 1976478891891491745}
-  - component: {fileID: 8087375628255234019}
+  - component: {fileID: 6854452144437741765}
   - component: {fileID: 9047223077536168047}
   - component: {fileID: 2083096858618024137}
   m_Layer: 0
@@ -62,8 +62,8 @@ MonoBehaviour:
   destroyTime: 3
   tracerBullet: 0
   enemyBullet: 0
---- !u!136 &8087375628255234019
-CapsuleCollider:
+--- !u!135 &6854452144437741765
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -80,10 +80,8 @@ CapsuleCollider:
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Radius: 0.2
-  m_Height: 1
-  m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &9047223077536168047
 Rigidbody:

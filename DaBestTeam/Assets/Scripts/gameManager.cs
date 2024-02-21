@@ -7,13 +7,16 @@ using System.Xml.Linq;
 
 public class gameManager : MonoBehaviour
 {
+    [Header("--Components--")]
     public static gameManager instance;
 
+    [Header("--Menu--")]
     [SerializeField] GameObject menuActive;
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
 
+    [Header("--HUD--")]
     public Image playerHPBar;
     public GameObject FlashDMGPanel;
     public TMP_Text MagazineMax;
@@ -24,13 +27,14 @@ public class gameManager : MonoBehaviour
     public TMP_Text enemyCountDisplay;
     public TMP_Text keyObtained;
 
-
+    [Header("--Player Info--")]
     public GameObject player;
     public GameObject playerGunSlot;
     public Transform playerHead;
     public GameObject SpawnPoint;
     public playerController playerScript;
     public playerGun playerGun;
+
 
     public bool isPaused;
     public bool canProgress;

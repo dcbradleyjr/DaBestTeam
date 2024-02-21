@@ -737,9 +737,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootPosition: {fileID: 4314316255618699796}
-  gunList: []
   gunModel: {fileID: 2745909665434835652}
   bullet: {fileID: 0}
+  gunList: []
   shootRate: 0
   reloadRate: 0
   clipSize: 0
@@ -1011,8 +1011,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 2690054102202319614}
   headPosition: {fileID: 688161379642293303}
-  HP: 100
-  playerSpeed: 10
+  HP: 50
+  playerSpeed: 8
   playerStrafe: 0.75
   jumpMax: 2
   jumpForce: 15
@@ -1683,13 +1683,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6349467847254577031}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: -0, y: 0.6797012, z: -0, w: 0.7334891}
   m_LocalPosition: {x: 0.302, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3373353520283707946}
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 85.641, z: 0}
 --- !u!1 &6422763536169475094
 GameObject:
   m_ObjectHideFlags: 0
@@ -1750,7 +1750,7 @@ Transform:
   m_GameObject: {fileID: 6802540697111442956}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.09037334, z: -0, w: 0.99590796}
-  m_LocalPosition: {x: -0.025, y: 0.648, z: 0.416}
+  m_LocalPosition: {x: 0.032, y: 0.648, z: 0.107}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1828,7 +1828,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 075e423511c087e42b7e10070cd74a7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensitivity: 600
+  sensitivity: 200
   lockVertMin: -90
   lockVertMax: 90
   intertY: 0

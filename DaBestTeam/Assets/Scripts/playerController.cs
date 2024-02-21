@@ -6,18 +6,21 @@ using UnityEngine;
 
 public class playerController : MonoBehaviour, IDamage
 {
+    [Header("--Components--")]
     [SerializeField] CharacterController controller;
     [SerializeField] Transform headPosition;
 
+    [Header("--Stats--")]
+    [Range(1,50)][SerializeField] int HP;
+    [Range(1, 20)][SerializeField] float playerSpeed;
+    [Range(0.5f, 2f)][SerializeField] float playerStrafe;
+    [Range(1, 3)][SerializeField] float jumpMax;
+    [Range(10, 25)][SerializeField] float jumpForce;
+    [Range(-50, 0)][SerializeField] float gravity;
 
-    [SerializeField] int HP;
-    [SerializeField] float playerSpeed;
-    [SerializeField] float playerStrafe;
-    [SerializeField] float jumpMax;
-    [SerializeField] float jumpForce;
-    [SerializeField] float gravity;
-    [SerializeField] float maxInteractDist;
-    [SerializeField] float maxInteractRadius;
+    [Header("--Interaction--")]
+    [Range(1, 5)][SerializeField] float maxInteractDist;
+    [Range(0.1f,5)][SerializeField] float maxInteractRadius;
 
 
     Vector3 move;

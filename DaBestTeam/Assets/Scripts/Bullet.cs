@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    [Header("--Components--")]
     [SerializeField] Rigidbody rb;
 
+    [Header("--Attributes--")]
     [SerializeField] int damageAmount;
     [SerializeField] int speed;
     [SerializeField] int destroyTime;
     [SerializeField] bool tracerBullet;
     [SerializeField] bool enemyBullet;
-
-
 
     void Start()
     {
