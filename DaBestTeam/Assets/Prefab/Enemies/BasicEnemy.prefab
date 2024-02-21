@@ -462,13 +462,10 @@ MonoBehaviour:
   shootCone: 0
   targetFaceSpeed: 7
   roamPauseTime: 0
-  roamDistance: 0
+  roamDistance: 5
   animSpeedTrans: 5
   bullet: {fileID: 3758160979051400433, guid: 982cba00ecede3f48b37cbe8d32821fd, type: 3}
   shootRate: 0.7
-  canPatrol: 0
-  waitTimeAtDest: 2
-  waypoints: []
   HealthBar: {fileID: 8084164399098289147}
   EnemyUI: {fileID: 1740449018176088398}
 --- !u!195 &8303394739943037380

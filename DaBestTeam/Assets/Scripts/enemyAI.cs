@@ -8,28 +8,27 @@ using UnityEngine.UIElements;
 
 public class enemyAI : MonoBehaviour, IDamage
 {
+    [Header("--Components--")]
     [SerializeField] Animator animator;
     [SerializeField] Renderer model;
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Transform shootPosition;
     [SerializeField] Transform headPosition;
 
-    [SerializeField] int HP;
-    [SerializeField] int viewCone;
-    [SerializeField] int shootCone;
-    [SerializeField] int targetFaceSpeed;
-    [SerializeField] int roamPauseTime;
-    [SerializeField] int roamDistance;
-    [SerializeField] int animSpeedTrans;
+    [Header("--Stats--")]
+    [Range(1, 50)][SerializeField] int HP;
+    [Range(30, 180)][SerializeField] int viewCone;
+    [Range(30,90)][SerializeField] int shootCone;
+    [Range(1, 10)][SerializeField] int targetFaceSpeed;
+    [Range(1, 8)][SerializeField] int roamPauseTime;
+    [Range(0, 45)][SerializeField] int roamDistance;
+    [Range(1, 10)][SerializeField] int animSpeedTrans;
 
-
+    [Header("--Weapon--")]
     [SerializeField] GameObject bullet;
     [SerializeField] float shootRate;
 
-    [SerializeField] bool canPatrol;
-    [SerializeField] int waitTimeAtDest;
-    public Transform[] waypoints;
-    
+    [Header("--UI--")]
     public UnityEngine.UI.Image HealthBar;
     public GameObject EnemyUI;
 
@@ -86,7 +85,7 @@ public class enemyAI : MonoBehaviour, IDamage
     bool canSeePlayer()
     {
         playerDirection = gameManager.instance.playerHead.position - headPosition.position;
-        angleToPlayer = Vector3.Angle(playerDirection, transform.forward);
+        Vector3.Angle(new Vector3(playerDirection.x, 0, playerDirection.z), transform.forward);
         Debug.DrawRay(headPosition.position, playerDirection);
 
         RaycastHit hit;

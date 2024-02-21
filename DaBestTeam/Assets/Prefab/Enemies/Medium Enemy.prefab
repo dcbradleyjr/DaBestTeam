@@ -16,6 +16,10 @@ PrefabInstance:
       propertyPath: bullet
       value: 
       objectReference: {fileID: 9063290696082056627, guid: 5c39d0ee4f0faad4aa084c8317945e9e, type: 3}
+    - target: {fileID: 1008001955865914655, guid: 160e27c3c74573f4c8235dc8f762b40f, type: 3}
+      propertyPath: roamDistance
+      value: 32
+      objectReference: {fileID: 0}
     - target: {fileID: 3791108485375466253, guid: 160e27c3c74573f4c8235dc8f762b40f, type: 3}
       propertyPath: m_Radius
       value: 35
