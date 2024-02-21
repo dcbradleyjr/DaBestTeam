@@ -350,15 +350,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8cf152a0a06b3dc47a7c6d40918d95a9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.423131
+      value: -2.4157429
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8cf152a0a06b3dc47a7c6d40918d95a9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.7885281
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8cf152a0a06b3dc47a7c6d40918d95a9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.761
+      value: -9.200704
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8cf152a0a06b3dc47a7c6d40918d95a9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -399,6 +399,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8cf152a0a06b3dc47a7c6d40918d95a9, type: 3}
       propertyPath: m_Name
       value: BasicEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8cf152a0a06b3dc47a7c6d40918d95a9, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 8cf152a0a06b3dc47a7c6d40918d95a9, type: 3}
       propertyPath: m_Controller
@@ -459,12 +463,12 @@ MonoBehaviour:
   headPosition: {fileID: 7262628480974226159}
   HP: 3
   viewCone: 70
-  shootCone: 0
+  shootCone: 30
   targetFaceSpeed: 7
   roamPauseTime: 0
   roamDistance: 5
   animSpeedTrans: 5
-  bullet: {fileID: 3758160979051400433, guid: 982cba00ecede3f48b37cbe8d32821fd, type: 3}
+  bullet: {fileID: 3849281360500067930, guid: fc288ac6e34a5e347b8001f8a9016071, type: 3}
   shootRate: 0.7
   HealthBar: {fileID: 8084164399098289147}
   EnemyUI: {fileID: 1740449018176088398}
