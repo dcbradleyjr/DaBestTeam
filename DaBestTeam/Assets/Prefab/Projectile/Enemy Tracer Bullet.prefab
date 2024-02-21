@@ -58,7 +58,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 9047223077536168047}
   damageAmount: 1
-  speed: 10
+  speed: 8
   destroyTime: 3
   tracerBullet: 1
   enemyBullet: 1
@@ -183,8 +183,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.9245283, g: 0.7224215, b: 0.004360993, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
+      key0: {r: 0.023584902, g: 1, b: 0.12610547, a: 1}
+      key1: {r: 0.023584902, g: 1, b: 0.12610547, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}

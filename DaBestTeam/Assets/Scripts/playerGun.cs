@@ -17,6 +17,7 @@ public class playerGun : MonoBehaviour
 
     bool isShooting;
     bool isReloading;
+    bool isAuto;
     int maxClipSize;
     int selectedGun;
 
@@ -37,11 +38,11 @@ public class playerGun : MonoBehaviour
                 if(!isReloading)
                 selectGun();
 
-                if (clipSize <= 0 && !isReloading || Input.GetButtonDown("Reload") && !isReloading && clipSize != maxClipSize)
+                if (CanReload())
                 {
                     StartCoroutine(reloadGun());
                 }
-                else if (Input.GetButtonDown("Shoot") && !isShooting && clipSize > 0 && !isReloading)
+                else if (CanShootAuto() || CanShootSemi())
                 {
                     StartCoroutine(shoot());
                 }  
@@ -113,6 +114,7 @@ public class playerGun : MonoBehaviour
         maxClipSize = gun.ammoMax;
         clipSize = gun.ammoCur;
         bullet = gun.bullet;
+        isAuto = gun.isAuto;
 
         gunModel.GetComponent<MeshFilter>().sharedMesh = gun.model.GetComponent<MeshFilter>().sharedMesh;
         gunModel.GetComponent<MeshRenderer>().sharedMaterial = gun.model.GetComponent<MeshRenderer>().sharedMaterial;
@@ -144,6 +146,7 @@ public class playerGun : MonoBehaviour
         maxClipSize = gunList[selectedGun].ammoMax;
         clipSize = gunList[selectedGun].ammoCur;
         bullet = gunList[selectedGun].bullet;
+        isAuto = gunList[selectedGun].isAuto;
 
         gunModel.GetComponent<MeshFilter>().sharedMesh = gunList[selectedGun].model.GetComponent<MeshFilter>().sharedMesh;
         gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunList[selectedGun].model.GetComponent<MeshRenderer>().sharedMaterial;
@@ -154,5 +157,18 @@ public class playerGun : MonoBehaviour
     void saveAmmo()
     {
         gunList[selectedGun].ammoCur = clipSize;
+    }
+    bool CanShootSemi()
+    {
+        return Input.GetButtonDown("Shoot") && !isShooting && clipSize > 0 && !isReloading && !isAuto;
+    }
+    bool CanShootAuto()
+    {
+        return Input.GetButton("Shoot") && !isShooting && clipSize > 0 && !isReloading && isAuto;
+    }
+
+    bool CanReload()
+    {
+        return clipSize <= 0 && !isReloading || Input.GetButtonDown("Reload") && !isReloading && clipSize != maxClipSize;
     }
 }

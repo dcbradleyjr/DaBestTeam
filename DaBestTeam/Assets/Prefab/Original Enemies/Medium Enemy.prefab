@@ -15,10 +15,14 @@ PrefabInstance:
     - target: {fileID: 1008001955865914655, guid: 160e27c3c74573f4c8235dc8f762b40f, type: 3}
       propertyPath: bullet
       value: 
-      objectReference: {fileID: 3849281360500067930, guid: 3740d736a9ab1cd45bd142cf8073fc24, type: 3}
+      objectReference: {fileID: 3849281360500067930, guid: 575c2788a9a46dc4c821e9dc1642ee3e, type: 3}
     - target: {fileID: 1008001955865914655, guid: 160e27c3c74573f4c8235dc8f762b40f, type: 3}
       propertyPath: shootCone
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1008001955865914655, guid: 160e27c3c74573f4c8235dc8f762b40f, type: 3}
+      propertyPath: shootRate
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1008001955865914655, guid: 160e27c3c74573f4c8235dc8f762b40f, type: 3}
       propertyPath: roamDistance

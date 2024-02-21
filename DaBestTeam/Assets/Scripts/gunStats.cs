@@ -10,6 +10,7 @@ public class gunStats : ScriptableObject
     public float reloadRate;
     public int ammoCur;
     public int ammoMax;
+    public bool isAuto;
 
     public GameObject model;
     public ParticleSystem hitEffect;
