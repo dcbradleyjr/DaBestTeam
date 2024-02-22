@@ -12,7 +12,10 @@ public class playerController : MonoBehaviour, IDamage
 
     [Header("--Stats--")]
     [Range(1,50)][SerializeField] int HP;
+    [Range(0,250)][SerializeField] int Stamina;
+    [Range(1,3)][SerializeField] int staminaDrain;
     [Range(1, 20)][SerializeField] float playerSpeed;
+    [Range(2, 5)][SerializeField] float sprintMod;
     [Range(0.5f, 2f)][SerializeField] float playerStrafe;
     [Range(1, 3)][SerializeField] float jumpMax;
     [Range(10, 25)][SerializeField] float jumpForce;
@@ -22,25 +25,95 @@ public class playerController : MonoBehaviour, IDamage
     [Range(1, 5)][SerializeField] float maxInteractDist;
     [Range(0.1f,5)][SerializeField] float maxInteractRadius;
 
+    public bool canSprint;
 
     Vector3 move;
     Vector3 playerVelocity;
     int jumpCount;
     int HPOriginal;
+    int StaminaOriginal;
+    float playerSpeedOriginal;
+    bool isSprinting;
+    Color StaminaColorOrig;
 
     void Start()
     {
         HPOriginal = HP;
+        StaminaOriginal = Stamina;
+        playerSpeedOriginal = playerSpeed;
+        StaminaColorOrig = gameManager.instance.playerStaminaBar.color;
         Respawn();
     }
 
     void Update()
     {
-        movement();
-
-        if (Input.GetButtonDown("Interact"))
-        interact();
+        sprint();
+        if (!gameManager.instance.isPaused)
+        {
+            movement();
+            if (Input.GetButtonDown("Interact"))
+                interact(); 
+        }
     }
+
+    void sprint()
+    {
+        if (!canSprint)
+        playerSpeed = playerSpeedOriginal;
+
+        if (canSprint)
+        {
+            if (Input.GetButtonDown("Sprint"))
+            {
+                playerSpeed *= sprintMod;
+                isSprinting = true;
+                StartCoroutine(StaminaDrainCoroutine());
+            }
+            else if (Input.GetButtonUp("Sprint"))
+            {
+                playerSpeed /= sprintMod;
+                isSprinting = false;
+                StopCoroutine(StaminaDrainCoroutine());
+                StartCoroutine(StaminaReplenishCoroutine());
+            } 
+        }
+        else if (isSprinting && Input.GetButtonUp("Sprint")) 
+        {
+            isSprinting = false;
+            StopCoroutine(StaminaDrainCoroutine());
+            StartCoroutine(StaminaReplenishCoroutine());
+        }
+    }
+
+    IEnumerator StaminaDrainCoroutine()
+    {
+        while (isSprinting && Stamina > 0)
+        {
+            yield return new WaitForSeconds(0.01f);
+            Stamina -= staminaDrain;
+
+            if(Stamina == 0)
+                canSprint = false;
+            updateStaminaUI();
+        }
+    }
+
+    IEnumerator StaminaReplenishCoroutine()
+    {
+        while (!isSprinting && Stamina < StaminaOriginal)
+        {
+            yield return new WaitForSeconds(0.05f);
+            Stamina += staminaDrain;
+            updateStaminaUI();
+        }
+
+        if (!isSprinting && Stamina == StaminaOriginal)
+        {
+            canSprint = true;
+            updateStaminaUI();
+        }
+    }
+
     void movement()
     {
         if (controller.isGrounded)
@@ -91,6 +164,22 @@ public class playerController : MonoBehaviour, IDamage
     void updateUI()
     {
         gameManager.instance.playerHPBar.fillAmount = (float)HP / HPOriginal;
+        gameManager.instance.playerStaminaBar.fillAmount = (float)Stamina / StaminaOriginal;
+    }
+    void updateStaminaUI()
+    {
+        float newAmount = (float)Stamina / StaminaOriginal;
+        gameManager.instance.playerStaminaBar.fillAmount = newAmount;
+
+        if (canSprint)
+        {
+            if (newAmount > 0.4f)
+                gameManager.instance.playerStaminaBar.color = StaminaColorOrig;
+            else
+                gameManager.instance.playerStaminaBar.color = new Color(1f, 0.5f, 0f); 
+        }
+        else
+         gameManager.instance.playerStaminaBar.color = Color.red;
     }
 
     IEnumerator flashDMG()

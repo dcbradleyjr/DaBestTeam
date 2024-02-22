@@ -1012,13 +1012,17 @@ MonoBehaviour:
   controller: {fileID: 2690054102202319614}
   headPosition: {fileID: 688161379642293303}
   HP: 50
+  Stamina: 250
+  staminaDrain: 1
   playerSpeed: 8
+  sprintMod: 2.0030727
   playerStrafe: 0.75
   jumpMax: 2
   jumpForce: 15
   gravity: -25
   maxInteractDist: 1
   maxInteractRadius: 0.5
+  canSprint: 1
 --- !u!143 &2690054102202319614
 CharacterController:
   m_ObjectHideFlags: 0

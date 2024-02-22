@@ -18,6 +18,7 @@ public class gameManager : MonoBehaviour
 
     [Header("--HUD--")]
     public Image playerHPBar;
+    public Image playerStaminaBar;
     public GameObject FlashDMGPanel;
     public TMP_Text MagazineMax;
     public TMP_Text MagazineCount;
