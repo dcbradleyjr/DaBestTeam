@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 9047223077536168047}
   - component: {fileID: 2083096858618024137}
   m_Layer: 0
-  m_Name: Boss Bullet
+  m_Name: Tracer Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58,7 +58,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 9047223077536168047}
   damageAmount: 1
-  speed: 10
+  speed: 8
   destroyTime: 3
   tracerBullet: 1
   enemyBullet: 1
@@ -183,8 +183,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.9811321, g: 0.0046279924, b: 0.04536626, a: 1}
-      key1: {r: 0, g: 0, b: 0, a: 1}
+      key0: {r: 0.023584902, g: 1, b: 0.12610547, a: 1}
+      key1: {r: 0.023584902, g: 1, b: 0.12610547, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}

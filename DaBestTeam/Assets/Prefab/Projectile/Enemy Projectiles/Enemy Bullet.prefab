@@ -62,6 +62,7 @@ MonoBehaviour:
   destroyTime: 3
   tracerBullet: 0
   enemyBullet: 1
+  leadBullet: 0
 --- !u!135 &4190307941861539602
 SphereCollider:
   m_ObjectHideFlags: 0

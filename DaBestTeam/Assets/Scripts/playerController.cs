@@ -7,9 +7,8 @@ using UnityEngine;
 public class playerController : MonoBehaviour, IDamage
 {
     [Header("--Components--")]
-    public CharacterController controller;
+    [SerializeField] CharacterController controller;
     [SerializeField] Transform headPosition;
-    public Rigidbody rb;
 
     [Header("--Stats--")]
     [Range(1,50)][SerializeField] int HP;
