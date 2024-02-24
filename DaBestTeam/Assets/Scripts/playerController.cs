@@ -7,8 +7,9 @@ using UnityEngine;
 public class playerController : MonoBehaviour, IDamage
 {
     [Header("--Components--")]
-    [SerializeField] CharacterController controller;
+    public CharacterController controller;
     [SerializeField] Transform headPosition;
+    public Rigidbody rb;
 
     [Header("--Stats--")]
     [Range(1,50)][SerializeField] int HP;
@@ -35,6 +36,8 @@ public class playerController : MonoBehaviour, IDamage
     float playerSpeedOriginal;
     bool isSprinting;
     Color StaminaColorOrig;
+    private Vector3 lastPosition;
+    private Vector3 currentVelocity;
 
     void Start()
     {
@@ -43,6 +46,7 @@ public class playerController : MonoBehaviour, IDamage
         playerSpeedOriginal = playerSpeed;
         StaminaColorOrig = gameManager.instance.playerStaminaBar.color;
         Respawn();
+        lastPosition = transform.position;
     }
 
     void Update()
@@ -54,6 +58,9 @@ public class playerController : MonoBehaviour, IDamage
             if (Input.GetButtonDown("Interact"))
                 interact(); 
         }
+        //velocity
+        currentVelocity = (transform.position - lastPosition) / Time.deltaTime;
+        lastPosition = transform.position;
     }
 
     void sprint()
@@ -196,5 +203,10 @@ public class playerController : MonoBehaviour, IDamage
         controller.enabled = false;
         transform.position = gameManager.instance.SpawnPoint.transform.position;
         controller.enabled = true;
+    }
+
+    public Vector3 GetVelocity()
+    {
+        return currentVelocity;
     }
 }
