@@ -1012,7 +1012,7 @@ MonoBehaviour:
   controller: {fileID: 2690054102202319614}
   headPosition: {fileID: 688161379642293303}
   HP: 50
-  Stamina: 250
+  Stamina: 100
   staminaDrain: 1
   playerSpeed: 8
   sprintMod: 2.0030727

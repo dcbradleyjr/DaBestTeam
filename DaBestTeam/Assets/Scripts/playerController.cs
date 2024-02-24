@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class playerController : MonoBehaviour, IDamage
+public class playerController : MonoBehaviour, IDamage, IPushBack
 {
     [Header("--Components--")]
     [SerializeField] CharacterController controller;
@@ -27,6 +27,7 @@ public class playerController : MonoBehaviour, IDamage
 
     public bool canSprint;
 
+    Vector3 pushBack;
     Vector3 move;
     Vector3 playerVelocity;
     int jumpCount;
@@ -89,6 +90,11 @@ public class playerController : MonoBehaviour, IDamage
             StopCoroutine(StaminaDrainCoroutine());
             StartCoroutine(StaminaReplenishCoroutine());
         }
+    }
+
+    public void pushBackDir(Vector3 dir)
+    {
+        pushBack += dir;
     }
 
     IEnumerator StaminaDrainCoroutine()
