@@ -19,8 +19,10 @@ public class enemyAIElite : MonoBehaviour, IDamage, IPatrol
     [SerializeField] int targetFaceSpeed;
 
     [SerializeField] GameObject bullet;
+    [SerializeField] GameObject leadingBullet;
     [SerializeField] float shootRate;
     [SerializeField] float bulletSpeed;
+    [Range(0.1f, 0.9f)][SerializeField] float bulletLeadChance;
 
     public Transform[] waypoints;
     int currentWaypointIndex;
@@ -97,15 +99,15 @@ public class enemyAIElite : MonoBehaviour, IDamage, IPatrol
                 //agent.SetDestination(gameManager.instance.player.transform.position);
                 if (!isShooting)
                 {
-                    //float doesLead = Random.Range(0f, 1.0f);
-                    //if (doesLead < 0.5f)
-                    //{
-                        //StartCoroutine(shoot());
-                    //}
-                    //else
-                    //{
+                    float doesLead = Random.Range(0f, 1.0f);
+                    if (doesLead < bulletLeadChance)
+                    {
+                        StartCoroutine(shoot());
+                    }
+                    else
+                    {
                         StartCoroutine(leadShoot());
-                    //}
+                    }
 
                 }
                 if (posBeforeSeePlayer == Vector3.zero)
@@ -205,12 +207,7 @@ public class enemyAIElite : MonoBehaviour, IDamage, IPatrol
     IEnumerator leadShoot()
     {
         isShooting = true;
-        float timeToPlayer = (gameManager.instance.player.transform.position - transform.position).magnitude / bulletSpeed; //calculate how long the bullet will take to reach the player
-        Vector3 futurePos = gameManager.instance.player.transform.position + (gameManager.instance.player.GetComponent<CharacterController>().velocity * timeToPlayer); //calculate the player's future position
-        Vector3 aimLoc = (futurePos - transform.position).normalized; //calculate where to aim at
-        GameObject leadBullet = Instantiate(bullet, shootPosition.position, transform.rotation); //make the bullet
-        leadBullet.transform.rotation = Quaternion.LookRotation(aimLoc); //set its rotation towards that future location
-        leadBullet.GetComponent<Rigidbody>().velocity = aimLoc * bulletSpeed; //set its speed in that direction
+        GameObject leadBullet = Instantiate(leadingBullet, shootPosition.position, transform.rotation); //make the bullet
         yield return new WaitForSeconds(shootRate);
         isShooting = false;
     }
