@@ -13,11 +13,20 @@ public class Bullet : MonoBehaviour
     [SerializeField] int destroyTime;
     [SerializeField] bool tracerBullet;
     [SerializeField] bool enemyBullet;
+    [SerializeField] bool leadBullet;
 
     void Start()
     {
-        if(enemyBullet)
+        if(enemyBullet & !leadBullet)
         rb.velocity = (gameManager.instance.player.transform.position - transform.position).normalized * speed;
+
+        else if(leadBullet && enemyBullet)
+        {
+            float distance = Vector3.Distance(gameManager.instance.player.transform.position, transform.position);
+            float time = distance / speed;
+            Vector3 predict = (gameManager.instance.player.transform.position + gameManager.instance.playerScript.GetVelocity() * time);
+            rb.velocity = (predict - transform.position).normalized * speed;
+        }
         else 
             //using transform right instead of forward because weapons face the X axis. 
         rb.velocity = transform.right * speed;
