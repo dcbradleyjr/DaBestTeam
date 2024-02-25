@@ -17,8 +17,6 @@ public class ElevatorManager : MonoBehaviour
     public float TargetY => ElevatorTarget.position.y;
     [SerializeField] bool ElevatorPresent => LinkedController.ActiveElevator.CurrentFloor == this;
 
-    /*List<GameObject> Openers = new List<GameObject>();*/
-
     private void Awake()
     {
         LinkedAnimator = GetComponent<Animator>();
@@ -29,7 +27,6 @@ public class ElevatorManager : MonoBehaviour
     {
         if (other.CompareTag(SupportedTag))
         {
-            //Openers.Add(other.gameObject);
 
             if (ElevatorPresent)
             {
@@ -44,7 +41,6 @@ public class ElevatorManager : MonoBehaviour
     {
         if (other.CompareTag(SupportedTag))
         {
-            //Openers.Remove(other.gameObject);
 
             LinkedAnimator.ResetTrigger("Open");
             LinkedAnimator.SetTrigger("Close");

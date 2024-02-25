@@ -146,5 +146,10 @@ public class gameManager : MonoBehaviour
         yield return new WaitForSeconds(1.3f);
         keyObtained.text = "";
     }
+
+    public void fanAnimation()
+    {
+        
+    }
 }
 
