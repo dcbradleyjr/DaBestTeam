@@ -5,10 +5,13 @@ using UnityEngine;
 public class fanButton : MonoBehaviour, IInteract
 {
     Fan fan;
+
+    Animator anim;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -20,7 +23,7 @@ public class fanButton : MonoBehaviour, IInteract
     public void interact() 
     {
         Debug.Log("I am interacting");
-        fan.fanAnimation();
-        
+        anim.SetTrigger("FanSpin");
+
     }
 }
