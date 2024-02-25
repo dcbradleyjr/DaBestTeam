@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class fanButton : MonoBehaviour, IInteract
 {
-    Fan fan;
 
-    Animator anim;
+    [SerializeField] Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
-        anim = GetComponent<Animator>();
+        
     }
 
     // Update is called once per frame
@@ -24,6 +23,5 @@ public class fanButton : MonoBehaviour, IInteract
     {
         Debug.Log("I am interacting");
         anim.SetTrigger("FanSpin");
-
     }
 }
