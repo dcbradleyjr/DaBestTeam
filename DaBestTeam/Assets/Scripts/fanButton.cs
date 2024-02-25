@@ -22,6 +22,12 @@ public class fanButton : MonoBehaviour, IInteract
     public void interact() 
     {
         Debug.Log("I am interacting");
+        fanSpin();
+    }
+
+
+    void fanSpin()
+    {
         anim.SetTrigger("FanSpin");
     }
 }
