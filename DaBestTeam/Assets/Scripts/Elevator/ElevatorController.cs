@@ -5,18 +5,19 @@ using UnityEngine;
 public class ElevatorController : MonoBehaviour
 {
     [SerializeField] Elevator LinkedElevator;
-    [SerializeField] List<ElevatorManager> ElevatorFloors;
+    [SerializeField] List<ElevatorExit> ElevatorFloors;
 
     public Elevator ActiveElevator => LinkedElevator;
-    public List<ElevatorManager> Floors => ElevatorFloors;
+    public List<ElevatorExit> Floors => ElevatorFloors;
 
-    public void CallElevator(ElevatorManager requestedFloor, bool isMoving)
+    
+    public void CallElevator(ElevatorExit requestedFloor, bool isMoving)
     {
         Debug.Log("Step 3");
         LinkedElevator.MoveTo(requestedFloor);
     }
 
-    public void SendElevatorTo(ElevatorManager requestedFloor)
+    public void SendElevatorTo(ElevatorExit requestedFloor)
     {
         Debug.Log("Here we go!");
         // already at this floor

@@ -6,22 +6,16 @@ using UnityEngine;
 public class Elevator : MonoBehaviour
 {
     [SerializeField] ElevatorController LinkedController;
-    [SerializeField] ElevatorManager StartingFloor;
+    [SerializeField] ElevatorExit StartingFloor;
     [SerializeField] float ElevatorSpeed = 2f;
-    [SerializeField] Transform ElevatorUIRoot;
-    [SerializeField] GameObject ElevatorUIButtonPrefab;
 
     [SerializeField] Animator LinkedAnimator;
 
     public bool isMoving;
 
-    public ElevatorManager CurrentFloor { get; private set; } = null;
-    public ElevatorManager TargetFloor { get; private set; } = null;
+    public ElevatorExit CurrentFloor { get; private set; } = null;
+    public ElevatorExit TargetFloor { get; private set; } = null;
     public bool IsMoving { get; private set; } = false;
-
-    private Transform currentFloor;//Temp
-    public Transform end;//Temp
-
     private void Awake()
     {
         
@@ -59,7 +53,7 @@ public class Elevator : MonoBehaviour
         }
     }
     //Tells it is moving and departed
-    public void MoveTo(ElevatorManager targetFloor)
+    public void MoveTo(ElevatorExit targetFloor)
     {
         Debug.Log("Step 4");
         IsMoving = true;
@@ -69,15 +63,21 @@ public class Elevator : MonoBehaviour
 
     public void OpenDoors()
     {
-        Debug.Log("I am trying to open");
-        LinkedAnimator.ResetTrigger("Close");
-        LinkedAnimator.SetTrigger("Open");
+        if (gameManager.instance.canProgress == true || gameManager.instance.canOpen == true)
+        {
+            Debug.Log("I am trying to open");
+            LinkedAnimator.ResetTrigger("Close");
+            LinkedAnimator.SetTrigger("Open");
+        }
     }
 
     public void CloseDoors()
     {
-        LinkedAnimator.ResetTrigger("Open");
-        LinkedAnimator.SetTrigger("Close");
+        if (gameManager.instance.canProgress == false || gameManager.instance.canOpen == false)
+        {
+            LinkedAnimator.ResetTrigger("Open");
+            LinkedAnimator.SetTrigger("Close"); 
+        }
     }
 
    

@@ -7,12 +7,14 @@ public class ElevatorArray : MonoBehaviour, IInteract
 {
     [SerializeField] TextMeshProUGUI ButtonText;
 
-    public ElevatorManager[] elevatorManager;
+    public ElevatorExit[] elevatorManager;
 
     public Elevator elevator;
 
+    ElevatorExit canOpen;
     public void interact()
     {
+        Debug.Log("Step 1");
         if (!gameManager.instance.canProgress)
             return;
         for (int i = 0; i < elevatorManager.Length - 1; i++)//checking what floor except for last one to stop blast off

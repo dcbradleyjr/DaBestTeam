@@ -40,6 +40,7 @@ public class gameManager : MonoBehaviour
     public bool isPaused;
     public bool canProgress;
     public int currentLevel;
+    public bool canOpen;
 
     int enemyCount;
     int keyCount;

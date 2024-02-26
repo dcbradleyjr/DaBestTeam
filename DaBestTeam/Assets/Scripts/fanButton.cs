@@ -16,7 +16,7 @@ public class fanButton : MonoBehaviour, IInteract
     [SerializeField] float viewRadius;
     [SerializeField] float viewDistance;
 
-    [SerializeField] Light light;
+    [SerializeField] Light fanLight;
 
 
     bool fanSpin;
@@ -52,7 +52,7 @@ public class fanButton : MonoBehaviour, IInteract
             anim.SetTrigger("FanSpin");//Animated Blades
             fanWindVis.Play();//Particles
             fanWind.enabled = true;//PushBack
-            light.enabled = true;//Light
+            fanLight.enabled = true;//Light
 
             fanSpin = true;
             fanPart = true;
@@ -64,7 +64,7 @@ public class fanButton : MonoBehaviour, IInteract
             fanWindVis.Stop();
             fanWind.enabled = false;
 
-            light.enabled = false;
+            fanLight.enabled = false;
 
             fanSpin = false;
             fanPart = false;

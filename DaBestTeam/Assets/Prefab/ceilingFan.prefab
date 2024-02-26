@@ -5557,4 +5557,4 @@ MonoBehaviour:
   UIcollider: {fileID: 2253508743213236893}
   viewRadius: 0.25
   viewDistance: 1
-  light: {fileID: 3398875407532017739}
+  fanLight: {fileID: 3398875407532017739}

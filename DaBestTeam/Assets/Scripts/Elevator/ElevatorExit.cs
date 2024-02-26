@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
-public class ElevatorManager : MonoBehaviour
+public class ElevatorExit : MonoBehaviour
 {
     
     [SerializeField] string _DisplayName;
@@ -20,15 +20,13 @@ public class ElevatorManager : MonoBehaviour
     private void Awake()
     {
         LinkedAnimator = GetComponent<Animator>();
-        
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(SupportedTag))
         {
-
-            if (ElevatorPresent)
+            if (ElevatorPresent && gameManager.instance.canProgress)
             {
                 LinkedAnimator.ResetTrigger("Close");
                 LinkedAnimator.SetTrigger("Open");
@@ -41,7 +39,6 @@ public class ElevatorManager : MonoBehaviour
     {
         if (other.CompareTag(SupportedTag))
         {
-
             LinkedAnimator.ResetTrigger("Open");
             LinkedAnimator.SetTrigger("Close");
             LinkedController.ActiveElevator.CloseDoors();
@@ -56,7 +53,7 @@ public class ElevatorManager : MonoBehaviour
     //Departed calls animator
     public void OnElevatorDeparted(Elevator activeElevator)
     {
-        Debug.Log("Step 6");
+        Debug.Log("Step 5");
         LinkedAnimator.ResetTrigger("Open");
         LinkedAnimator.SetTrigger("Close");
         LinkedController.ActiveElevator.CloseDoors();
@@ -64,11 +61,10 @@ public class ElevatorManager : MonoBehaviour
     //Arrived calls animator
     public void OnElevatorArrived(Elevator activeElevator)
     {
-        
-            Debug.Log("Step 7");
+            Debug.Log("Step 6");
+        gameManager.instance.canOpen = true;
             LinkedAnimator.ResetTrigger("Close");
             LinkedAnimator.SetTrigger("Open");
             LinkedController.ActiveElevator.OpenDoors();
-       
     }
 }
