@@ -20,6 +20,7 @@ public class playerController : MonoBehaviour, IDamage, IPushBack
     [Range(1, 3)][SerializeField] float jumpMax;
     [Range(10, 25)][SerializeField] float jumpForce;
     [Range(-50, 0)][SerializeField] float gravity;
+    [SerializeField] int pushBackResolve;
 
     [Header("--Interaction--")]
     [Range(1, 5)][SerializeField] float maxInteractDist;
@@ -30,6 +31,7 @@ public class playerController : MonoBehaviour, IDamage, IPushBack
     Vector3 pushBack;
     Vector3 move;
     Vector3 playerVelocity;
+
     int jumpCount;
     int HPOriginal;
     int StaminaOriginal;
@@ -128,6 +130,8 @@ public class playerController : MonoBehaviour, IDamage, IPushBack
 
     void movement()
     {
+        pushBack = Vector3.Lerp(pushBack, Vector3.zero, Time.deltaTime * pushBackResolve);
+
         if (controller.isGrounded)
         {
             jumpCount = 0;
@@ -144,7 +148,7 @@ public class playerController : MonoBehaviour, IDamage, IPushBack
         }
 
         playerVelocity.y += gravity * Time.deltaTime;
-        controller.Move(playerVelocity * Time.deltaTime);
+        controller.Move((playerVelocity + pushBack) * Time.deltaTime);
     }
 
     void interact()

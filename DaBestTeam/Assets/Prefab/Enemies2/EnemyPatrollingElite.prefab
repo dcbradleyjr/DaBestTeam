@@ -534,6 +534,7 @@ MonoBehaviour:
   leadingBullet: {fileID: 3849281360500067930, guid: f339bf25cd6e89f428a0745a952acd51, type: 3}
   shootRate: 1
   bulletSpeed: 100
+  bulletLeadChance: 0.1
   waypoints: []
   HealthBar: {fileID: 777169029865318369}
   EnemyUI: {fileID: 6762483568554698590}
