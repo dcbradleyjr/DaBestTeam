@@ -62,7 +62,6 @@ public class ElevatorExit : MonoBehaviour
     public void OnElevatorArrived(Elevator activeElevator)
     {
             Debug.Log("Step 6");
-        gameManager.instance.canOpen = true;
             LinkedAnimator.ResetTrigger("Close");
             LinkedAnimator.SetTrigger("Open");
             LinkedController.ActiveElevator.OpenDoors();

@@ -63,21 +63,16 @@ public class Elevator : MonoBehaviour
 
     public void OpenDoors()
     {
-        if (gameManager.instance.canProgress == true || gameManager.instance.canOpen == true)
-        {
             Debug.Log("I am trying to open");
             LinkedAnimator.ResetTrigger("Close");
             LinkedAnimator.SetTrigger("Open");
-        }
+        
     }
 
     public void CloseDoors()
     {
-        if (gameManager.instance.canProgress == false || gameManager.instance.canOpen == false)
-        {
             LinkedAnimator.ResetTrigger("Open");
             LinkedAnimator.SetTrigger("Close"); 
-        }
     }
 
    

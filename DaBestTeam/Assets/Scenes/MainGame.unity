@@ -19475,6 +19475,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6043257553534361067, guid: eeee17899f2960041add60b6bda3a341, type: 3}
+      propertyPath: _DisplayName
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6043257553534361067, guid: eeee17899f2960041add60b6bda3a341, type: 3}
       propertyPath: LinkedController
       value: 
       objectReference: {fileID: 350737852}

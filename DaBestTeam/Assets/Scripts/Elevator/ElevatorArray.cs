@@ -11,7 +11,6 @@ public class ElevatorArray : MonoBehaviour, IInteract
 
     public Elevator elevator;
 
-    ElevatorExit canOpen;
     public void interact()
     {
         Debug.Log("Step 1");
