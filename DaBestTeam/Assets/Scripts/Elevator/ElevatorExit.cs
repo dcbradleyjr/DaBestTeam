@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
@@ -11,6 +12,7 @@ public class ElevatorExit : MonoBehaviour
     [SerializeField] ElevatorController LinkedController;
     [SerializeField] Transform ElevatorTarget;
 
+    
     Animator LinkedAnimator;
 
     public string DisplayName => _DisplayName;
@@ -47,7 +49,7 @@ public class ElevatorExit : MonoBehaviour
     //Calls elevator to location
     public void OnCallElevator()
     {
-
+        
         Debug.Log("Step 2");
         LinkedController.CallElevator(this, true);
     }
