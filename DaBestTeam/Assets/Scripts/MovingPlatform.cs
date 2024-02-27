@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
+
+
     private void OnCollisionEnter(Collision collision)
     {
         collision.transform.SetParent(transform);
