@@ -717,7 +717,7 @@ PrefabInstance:
     - target: {fileID: 3066830770196773273, guid: d9d550a9d28be8d4e8f37b2852eb42f6, type: 3}
       propertyPath: bullet
       value: 
-      objectReference: {fileID: 3849281360500067930, guid: f3775266f5260dc42b9355b6706ba6fc, type: 3}
+      objectReference: {fileID: 3849281360500067930, guid: fc288ac6e34a5e347b8001f8a9016071, type: 3}
     - target: {fileID: 3066830770196773273, guid: d9d550a9d28be8d4e8f37b2852eb42f6, type: 3}
       propertyPath: EnemyUI
       value: 

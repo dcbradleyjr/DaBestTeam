@@ -29,7 +29,7 @@ public class enemyAIPatrolComplex : MonoBehaviour, IDamage, IPatrol
 
     public Transform[] waypoints;
     int currentWaypointIndex;
-    float waitTime = 2.0f;
+    float waitTime = 3.5f;
     float remainingTime;
     bool isPatrolling = true;
     Vector3 startPos;
