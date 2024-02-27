@@ -6,7 +6,6 @@ using UnityEngine;
 public class ElevatorArray : MonoBehaviour, IInteract
 {
     [SerializeField] TextMeshProUGUI ButtonText;
-
     public ElevatorExit[] elevatorManager;
 
     public Elevator elevator;

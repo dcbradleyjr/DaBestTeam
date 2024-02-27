@@ -47,6 +47,7 @@ public class ElevatorExit : MonoBehaviour
     //Calls elevator to location
     public void OnCallElevator()
     {
+
         Debug.Log("Step 2");
         LinkedController.CallElevator(this, true);
     }
