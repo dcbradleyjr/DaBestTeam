@@ -7,12 +7,15 @@ using UnityEngine.UI;
 using UnityEngine.UIElements;
 
 
-public class enemyAIElite : MonoBehaviour, IDamage, IPatrol
+public class enemyAIPatrolComplex : MonoBehaviour, IDamage, IPatrol
 {
     [SerializeField] Renderer model;
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Transform shootPosition;
     [SerializeField] Transform headPosition;
+    [SerializeField] int roamPauseTime;
+    [SerializeField] float roamDist;
+    [SerializeField] int roamTimesMax;
 
     [SerializeField] int HP;
     [SerializeField] int viewCone;
@@ -29,7 +32,11 @@ public class enemyAIElite : MonoBehaviour, IDamage, IPatrol
     float waitTime = 2.0f;
     float remainingTime;
     bool isPatrolling = true;
+    Vector3 startPos;
     Vector3 posBeforeSeePlayer;
+    Vector3 roamDest;
+    bool destChosen;
+    int roamTimes;
 
     public UnityEngine.UI.Image HealthBar;
     public GameObject EnemyUI;
@@ -39,6 +46,7 @@ public class enemyAIElite : MonoBehaviour, IDamage, IPatrol
     float angleToPlayer;
     Vector3 playerDirection;
     int HPOriginal;
+    float stoppingDistanceOrig;
 
     void Start()
     {
@@ -48,7 +56,10 @@ public class enemyAIElite : MonoBehaviour, IDamage, IPatrol
         remainingTime = waitTime; //set wait time at each destination to the remaining time value
         agent.SetDestination(waypoints[currentWaypointIndex].position); //will move towards the patrol point
 
+        stoppingDistanceOrig = agent.stoppingDistance;
+        agent.stoppingDistance = 0;
         posBeforeSeePlayer = Vector3.zero;
+        roamTimes = roamTimesMax;
     }
 
     void Update()
@@ -75,13 +86,10 @@ public class enemyAIElite : MonoBehaviour, IDamage, IPatrol
                 {
                     remainingTime -= Time.deltaTime;
                 }
-
             }
             else
-            {
                 if (isPatrolling)
                     patrol();
-            }
         }
     }
 
@@ -115,6 +123,9 @@ public class enemyAIElite : MonoBehaviour, IDamage, IPatrol
 
                 if (agent.remainingDistance < agent.stoppingDistance)
                     faceTarget();
+
+                agent.stoppingDistance = stoppingDistanceOrig;
+
                 return true;
             }
         }
@@ -145,7 +156,7 @@ public class enemyAIElite : MonoBehaviour, IDamage, IPatrol
 
     public void takeDamage(int amount)
     {
-       agent.SetDestination(gameManager.instance.player.transform.position);
+        agent.SetDestination(gameManager.instance.player.transform.position);
 
         HP -= amount;
         updateUI();
@@ -162,30 +173,61 @@ public class enemyAIElite : MonoBehaviour, IDamage, IPatrol
 
     public void patrol()
     {
-        if (agent.remainingDistance <= agent.stoppingDistance)
+        if (roamTimes < roamTimesMax)
+            StartCoroutine(roam());
+        else
         {
-            if (remainingTime <= 0)
+            if (agent.remainingDistance <= agent.stoppingDistance)
             {
-                NextPoint();
-                remainingTime = waitTime;
+                if (remainingTime <= 0)
+                {
+                    NextPoint();
+                    remainingTime = waitTime;
+                }
+                else
+                {
+                    remainingTime -= Time.deltaTime;
+                }
             }
             else
             {
-                remainingTime -= Time.deltaTime;
+                agent.SetDestination(waypoints[currentWaypointIndex].position);
             }
-        }
-        else
-        {
-            agent.SetDestination(waypoints[currentWaypointIndex].position);
         }
     }
 
     public void NextPoint()
     {
         currentWaypointIndex = (currentWaypointIndex + 1) % waypoints.Length;
-        agent.SetDestination(waypoints[currentWaypointIndex].position);
+        roamTimes = 0;
     }
 
+    IEnumerator roam()
+    {
+        Debug.Log("I am roaming");  
+        startPos = waypoints[currentWaypointIndex].position;
+        if (agent.remainingDistance < 0.05f && !destChosen)
+        {
+            destChosen = true;
+            agent.stoppingDistance = 0;
+            yield return new WaitForSeconds(roamPauseTime);
+
+            Vector3 randomPos = Random.insideUnitSphere * roamDist;
+            randomPos += startPos;
+
+            NavMeshHit hit;
+            NavMesh.SamplePosition(randomPos, out hit, roamDist, 1);
+            roamDest = hit.position;
+            agent.SetDestination(roamDest);
+
+            destChosen = false;
+            roamTimes++;
+        }
+        else
+        {
+            agent.SetDestination(roamDest);
+        }
+    }
 
 
     IEnumerator flashMat()
