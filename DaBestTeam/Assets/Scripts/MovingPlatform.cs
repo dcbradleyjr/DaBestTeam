@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
-
+    [SerializeField] Transform transform;
 
     private void OnCollisionEnter(Collision collision)
     {
