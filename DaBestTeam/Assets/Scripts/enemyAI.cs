@@ -68,6 +68,7 @@ public class enemyAI : MonoBehaviour, IDamage
     {
         if (agent.remainingDistance < 0.05f && !destinationChosen)
         {
+            AudioManager.instance.enemyStepSound();
             destinationChosen = true;
             agent.stoppingDistance = 0;
             yield return new WaitForSeconds(roamPauseTime);
@@ -133,6 +134,7 @@ public class enemyAI : MonoBehaviour, IDamage
 
     public void takeDamage(int amount)
     {
+        AudioManager.instance.enemyHurtSound();
         agent.SetDestination(gameManager.instance.player.transform.position);
 
         HP -= amount;
@@ -158,6 +160,7 @@ public class enemyAI : MonoBehaviour, IDamage
 
     IEnumerator shoot()
     {
+        AudioManager.instance.enemyShootSound();
         isShooting = true;
         Instantiate(bullet, shootPosition.position, transform.rotation);
         yield return new WaitForSeconds(shootRate);

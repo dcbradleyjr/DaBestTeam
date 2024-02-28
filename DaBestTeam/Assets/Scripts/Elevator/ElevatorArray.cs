@@ -10,6 +10,8 @@ public class ElevatorArray : MonoBehaviour, IInteract
 
     public Elevator elevator;
 
+    
+
     public void interact()
     {
         Debug.Log("Step 1");

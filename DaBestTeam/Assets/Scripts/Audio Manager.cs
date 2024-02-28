@@ -16,7 +16,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioClip[] soundHurt;
     [Range(0, 1)][SerializeField] float soundHurtVol;
 
-    [Header("----Weapon Audio----")]
+    [Header("----Weapon PickUp Audio----")]
     [SerializeField] AudioSource audioWeapon;
     [SerializeField] AudioClip[] weaponShoot;
     [Range(0, 1)][SerializeField] float weaponShootVol;
@@ -26,6 +26,16 @@ public class AudioManager : MonoBehaviour
     [Header("----Level Audio----")]
     [SerializeField] AudioClip elevatorArrived;
     [Range(0, 1)][SerializeField] float elevatorArrivedVol;
+
+
+    [Header("----Enemy Audio----")]
+    [SerializeField] AudioSource audioEnemy;
+    [SerializeField] AudioClip[] enemySteps;
+    [Range(0, 1)][SerializeField] float enemyStepVol;
+    [SerializeField] AudioClip[] enemySoundHurt;
+    [Range(0, 1)][SerializeField] float enemySoundHurtVol;
+    [SerializeField] AudioClip[] enemyShoot;
+    [Range (0, 1)][SerializeField] float enemyShootVol;
 
     bool isPlayingSteps;
     bool isSprinting;
@@ -84,5 +94,20 @@ public class AudioManager : MonoBehaviour
     public void reloadSound()
     {
         audioWeapon.PlayOneShot(weaponReload[Random.Range(0, weaponReload.Length)], weaponReloadVol);
+    }
+
+    public void enemyStepSound()
+    {
+        audioEnemy.PlayOneShot(enemySteps[Random.Range(0, enemySteps.Length)], enemyStepVol);
+    }
+
+    public void enemyHurtSound()
+    {
+        audioEnemy.PlayOneShot(enemySoundHurt[Random.Range(0, enemySoundHurt.Length)], enemySoundHurtVol);
+    }
+
+    public void enemyShootSound()
+    {
+        audioEnemy.PlayOneShot(enemyShoot[Random.Range(0, enemyShoot.Length)], enemyShootVol);
     }
 }
