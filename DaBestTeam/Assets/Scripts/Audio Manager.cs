@@ -7,21 +7,21 @@ public class AudioManager : MonoBehaviour
     [Header("----Component----")]
     public static AudioManager instance;
    
-
-
     [Header("----Player Audio----")]
     [SerializeField] AudioSource audioPlayer;
     [SerializeField] AudioClip[] playerSteps;
     [Range(0, 1)][SerializeField] float playerStepVol;
+    [Range(0, 1)][SerializeField] float playerStepSpeed;
+    [Range(0, 1)][SerializeField] float playerSprintSpeed;
     [SerializeField] AudioClip[] soundHurt;
     [Range(0, 1)][SerializeField] float soundHurtVol;
 
     [Header("----Weapon Audio----")]
     [SerializeField] AudioSource audioWeapon;
-    [SerializeField] AudioClip[] playerShoot;
-    [Range(0, 1)][SerializeField] float playerShootVol;
-
-
+    [SerializeField] AudioClip[] weaponShoot;
+    [Range(0, 1)][SerializeField] float weaponShootVol;
+    [SerializeField] AudioClip[] weaponReload;
+    [Range(0, 1)][SerializeField] float weaponReloadVol;
 
     [Header("----Level Audio----")]
     [SerializeField] AudioClip elevatorArrived;
@@ -64,7 +64,7 @@ public class AudioManager : MonoBehaviour
     {
         isPlayingSteps = true; 
 
-        float delay = isSprinting ? 0.025f : 0.05f; 
+        float delay = isSprinting ? playerStepSpeed : playerSprintSpeed; 
         yield return new WaitForSeconds(delay); 
 
         int randomIndex = Random.Range(0, playerSteps.Length); 
@@ -78,6 +78,11 @@ public class AudioManager : MonoBehaviour
 
     public void shootSound()
     {
-        audioWeapon.PlayOneShot(playerShoot[Random.Range(0, (playerShoot.Length))], playerShootVol);
+        audioWeapon.PlayOneShot(weaponShoot[Random.Range(0, (weaponShoot.Length))], weaponShootVol);
+    }
+
+    public void reloadSound()
+    {
+        audioWeapon.PlayOneShot(weaponReload[Random.Range(0, weaponReload.Length)], weaponReloadVol);
     }
 }

@@ -45528,8 +45528,32 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6302244878434382335, guid: 14eaaf174e414634fa9c5056622ffb9f, type: 3}
+      propertyPath: weaponShootVol
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6302244878434382335, guid: 14eaaf174e414634fa9c5056622ffb9f, type: 3}
+      propertyPath: playerStepSpeed
+      value: 0.009
+      objectReference: {fileID: 0}
+    - target: {fileID: 6302244878434382335, guid: 14eaaf174e414634fa9c5056622ffb9f, type: 3}
+      propertyPath: weaponReloadVol
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6302244878434382335, guid: 14eaaf174e414634fa9c5056622ffb9f, type: 3}
+      propertyPath: playerSprintSpeed
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 6302244878434382335, guid: 14eaaf174e414634fa9c5056622ffb9f, type: 3}
       propertyPath: playerShoot.Array.size
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6302244878434382335, guid: 14eaaf174e414634fa9c5056622ffb9f, type: 3}
+      propertyPath: weaponShoot.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6302244878434382335, guid: 14eaaf174e414634fa9c5056622ffb9f, type: 3}
+      propertyPath: weaponReload.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6302244878434382335, guid: 14eaaf174e414634fa9c5056622ffb9f, type: 3}
       propertyPath: playerShoot.Array.data[0]
@@ -45539,6 +45563,14 @@ PrefabInstance:
       propertyPath: playerShoot.Array.data[1]
       value: 
       objectReference: {fileID: 8300000, guid: 6739c01659ad96d47987f4ddee226b36, type: 3}
+    - target: {fileID: 6302244878434382335, guid: 14eaaf174e414634fa9c5056622ffb9f, type: 3}
+      propertyPath: weaponShoot.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: ad7464d4e5c72a044a2461597e7d5a90, type: 3}
+    - target: {fileID: 6302244878434382335, guid: 14eaaf174e414634fa9c5056622ffb9f, type: 3}
+      propertyPath: weaponReload.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: bf0e944d6d732f746b8562e3f9f6365b, type: 3}
     - target: {fileID: 7310016589660963842, guid: 14eaaf174e414634fa9c5056622ffb9f, type: 3}
       propertyPath: m_Name
       value: UI

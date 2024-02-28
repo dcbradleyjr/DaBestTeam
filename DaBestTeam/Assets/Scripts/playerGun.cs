@@ -64,6 +64,7 @@ public class playerGun : MonoBehaviour
 
     IEnumerator reloadGun()
     {
+        AudioManager.instance.reloadSound();
         isReloading = true;
         StartCoroutine(reloadingVisuals());
         yield return new WaitForSeconds(reloadRate);
