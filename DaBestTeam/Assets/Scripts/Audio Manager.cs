@@ -24,7 +24,8 @@ public class AudioManager : MonoBehaviour
     [Range(0, 1)][SerializeField] float weaponReloadVol;
 
     [Header("----Level Audio----")]
-    [SerializeField] AudioClip elevatorArrived;
+    [SerializeField] AudioSource audioElevator;    
+    [SerializeField] AudioClip[] elevatorArrived;
     [Range(0, 1)][SerializeField] float elevatorArrivedVol;
 
 
@@ -109,5 +110,10 @@ public class AudioManager : MonoBehaviour
     public void enemyShootSound()
     {
         audioEnemy.PlayOneShot(enemyShoot[Random.Range(0, enemyShoot.Length)], enemyShootVol);
+    }
+
+    public void elevatorArrivedSound()
+    {
+        audioElevator.PlayOneShot(elevatorArrived[Random.Range(0, elevatorArrived.Length)], elevatorArrivedVol);
     }
 }
