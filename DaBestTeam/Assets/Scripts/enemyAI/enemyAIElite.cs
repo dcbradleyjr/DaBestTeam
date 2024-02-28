@@ -46,7 +46,6 @@ public class enemyAIElite : MonoBehaviour, IDamage, IPatrol
 
     void Start()
     {
-        gameManager.instance.updateEnemyCount(1);
         HPOriginal = HP;
         updateUI();
         remainingTime = waitTime; //set wait time at each destination to the remaining time value

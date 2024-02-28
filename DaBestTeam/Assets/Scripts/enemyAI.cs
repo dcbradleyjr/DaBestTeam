@@ -44,7 +44,6 @@ public class enemyAI : MonoBehaviour, IDamage
 
     void Start()
     {
-        gameManager.instance.updateEnemyCount(1);
         HPOriginal = HP;
         startingPosition = transform.position;
         stoppingDistanceOrig = agent.stoppingDistance;

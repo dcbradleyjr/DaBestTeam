@@ -36,7 +36,6 @@ public class enemyAIBasic: MonoBehaviour, IDamage
 
     void Start()
     {
-        gameManager.instance.updateEnemyCount(1);
         HPOriginal = HP;
         updateUI();
     }

@@ -58,6 +58,8 @@ public class playerController : MonoBehaviour, IDamage, IPushBack
 
     void Update()
     {
+        Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * maxInteractDist, Color.red);
+
         sprint();
         if (!gameManager.instance.isPaused)
         {
@@ -164,8 +166,8 @@ public class playerController : MonoBehaviour, IDamage, IPushBack
     void interact()
     {
         RaycastHit hit;
-        Ray ray = Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f));
-        if (Physics.SphereCast(ray, maxInteractRadius, out hit, maxInteractDist))
+        //Ray ray = Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f));
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, maxInteractDist))
         {
             Debug.Log(hit.collider.name);
             IInteract interact = hit.collider.GetComponent<IInteract>();

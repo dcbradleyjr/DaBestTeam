@@ -4,15 +4,43 @@ using UnityEngine;
 
 public class spawner : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] GameObject[] objectToSpawn;
+    [SerializeField] int numToSpawn;
+    [SerializeField] int spawnTimer;
+    [SerializeField] Transform[] spawnPos;
+
+    int spawnCount;
+    bool isSpawning;
+    [SerializeField] bool startSpawning;
     void Start()
     {
-        
+        //update game goal
+        gameManager.instance.updateEnemyCount(numToSpawn);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (startSpawning && !isSpawning && spawnCount < numToSpawn)
+        {
+            StartCoroutine(spawn());
+        }
+    }
+
+    IEnumerator spawn()
+    {
+        isSpawning = true;
+        int arrayPos = Random.Range(0, spawnPos.Length);
+        Instantiate(objectToSpawn[Random.Range(0, objectToSpawn.Length)], spawnPos[arrayPos].position, spawnPos[arrayPos].rotation);
+        spawnCount++;
+        yield return new WaitForSeconds(spawnTimer);
+        isSpawning = false;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            startSpawning = true;
+        }
     }
 }
