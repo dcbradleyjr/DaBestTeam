@@ -27,8 +27,9 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioClip elevatorArrived;
     [Range(0, 1)][SerializeField] float elevatorArrivedVol;
 
-    public bool isPlayingSteps;
+    bool isPlayingSteps;
     bool isSprinting;
+
 
 
     private void Awake()
@@ -52,12 +53,27 @@ public class AudioManager : MonoBehaviour
 
     public void playFootSteps()
     {
-        Debug.Log("Calling Audio Method");
-        isPlayingSteps = true;
+        if (!isPlayingSteps)
+        {
+            StartCoroutine(ResetIsPlayingSteps());
+        }
+        
+    }
 
-        audioPlayer.PlayOneShot(playerSteps[Random.Range(0, (playerSteps.Length))], playerStepVol);
+    IEnumerator ResetIsPlayingSteps()
+    {
+        isPlayingSteps = true; 
+
+        float delay = isSprinting ? 0.025f : 0.05f; 
+        yield return new WaitForSeconds(delay); 
+
+        int randomIndex = Random.Range(0, playerSteps.Length); 
+        audioPlayer.PlayOneShot(playerSteps[randomIndex], playerStepVol); 
+
+        yield return new WaitForSeconds(playerSteps[randomIndex].length); 
 
         isPlayingSteps = false;
+
     }
 
     public void shootSound()

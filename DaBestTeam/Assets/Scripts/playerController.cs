@@ -9,7 +9,6 @@ public class playerController : MonoBehaviour, IDamage, IPushBack
     [Header("--Components--")]
     [SerializeField] CharacterController controller;
     [SerializeField] Transform headPosition;
-/*    [SerializeField] AudioSource aud;*/
 
     [Header("--Stats--")]
     [Range(1,50)][SerializeField] int HP;
@@ -158,9 +157,7 @@ public class playerController : MonoBehaviour, IDamage, IPushBack
 
         if (controller.isGrounded && move.normalized.magnitude > 0.3f && !isPlayingSteps)
         {
-            Debug.Log("Calling Audio");
             AudioManager.instance.playFootSteps();
-            
         }
     }
 
