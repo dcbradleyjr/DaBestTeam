@@ -10,17 +10,16 @@ public class AudioManager : MonoBehaviour
 
 
     [Header("----Player Audio----")]
-    [SerializeField] AudioSource aud;
+    [SerializeField] AudioSource audioPlayer;
     [SerializeField] AudioClip[] playerSteps;
     [Range(0, 1)][SerializeField] float playerStepVol;
-
     [SerializeField] AudioClip[] soundHurt;
     [Range(0, 1)][SerializeField] float soundHurtVol;
 
+    [Header("----Weapon Audio----")]
+    [SerializeField] AudioSource audioWeapon;
     [SerializeField] AudioClip[] playerShoot;
     [Range(0, 1)][SerializeField] float playerShootVol;
-
-
 
 
 
@@ -48,7 +47,7 @@ public class AudioManager : MonoBehaviour
 
     public void hurtSound()
     {
-        aud.PlayOneShot(soundHurt[Random.Range(0, soundHurt.Length)], soundHurtVol);
+        audioPlayer.PlayOneShot(soundHurt[Random.Range(0, soundHurt.Length)], soundHurtVol);
     }
 
     public void playFootSteps()
@@ -56,13 +55,13 @@ public class AudioManager : MonoBehaviour
         Debug.Log("Calling Audio Method");
         isPlayingSteps = true;
 
-        aud.PlayOneShot(playerSteps[Random.Range(0, (playerSteps.Length))], playerStepVol);
+        audioPlayer.PlayOneShot(playerSteps[Random.Range(0, (playerSteps.Length))], playerStepVol);
 
         isPlayingSteps = false;
     }
 
     public void shootSound()
     {
-        aud.PlayOneShot(playerShoot[Random.Range(0, (playerShoot.Length))], playerShootVol);
+        audioWeapon.PlayOneShot(playerShoot[Random.Range(0, (playerShoot.Length))], playerShootVol);
     }
 }
