@@ -52,12 +52,14 @@ public class playerGun : MonoBehaviour
 
     IEnumerator shoot()
     {
+        AudioManager.instance.shootSound();
         isShooting = true;
         Instantiate(bullet, shootPosition.position, transform.rotation);
         clipSize--;
         updateUI();
         yield return new WaitForSeconds(shootRate);
         isShooting = false;
+        
     }
 
     IEnumerator reloadGun()

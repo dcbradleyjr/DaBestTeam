@@ -9,6 +9,7 @@ public class playerController : MonoBehaviour, IDamage, IPushBack
     [Header("--Components--")]
     [SerializeField] CharacterController controller;
     [SerializeField] Transform headPosition;
+/*    [SerializeField] AudioSource aud;*/
 
     [Header("--Stats--")]
     [Range(1,50)][SerializeField] int HP;
@@ -36,10 +37,14 @@ public class playerController : MonoBehaviour, IDamage, IPushBack
     int HPOriginal;
     int StaminaOriginal;
     float playerSpeedOriginal;
-    bool isSprinting;
+    public bool isSprinting;
     Color StaminaColorOrig;
     private Vector3 lastPosition;
     private Vector3 currentVelocity;
+    public bool isPlayingSteps;
+
+    
+    
 
     void Start()
     {
@@ -49,6 +54,7 @@ public class playerController : MonoBehaviour, IDamage, IPushBack
         StaminaColorOrig = gameManager.instance.playerStaminaBar.color;
         Respawn();
         lastPosition = transform.position;
+        
     }
 
     void Update()
@@ -149,6 +155,13 @@ public class playerController : MonoBehaviour, IDamage, IPushBack
 
         playerVelocity.y += gravity * Time.deltaTime;
         controller.Move((playerVelocity + pushBack) * Time.deltaTime);
+
+        if (controller.isGrounded && move.normalized.magnitude > 0.3f && !isPlayingSteps)
+        {
+            Debug.Log("Calling Audio");
+            AudioManager.instance.playFootSteps();
+            
+        }
     }
 
     void interact()
@@ -168,6 +181,7 @@ public class playerController : MonoBehaviour, IDamage, IPushBack
 
     public void takeDamage(int amount)
     {
+        AudioManager.instance.hurtSound();
         HP -= amount;
         updateUI();
         StartCoroutine(flashDMG());
@@ -218,4 +232,6 @@ public class playerController : MonoBehaviour, IDamage, IPushBack
     {
         return currentVelocity;
     }
+
+    
 }
