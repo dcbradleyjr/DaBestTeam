@@ -59,6 +59,7 @@ public class enemyAIElite : MonoBehaviour, IDamage, IPatrol
         anim.SetFloat("Speed", Mathf.Lerp(anim.GetFloat("Speed"), animSpeed, Time.deltaTime * animSpeedTrans));
         if (playerInRange && canSeePlayer())
         {
+            AudioManager.instance.enemyStepSound();
             isPatrolling = false;
         }
         else
@@ -149,7 +150,7 @@ public class enemyAIElite : MonoBehaviour, IDamage, IPatrol
 
     public void takeDamage(int amount)
     {
-        AudioManager.instance.enemyHurtSound();
+       AudioManager.instance.enemyHurtSound();
        agent.SetDestination(gameManager.instance.player.transform.position);
 
         HP -= amount;
@@ -181,6 +182,7 @@ public class enemyAIElite : MonoBehaviour, IDamage, IPatrol
         }
         else
         {
+            AudioManager.instance.enemyStepSound();
             agent.SetDestination(waypoints[currentWaypointIndex].position);
         }
     }

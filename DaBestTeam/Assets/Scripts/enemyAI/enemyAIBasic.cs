@@ -46,7 +46,7 @@ public class enemyAIBasic: MonoBehaviour, IDamage
         anim.SetFloat("Speed", Mathf.Lerp(anim.GetFloat("Speed"), animSpeed, Time.deltaTime * animSpeedTrans));
         if (playerInRange && canSeePlayer())
         {
-            
+            AudioManager.instance.enemyStepSound();
         }
 
     }

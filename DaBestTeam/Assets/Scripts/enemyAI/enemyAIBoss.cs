@@ -54,6 +54,7 @@ public class enemyAIBoss : MonoBehaviour, IDamage
 
     void chasePlayer()
     {
+        AudioManager.instance.enemyStepSound();
         agent.SetDestination(gameManager.instance.player.transform.position);
 
         playerDirection = gameManager.instance.playerHead.position - headPosition.position;
