@@ -51,11 +51,15 @@ public class enemyAIMedium : MonoBehaviour, IDamage, IPatrol
 
     void Update()
     {
+        if (agent.velocity.magnitude > 0)
+        {
+            AudioManager.instance.enemyStepSound();
+        }
+
         float animSpeed = agent.velocity.normalized.magnitude;
         anim.SetFloat("Speed", Mathf.Lerp(anim.GetFloat("Speed"), animSpeed, Time.deltaTime * animSpeedTrans));
         if (playerInRange && canSeePlayer())
         {
-            AudioManager.instance.enemyStepSound();
             isPatrolling = false;
         }
         else
@@ -170,7 +174,6 @@ public class enemyAIMedium : MonoBehaviour, IDamage, IPatrol
         }
         else
         {
-            AudioManager.instance.enemyStepSound();
             agent.SetDestination(waypoints[currentWaypointIndex].position);
         }
     }

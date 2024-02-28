@@ -350,15 +350,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8cf152a0a06b3dc47a7c6d40918d95a9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.979851
+      value: -9.29
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8cf152a0a06b3dc47a7c6d40918d95a9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.00000023841858
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8cf152a0a06b3dc47a7c6d40918d95a9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -12.553754
+      value: -16.56
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8cf152a0a06b3dc47a7c6d40918d95a9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -518,6 +518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8b9c687c60d30f4ab0a3e95fdcec902, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 8275758406364177257}
   model: {fileID: 3457486546624559919}
   agent: {fileID: 7362359580739063525}
   shootPosition: {fileID: 7809062297180617124}
@@ -527,12 +528,20 @@ MonoBehaviour:
   targetFaceSpeed: 7
   bullet: {fileID: 9063290696082056627, guid: 5c39d0ee4f0faad4aa084c8317945e9e, type: 3}
   shootRate: 1
-  canPatrol: 0
-  waypoints: []
+  animSpeedTrans: 5
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   HealthBar: {fileID: 8183585454880564788}
   EnemyUI: {fileID: 4070036877224825969}
 --- !u!137 &3457486546624559919 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: 885105174898877911, guid: 8cf152a0a06b3dc47a7c6d40918d95a9, type: 3}
+  m_PrefabInstance: {fileID: 2572667841766137592}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &8275758406364177257 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 8cf152a0a06b3dc47a7c6d40918d95a9, type: 3}
   m_PrefabInstance: {fileID: 2572667841766137592}
   m_PrefabAsset: {fileID: 0}

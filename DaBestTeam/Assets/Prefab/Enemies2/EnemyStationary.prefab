@@ -358,7 +358,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8cf152a0a06b3dc47a7c6d40918d95a9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.5298758
+      value: -10.36
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8cf152a0a06b3dc47a7c6d40918d95a9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -398,7 +398,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 429ec7544a43205478cd06635627bb62, type: 2}
     - target: {fileID: 919132149155446097, guid: 8cf152a0a06b3dc47a7c6d40918d95a9, type: 3}
       propertyPath: m_Name
-      value: StationaryEnemy
+      value: EnemyStationary
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 8cf152a0a06b3dc47a7c6d40918d95a9, type: 3}
       propertyPath: m_Controller
@@ -523,6 +523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6295bb53ad6b545bc102746ed09476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 8230419559069846508}
   model: {fileID: 3394096896677811114}
   agent: {fileID: 6195358819578243632}
   shootPosition: {fileID: 1469730060246805972}
@@ -530,7 +531,13 @@ MonoBehaviour:
   HP: 3
   viewCone: 70
   targetFaceSpeed: 7
+  animSpeedTrans: 5
   bullet: {fileID: 3758160979051400433, guid: 982cba00ecede3f48b37cbe8d32821fd, type: 3}
   shootRate: 1.5
   HealthBar: {fileID: 166752905558704335}
   EnemyUI: {fileID: 4456486458646163774}
+--- !u!95 &8230419559069846508 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 8cf152a0a06b3dc47a7c6d40918d95a9, type: 3}
+  m_PrefabInstance: {fileID: 2545315896583894653}
+  m_PrefabAsset: {fileID: 0}

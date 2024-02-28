@@ -523,10 +523,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7975da602a8efd44a852a770798dcc88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 5871467023660116786}
   model: {fileID: 889944677814104948}
   agent: {fileID: 4084393419496999345}
   shootPosition: {fileID: 2042558719229783067}
   headPosition: {fileID: 8607438974690365285}
+  animSpeedTrans: 5
   HP: 7
   viewCone: 70
   targetFaceSpeed: 7
@@ -534,7 +536,14 @@ MonoBehaviour:
   leadingBullet: {fileID: 3849281360500067930, guid: f339bf25cd6e89f428a0745a952acd51, type: 3}
   shootRate: 1
   bulletSpeed: 100
-  bulletLeadChance: 0.1
-  waypoints: []
+  bulletLeadChance: 0.5
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
   HealthBar: {fileID: 777169029865318369}
   EnemyUI: {fileID: 6762483568554698590}
+--- !u!95 &5871467023660116786 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 8cf152a0a06b3dc47a7c6d40918d95a9, type: 3}
+  m_PrefabInstance: {fileID: 4839567881328291}
+  m_PrefabAsset: {fileID: 0}

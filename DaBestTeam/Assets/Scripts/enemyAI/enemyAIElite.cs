@@ -41,6 +41,7 @@ public class enemyAIElite : MonoBehaviour, IDamage, IPatrol
     float angleToPlayer;
     Vector3 playerDirection;
     int HPOriginal;
+    
 
     void Start()
     {
@@ -55,11 +56,15 @@ public class enemyAIElite : MonoBehaviour, IDamage, IPatrol
 
     void Update()
     {
+        if (agent.velocity.magnitude > 0)
+        {
+            AudioManager.instance.enemyStepSound();
+        }
         float animSpeed = agent.velocity.normalized.magnitude;
         anim.SetFloat("Speed", Mathf.Lerp(anim.GetFloat("Speed"), animSpeed, Time.deltaTime * animSpeedTrans));
         if (playerInRange && canSeePlayer())
         {
-            AudioManager.instance.enemyStepSound();
+           
             isPatrolling = false;
         }
         else
@@ -182,7 +187,6 @@ public class enemyAIElite : MonoBehaviour, IDamage, IPatrol
         }
         else
         {
-            AudioManager.instance.enemyStepSound();
             agent.SetDestination(waypoints[currentWaypointIndex].position);
         }
     }

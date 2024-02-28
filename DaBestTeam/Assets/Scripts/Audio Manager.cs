@@ -29,18 +29,29 @@ public class AudioManager : MonoBehaviour
     [Range(0, 1)][SerializeField] float elevatorArrivedVol;
 
 
-    [Header("----Enemy Audio----")]
+    [Header("----Boss Enemy Audio----")]
     [SerializeField] AudioSource audioEnemy;
     [SerializeField] AudioClip[] enemySteps;
     [Range(0, 1)][SerializeField] float enemyStepVol;
+    [Range(0, 1)][SerializeField] float enemyStepSpeed;
+    [Range(0, 1)][SerializeField] float enemySprintSpeed;
     [SerializeField] AudioClip[] enemySoundHurt;
     [Range(0, 1)][SerializeField] float enemySoundHurtVol;
     [SerializeField] AudioClip[] enemyShoot;
     [Range (0, 1)][SerializeField] float enemyShootVol;
 
+    [Header("----Elite Enemy Audio----")]
+    [SerializeField] AudioSource eliteAudioEnemy;
+
+    [Header("----Medium Enemy Audio----")]
+    [SerializeField] AudioSource mediumAudioEnemy;
+
+    [Header("----Basic Enemy Audio----")]
+    [SerializeField] AudioSource basicAudioEnemy;
+
     bool isPlayingSteps;
     bool isSprinting;
-
+    bool isPlayingEnemySteps;
 
 
     private void Awake()
@@ -99,7 +110,26 @@ public class AudioManager : MonoBehaviour
 
     public void enemyStepSound()
     {
-        audioEnemy.PlayOneShot(enemySteps[Random.Range(0, enemySteps.Length)], enemyStepVol);
+        if (!isPlayingEnemySteps) 
+        {
+            StartCoroutine(ResetIsPlayingEnemySteps());
+        }
+    }
+
+    IEnumerator ResetIsPlayingEnemySteps()
+    {
+        isPlayingEnemySteps = true;
+
+        float delay = isSprinting ? enemyStepSpeed : enemySprintSpeed;
+        yield return new WaitForSeconds(delay);
+
+        int randomIndex = Random.Range(0, enemySteps.Length);
+        audioEnemy.PlayOneShot(enemySteps[randomIndex], enemyStepVol);
+
+        yield return new WaitForSeconds(enemySteps[randomIndex].length);
+
+        isPlayingEnemySteps = false;
+
     }
 
     public void enemyHurtSound()
@@ -116,4 +146,6 @@ public class AudioManager : MonoBehaviour
     {
         audioElevator.PlayOneShot(elevatorArrived[Random.Range(0, elevatorArrived.Length)], elevatorArrivedVol);
     }
+
+    
 }

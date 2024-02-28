@@ -350,15 +350,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8cf152a0a06b3dc47a7c6d40918d95a9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18.71
+      value: -35.732628
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8cf152a0a06b3dc47a7c6d40918d95a9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.00000023841858
+      value: 0.00000047683716
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8cf152a0a06b3dc47a7c6d40918d95a9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -20.54
+      value: -13.981562
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8cf152a0a06b3dc47a7c6d40918d95a9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -395,7 +395,7 @@ PrefabInstance:
     - target: {fileID: 885105174898877911, guid: 8cf152a0a06b3dc47a7c6d40918d95a9, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 3701ca52b6f39d542a25d26db07d127e, type: 2}
+      objectReference: {fileID: 2100000, guid: 35261150e5398c0439d6fd7481f62b62, type: 2}
     - target: {fileID: 919132149155446097, guid: 8cf152a0a06b3dc47a7c6d40918d95a9, type: 3}
       propertyPath: m_Name
       value: EnemyPatrollingComplex
@@ -433,6 +433,11 @@ PrefabInstance:
 --- !u!4 &548182356021981512 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8cf152a0a06b3dc47a7c6d40918d95a9, type: 3}
+  m_PrefabInstance: {fileID: 4839567881328291}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &889944677814104948 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 885105174898877911, guid: 8cf152a0a06b3dc47a7c6d40918d95a9, type: 3}
   m_PrefabInstance: {fileID: 4839567881328291}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &923335085709847538 stripped
@@ -518,18 +523,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a94ce691810f7249bd90a7b489f60c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  model: {fileID: 0}
-  agent: {fileID: 0}
-  shootPosition: {fileID: 0}
-  headPosition: {fileID: 0}
-  HP: 0
-  viewCone: 0
-  targetFaceSpeed: 0
-  bullet: {fileID: 0}
-  leadingBullet: {fileID: 0}
-  shootRate: 0
-  bulletSpeed: 0
-  bulletLeadChance: 0
-  waypoints: []
-  HealthBar: {fileID: 0}
-  EnemyUI: {fileID: 0}
+  anim: {fileID: 5871467023660116786}
+  model: {fileID: 889944677814104948}
+  agent: {fileID: 4084393419496999345}
+  shootPosition: {fileID: 2042558719229783067}
+  headPosition: {fileID: 8607438974690365285}
+  roamPauseTime: 2
+  roamDist: 5
+  roamTimesMax: 3
+  animSpeedTrans: 5
+  HP: 7
+  viewCone: 70
+  targetFaceSpeed: 7
+  bullet: {fileID: 3849281360500067930, guid: fc288ac6e34a5e347b8001f8a9016071, type: 3}
+  leadingBullet: {fileID: 3849281360500067930, guid: f339bf25cd6e89f428a0745a952acd51, type: 3}
+  shootRate: 1
+  bulletSpeed: 25
+  bulletLeadChance: 0.667
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  HealthBar: {fileID: 777169029865318369}
+  EnemyUI: {fileID: 6762483568554698590}
+--- !u!95 &5871467023660116786 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 8cf152a0a06b3dc47a7c6d40918d95a9, type: 3}
+  m_PrefabInstance: {fileID: 4839567881328291}
+  m_PrefabAsset: {fileID: 0}

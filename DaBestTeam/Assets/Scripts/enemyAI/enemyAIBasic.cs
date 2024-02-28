@@ -42,13 +42,13 @@ public class enemyAIBasic: MonoBehaviour, IDamage
 
     void Update()
     {
-        float animSpeed = agent.velocity.normalized.magnitude;
-        anim.SetFloat("Speed", Mathf.Lerp(anim.GetFloat("Speed"), animSpeed, Time.deltaTime * animSpeedTrans));
-        if (playerInRange && canSeePlayer())
+        if (agent.velocity.magnitude > 0)
         {
             AudioManager.instance.enemyStepSound();
         }
 
+        float animSpeed = agent.velocity.normalized.magnitude;
+        anim.SetFloat("Speed", Mathf.Lerp(anim.GetFloat("Speed"), animSpeed, Time.deltaTime * animSpeedTrans));
     }
 
     bool canSeePlayer()
