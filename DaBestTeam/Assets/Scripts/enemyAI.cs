@@ -14,6 +14,7 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Transform shootPosition;
     [SerializeField] Transform headPosition;
+    [SerializeField] AudioSource aud;
 
     [Header("--Stats--")]
     [Range(1, 50)][SerializeField] int HP;
@@ -160,7 +161,7 @@ public class enemyAI : MonoBehaviour, IDamage
 
     IEnumerator shoot()
     {
-        AudioManager.instance.enemyShootSound();
+        AudioManager.instance.enemyShootSound(aud);
         isShooting = true;
         Instantiate(bullet, shootPosition.position, transform.rotation);
         yield return new WaitForSeconds(shootRate);

@@ -13,6 +13,7 @@ public class enemyAIMedium : MonoBehaviour, IDamage, IPatrol
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Transform shootPosition;
     [SerializeField] Transform headPosition;
+    [SerializeField] AudioSource aud;
 
     [SerializeField] int HP;
     [SerializeField] int viewCone;
@@ -194,7 +195,7 @@ public class enemyAIMedium : MonoBehaviour, IDamage, IPatrol
 
     IEnumerator shoot()
     {
-        AudioManager.instance.enemyShootSound();
+        AudioManager.instance.enemyShootSound(aud);
         isShooting = true;
         Instantiate(bullet, shootPosition.position, transform.rotation);
         yield return new WaitForSeconds(shootRate);

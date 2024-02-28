@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.ShaderKeywordFilter;
+//using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -14,6 +14,7 @@ public class enemyAIElite : MonoBehaviour, IDamage, IPatrol
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Transform shootPosition;
     [SerializeField] Transform headPosition;
+    [SerializeField] AudioSource aud;
     [Range(1, 10)][SerializeField] int animSpeedTrans;
 
     [SerializeField] int HP;
@@ -209,7 +210,7 @@ public class enemyAIElite : MonoBehaviour, IDamage, IPatrol
 
     IEnumerator shoot()
     {
-        AudioManager.instance.enemyShootSound();
+        AudioManager.instance.enemyShootSound(aud);
         isShooting = true;
         Instantiate(bullet, shootPosition.position, transform.rotation);
         yield return new WaitForSeconds(shootRate);
@@ -218,7 +219,7 @@ public class enemyAIElite : MonoBehaviour, IDamage, IPatrol
 
     IEnumerator leadShoot()
     {
-        AudioManager.instance.enemyShootSound();
+        AudioManager.instance.enemyShootSound(aud);
         isShooting = true;
         Instantiate(leadingBullet, shootPosition.position, transform.rotation); //make the bullet
         yield return new WaitForSeconds(shootRate);

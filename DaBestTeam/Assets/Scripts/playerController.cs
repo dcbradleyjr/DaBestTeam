@@ -219,6 +219,7 @@ public class playerController : MonoBehaviour, IDamage, IPushBack
     public void Respawn()
     {
         HP = HPOriginal;
+        Stamina = StaminaOriginal;
         updateUI();
         controller.enabled = false;
         transform.position = gameManager.instance.SpawnPoint.transform.position;

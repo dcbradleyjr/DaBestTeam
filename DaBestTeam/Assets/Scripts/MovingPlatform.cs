@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
-    [SerializeField] Transform transform;
+    [SerializeField] Transform elevator;
 
     private void OnCollisionEnter(Collision collision)
     {
-        collision.transform.SetParent(transform);
+        collision.transform.SetParent(elevator);
     }
 
     private void OnCollisionExit(Collision collision)

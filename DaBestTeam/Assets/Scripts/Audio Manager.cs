@@ -29,7 +29,7 @@ public class AudioManager : MonoBehaviour
     [Range(0, 1)][SerializeField] float elevatorArrivedVol;
 
 
-    [Header("----Boss Enemy Audio----")]
+    [Header("----Enemy Audio----")]
     [SerializeField] AudioSource audioEnemy;
     [SerializeField] AudioClip[] enemySteps;
     [Range(0, 1)][SerializeField] float enemyStepVol;
@@ -39,15 +39,6 @@ public class AudioManager : MonoBehaviour
     [Range(0, 1)][SerializeField] float enemySoundHurtVol;
     [SerializeField] AudioClip[] enemyShoot;
     [Range (0, 1)][SerializeField] float enemyShootVol;
-
-    [Header("----Elite Enemy Audio----")]
-    [SerializeField] AudioSource eliteAudioEnemy;
-
-    [Header("----Medium Enemy Audio----")]
-    [SerializeField] AudioSource mediumAudioEnemy;
-
-    [Header("----Basic Enemy Audio----")]
-    [SerializeField] AudioSource basicAudioEnemy;
 
     bool isPlayingSteps;
     bool isSprinting;
@@ -137,9 +128,9 @@ public class AudioManager : MonoBehaviour
         audioEnemy.PlayOneShot(enemySoundHurt[Random.Range(0, enemySoundHurt.Length)], enemySoundHurtVol);
     }
 
-    public void enemyShootSound()
+    public void enemyShootSound(AudioSource enemy)
     {
-        audioEnemy.PlayOneShot(enemyShoot[Random.Range(0, enemyShoot.Length)], enemyShootVol);
+        enemy.PlayOneShot(enemyShoot[Random.Range(0, enemyShoot.Length)], enemyShootVol);
     }
 
     public void elevatorArrivedSound()

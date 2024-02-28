@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.ShaderKeywordFilter;
+//using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -14,6 +14,7 @@ public class enemyAIPatrolComplex : MonoBehaviour, IDamage, IPatrol
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Transform shootPosition;
     [SerializeField] Transform headPosition;
+    [SerializeField] AudioSource aud;
     [SerializeField] int roamPauseTime;
     [SerializeField] float roamDist;
     [SerializeField] int roamTimesMax;

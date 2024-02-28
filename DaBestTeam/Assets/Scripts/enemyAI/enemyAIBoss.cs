@@ -13,6 +13,7 @@ public class enemyAIBoss : MonoBehaviour, IDamage
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Transform shootPosition;
     [SerializeField] Transform headPosition;
+    [SerializeField] AudioSource aud;
     [Range(1, 10)][SerializeField] int animSpeedTrans;
 
     [SerializeField] int HP;
@@ -136,7 +137,7 @@ public class enemyAIBoss : MonoBehaviour, IDamage
 
     IEnumerator shoot()
     {
-        AudioManager.instance.enemyShootSound();
+        AudioManager.instance.enemyShootSound(aud);
         isShooting = true;
         Instantiate(bullet, shootPosition.position, transform.rotation);
         yield return new WaitForSeconds(shootRate);
@@ -146,7 +147,7 @@ public class enemyAIBoss : MonoBehaviour, IDamage
 
     IEnumerator leadShoot()
     {
-        AudioManager.instance.enemyShootSound();
+        AudioManager.instance.enemyShootSound(aud);
         isShooting = true;
         Instantiate(leadBullet, shootPosition.position, transform.rotation);
         yield return new WaitForSeconds(shootRate);
@@ -156,7 +157,7 @@ public class enemyAIBoss : MonoBehaviour, IDamage
 
     IEnumerator tracerShoot()
     {
-        AudioManager.instance.enemyShootSound();
+        AudioManager.instance.enemyShootSound(aud);
         isShooting = true;
         Instantiate(bossBullet, shootPosition.position, transform.rotation);
         yield return new WaitForSeconds(shootRate);
