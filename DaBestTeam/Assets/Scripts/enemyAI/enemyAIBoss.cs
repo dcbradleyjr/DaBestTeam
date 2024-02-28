@@ -8,10 +8,12 @@ using UnityEngine.UIElements;
 
 public class enemyAIBoss : MonoBehaviour, IDamage
 {
+    [SerializeField] Animator anim;
     [SerializeField] Renderer model;
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Transform shootPosition;
     [SerializeField] Transform headPosition;
+    [Range(1, 10)][SerializeField] int animSpeedTrans;
 
     [SerializeField] int HP;
     [SerializeField] int viewCone;
@@ -29,7 +31,6 @@ public class enemyAIBoss : MonoBehaviour, IDamage
     public GameObject EnemyUI;
 
     bool isShooting;
-    bool playerInRange;
     float angleToPlayer;
     Vector3 playerDirection;
     int HPOriginal;
@@ -46,57 +47,54 @@ public class enemyAIBoss : MonoBehaviour, IDamage
 
     void Update()
     {
-        if (playerInRange)
+        float animSpeed = agent.velocity.normalized.magnitude;
+        anim.SetFloat("Speed", Mathf.Lerp(anim.GetFloat("Speed"), animSpeed, Time.deltaTime * animSpeedTrans));
+        chasePlayer();
+    }
+
+    void chasePlayer()
+    {
+        agent.SetDestination(gameManager.instance.player.transform.position);
+
+        playerDirection = gameManager.instance.playerHead.position - headPosition.position;
+        angleToPlayer = Vector3.Angle(playerDirection, transform.forward);
+        Debug.DrawRay(headPosition.position, playerDirection);
+
+        RaycastHit hit;
+        if (Physics.Raycast(headPosition.position, playerDirection, out hit))
         {
-            //agent.SetDestination(gameManager.instance.player.transform.position);
-
-            playerDirection = gameManager.instance.playerHead.position - headPosition.position;
-            angleToPlayer = Vector3.Angle(playerDirection, transform.forward);
-            Debug.DrawRay(headPosition.position, playerDirection);
-
-            RaycastHit hit;
-            if (Physics.Raycast(headPosition.position, playerDirection, out hit))
+            if (hit.collider.CompareTag("Player") && angleToPlayer <= viewCone)
             {
-                if (hit.collider.CompareTag("Player") && angleToPlayer <= viewCone)
-                {
 
-                    if (!isShooting)
+                if (!isShooting)
+                {
+                    if (shotsFired < countToTracer)
                     {
-                        if (shotsFired < countToTracer)
+                        float doesLead = Random.Range(0f, 1.0f);
+                        if (doesLead < leadchance)
                         {
-                            float doesLead = Random.Range(0f, 1.0f);
-                            if (doesLead < leadchance)
-                            {
-                                StartCoroutine(shoot());
-                            }
-                            else
-                            {
-                                StartCoroutine(leadShoot());
-                            }
+                            StartCoroutine(shoot());
                         }
                         else
                         {
-                            if (tracerFired < tracerShotsToFire)
-                                StartCoroutine(tracerShoot());
-                            else
-                            {
-                                shotsFired = 0;
-                                tracerFired = 0;
-                            }
+                            StartCoroutine(leadShoot());
                         }
                     }
-                    if (agent.remainingDistance < agent.stoppingDistance)
-                        faceTarget();
+                    else
+                    {
+                        if (tracerFired < tracerShotsToFire)
+                            StartCoroutine(tracerShoot());
+                        else
+                        {
+                            shotsFired = 0;
+                            tracerFired = 0;
+                        }
+                    }
                 }
+                if (agent.remainingDistance < agent.stoppingDistance)
+                    faceTarget();
             }
         }
-    }
-
-    bool canSeePlayer()
-    {
-
-        return false;
-
     }
 
     void faceTarget()
@@ -104,25 +102,11 @@ public class enemyAIBoss : MonoBehaviour, IDamage
         Quaternion rot = Quaternion.LookRotation(new Vector3(playerDirection.x, transform.position.y, playerDirection.z));
         transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * targetFaceSpeed);
     }
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            playerInRange = true;
-        }
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            playerInRange = false;
-        }
-    }
 
     public void takeDamage(int amount)
     {
-        //agent.SetDestination(gameManager.instance.player.transform.position);
+        AudioManager.instance.enemyHurtSound();
+        agent.SetDestination(gameManager.instance.player.transform.position);
 
         HP -= amount;
         updateUI();
@@ -147,6 +131,7 @@ public class enemyAIBoss : MonoBehaviour, IDamage
 
     IEnumerator shoot()
     {
+        AudioManager.instance.enemyShootSound();
         isShooting = true;
         Instantiate(bullet, shootPosition.position, transform.rotation);
         yield return new WaitForSeconds(shootRate);
@@ -156,6 +141,7 @@ public class enemyAIBoss : MonoBehaviour, IDamage
 
     IEnumerator leadShoot()
     {
+        AudioManager.instance.enemyShootSound();
         isShooting = true;
         Instantiate(leadBullet, shootPosition.position, transform.rotation);
         yield return new WaitForSeconds(shootRate);
@@ -165,6 +151,7 @@ public class enemyAIBoss : MonoBehaviour, IDamage
 
     IEnumerator tracerShoot()
     {
+        AudioManager.instance.enemyShootSound();
         isShooting = true;
         Instantiate(bossBullet, shootPosition.position, transform.rotation);
         yield return new WaitForSeconds(shootRate);

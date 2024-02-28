@@ -9,6 +9,7 @@ using UnityEngine.UIElements;
 
 public class enemyAIPatrolComplex : MonoBehaviour, IDamage, IPatrol
 {
+    [SerializeField] Animator anim;
     [SerializeField] Renderer model;
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Transform shootPosition;
@@ -16,6 +17,7 @@ public class enemyAIPatrolComplex : MonoBehaviour, IDamage, IPatrol
     [SerializeField] int roamPauseTime;
     [SerializeField] float roamDist;
     [SerializeField] int roamTimesMax;
+    [Range(1, 10)][SerializeField] int animSpeedTrans;
 
     [SerializeField] int HP;
     [SerializeField] int viewCone;
@@ -64,6 +66,8 @@ public class enemyAIPatrolComplex : MonoBehaviour, IDamage, IPatrol
 
     void Update()
     {
+        float animSpeed = agent.velocity.normalized.magnitude;
+        anim.SetFloat("Speed", Mathf.Lerp(anim.GetFloat("Speed"), animSpeed, Time.deltaTime * animSpeedTrans));
         if (playerInRange && canSeePlayer())
         {
             isPatrolling = false;

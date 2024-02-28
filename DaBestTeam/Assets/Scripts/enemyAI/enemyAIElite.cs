@@ -9,10 +9,12 @@ using UnityEngine.UIElements;
 
 public class enemyAIElite : MonoBehaviour, IDamage, IPatrol
 {
+    [SerializeField] Animator anim;
     [SerializeField] Renderer model;
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Transform shootPosition;
     [SerializeField] Transform headPosition;
+    [Range(1, 10)][SerializeField] int animSpeedTrans;
 
     [SerializeField] int HP;
     [SerializeField] int viewCone;
@@ -53,6 +55,8 @@ public class enemyAIElite : MonoBehaviour, IDamage, IPatrol
 
     void Update()
     {
+        float animSpeed = agent.velocity.normalized.magnitude;
+        anim.SetFloat("Speed", Mathf.Lerp(anim.GetFloat("Speed"), animSpeed, Time.deltaTime * animSpeedTrans));
         if (playerInRange && canSeePlayer())
         {
             isPatrolling = false;
@@ -145,6 +149,7 @@ public class enemyAIElite : MonoBehaviour, IDamage, IPatrol
 
     public void takeDamage(int amount)
     {
+        AudioManager.instance.enemyHurtSound();
        agent.SetDestination(gameManager.instance.player.transform.position);
 
         HP -= amount;
@@ -198,6 +203,7 @@ public class enemyAIElite : MonoBehaviour, IDamage, IPatrol
 
     IEnumerator shoot()
     {
+        AudioManager.instance.enemyShootSound();
         isShooting = true;
         Instantiate(bullet, shootPosition.position, transform.rotation);
         yield return new WaitForSeconds(shootRate);
@@ -206,6 +212,7 @@ public class enemyAIElite : MonoBehaviour, IDamage, IPatrol
 
     IEnumerator leadShoot()
     {
+        AudioManager.instance.enemyShootSound();
         isShooting = true;
         Instantiate(leadingBullet, shootPosition.position, transform.rotation); //make the bullet
         yield return new WaitForSeconds(shootRate);

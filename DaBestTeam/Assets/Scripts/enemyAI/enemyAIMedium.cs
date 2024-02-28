@@ -8,6 +8,7 @@ using UnityEngine.UIElements;
 
 public class enemyAIMedium : MonoBehaviour, IDamage, IPatrol
 {
+    [SerializeField] Animator anim;
     [SerializeField] Renderer model;
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Transform shootPosition;
@@ -19,6 +20,7 @@ public class enemyAIMedium : MonoBehaviour, IDamage, IPatrol
 
     [SerializeField] GameObject bullet;
     [SerializeField] float shootRate;
+    [Range(1, 10)][SerializeField] int animSpeedTrans;
 
     public Transform[] waypoints;
     int currentWaypointIndex;
@@ -49,6 +51,8 @@ public class enemyAIMedium : MonoBehaviour, IDamage, IPatrol
 
     void Update()
     {
+        float animSpeed = agent.velocity.normalized.magnitude;
+        anim.SetFloat("Speed", Mathf.Lerp(anim.GetFloat("Speed"), animSpeed, Time.deltaTime * animSpeedTrans));
         if (playerInRange && canSeePlayer())
         {
             isPatrolling = false;
@@ -132,6 +136,7 @@ public class enemyAIMedium : MonoBehaviour, IDamage, IPatrol
 
     public void takeDamage(int amount)
     {
+        AudioManager.instance.enemyHurtSound();
         isPatrolling = false;
         agent.SetDestination(gameManager.instance.player.transform.position);
 
@@ -184,6 +189,7 @@ public class enemyAIMedium : MonoBehaviour, IDamage, IPatrol
 
     IEnumerator shoot()
     {
+        AudioManager.instance.enemyShootSound();
         isShooting = true;
         Instantiate(bullet, shootPosition.position, transform.rotation);
         yield return new WaitForSeconds(shootRate);

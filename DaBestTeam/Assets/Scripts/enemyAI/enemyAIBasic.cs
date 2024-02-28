@@ -10,6 +10,7 @@ using UnityEngine.UIElements;
 public class enemyAIBasic: MonoBehaviour, IDamage
 {
 
+    [SerializeField] Animator anim;
     [SerializeField] Renderer model;
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Transform shootPosition;
@@ -18,6 +19,7 @@ public class enemyAIBasic: MonoBehaviour, IDamage
     [SerializeField] int HP;
     [SerializeField] int viewCone;
     [SerializeField] int targetFaceSpeed;
+    [Range(1, 10)][SerializeField] int animSpeedTrans;
 
     [SerializeField] GameObject bullet;
     [SerializeField] float shootRate;
@@ -40,6 +42,8 @@ public class enemyAIBasic: MonoBehaviour, IDamage
 
     void Update()
     {
+        float animSpeed = agent.velocity.normalized.magnitude;
+        anim.SetFloat("Speed", Mathf.Lerp(anim.GetFloat("Speed"), animSpeed, Time.deltaTime * animSpeedTrans));
         if (playerInRange && canSeePlayer())
         {
             
@@ -96,6 +100,7 @@ public class enemyAIBasic: MonoBehaviour, IDamage
 
     public void takeDamage(int amount)
     {
+        AudioManager.instance.enemyHurtSound();
         agent.SetDestination(gameManager.instance.player.transform.position);
 
         HP -= amount;
@@ -121,6 +126,7 @@ public class enemyAIBasic: MonoBehaviour, IDamage
 
     IEnumerator shoot()
     {
+        AudioManager.instance.enemyShootSound();
         isShooting = true;
         Instantiate(bullet, shootPosition.position, transform.rotation);
         yield return new WaitForSeconds(shootRate);
