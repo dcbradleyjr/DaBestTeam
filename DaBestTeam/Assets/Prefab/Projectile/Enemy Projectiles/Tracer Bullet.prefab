@@ -58,10 +58,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 9047223077536168047}
   damageAmount: 1
-  speed: 8
+  speed: 20
   destroyTime: 3
   tracerBullet: 1
   enemyBullet: 1
+  leadBullet: 0
 --- !u!135 &3151068696064821862
 SphereCollider:
   m_ObjectHideFlags: 0
