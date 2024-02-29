@@ -43,6 +43,7 @@ public class enemyAIBoss : MonoBehaviour, IDamage
         HPOriginal = HP;
         updateUI();
         shotsFired = 0;
+        gameManager.instance.updateEnemyCount(1);
     }
 
     void Update()
