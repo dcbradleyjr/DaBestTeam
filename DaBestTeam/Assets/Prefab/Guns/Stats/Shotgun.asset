@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bb337852d339c24788e7178284185fb, type: 3}
   m_Name: Shotgun
   m_EditorClassIdentifier: 
-  bullet: {fileID: 3849281360500067930, guid: 3740d736a9ab1cd45bd142cf8073fc24, type: 3}
+  bullet: {fileID: 3849281360500067930, guid: 23262a266711ae549a2b4c7bfff808be, type: 3}
   myName: Shotgun
   shootRate: 2
   reloadRate: 4

@@ -194,7 +194,14 @@ public class playerController : MonoBehaviour, IDamage, IPushBack, IHealth
 
     public void healHP(int amount)
     {
-        HP += amount;
+        if (HP + amount > HPOriginal)
+        {
+            HP = HPOriginal;
+        }
+        else
+        {
+            HP += amount;
+        }
         updateHealthUI();
         StartCoroutine(flashHeal());
     }

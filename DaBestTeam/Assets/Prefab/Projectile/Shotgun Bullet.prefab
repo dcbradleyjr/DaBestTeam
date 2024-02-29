@@ -11,11 +11,12 @@ GameObject:
   - component: {fileID: 1486224580647746098}
   - component: {fileID: 6330736615783358102}
   - component: {fileID: 1976478891891491745}
+  - component: {fileID: 6423413335834790922}
   - component: {fileID: 6854452144437741765}
   - component: {fileID: 9047223077536168047}
   - component: {fileID: 2083096858618024137}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: Shotgun Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,8 +32,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.481, y: 4.02, z: -1.63}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -57,12 +58,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 9047223077536168047}
-  damageAmount: 1
-  speed: 50
-  destroyTime: 3
+  damageAmount: 5
+  speed: 25
+  destroyTime: 1
   tracerBullet: 0
   enemyBullet: 0
   leadBullet: 0
+--- !u!136 &6423413335834790922
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3849281360500067930}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.56
+  m_Height: 2.085
+  m_Direction: 0
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!135 &6854452144437741765
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -80,7 +104,7 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Radius: 0.2
   m_Center: {x: 0, y: 0, z: 0}
@@ -157,7 +181,7 @@ TrailRenderer:
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.15
+    widthMultiplier: 1
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -184,7 +208,7 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.9245283, g: 0.7224215, b: 0.004360993, a: 1}
+      key0: {r: 0.0039215744, g: 0.59933615, b: 0.9254902, a: 1}
       key1: {r: 1, g: 1, b: 1, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}

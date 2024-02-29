@@ -19,7 +19,6 @@ public class keyPickUp : MonoBehaviour, IInteract
     void Update()
     {
         RaycastHit hit;
-        Ray ray = Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f));
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, viewDistance))
         {
             if (hit.collider.gameObject == gameObject)
