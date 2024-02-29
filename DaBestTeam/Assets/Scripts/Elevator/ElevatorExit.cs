@@ -24,34 +24,29 @@ public class ElevatorExit : MonoBehaviour
         LinkedAnimator = GetComponent<Animator>();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void Update()
     {
-        if (other.CompareTag(SupportedTag))
+        if (gameManager.instance.canProgress && !LinkedController.ActiveElevator.isMoving)
         {
-            if (ElevatorPresent && gameManager.instance.canProgress)
-            {
-                LinkedAnimator.ResetTrigger("Close");
-                LinkedAnimator.SetTrigger("Open");
-                LinkedController.ActiveElevator.OpenDoors();
-            }
+            LinkedAnimator.ResetTrigger("Close");
+            LinkedAnimator.SetTrigger("Open");
+            LinkedController.ActiveElevator.OpenDoors();
         }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag(SupportedTag))
+        else
         {
             LinkedAnimator.ResetTrigger("Open");
             LinkedAnimator.SetTrigger("Close");
             LinkedController.ActiveElevator.CloseDoors();
         }
     }
+
     //Calls elevator to location
     public void OnCallElevator()
     {
         
         Debug.Log("Step 2");
         LinkedController.CallElevator(this, true);
+        LinkedController.ActiveElevator.isMoving = true;
     }
     //Departed calls animator
     public void OnElevatorDeparted(Elevator activeElevator)
@@ -67,9 +62,9 @@ public class ElevatorExit : MonoBehaviour
             Debug.Log("Step 6");
 
             AudioManager.instance.elevatorArrivedSound();
-            gameManager.instance.canProgress = false;
+        LinkedController.ActiveElevator.isMoving = false;
 
-            GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
             playerObject.transform.parent = null;
 
             LinkedAnimator.ResetTrigger("Close");

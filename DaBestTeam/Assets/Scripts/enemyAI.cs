@@ -15,6 +15,7 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] Transform shootPosition;
     [SerializeField] Transform headPosition;
     [SerializeField] AudioSource aud;
+    [SerializeField] GameObject healthDrop;
 
     [Header("--Stats--")]
     [Range(1, 50)][SerializeField] int HP;
@@ -145,6 +146,7 @@ public class enemyAI : MonoBehaviour, IDamage
         StartCoroutine(flashMat());
         if (HP <= 0)
         {
+            Instantiate(healthDrop, headPosition.position - new Vector3(0,0.5f,0), transform.rotation);
             Destroy(gameObject);
             gameManager.instance.updateEnemyCount(-1);
         }

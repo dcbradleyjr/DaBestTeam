@@ -16,6 +16,7 @@ public class Elevator : MonoBehaviour
     public ElevatorExit CurrentFloor { get; private set; } = null;
     public ElevatorExit TargetFloor { get; private set; } = null;
     public bool IsMoving { get; private set; } = false;
+    public bool IsOnBoard;
     private void Awake()
     {
         
@@ -26,7 +27,15 @@ public class Elevator : MonoBehaviour
     {
         transform.position = new Vector3(transform.position.x, StartingFloor.TargetY, transform.position.z);
         CurrentFloor = StartingFloor;
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        IsOnBoard = true;
+    }
 
+    private void OnTriggerExit(Collider other)
+    {
+        IsOnBoard = false;
     }
 
 

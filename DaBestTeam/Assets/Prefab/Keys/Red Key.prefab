@@ -20,6 +20,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.9137255
       objectReference: {fileID: 0}
+    - target: {fileID: 2508953537950972466, guid: 624d0313340469e49949baf792abf32a, type: 3}
+      propertyPath: myName
+      value: Red Key
+      objectReference: {fileID: 0}
     - target: {fileID: 3256984977248527757, guid: 624d0313340469e49949baf792abf32a, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -38,15 +42,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8806068796276134082, guid: 624d0313340469e49949baf792abf32a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -18.01
+      value: 32.28
       objectReference: {fileID: 0}
     - target: {fileID: 8806068796276134082, guid: 624d0313340469e49949baf792abf32a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.67
+      value: 0.89
       objectReference: {fileID: 0}
     - target: {fileID: 8806068796276134082, guid: 624d0313340469e49949baf792abf32a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.23
+      value: -8.465
       objectReference: {fileID: 0}
     - target: {fileID: 8806068796276134082, guid: 624d0313340469e49949baf792abf32a, type: 3}
       propertyPath: m_LocalRotation.w

@@ -247,7 +247,7 @@ Transform:
   m_GameObject: {fileID: 6148176487768521233}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0009092418, y: 1.6427274, z: 0.020909093}
+  m_LocalPosition: {x: -0.0009092418, y: 1.672, z: 0.020909093}
   m_LocalScale: {x: 0.90909094, y: 0.90909094, z: 0.90909094}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -350,15 +350,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8cf152a0a06b3dc47a7c6d40918d95a9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.4157429
+      value: 13.8183
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8cf152a0a06b3dc47a7c6d40918d95a9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.00000011920929
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8cf152a0a06b3dc47a7c6d40918d95a9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -9.200704
+      value: 15.871157
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8cf152a0a06b3dc47a7c6d40918d95a9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -465,12 +465,13 @@ MonoBehaviour:
   shootPosition: {fileID: 1513210425518125073}
   headPosition: {fileID: 7262628480974226159}
   aud: {fileID: -3216144504189623226}
+  healthDrop: {fileID: 2232845514739071274, guid: b352ce1a33ac35c47ae563318cf819aa, type: 3}
   HP: 3
   viewCone: 70
   shootCone: 30
   targetFaceSpeed: 7
-  roamPauseTime: 0
-  roamDistance: 5
+  roamPauseTime: 2
+  roamDistance: 10
   animSpeedTrans: 5
   bullet: {fileID: 3849281360500067930, guid: fc288ac6e34a5e347b8001f8a9016071, type: 3}
   shootRate: 0.7

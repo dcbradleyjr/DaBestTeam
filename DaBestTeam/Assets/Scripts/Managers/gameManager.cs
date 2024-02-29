@@ -20,6 +20,7 @@ public class gameManager : MonoBehaviour
     public Image playerHPBar;
     public Image playerStaminaBar;
     public GameObject FlashDMGPanel;
+    public GameObject FlashHealPanel;
     public TMP_Text MagazineMax;
     public TMP_Text MagazineCount;
     public TMP_Text weaponName;

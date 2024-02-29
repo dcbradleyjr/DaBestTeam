@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class playerController : MonoBehaviour, IDamage, IPushBack
+public class playerController : MonoBehaviour, IDamage, IPushBack, IHealth
 {
     [Header("--Components--")]
     [SerializeField] CharacterController controller;
@@ -192,10 +192,17 @@ public class playerController : MonoBehaviour, IDamage, IPushBack
         }
     }
 
+    public void healHP(int amount)
+    {
+        HP += amount;
+        updateHealthUI();
+        StartCoroutine(flashHeal());
+    }
+
     void updateUI()
     {
-        gameManager.instance.playerHPBar.fillAmount = (float)HP / HPOriginal;
-        gameManager.instance.playerStaminaBar.fillAmount = (float)Stamina / StaminaOriginal;
+        updateHealthUI();
+        updateStaminaUI();
     }
     void updateStaminaUI()
     {
@@ -234,10 +241,18 @@ public class playerController : MonoBehaviour, IDamage, IPushBack
         gameManager.instance.FlashDMGPanel.SetActive(false);
     }
 
+    IEnumerator flashHeal()
+    {
+        gameManager.instance.FlashHealPanel.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        gameManager.instance.FlashHealPanel.SetActive(false);
+    }
+
     public void Respawn()
     {
         HP = HPOriginal;
         Stamina = StaminaOriginal;
+        canSprint = true;
         updateUI();
         controller.enabled = false;
         transform.position = gameManager.instance.SpawnPoint.transform.position;
