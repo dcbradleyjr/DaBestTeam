@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: Shotgun
   m_EditorClassIdentifier: 
   bullet: {fileID: 3849281360500067930, guid: 3740d736a9ab1cd45bd142cf8073fc24, type: 3}
+  myName: Shotgun
   shootRate: 2
   reloadRate: 4
   ammoCur: 5
   ammoMax: 5
+  isAuto: 0
   model: {fileID: 5855586643228379229, guid: c9841888fa5041d499ada59f73087c6a, type: 3}
   hitEffect: {fileID: 0}
   shotSound: {fileID: 0}

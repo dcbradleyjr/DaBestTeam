@@ -55,7 +55,7 @@ public class playerGun : MonoBehaviour
     {
         AudioManager.instance.shootSound();
         isShooting = true;
-        Instantiate(bullet, shootPosition.position, transform.rotation);
+        Instantiate(bullet, shootPosition.position, shootPosition.transform.rotation);
         clipSize--;
         updateUI();
         yield return new WaitForSeconds(shootRate);

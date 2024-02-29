@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Rifle
   m_EditorClassIdentifier: 
   bullet: {fileID: 3849281360500067930, guid: 3740d736a9ab1cd45bd142cf8073fc24, type: 3}
+  myName: Rifle
   shootRate: 0.25
   reloadRate: 3
-  ammoCur: 24
+  ammoCur: 30
   ammoMax: 30
   isAuto: 1
   model: {fileID: 5313856188506331232, guid: 7444562fe5798e846a4045a93e123308, type: 3}

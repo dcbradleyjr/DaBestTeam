@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: Pistol
   m_EditorClassIdentifier: 
   bullet: {fileID: 3849281360500067930, guid: 3740d736a9ab1cd45bd142cf8073fc24, type: 3}
+  myName: Pistol
   shootRate: 1
   reloadRate: 2
   ammoCur: 8
   ammoMax: 8
+  isAuto: 0
   model: {fileID: 2738520558268228719, guid: 748d19574625db444877ca05561b6aea, type: 3}
   hitEffect: {fileID: 0}
   shotSound: {fileID: 0}
