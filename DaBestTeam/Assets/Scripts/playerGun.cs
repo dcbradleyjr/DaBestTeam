@@ -11,6 +11,7 @@ public class playerGun : MonoBehaviour
 
     [Header("--Attributes--")]
     [SerializeField] List<gunStats> gunList = new List<gunStats>();
+    [SerializeField] string weaponName;
     [SerializeField] float shootRate;
     [SerializeField] float reloadRate;
     [SerializeField] int clipSize;
@@ -90,6 +91,7 @@ public class playerGun : MonoBehaviour
 
         gameManager.instance.MagazineCount.text = clipSize.ToString();
         gameManager.instance.MagazineMax.text = maxClipSize.ToString();
+        gameManager.instance.weaponName.text = weaponName.ToString();
     }
 
     IEnumerator reloadingVisuals()
@@ -112,6 +114,7 @@ public class playerGun : MonoBehaviour
 
         gunList.Add(gun);
 
+        weaponName = gun.myName;
         shootRate = gun.shootRate;
         reloadRate = gun.reloadRate;
         maxClipSize = gun.ammoMax;
@@ -144,6 +147,7 @@ public class playerGun : MonoBehaviour
 
     void changeGun()
     {
+        weaponName = gunList[selectedGun].myName;
         shootRate = gunList[selectedGun].shootRate;
         reloadRate = gunList[selectedGun].reloadRate;
         maxClipSize = gunList[selectedGun].ammoMax;

@@ -986,7 +986,7 @@ Animator:
   m_GameObject: {fileID: 3212907935795108402}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 317a56890b5c8e74ab1d492a2c7fb608, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c18d0662834a06247a5479a7459b72b2, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -1024,6 +1024,8 @@ MonoBehaviour:
   maxInteractDist: 1
   maxInteractRadius: 0.5
   canSprint: 1
+  isSprinting: 0
+  isPlayingSteps: 0
 --- !u!143 &2690054102202319614
 CharacterController:
   m_ObjectHideFlags: 0

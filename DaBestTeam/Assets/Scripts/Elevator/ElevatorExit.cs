@@ -67,6 +67,7 @@ public class ElevatorExit : MonoBehaviour
             Debug.Log("Step 6");
 
             AudioManager.instance.elevatorArrivedSound();
+            gameManager.instance.canProgress = false;
 
             GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
             playerObject.transform.parent = null;

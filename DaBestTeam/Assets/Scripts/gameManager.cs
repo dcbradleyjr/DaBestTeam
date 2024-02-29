@@ -22,6 +22,7 @@ public class gameManager : MonoBehaviour
     public GameObject FlashDMGPanel;
     public TMP_Text MagazineMax;
     public TMP_Text MagazineCount;
+    public TMP_Text weaponName;
     public TMP_Text ReloadIndicator;
     public TMP_Text AmmoDivider;
     public TMP_Text keyCountDisplay;

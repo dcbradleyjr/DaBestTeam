@@ -38,6 +38,7 @@ public class playerController : MonoBehaviour, IDamage, IPushBack
     float playerSpeedOriginal;
     public bool isSprinting;
     Color StaminaColorOrig;
+    Color HealthColorOrig;
     private Vector3 lastPosition;
     private Vector3 currentVelocity;
     public bool isPlayingSteps;
@@ -51,6 +52,7 @@ public class playerController : MonoBehaviour, IDamage, IPushBack
         StaminaOriginal = Stamina;
         playerSpeedOriginal = playerSpeed;
         StaminaColorOrig = gameManager.instance.playerStaminaBar.color;
+        HealthColorOrig = gameManager.instance.playerHPBar.color;
         Respawn();
         lastPosition = transform.position;
         
@@ -182,7 +184,7 @@ public class playerController : MonoBehaviour, IDamage, IPushBack
     {
         AudioManager.instance.hurtSound();
         HP -= amount;
-        updateUI();
+        updateHealthUI();
         StartCoroutine(flashDMG());
         if (HP <= 0)
         {
@@ -210,6 +212,20 @@ public class playerController : MonoBehaviour, IDamage, IPushBack
         else
          gameManager.instance.playerStaminaBar.color = Color.red;
     }
+
+    void updateHealthUI()
+    {
+        float newAmount = (float)HP / HPOriginal;
+        gameManager.instance.playerHPBar.fillAmount = newAmount;
+
+        if (newAmount >= 0.6f)
+            gameManager.instance.playerHPBar.color = HealthColorOrig;
+        else if (newAmount < 0.6f && newAmount > 0.3f)
+            gameManager.instance.playerHPBar.color = new Color(1f, 0.5f, 0f);
+        else
+            gameManager.instance.playerHPBar.color = Color.red;
+    }
+
 
     IEnumerator flashDMG()
     {
