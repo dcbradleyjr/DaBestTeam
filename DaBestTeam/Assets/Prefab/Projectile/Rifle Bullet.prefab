@@ -57,7 +57,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 9047223077536168047}
-  damageAmount: 2
+  damageAmount: 3
   speed: 75
   destroyTime: 3
   tracerBullet: 0
