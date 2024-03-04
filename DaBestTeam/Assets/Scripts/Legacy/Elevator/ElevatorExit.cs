@@ -8,7 +8,7 @@ public class ElevatorExit : MonoBehaviour
 {
     
     [SerializeField] string _DisplayName;
-    [SerializeField] string SupportedTag = "Player";
+    //[SerializeField] string SupportedTag = "Player";
     [SerializeField] ElevatorController LinkedController;
     [SerializeField] Transform ElevatorTarget;
 
