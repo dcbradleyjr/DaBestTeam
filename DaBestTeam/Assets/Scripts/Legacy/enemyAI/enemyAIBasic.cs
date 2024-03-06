@@ -54,6 +54,8 @@ public class enemyAIBasic: MonoBehaviour, IDamage
         {
 
         }
+
+
     }
 
     bool canSeePlayer()
