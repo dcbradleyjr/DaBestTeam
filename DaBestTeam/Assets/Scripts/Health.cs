@@ -2,51 +2,48 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Health : MonoBehaviour
+public class Health : MonoBehaviour, IDamage, IHealth, IPushBack
 {
-    public float maxHealth;
 
-    [HideInInspector]
-    public float currentHealth;
-    EnemyAIAgent agent;
-    SkinnedMeshRenderer skinnedMeshRenderer;
-    
+    [Range(1, 50)][SerializeField] int HP;
+    int HPOriginal;
 
-    public float blinkIntensity;
-    public float blinkDuration;
-    float blinkTimer;
+    public UnityEngine.UI.Image HealthBar;
+    public GameObject EnemyUI;
 
+    // Start is called before the first frame update
     void Start()
     {
-        agent = GetComponent<EnemyAIAgent>();
-        skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
-        currentHealth = maxHealth;
-
-        var rigidBodies = GetComponentInChildren<Rigidbody>();
+        HPOriginal = HP;
     }
 
-
-    public void TakeDamage(float amount, Vector3 direction)
-    {
-        currentHealth -= amount;
-        if (currentHealth <= 0.0f)
-        {
-            Die(direction);
-        }
-    }
-
-    private void Die(Vector3 direction)
-    {
-        EnemyAIDeathState deathState = agent.stateMachine.GetState(AIStateId.Death) as EnemyAIDeathState;
-        deathState.direction = direction;
-        agent.stateMachine.ChangeState(AIStateId.Death);
-    }
-    
+    // Update is called once per frame
     void Update()
     {
-        blinkTimer -= Time.deltaTime;
-        float lerp = Mathf.Clamp01(blinkTimer / blinkDuration);
-        float intensity = (lerp * blinkIntensity) + 1.0f;
-        skinnedMeshRenderer.material.color = Color.red * intensity;
+        
+    }
+
+    public void takeDamage(int amount)
+    {
+
+    }
+
+    public void healHP(int amount)
+    {
+        if (HP + amount > HPOriginal)
+        {
+            HP = HPOriginal;
+        }
+        else
+        {
+            HP += amount;
+        }
+/*        updateHealthUI();
+        StartCoroutine(flashHeal());*/
+    }
+
+    public void pushBackDir(Vector3 dir)
+    {
+        
     }
 }
