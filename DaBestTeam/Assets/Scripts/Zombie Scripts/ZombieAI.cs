@@ -11,12 +11,16 @@ Attack,
 Death*/
 
 
-public class ZombieAI : MonoBehaviour
+public class ZombieAI : MonoBehaviour, IDamage, IPushBack
 {
 
     [SerializeField] Transform headPosition;
     [SerializeField] NavMeshAgent agent;
+    [SerializeField] GameObject[] Ragdoll;
+    [SerializeField] GameObject RagDollBody;
+    [SerializeField] float dropRate;
 
+    [SerializeField] int damageAmount;
 
     public bool canHoldWeapons;
 
@@ -46,7 +50,6 @@ public class ZombieAI : MonoBehaviour
     bool playerInRange;
     float attackRange = 2f;
 
-    
     public enum AIStateId { Roam = 1, ChasePlayer = 2, Attack = 3, Death = 4 };
 
     public void Start()
@@ -136,9 +139,13 @@ public class ZombieAI : MonoBehaviour
         Debug.Log("Pow");
         while (true)
         {
-            // Implement your attack behavior here
-            // For example, reduce player health, play attack animation, etc.
 
+            IDamage dmg = GetComponent<IDamage>();
+            if (dmg != null)
+            {
+                dmg.takeDamage(damageAmount);
+            }
+            
             // Check if the player is still in range
             float distanceToPlayer = Vector3.Distance(transform.position, gameManager.instance.player.transform.position);
             if (distanceToPlayer > attackRange)
@@ -153,11 +160,20 @@ public class ZombieAI : MonoBehaviour
     }
     public IEnumerator deathState()
     {
-        while(HP <= 0)
-        {
+        
+            bool dropItem = Random.value <= dropRate;// Drop rate set on SerializedField .01 = 1%
+
+            if (dropItem)
+            {
+                Instantiate(RagDollBody, transform.position, Quaternion.identity);
+            }
+
+
+            int randomIndex = Random.Range(0, Ragdoll.Length);
+            Instantiate(Ragdoll[randomIndex],transform.position, Quaternion.identity);
             Destroy(gameObject);
             yield return null;
-        }
+        
     }
 
     void faceTarget()
@@ -171,34 +187,6 @@ public class ZombieAI : MonoBehaviour
         HealthBar.fillAmount = (float)HP / HPOriginal;
     }
 
-    bool canSeePlayer()
-    {
-
-        playerDirection = gameManager.instance.player.transform.position;
-        angleToPlayer = Vector3.Angle(new Vector3(playerDirection.x, 0, playerDirection.z), transform.forward);
-        Debug.Log(angleToPlayer);
-        Debug.DrawRay(headPosition.position, playerDirection);
-
-        RaycastHit hit;
-        if (Physics.Raycast(headPosition.position, playerDirection, out hit))
-        {
-            Debug.Log(hit.collider.name);
-
-            if (hit.collider.CompareTag("Player") && angleToPlayer <= viewCone)
-            {
-                agent.SetDestination(gameManager.instance.player.transform.position);
-
-                if (agent.remainingDistance < agent.stoppingDistance)
-                {
-                    faceTarget();
-                }
-
-                agent.stoppingDistance = stoppingDistanceOrig;
-                return true;
-            }
-        }
-        return false;
-    }
 
     void OnTriggerEnter(Collider other)
     {
@@ -231,8 +219,13 @@ public class ZombieAI : MonoBehaviour
 
         if (HP <= 0)
         {
-            Destroy(gameObject);
+            state = AIStateId.Death;
         }
+    }
+
+    public void pushBackDir(Vector3 dir)
+    {
+        agent.velocity += (dir / 2);
     }
 }
 
