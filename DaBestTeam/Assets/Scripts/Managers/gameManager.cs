@@ -17,17 +17,8 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuLose;
 
     [Header("--HUD--")]
-   /* public Image playerHPBar;
-    public Image playerStaminaBar;
-    public GameObject FlashDMGPanel;
-    public GameObject FlashHealPanel;
-    public TMP_Text MagazineMax;
-    public TMP_Text MagazineCount;
-    public TMP_Text weaponName;
-    public TMP_Text ReloadIndicator;
-    public TMP_Text AmmoDivider;*/
+    public int HP;
 
-    
 
     [Header("--Player Info--")]
     public GameObject player;
@@ -78,33 +69,7 @@ public class gameManager : MonoBehaviour
         menuActive = null;
     }
 
-   /* public void updateEnemyCount(int amount)
-    {
-        enemyCount += amount;
-        enemyCountDisplay.text = enemyCount.ToString();
-        if (isObjectiveComplete())
-        {
-            canProgress = true;
-            if (currentLevel == levelCount)
-                youWin();
-        }
-    }
-    public void updateKeyCount(int amount,string myName)
-    {
-        keyCount += amount;
-        keyCountDisplay.text = keyCount.ToString();
-        if(amount == -1) 
-        StartCoroutine(pickupNotify(myName));
-
-
-        if(isObjectiveComplete())
-        {
-            canProgress = true;
-            if (currentLevel == levelCount)
-                youWin();
-        }
-    }*/
-
+   
    
     public void youWin()
     {
@@ -122,6 +87,9 @@ public class gameManager : MonoBehaviour
         menuActive.SetActive(true);
     }
 
-  
+    public void takeDamage(int damageAmount)
+    {
+        HP -= damageAmount;
+    }
 }
 

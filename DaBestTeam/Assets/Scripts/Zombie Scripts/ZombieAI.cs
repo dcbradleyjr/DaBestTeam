@@ -20,10 +20,16 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     [SerializeField] GameObject RagDollBody;
     [SerializeField] float dropRate;
 
+
+    [SerializeField] Animator anim;
+    [SerializeField] GameObject[] meshMilitaryOptions;
+    [SerializeField] GameObject[] meshZombie;
+    [SerializeField] GameObject[] zombieWeapon;
+
     [SerializeField] int damageAmount;
 
     public bool canHoldWeapons;
-
+    public bool randomMesh;
 
     [Header("--Stats--")]
     [Range(1, 50000)][SerializeField] int HP;
@@ -59,7 +65,8 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
         startingPosition = transform.position;
         stoppingDistanceOrig = agent.stoppingDistance;
         updateUI();
-
+        chooseRandomMesh();
+        chooseWeapon();
     }
 
     public void Update()
@@ -94,7 +101,6 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
 
             }
         }
-
     public IEnumerator roamState()
     {
         while (true)
@@ -139,13 +145,9 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
         Debug.Log("Pow");
         while (true)
         {
-
-            IDamage dmg = GetComponent<IDamage>();
-            if (dmg != null)
-            {
-                dmg.takeDamage(damageAmount);
-            }
             
+            gameManager.instance.takeDamage(damageAmount); //Update when player is complete
+
             // Check if the player is still in range
             float distanceToPlayer = Vector3.Distance(transform.position, gameManager.instance.player.transform.position);
             if (distanceToPlayer > attackRange)
@@ -226,6 +228,29 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     public void pushBackDir(Vector3 dir)
     {
         agent.velocity += (dir / 2);
+    }
+
+    public void chooseRandomMesh()
+    {
+        if (randomMesh && meshZombie.Length > 0)
+        {
+            int randomIndex = Random.Range(0, meshZombie.Length);
+            meshZombie[randomIndex].gameObject.SetActive(true);
+        }
+        if (canHoldWeapons && !randomMesh)
+        {
+            int randomIndex = Random.Range(0, meshMilitaryOptions.Length);
+            meshMilitaryOptions[randomIndex].gameObject.SetActive(true);
+        }
+                
+    }
+    public void chooseWeapon()
+    {
+        if (canHoldWeapons)
+        {
+            int randomIndex = Random.Range(0, zombieWeapon.Length);
+            zombieWeapon[randomIndex].gameObject.SetActive(true);
+        }
     }
 }
 

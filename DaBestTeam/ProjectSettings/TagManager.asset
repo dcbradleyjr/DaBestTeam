@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - WeaponSlot
   - Ground
+  - Zombie
   layers:
   - Default
   - TransparentFX
