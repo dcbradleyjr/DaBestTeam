@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 //using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
@@ -119,7 +119,7 @@ public class enemyAIBasic: MonoBehaviour, IDamage
         if (HP <= 0)
         {
             Destroy(gameObject);
-            gameManager.instance.updateEnemyCount(-1);
+
         }
     }
 
@@ -145,3 +145,4 @@ public class enemyAIBasic: MonoBehaviour, IDamage
         HealthBar.fillAmount = (float)HP / HPOriginal;
     }
 }
+*/

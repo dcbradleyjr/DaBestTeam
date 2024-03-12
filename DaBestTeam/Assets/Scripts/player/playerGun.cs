@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -179,3 +179,4 @@ public class playerGun : MonoBehaviour
         return clipSize <= 0 && !isReloading || Input.GetButtonDown("Reload") && !isReloading && clipSize != maxClipSize;
     }
 }
+*/

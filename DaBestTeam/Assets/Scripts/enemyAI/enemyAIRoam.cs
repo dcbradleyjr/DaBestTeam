@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 //using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
@@ -233,3 +233,4 @@ public class enemyAIRoam : MonoBehaviour, IDamage
         HealthBar.fillAmount = (float)HP / HPOriginal;
     }
 }
+*/

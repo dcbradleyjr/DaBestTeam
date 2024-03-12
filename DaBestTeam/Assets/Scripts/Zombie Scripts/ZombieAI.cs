@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-
+using UnityEngine.UIElements;
 
 /*Idle,
 Roam,
@@ -15,16 +15,11 @@ public class ZombieAI : MonoBehaviour
 {
 
     [SerializeField] Transform headPosition;
+    [SerializeField] NavMeshAgent agent;
 
-    public NavMeshAgent agent;
-    private AIStateId currentState;
 
     public bool canHoldWeapons;
-    public bool canRoam;
 
-    
-
-    bool destinationChosen;
 
     [Header("--Stats--")]
     [Range(1, 50)][SerializeField] int HP;
@@ -32,116 +27,136 @@ public class ZombieAI : MonoBehaviour
     [Range(0, 45)][SerializeField] int roamDistance;
     [Range(30, 180)][SerializeField] int viewCone;
     [Range(1, 10)][SerializeField] int targetFaceSpeed;
+    [SerializeField] float attackCooldown;
+
 
     [Header("--UI--")]
     public UnityEngine.UI.Image HealthBar;
     public GameObject EnemyUI;
 
 
+    [SerializeField] private AIStateId _state = AIStateId.Roam;
+
     int HPOriginal;
     float angleToPlayer;
     Vector3 playerDirection;
     Vector3 startingPosition;
     float stoppingDistanceOrig;
-    public enum AIStateId {Watch = 1, Roam = 2, ChasePlayer = 3, Attack = 4, Death = 5 };
+    bool destChosen;
+    bool playerInRange;
+    float attackRange = 2f;
+    
+
+    public enum AIStateId { Roam = 1, ChasePlayer = 2, Attack = 3, Death = 4 };
 
     public void Start()
     {
-        currentState = AIStateId.Watch;
+        state = AIStateId.Roam;
         HPOriginal = HP;
         startingPosition = transform.position;
         stoppingDistanceOrig = agent.stoppingDistance;
         updateUI();
+
     }
 
     public void Update()
     {
-        switch (currentState)
-        {
-            case AIStateId.Watch:
-                StartCoroutine(WatchState());
-                break;
-            case AIStateId.Roam:
-                if (!canRoam)
-                {
-                    StartCoroutine(roamState());
-                }
-                else
-                {
-                    StartCoroutine(idleState());
-                }
-
-                break;
-            case AIStateId.ChasePlayer:
-
-                break;
-            case AIStateId.Attack:
-
-                break;
-            case AIStateId.Death:
-
-                break;
-
-        }
+        
     }
-
-    public IEnumerator idleState()
-    {
-        yield return this;
-    }
-    public IEnumerator WatchState()
-    {
-        playerDirection = gameManager.instance.playerHead.position - headPosition.position;
-        Vector3.Angle(new Vector3(playerDirection.x, 0, playerDirection.z), transform.forward);
-        Debug.DrawRay(headPosition.position, playerDirection);
-
-        RaycastHit hit;
-        if (Physics.Raycast(headPosition.position, playerDirection, out hit))
+    public AIStateId state
         {
-            if (hit.collider.CompareTag("Player") && angleToPlayer <= viewCone)
-            {
-                agent.SetDestination(gameManager.instance.player.transform.position);
-                
-                StartCoroutine(attackState());
+        get {return _state;}
 
-                if (agent.remainingDistance < agent.stoppingDistance)
-                    faceTarget();
+        set {
 
-                agent.stoppingDistance = stoppingDistanceOrig;
+            StopAllCoroutines();
+            _state = value;
+
+            switch (state)
+                {
+                case AIStateId.Roam:
+                        StartCoroutine(roamState());
+                    break;
+                case AIStateId.ChasePlayer:
+                        StartCoroutine(chaseState());
+                    break;
+                case AIStateId.Attack:
+                        StartCoroutine(attackState());
+                    break;
+                case AIStateId.Death:
+                        StartCoroutine (deathState());
+                    break;
+
+                }
+
             }
         }
-        yield return this;
-    }
+
     public IEnumerator roamState()
     {
-        if (agent.remainingDistance < 0.05f && !destinationChosen)
+        while (true)
         {
-            AudioManager.instance.enemyStepSound();
-            destinationChosen = true;
-            agent.stoppingDistance = 0;
+            
+            if (!agent.pathPending && agent.remainingDistance < 0.1f)
+            {
+                Debug.Log("Roaming");
+                Vector3 randomPos = Random.insideUnitSphere * roamDistance;
+                randomPos += startingPosition;
+                NavMeshHit hit;
+                NavMesh.SamplePosition(randomPos, out hit, roamDistance, 1);
+                agent.SetDestination(hit.position);
+                
+            }
+
             yield return new WaitForSeconds(roamPauseTime);
-
-            Vector3 randomPos = Random.insideUnitSphere * roamDistance;
-            randomPos += startingPosition;
-
-            NavMeshHit hit;
-            NavMesh.SamplePosition(randomPos, out hit, roamDistance, 1);
-            agent.SetDestination(hit.position);
-            destinationChosen = false;
         }
-        yield return this;
+
     }
     public IEnumerator chaseState()
     {
-        yield return this;
+        while (true)
+        {
+            float distanceToPlayer = Vector3.Distance(transform.position, gameManager.instance.player.transform.position);
+            if (distanceToPlayer < attackRange)
+            {
+                Debug.Log("Log");
+                // Transition to attack state
+                StartCoroutine(attackState());
+                // Exit chase state
+                yield break;
+            }
+            // Chase the player
+            agent.SetDestination(gameManager.instance.player.transform.position);
+
+            yield return null;
+        }
     }
     public IEnumerator attackState()
     {
-        yield return this;
+        Debug.Log("Pow");
+        while (true)
+        {
+            // Implement your attack behavior here
+            // For example, reduce player health, play attack animation, etc.
+
+            // Check if the player is still in range
+            float distanceToPlayer = Vector3.Distance(transform.position, gameManager.instance.player.transform.position);
+            if (distanceToPlayer > attackRange)
+            {
+                state = AIStateId.ChasePlayer;
+                yield break;
+            }
+
+            // Attack cooldown
+            yield return new WaitForSeconds(attackCooldown);
+        }
     }
     public IEnumerator deathState()
     {
-        yield return this;
+        while(true)
+        {
+
+        }
     }
 
     void faceTarget()
@@ -154,4 +169,68 @@ public class ZombieAI : MonoBehaviour
     {
         HealthBar.fillAmount = (float)HP / HPOriginal;
     }
+
+    bool canSeePlayer()
+    {
+
+        playerDirection = gameManager.instance.player.transform.position;
+        angleToPlayer = Vector3.Angle(new Vector3(playerDirection.x, 0, playerDirection.z), transform.forward);
+        Debug.Log(angleToPlayer);
+        Debug.DrawRay(headPosition.position, playerDirection);
+
+        RaycastHit hit;
+        if (Physics.Raycast(headPosition.position, playerDirection, out hit))
+        {
+            Debug.Log(hit.collider.name);
+
+            if (hit.collider.CompareTag("Player") && angleToPlayer <= viewCone)
+            {
+                agent.SetDestination(gameManager.instance.player.transform.position);
+
+                if (agent.remainingDistance < agent.stoppingDistance)
+                {
+                    faceTarget();
+                }
+
+                agent.stoppingDistance = stoppingDistanceOrig;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerInRange = true;
+
+            state = AIStateId.ChasePlayer;
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerInRange = false;
+        }
+        agent.stoppingDistance = 0;
+    }
+    public void takeDamage(int amount)
+    {
+
+        state = AIStateId.ChasePlayer;
+
+        HP -= amount;
+        updateUI();
+        if (!EnemyUI.gameObject.activeSelf)
+            EnemyUI.gameObject.SetActive(true);
+
+        if (HP <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
 }
+
