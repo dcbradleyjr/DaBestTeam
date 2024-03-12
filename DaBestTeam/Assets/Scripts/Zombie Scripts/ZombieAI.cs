@@ -22,7 +22,7 @@ public class ZombieAI : MonoBehaviour
 
 
     [Header("--Stats--")]
-    [Range(1, 50)][SerializeField] int HP;
+    [Range(1, 50000)][SerializeField] int HP;
     [Range(1, 8)][SerializeField] int roamPauseTime;
     [Range(0, 45)][SerializeField] int roamDistance;
     [Range(30, 180)][SerializeField] int viewCone;
@@ -45,8 +45,8 @@ public class ZombieAI : MonoBehaviour
     bool destChosen;
     bool playerInRange;
     float attackRange = 2f;
-    
 
+    
     public enum AIStateId { Roam = 1, ChasePlayer = 2, Attack = 3, Death = 4 };
 
     public void Start()
@@ -61,7 +61,7 @@ public class ZombieAI : MonoBehaviour
 
     public void Update()
     {
-        
+        takeDamage(1);
     }
     public AIStateId state
         {
@@ -153,9 +153,10 @@ public class ZombieAI : MonoBehaviour
     }
     public IEnumerator deathState()
     {
-        while(true)
+        while(HP <= 0)
         {
-
+            Destroy(gameObject);
+            yield return null;
         }
     }
 
@@ -217,6 +218,7 @@ public class ZombieAI : MonoBehaviour
         }
         agent.stoppingDistance = 0;
     }
+
     public void takeDamage(int amount)
     {
 
