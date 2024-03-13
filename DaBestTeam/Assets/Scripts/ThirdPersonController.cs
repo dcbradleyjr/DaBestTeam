@@ -8,10 +8,6 @@ public class ThirdPersonController : MonoBehaviour
     [SerializeField] float jumpHeight = 1.0f;
     [SerializeField] float gravityValue = -9.81f;
     [SerializeField] float rotationSpeed = 4f;
-    [SerializeField] float bulletHitMissDistance = 25f;
-    [SerializeField] GameObject bulletPrefab;
-    //[SerializeField] Transform shootPoint;
-    [SerializeField] Transform bulletParent;
     [SerializeField] float animationSmoothTime = 0.1f;
     [SerializeField] float animationPlayTransition = 0.15f;
 
@@ -23,7 +19,6 @@ public class ThirdPersonController : MonoBehaviour
 
     private InputAction moveAction;
     private InputAction jumpAction;
-    InputAction shootAction;
 
     Animator animator;
     int jumpAnimation;
@@ -42,7 +37,6 @@ public class ThirdPersonController : MonoBehaviour
             Debug.Log("Not found");
         moveAction = input.actions["Move"];
         jumpAction = input.actions["Jump"];
-        shootAction = input.actions["Shoot"];
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -52,33 +46,6 @@ public class ThirdPersonController : MonoBehaviour
         moveXAnimationParameterId = Animator.StringToHash("MoveX");
         moveZAnimationParameterId = Animator.StringToHash("MoveZ");
     }
-    //
-    //private void OnEnable()
-    //{
-    //    shootAction.performed += _ => ShootGun();
-    //}
-
-    //private void OnDisable()
-    //{
-    //    shootAction.performed -= _ => ShootGun();
-    //}
-
-    //private void ShootGun()
-    //{
-    //    RaycastHit hit;
-    //    GameObject bullet = GameObject.Instantiate(bulletPrefab, shootPoint.position, Quaternion.identity, bulletParent);
-    //    BulletController bulletController = bullet.GetComponent<BulletController>();
-    //    if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out hit, Mathf.Infinity))
-    //    {
-    //        bulletController.target = hit.point;
-    //        bulletController.hit = true;
-    //    }
-    //    else
-    //    {
-    //        bulletController.target = cameraTransform.position + cameraTransform.forward * bulletHitMissDistance;
-    //        bulletController.hit = false;
-    //    }
-    //}
 
     void Update()
     {

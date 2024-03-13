@@ -7,8 +7,10 @@ TagManager:
   - SpawnPoint
   - Waypoint
   - Enemy
-  - WeaponSlot
   - Ground
+  - MeleeSlot
+  - PistolSlot
+  - GunSlot
   layers:
   - Default
   - TransparentFX
