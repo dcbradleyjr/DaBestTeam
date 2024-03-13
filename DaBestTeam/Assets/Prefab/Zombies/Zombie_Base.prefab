@@ -2994,7 +2994,7 @@ MonoBehaviour:
   anim: {fileID: 8406844948181873872}
   headPosition: {fileID: 2765989629564435325}
   meshMilitaryOptions:
-  - {fileID: 0}
+  - {fileID: 1938837853794670, guid: 30c23f6bcd4f35648bbfc61c9f671e51, type: 3}
   meshZombie:
   - {fileID: 3088979243887671604}
   - {fileID: 5629769369825505383}

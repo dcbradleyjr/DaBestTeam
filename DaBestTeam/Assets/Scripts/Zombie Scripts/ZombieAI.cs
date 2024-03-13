@@ -115,7 +115,6 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     {
         while (true)
         {
-            
             if (!agent.pathPending && agent.remainingDistance < 0.1f)
             {
                 Debug.Log("Roaming");
@@ -181,6 +180,8 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
 
         this.GetComponent<NavMeshAgent>().enabled = false;
 
+        this.GetComponent<Collider>().enabled = false;
+
         EnableRagdoll();
 
         bool dropItem = Random.value <= dropRate;// Drop rate set on SerializedField .01 = 1%
@@ -213,6 +214,7 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
         {
             playerInRange = true;
 
+            if (state  != AIStateId.Death)
             state = AIStateId.ChasePlayer;
         }
     }
@@ -239,7 +241,7 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
             state = AIStateId.Death;
             return;
         }
-
+        else if (HP > 0) 
         state = AIStateId.ChasePlayer;
     }
 

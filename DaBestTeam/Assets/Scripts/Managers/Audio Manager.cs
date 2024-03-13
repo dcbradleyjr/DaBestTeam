@@ -1,142 +1,78 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class AudioManager : MonoBehaviour
 {
-    [Header("----Component----")]
     public static AudioManager instance;
-   
-    [Header("----Player Audio----")]
-    [SerializeField] AudioSource audioPlayer;
-    [SerializeField] AudioClip[] playerSteps;
-    [Range(0, 1)][SerializeField] float playerStepVol;
-    [Range(0, 1)][SerializeField] float playerStepSpeed;
-    [Range(0, 1)][SerializeField] float playerSprintSpeed;
-    [SerializeField] AudioClip[] soundHurt;
-    [Range(0, 1)][SerializeField] float soundHurtVol;
 
-    [Header("----Weapon PickUp Audio----")]
-    [SerializeField] AudioSource audioWeapon;
-    [SerializeField] AudioClip[] weaponShoot;
-    [Range(0, 1)][SerializeField] float weaponShootVol;
-    [SerializeField] AudioClip[] weaponReload;
-    [Range(0, 1)][SerializeField] float weaponReloadVol;
-
-    [Header("----Level Audio----")]
-    [SerializeField] AudioSource audioElevator;    
-    [SerializeField] AudioClip[] elevatorArrived;
-    [Range(0, 1)][SerializeField] float elevatorArrivedVol;
-
-
-    [Header("----Enemy Audio----")]
-    [SerializeField] AudioSource audioEnemy;
-    [SerializeField] AudioClip[] enemySteps;
-    [Range(0, 1)][SerializeField] float enemyStepVol;
-    [Range(0, 1)][SerializeField] float enemyStepSpeed;
-    [Range(0, 1)][SerializeField] float enemySprintSpeed;
-    [SerializeField] AudioClip[] enemySoundHurt;
-    [Range(0, 1)][SerializeField] float enemySoundHurtVol;
-    [SerializeField] AudioClip[] enemyShoot;
-    [Range (0, 1)][SerializeField] float enemyShootVol;
-
-    bool isPlayingSteps;
-    bool isSprinting;
-    bool isPlayingEnemySteps;
-
+    public Sound[] musicSounds, sfxSounds;
+    public AudioSource musicSource, sfxSource;
 
     private void Awake()
     {
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject); // Optionally, to keep AudioManager persistent across scenes
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Destroy(gameObject); // If another AudioManager instance already exists, destroy this one
+            Destroy(gameObject);
         }
     }
 
-
-    public void hurtSound()
+    private void Start()
     {
-        audioPlayer.PlayOneShot(soundHurt[Random.Range(0, soundHurt.Length)], soundHurtVol);
+        PlayMusic("Theme");
     }
-
-    public void playFootSteps()
+    public void PlayMusic(string name)
     {
-        if (!isPlayingSteps)
+        Sound s = Array.Find(musicSounds, x => x.name == name);
+
+        if (s == null)
         {
-            StartCoroutine(ResetIsPlayingSteps());
+            Debug.Log("Not Found");
         }
-        
-    }
-
-    IEnumerator ResetIsPlayingSteps()
-    {
-        isPlayingSteps = true; 
-
-        float delay = isSprinting ? playerStepSpeed : playerSprintSpeed; 
-        yield return new WaitForSeconds(delay); 
-
-        int randomIndex = Random.Range(0, playerSteps.Length); 
-        audioPlayer.PlayOneShot(playerSteps[randomIndex], playerStepVol); 
-
-        yield return new WaitForSeconds(playerSteps[randomIndex].length); 
-
-        isPlayingSteps = false;
-
-    }
-
-    public void shootSound()
-    {
-        audioWeapon.PlayOneShot(weaponShoot[Random.Range(0, (weaponShoot.Length))], weaponShootVol);
-    }
-
-    public void reloadSound()
-    {
-        audioWeapon.PlayOneShot(weaponReload[Random.Range(0, weaponReload.Length)], weaponReloadVol);
-    }
-
-    public void enemyStepSound()
-    {
-        if (!isPlayingEnemySteps) 
+        else
         {
-            StartCoroutine(ResetIsPlayingEnemySteps());
+            musicSource.clip = s.clip;
+            musicSource.Play();
         }
     }
 
-    IEnumerator ResetIsPlayingEnemySteps()
+    public void PlaySFX(string name)
     {
-        isPlayingEnemySteps = true;
+        Sound s = Array.Find(sfxSounds, x => x.name == name);
 
-        float delay = isSprinting ? enemyStepSpeed : enemySprintSpeed;
-        yield return new WaitForSeconds(delay);
-
-        int randomIndex = Random.Range(0, enemySteps.Length);
-        audioEnemy.PlayOneShot(enemySteps[randomIndex], enemyStepVol);
-
-        yield return new WaitForSeconds(enemySteps[randomIndex].length);
-
-        isPlayingEnemySteps = false;
-
+        if (s == null)
+        {
+            Debug.Log("Not Found");
+        }
+        else
+        {
+            sfxSource.PlayOneShot(s.clip);
+            
+        }
     }
 
-    public void enemyHurtSound()
+    public void ToggleMusic()
     {
-        audioEnemy.PlayOneShot(enemySoundHurt[Random.Range(0, enemySoundHurt.Length)], enemySoundHurtVol);
+        musicSource.mute = !musicSource.mute;
+    }
+    public void ToggleSFX()
+    {
+        sfxSource.mute = !sfxSource.mute;
     }
 
-    public void enemyShootSound(AudioSource enemy)
+    public void MusicVolume(float volume)
     {
-        enemy.PlayOneShot(enemyShoot[Random.Range(0, enemyShoot.Length)], enemyShootVol);
+        musicSource.volume = volume;
     }
-
-    public void elevatorArrivedSound()
+    public void SFXVolume(float volume)
     {
-        audioElevator.PlayOneShot(elevatorArrived[Random.Range(0, elevatorArrived.Length)], elevatorArrivedVol);
+        sfxSource.volume = volume;
     }
-
     
 }

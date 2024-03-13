@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Xml.Linq;
+using UnityEngine.SceneManagement;
 
 public class gameManager : MonoBehaviour
 {
@@ -15,15 +16,19 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
+    [SerializeField] public GameObject MainMenu;
 
     [Header("--HUD--")]
-    public int HP;
-    public int playerCurrency;
+    public Image playerHPBar;
+    public Image playerStaminaBar;
+    public GameObject FlashDMGPanel;
+    public GameObject FlashHealPanel;
 
     [Header("--Player Info--")]
     public GameObject player;
     public GameObject SpawnPoint;
-
+    int HP;
+    int playerCurrency;
 
     public bool isPaused;
 
@@ -39,7 +44,7 @@ public class gameManager : MonoBehaviour
         instance = this;
         player = GameObject.FindWithTag("Player");
         SpawnPoint = GameObject.FindWithTag("SpawnPoint");
-
+        
     }
 
     // Update is called once per frame
@@ -50,6 +55,11 @@ public class gameManager : MonoBehaviour
             statePaused();
             menuActive = menuPause;
             menuActive.SetActive(isPaused);
+        }
+        
+        if (SceneManager.GetActiveScene().name != "MainMenu")
+        {
+            MainMenu.gameObject.SetActive(false);
         }
     }
 
@@ -88,7 +98,7 @@ public class gameManager : MonoBehaviour
         menuActive = menuLose;
         menuActive.SetActive(true);
     }
-
+    
     public void takeDamage(int damageAmount)
     {
         HP -= damageAmount;
@@ -119,6 +129,8 @@ public class gameManager : MonoBehaviour
     {
         return playerCurrency;
     }
+
+    
 
 }
 
