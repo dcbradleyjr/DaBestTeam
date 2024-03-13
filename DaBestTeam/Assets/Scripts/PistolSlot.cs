@@ -5,6 +5,7 @@ public class PistolSlot : MonoBehaviour
 {
     [SerializeField] PlayerInput input;
     [SerializeField] GameObject bulletPrefab;
+    [SerializeField] GameObject muzzleFlash;
     [SerializeField] Transform shootPoint;
     [SerializeField] Animator animator;
     [SerializeField] float bulletHitMissDistance = 25f;
@@ -45,6 +46,7 @@ public class PistolSlot : MonoBehaviour
         {
             RaycastHit hit;
             GameObject bullet = GameObject.Instantiate(bulletPrefab, shootPoint.position, Quaternion.identity);
+            Instantiate(muzzleFlash,shootPoint.position, shootPoint.rotation);
             BulletController bulletController = bullet.GetComponent<BulletController>();
             if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out hit, Mathf.Infinity))
             {
