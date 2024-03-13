@@ -17,32 +17,15 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuLose;
 
     [Header("--HUD--")]
-    public Image playerHPBar;
-    public Image playerStaminaBar;
-    public GameObject FlashDMGPanel;
-    public GameObject FlashHealPanel;
-    public TMP_Text MagazineMax;
-    public TMP_Text MagazineCount;
-    public TMP_Text weaponName;
-    public TMP_Text ReloadIndicator;
-    public TMP_Text AmmoDivider;
-    public TMP_Text keyCountDisplay;
-    public TMP_Text enemyCountDisplay;
-    public TMP_Text keyObtained;
+    public int HP;
+
 
     [Header("--Player Info--")]
     public GameObject player;
-    public GameObject playerGunSlot;
-    public Transform playerHead;
     public GameObject SpawnPoint;
-    public playerController playerScript;
-    public playerGun playerGun;
 
 
     public bool isPaused;
-    public bool canProgress;
-    public int currentLevel;
-    public bool canOpen;
 
     int enemyCount;
     int keyCount;
@@ -53,11 +36,8 @@ public class gameManager : MonoBehaviour
     {
         instance = this;
         player = GameObject.FindWithTag("Player");
-        playerGunSlot = GameObject.FindWithTag("WeaponSlot");
-        playerHead = player.transform.Find("HeadPosition");
         SpawnPoint = GameObject.FindWithTag("SpawnPoint");
-        playerScript = player.GetComponent<playerController>();
-        playerGun = playerGunSlot.GetComponent<playerGun>();
+
     }
 
     // Update is called once per frame
@@ -89,38 +69,8 @@ public class gameManager : MonoBehaviour
         menuActive = null;
     }
 
-    public void updateEnemyCount(int amount)
-    {
-        enemyCount += amount;
-        enemyCountDisplay.text = enemyCount.ToString();
-        if (isObjectiveComplete())
-        {
-            canProgress = true;
-            if (currentLevel == levelCount)
-                youWin();
-        }
-    }
-    public void updateKeyCount(int amount,string myName)
-    {
-        keyCount += amount;
-        keyCountDisplay.text = keyCount.ToString();
-        if(amount == -1) 
-        StartCoroutine(pickupNotify(myName));
-
-
-        if(isObjectiveComplete())
-        {
-            canProgress = true;
-            if (currentLevel == levelCount)
-                youWin();
-        }
-    }
-
-    public void updateLevelCount()
-    {
-        levelCount++;
-    }
-
+   
+   
     public void youWin()
     {
         // you win!!
@@ -137,22 +87,9 @@ public class gameManager : MonoBehaviour
         menuActive.SetActive(true);
     }
 
-    bool isObjectiveComplete()
+    public void takeDamage(int damageAmount)
     {
-        if(enemyCount <= 0 && keyCount <= 0) return true;
-        else return false;
-    }
-
-    IEnumerator pickupNotify(string myName)
-    {
-        keyObtained.text = myName + " Obtained";
-        yield return new WaitForSeconds(1.3f);
-        keyObtained.text = "";
-    }
-
-    public void fanAnimation()
-    {
-        
+        HP -= damageAmount;
     }
 }
 

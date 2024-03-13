@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,7 +15,6 @@ public class spawner : MonoBehaviour
     void Start()
     {
         //update game goal
-        gameManager.instance.updateEnemyCount(numToSpawn);
     }
 
     void Update()
@@ -44,3 +43,4 @@ public class spawner : MonoBehaviour
         }
     }
 }
+*/

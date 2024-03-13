@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -206,3 +206,4 @@ public class enemyAIMedium : MonoBehaviour, IDamage, IPatrol
         HealthBar.fillAmount = (float)HP / HPOriginal;
     }
 }
+*/
