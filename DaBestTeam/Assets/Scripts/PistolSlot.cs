@@ -48,7 +48,7 @@ public class PistolSlot : MonoBehaviour
             GameObject bullet = GameObject.Instantiate(bulletPrefab, shootPoint.position, Quaternion.identity);
             Instantiate(muzzleFlash,shootPoint.position, shootPoint.rotation);
             BulletController bulletController = bullet.GetComponent<BulletController>();
-            if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out hit, Mathf.Infinity))
+            if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out hit, Mathf.Infinity, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore))
             {
                 bulletController.target = hit.point;
                 bulletController.hit = true;
