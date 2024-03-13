@@ -2805,6 +2805,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 136083213290768029, guid: 82d9061958d6cfc4c8f61b626db85b07, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 961333948051249574, guid: 82d9061958d6cfc4c8f61b626db85b07, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1640258957310858695, guid: 82d9061958d6cfc4c8f61b626db85b07, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2566178218566259281, guid: 82d9061958d6cfc4c8f61b626db85b07, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2726509996171661188, guid: 82d9061958d6cfc4c8f61b626db85b07, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.628
@@ -2845,6 +2861,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3662744534884574075, guid: 82d9061958d6cfc4c8f61b626db85b07, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4396604773498187126, guid: 82d9061958d6cfc4c8f61b626db85b07, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5510265069430658277, guid: 82d9061958d6cfc4c8f61b626db85b07, type: 3}
       propertyPath: HP
       value: 3217
@@ -2853,9 +2877,21 @@ PrefabInstance:
       propertyPath: canHoldWeapons
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5759288748701936698, guid: 82d9061958d6cfc4c8f61b626db85b07, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5818005912994092222, guid: 82d9061958d6cfc4c8f61b626db85b07, type: 3}
       propertyPath: m_Name
       value: Zombie_ParaMilitary Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 7704970243030220130, guid: 82d9061958d6cfc4c8f61b626db85b07, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8226797129107105743, guid: 82d9061958d6cfc4c8f61b626db85b07, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
