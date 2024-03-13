@@ -1090,7 +1090,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3138219244503313788, guid: f4bc993695675814796693841ee39781, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.6305366
+      value: 2.630536
       objectReference: {fileID: 0}
     - target: {fileID: 3138219244503313788, guid: f4bc993695675814796693841ee39781, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1134,7 +1134,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8416040396745253804, guid: f4bc993695675814796693841ee39781, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.6305366
+      value: 2.630536
       objectReference: {fileID: 0}
     - target: {fileID: 8416040396745253804, guid: f4bc993695675814796693841ee39781, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2485,6 +2485,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 419883248129419191, guid: d53a827ecbd764c48a114ce39b2d8f29, type: 3}
+      propertyPath: HP
+      value: 727
+      objectReference: {fileID: 0}
+    - target: {fileID: 419883248129419191, guid: d53a827ecbd764c48a114ce39b2d8f29, type: 3}
+      propertyPath: randomMesh
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 419883248129419191, guid: d53a827ecbd764c48a114ce39b2d8f29, type: 3}
       propertyPath: canHoldWeapons
       value: 0
       objectReference: {fileID: 0}
@@ -2765,7 +2773,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2726509996171661188, guid: 82d9061958d6cfc4c8f61b626db85b07, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.6101232
+      value: -2.628
       objectReference: {fileID: 0}
     - target: {fileID: 2726509996171661188, guid: 82d9061958d6cfc4c8f61b626db85b07, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2773,7 +2781,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2726509996171661188, guid: 82d9061958d6cfc4c8f61b626db85b07, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.8597445
+      value: -0.321
       objectReference: {fileID: 0}
     - target: {fileID: 2726509996171661188, guid: 82d9061958d6cfc4c8f61b626db85b07, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2802,6 +2810,10 @@ PrefabInstance:
     - target: {fileID: 2726509996171661188, guid: 82d9061958d6cfc4c8f61b626db85b07, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5510265069430658277, guid: 82d9061958d6cfc4c8f61b626db85b07, type: 3}
+      propertyPath: HP
+      value: 3217
       objectReference: {fileID: 0}
     - target: {fileID: 5510265069430658277, guid: 82d9061958d6cfc4c8f61b626db85b07, type: 3}
       propertyPath: canHoldWeapons
@@ -4415,6 +4427,10 @@ PrefabInstance:
     - target: {fileID: 3268026767949517252, guid: 1c0cf48071815e343bf3c2e4b077b3e1, type: 3}
       propertyPath: m_Name
       value: Zombie_Base
+      objectReference: {fileID: 0}
+    - target: {fileID: 3575731009818431903, guid: 1c0cf48071815e343bf3c2e4b077b3e1, type: 3}
+      propertyPath: HP
+      value: 2594
       objectReference: {fileID: 0}
     - target: {fileID: 3575731009818431903, guid: 1c0cf48071815e343bf3c2e4b077b3e1, type: 3}
       propertyPath: meshMilitaryOptions.Array.data[0]

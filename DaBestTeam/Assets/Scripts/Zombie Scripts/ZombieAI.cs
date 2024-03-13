@@ -13,21 +13,16 @@ Death*/
 
 public class ZombieAI : MonoBehaviour, IDamage, IPushBack
 {
-
-    [SerializeField] Transform headPosition;
+    [SerializeField] Rigidbody[] _ragdollRigidbodies;
     [SerializeField] NavMeshAgent agent;
-    [SerializeField] GameObject[] Ragdoll;
-    [SerializeField] GameObject RagDollBody;
-    [SerializeField] float dropRate;
-
-
     [SerializeField] Animator anim;
+
+
+    [Header("--Components--")]
+    [SerializeField] Transform headPosition;    
     [SerializeField] GameObject[] meshMilitaryOptions;
     [SerializeField] GameObject[] meshZombie;
     [SerializeField] GameObject[] zombieWeapon;
-
-    [SerializeField] int damageAmount;
-
     public bool canHoldWeapons;
     public bool randomMesh;
 
@@ -38,7 +33,9 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     [Range(30, 180)][SerializeField] int viewCone;
     [Range(1, 10)][SerializeField] int targetFaceSpeed;
     [SerializeField] float attackCooldown;
-
+    [SerializeField] float dropRate;
+    [SerializeField] int damageAmount;
+    [SerializeField] float attackAnimSpeed;
 
     [Header("--UI--")]
     public UnityEngine.UI.Image HealthBar;
@@ -55,9 +52,10 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     bool destChosen;
     bool playerInRange;
     float attackRange = 2f;
-
     int attackAnim;
-    [SerializeField] float attackAnimSpeed;
+    bool animOrignal;
+
+
     public enum AIStateId { Roam = 1, ChasePlayer = 2, Attack = 3, Death = 4 };
 
     public void Start()
@@ -66,16 +64,33 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
         HPOriginal = HP;
         startingPosition = transform.position;
         stoppingDistanceOrig = agent.stoppingDistance;
+
+
         updateUI();
         chooseRandomMesh();
         chooseWeapon();
+        DisableRagdoll();
+
+        animOrignal = anim;
+
 
         attackAnim = Animator.StringToHash("Zombie@Attack01");
+        /*anim = GetComponent<Animator>();*/
+        /*agent = GetComponent<NavMeshAgent>();*/
+
+
+        _ragdollRigidbodies = GetComponentsInChildren<Rigidbody>();        
     }
 
     public void Update()
     {
+        if(state != AIStateId.Death)
         takeDamage(1);
+
+        if(Input.GetKeyDown(KeyCode.LeftAlt))
+        {
+            EnableRagdoll();
+        }
     }
     public AIStateId state
         {
@@ -171,19 +186,22 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     {
         gameManager.instance.EarnCurrency(10);
 
+        this.GetComponent<Animator>().enabled = false;
+
+        this.GetComponent<NavMeshAgent>().enabled = false;
+
+        EnableRagdoll();
+
         bool dropItem = Random.value <= dropRate;// Drop rate set on SerializedField .01 = 1%
 
             if (dropItem)
             {
-                Instantiate(RagDollBody, transform.position, Quaternion.identity);
+                //Instantiate(RagDollBody, transform.position, Quaternion.identity);
             }
 
-
-            int randomIndex = Random.Range(0, Ragdoll.Length);
-            Instantiate(Ragdoll[randomIndex],transform.position, Quaternion.identity);
-            Destroy(gameObject);
-            yield return null;
-
+        Destroy(gameObject, 2f);
+        yield return null;
+        
     }
 
     void faceTarget()
@@ -229,6 +247,7 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
 
         if (HP <= 0)
         {
+            StopAllCoroutines();
             state = AIStateId.Death;
         }
     }
@@ -259,6 +278,23 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
         {
             int randomIndex = Random.Range(0, zombieWeapon.Length);
             zombieWeapon[randomIndex].gameObject.SetActive(true);
+        }
+    }
+
+    private void DisableRagdoll()
+    {
+        foreach (var rigidbody in _ragdollRigidbodies)
+        {
+            rigidbody.isKinematic = true;
+        }
+        
+    }
+
+    private void EnableRagdoll()
+    {
+        foreach (var rigidbody in _ragdollRigidbodies)
+        {
+            rigidbody.isKinematic = false;
         }
     }
 }
