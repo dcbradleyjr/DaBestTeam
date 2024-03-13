@@ -65,7 +65,6 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
         startingPosition = transform.position;
         stoppingDistanceOrig = agent.stoppingDistance;
 
-
         updateUI();
         chooseRandomMesh();
         chooseWeapon();
@@ -73,24 +72,16 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
 
         animOrignal = anim;
 
-
         attackAnim = Animator.StringToHash("Zombie@Attack01");
-        /*anim = GetComponent<Animator>();*/
-        /*agent = GetComponent<NavMeshAgent>();*/
-
-
+     
         _ragdollRigidbodies = GetComponentsInChildren<Rigidbody>();        
     }
 
     public void Update()
     {
-        if(state != AIStateId.Death)
-        takeDamage(1);
+        /*if(state != AIStateId.Death)
+        takeDamage(1);*/
 
-        if(Input.GetKeyDown(KeyCode.LeftAlt))
-        {
-            EnableRagdoll();
-        }
     }
     public AIStateId state
         {
@@ -237,9 +228,6 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
 
     public void takeDamage(int amount)
     {
-
-        state = AIStateId.ChasePlayer;
-
         HP -= amount;
         updateUI();
         if (!EnemyUI.gameObject.activeSelf)
@@ -249,7 +237,10 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
         {
             StopAllCoroutines();
             state = AIStateId.Death;
+            return;
         }
+
+        state = AIStateId.ChasePlayer;
     }
 
     public void pushBackDir(Vector3 dir)
