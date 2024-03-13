@@ -3054,7 +3054,7 @@ MonoBehaviour:
   - {fileID: 1059587069650662760}
   canHoldWeapons: 0
   randomMesh: 0
-  HP: 2594
+  HP: 10
   roamPauseTime: 3
   roamDistance: 5
   viewCone: 0
