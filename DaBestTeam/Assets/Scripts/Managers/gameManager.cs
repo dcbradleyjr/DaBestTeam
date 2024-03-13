@@ -18,7 +18,7 @@ public class gameManager : MonoBehaviour
 
     [Header("--HUD--")]
     public int HP;
-
+    public int playerCurrency;
 
     [Header("--Player Info--")]
     public GameObject player;
@@ -30,6 +30,8 @@ public class gameManager : MonoBehaviour
     int enemyCount;
     int keyCount;
     int levelCount;
+
+    private int playerPocket;
 
     // Start is called before the first frame update
     void Awake()
@@ -69,15 +71,15 @@ public class gameManager : MonoBehaviour
         menuActive = null;
     }
 
-   
-   
+
+
     public void youWin()
     {
         // you win!!
         menuActive = menuWin;
         menuActive.SetActive(true);
         statePaused();
-    } 
+    }
 
     public void youLose()
     {
@@ -91,5 +93,32 @@ public class gameManager : MonoBehaviour
     {
         HP -= damageAmount;
     }
+
+    // Method to earn currency
+    public void EarnCurrency(int amount)
+    {
+        playerCurrency += amount;
+    }
+
+    // Method to spend currency
+    public bool SpendCurrency(int amount)
+    {
+        if (playerCurrency >= amount)
+        {
+            playerCurrency -= amount;
+            return true; // Transaction successful
+        }
+        else
+        {
+            return false; // Insufficient funds
+        }
+    }
+
+    // Method to check current currency balance
+    public int GetCurrencyBalance()
+    {
+        return playerCurrency;
+    }
+
 }
 

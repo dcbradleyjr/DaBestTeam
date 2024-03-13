@@ -56,6 +56,8 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     bool playerInRange;
     float attackRange = 2f;
 
+    int attackAnim;
+    [SerializeField] float attackAnimSpeed;
     public enum AIStateId { Roam = 1, ChasePlayer = 2, Attack = 3, Death = 4 };
 
     public void Start()
@@ -67,6 +69,8 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
         updateUI();
         chooseRandomMesh();
         chooseWeapon();
+
+        attackAnim = Animator.StringToHash("Zombie@Attack01");
     }
 
     public void Update()
@@ -145,7 +149,10 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
         Debug.Log("Pow");
         while (true)
         {
-            
+            int attackAnimSpeed = Random.Range(0,1);
+
+            anim.CrossFade(attackAnim, attackAnimSpeed);
+
             gameManager.instance.takeDamage(damageAmount); //Update when player is complete
 
             // Check if the player is still in range
@@ -162,8 +169,9 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     }
     public IEnumerator deathState()
     {
-        
-            bool dropItem = Random.value <= dropRate;// Drop rate set on SerializedField .01 = 1%
+        gameManager.instance.EarnCurrency(10);
+
+        bool dropItem = Random.value <= dropRate;// Drop rate set on SerializedField .01 = 1%
 
             if (dropItem)
             {
@@ -175,6 +183,7 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
             Instantiate(Ragdoll[randomIndex],transform.position, Quaternion.identity);
             Destroy(gameObject);
             yield return null;
+
         
     }
 
