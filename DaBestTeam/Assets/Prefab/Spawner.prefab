@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7463878516899245810}
   - component: {fileID: 4803656553862352495}
   - component: {fileID: 2054841389000698695}
+  - component: {fileID: -1352822688626934026}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -105,3 +106,19 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-1352822688626934026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2118823987305982382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c213c859048b88946ac454f02c4618fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objToSpawn: {fileID: 3268026767949517252, guid: 1c0cf48071815e343bf3c2e4b077b3e1, type: 3}
+  maxSpawn: 3
+  spawnDelay: 5
+  spawnRadius: 5
