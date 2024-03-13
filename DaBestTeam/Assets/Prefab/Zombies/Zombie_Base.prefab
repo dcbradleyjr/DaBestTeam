@@ -2516,8 +2516,8 @@ MonoBehaviour:
   - {fileID: 6082811173345588783}
   - {fileID: 1059587069650662760}
   damageAmount: 0
-  canHoldWeapons: 1
-  randomMesh: 1
+  canHoldWeapons: 0
+  randomMesh: 0
   HP: 10000
   roamPauseTime: 3
   roamDistance: 5
@@ -2527,6 +2527,7 @@ MonoBehaviour:
   HealthBar: {fileID: 602742350953240676}
   EnemyUI: {fileID: 4023311822676355477}
   _state: 1
+  attackAnimSpeed: 1
 --- !u!136 &8938389325397104656
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -184,7 +184,6 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
             Destroy(gameObject);
             yield return null;
 
-        
     }
 
     void faceTarget()
@@ -251,6 +250,7 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
             int randomIndex = Random.Range(0, meshMilitaryOptions.Length);
             meshMilitaryOptions[randomIndex].gameObject.SetActive(true);
         }
+        
                 
     }
     public void chooseWeapon()
