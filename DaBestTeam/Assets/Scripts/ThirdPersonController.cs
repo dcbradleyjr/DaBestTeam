@@ -42,7 +42,7 @@ public class ThirdPersonController : MonoBehaviour
         Cursor.visible = false;
 
         animator = GetComponent<Animator>();
-        jumpAnimation = Animator.StringToHash("Pistol Jump");
+        jumpAnimation = Animator.StringToHash("Jump");
         moveXAnimationParameterId = Animator.StringToHash("MoveX");
         moveZAnimationParameterId = Animator.StringToHash("MoveZ");
     }
