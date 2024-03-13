@@ -13,17 +13,10 @@ public class PistolSlot : MonoBehaviour
     InputAction shootAction;
     bool canShoot;
 
-    // Start is called before the first frame update
     void Awake()
     {
        shootAction = input.actions["Shoot"];
        cameraTransform = Camera.main.transform;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private void OnEnable()
@@ -60,12 +53,6 @@ public class PistolSlot : MonoBehaviour
             } 
         }
     }
-
-    //public void DisableShooting()
-    //{
-    //    OnDisable(); // Manually call OnDisable
-    //    gameObject.SetActive(false);
-    //}
 }
 
 
