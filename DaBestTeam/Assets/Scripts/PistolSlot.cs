@@ -13,17 +13,10 @@ public class PistolSlot : MonoBehaviour
     InputAction shootAction;
     bool canShoot;
 
-    // Start is called before the first frame update
     void Awake()
     {
        shootAction = input.actions["Shoot"];
        cameraTransform = Camera.main.transform;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private void OnEnable()
@@ -48,7 +41,7 @@ public class PistolSlot : MonoBehaviour
             GameObject bullet = GameObject.Instantiate(bulletPrefab, shootPoint.position, Quaternion.identity);
             Instantiate(muzzleFlash,shootPoint.position, shootPoint.rotation);
             BulletController bulletController = bullet.GetComponent<BulletController>();
-            if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out hit, Mathf.Infinity))
+            if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out hit, Mathf.Infinity, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore))
             {
                 bulletController.target = hit.point;
                 bulletController.hit = true;
@@ -60,12 +53,6 @@ public class PistolSlot : MonoBehaviour
             } 
         }
     }
-
-    //public void DisableShooting()
-    //{
-    //    OnDisable(); // Manually call OnDisable
-    //    gameObject.SetActive(false);
-    //}
 }
 
 

@@ -34,14 +34,18 @@ public class SwitchVCam : MonoBehaviour
     private void StartAim()
     {
         cam.Priority += priorityBoost;
-        aimCanvas.enabled = true;
-        thirdPersonCanvas.enabled = false;
+        if (aimCanvas != null)
+            aimCanvas.enabled = true;
+        if (thirdPersonCanvas != null)
+            thirdPersonCanvas.enabled = false;
     }
 
     private void CancelAim()
     {
         cam.Priority -= priorityBoost;
-        aimCanvas.enabled = false;
-        thirdPersonCanvas.enabled = true;
+        if (aimCanvas != null)
+            aimCanvas.enabled = false;
+        if (thirdPersonCanvas != null)
+            thirdPersonCanvas.enabled = true;
     }
 }
