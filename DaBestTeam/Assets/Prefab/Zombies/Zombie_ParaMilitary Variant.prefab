@@ -8,6 +8,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1138457345837900469, guid: 1c0cf48071815e343bf3c2e4b077b3e1, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1660250563607967768, guid: 1c0cf48071815e343bf3c2e4b077b3e1, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3268026767949517252, guid: 1c0cf48071815e343bf3c2e4b077b3e1, type: 3}
       propertyPath: m_Name
       value: Zombie_ParaMilitary Variant
@@ -28,6 +36,14 @@ PrefabInstance:
       propertyPath: meshMilitaryOptions.Array.data[0]
       value: 
       objectReference: {fileID: 4316550494603149676}
+    - target: {fileID: 3605960602271590720, guid: 1c0cf48071815e343bf3c2e4b077b3e1, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4675871337164482572, guid: 1c0cf48071815e343bf3c2e4b077b3e1, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5044206698552640534, guid: 1c0cf48071815e343bf3c2e4b077b3e1, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -36,17 +52,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5706982349577102849, guid: 1c0cf48071815e343bf3c2e4b077b3e1, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6354978124117494526, guid: 1c0cf48071815e343bf3c2e4b077b3e1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.69
+      value: -2.628
       objectReference: {fileID: 0}
     - target: {fileID: 6354978124117494526, guid: 1c0cf48071815e343bf3c2e4b077b3e1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.00000023841858
+      value: 0.00000047683716
       objectReference: {fileID: 0}
     - target: {fileID: 6354978124117494526, guid: 1c0cf48071815e343bf3c2e4b077b3e1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.24
+      value: -0.321
       objectReference: {fileID: 0}
     - target: {fileID: 6354978124117494526, guid: 1c0cf48071815e343bf3c2e4b077b3e1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -75,6 +95,22 @@ PrefabInstance:
     - target: {fileID: 6354978124117494526, guid: 1c0cf48071815e343bf3c2e4b077b3e1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6808050603437545259, guid: 1c0cf48071815e343bf3c2e4b077b3e1, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7720496178597548221, guid: 1c0cf48071815e343bf3c2e4b077b3e1, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8120184379741150428, guid: 1c0cf48071815e343bf3c2e4b077b3e1, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8936441818056016871, guid: 1c0cf48071815e343bf3c2e4b077b3e1, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
