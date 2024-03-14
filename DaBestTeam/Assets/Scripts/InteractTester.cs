@@ -9,6 +9,6 @@ public class InteractTester : MonoBehaviour, IInteract
     
     public void interact()
     {
-        Debug.Log(interactPrompt);
+        Debug.Log("Cube Opened!");
     }
 }

@@ -8,11 +8,14 @@ public class Interactor : MonoBehaviour
     [SerializeField] Transform interactorPoint;
     [SerializeField] float InteractRange;
     [SerializeField] LayerMask interactableMask;
+    [SerializeField] InteractionPromptUI interactionPromptUI;
     [SerializeField] int interactableCount;
     [SerializeField] PlayerInput input;
     InputAction interactAction;
 
     private readonly Collider[] colliders = new Collider[3];
+
+    private IInteract interactable;
 
     void Start()
     {
@@ -23,14 +26,21 @@ public class Interactor : MonoBehaviour
     {
         interactableCount = Physics.OverlapSphereNonAlloc(interactorPoint.position, InteractRange, colliders, interactableMask);
 
-        if (interactableCount > 0 )
+        if (interactableCount > 0)
         {
-            var interactable = colliders[0].GetComponent<IInteract>();
+            interactable = colliders[0].GetComponent<IInteract>();
 
-            if ( interactable != null && interactAction.triggered )
+            if (interactable != null)
             {
-                interactable.interact();
+                if (!interactionPromptUI.IsDisplayed) interactionPromptUI.SetUp(interactable.interactPrompt);
+
+                if (interactAction.triggered) interactable.interact();
             }
+        }
+        else
+        {
+            if (interactable != null) interactable = null;
+            if (interactionPromptUI.IsDisplayed) interactionPromptUI.Close();
         }
     }
 

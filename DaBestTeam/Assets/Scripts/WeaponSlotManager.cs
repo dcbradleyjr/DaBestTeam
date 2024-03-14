@@ -19,6 +19,10 @@ public class WeaponSlotManager : MonoBehaviour
     public MeleeSlot Melee;
     public GunSlot Gun;
 
+    public bool canToggleMelee;
+    public bool canTogglePistol;
+    public bool canToggleGun;
+
     void Awake()
     {
         instance = this;
@@ -32,11 +36,11 @@ public class WeaponSlotManager : MonoBehaviour
 
     private void Update()
     {
-        if (meleeSwitch.triggered)
+        if (meleeSwitch.triggered && canToggleMelee)
             ActivateMeleeSlot();
-        if (pistolSwitch.triggered)
+        if (pistolSwitch.triggered & canTogglePistol)
             ActivatePistolSlot();
-        if (gunSwitch.triggered)
+        if (gunSwitch.triggered && canToggleGun)
             ActivateGunSlot();
     }
 
