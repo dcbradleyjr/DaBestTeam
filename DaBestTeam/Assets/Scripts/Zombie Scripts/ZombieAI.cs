@@ -119,7 +119,6 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
         {
             if (!agent.pathPending && agent.remainingDistance < 0.1f)
             {
-                Debug.Log("Roaming");
                 Vector3 randomPos = Random.insideUnitSphere * roamDistance;
                 randomPos += startingPosition;
                 NavMeshHit hit;
@@ -138,8 +137,7 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
         {
             float distanceToPlayer = Vector3.Distance(transform.position, gameManager.instance.player.transform.position);
             if (distanceToPlayer < attackRange)
-            {
-                Debug.Log("Log");
+            { 
                 // Transition to attack state
                 StartCoroutine(attackState());
                 // Exit chase state
@@ -153,7 +151,6 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     }
     public IEnumerator attackState()
     {
-        Debug.Log("Pow");
         while (true)
         {
             int attackAnimSpeed = Random.Range(0,1);
@@ -190,12 +187,16 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
 
         bool dropItem = Random.value <= dropRate;// Drop rate set on SerializedField .01 = 1%
 
-            if (dropItem)
-            {
-                //Instantiate(RagDollBody, transform.position, Quaternion.identity);
-            }
+        if (dropItem)
+        {
+            //Instantiate(RagDollBody, transform.position, Quaternion.identity);
+        }
 
-        SpawnManager.instance.DecrementSpawnTotal(this.gameObject); //spawnManager handles things while this dies
+        if (SpawnManager.instance != null)
+        {
+            SpawnManager.instance.DecrementSpawnTotal(this.gameObject); //spawnManager handles things while this dies
+        }
+        
 
         Destroy(gameObject, 2f);
         yield return null;

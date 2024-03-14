@@ -46,6 +46,7 @@ public class ButtonFunctions : MonoBehaviour
 
     public void Settings()
     {
+        Debug.Log("Here");
         AudioManager.instance.PlaySFX("ButtonPress");
         gameManager.instance.SettingsMenu.gameObject.SetActive(true);
         if (SceneManager.GetActiveScene().name == "MainMenu")
@@ -54,7 +55,6 @@ public class ButtonFunctions : MonoBehaviour
         }
         else 
         {
-            Debug.Log("I am here");
             gameManager.instance.menuPause.gameObject.SetActive(false);
             gameManager.instance.SettingsMenu.gameObject.SetActive(true);
         }

@@ -60,9 +60,9 @@ public class gameManager : MonoBehaviour
         
         if (SceneManager.GetActiveScene().name != "MainMenu" && !isPaused)
         {
-            SettingsMenu.gameObject.SetActive(false);
             MainMenu.gameObject.SetActive(false);
         }
+        
     }
 
     public void statePaused()

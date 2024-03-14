@@ -1767,7 +1767,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6920547637309640438
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8576,6 +8576,10 @@ PrefabInstance:
       propertyPath: Loop
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2828663952967124679, guid: 557baac4f07a1194aa83110e42a186e4, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 5943236470976809689, guid: 2de08a1bb0b01a74993aaf1940c1b217, type: 2}
     - target: {fileID: 3819716984546792616, guid: 557baac4f07a1194aa83110e42a186e4, type: 3}
       propertyPath: m_Name
       value: Audio Manager
@@ -8584,6 +8588,10 @@ PrefabInstance:
       propertyPath: m_Volume
       value: 0.272
       objectReference: {fileID: 0}
+    - target: {fileID: 8661858843137386530, guid: 557baac4f07a1194aa83110e42a186e4, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -7240494703164212060, guid: 2de08a1bb0b01a74993aaf1940c1b217, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
