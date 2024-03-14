@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(CharacterController), typeof(PlayerInput))]
-public class ThirdPersonController : MonoBehaviour
+public class ThirdPersonController : MonoBehaviour, IDamage
 {
     private CharacterController controller;
     private PlayerInput input;
@@ -13,19 +13,21 @@ public class ThirdPersonController : MonoBehaviour
 
     [Header("--Stats--")]
     [SerializeField] int HP;
-    [SerializeField] int Stamina;
-    [SerializeField] int staminaDrain;
-    [SerializeField] float playerSpeed = 2.0f;
+    [SerializeField] float Stamina;
+    [SerializeField] float staminaDrain;
+    [SerializeField] float chargeRate;
+    private Coroutine recharge;
+    [SerializeField] float playerSpeed;
     [SerializeField] float sprintMod;
-    [SerializeField] float jumpHeight = 1.0f;
-    [SerializeField] float gravityValue = -9.81f;
-    [SerializeField] float rotationSpeed = 4f;
+    [SerializeField] float jumpHeight;
+    [SerializeField] float gravityValue;
+    [SerializeField] float rotationSpeed;
     public bool canSprint;
 
 
     int jumpCount;
     int HPOriginal;
-    int StaminaOriginal;
+    float StaminaOriginal;
     float playerSpeedOriginal;
     public bool isSprinting;
 
@@ -48,27 +50,50 @@ public class ThirdPersonController : MonoBehaviour
 
     private void Awake()
     {
+        //components
         controller = GetComponent<CharacterController>();
         input = GetComponent<PlayerInput>();
         cameraTransform = Camera.main.transform;
-        if (cameraTransform == null)
-            Debug.Log("Not found");
-        moveAction = input.actions["Move"];
-        jumpAction = input.actions["Jump"];
-        sprintAction = input.actions["Sprint"];
-
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-
         animator = GetComponent<Animator>();
         jumpAnimation = Animator.StringToHash("Jump");
         moveXAnimationParameterId = Animator.StringToHash("MoveX");
         moveZAnimationParameterId = Animator.StringToHash("MoveZ");
+
+        //input
+        moveAction = input.actions["Move"];
+        jumpAction = input.actions["Jump"];
+        sprintAction = input.actions["Sprint"];
+    }
+
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        HPOriginal = HP;
+        StaminaOriginal = Stamina;
+        playerSpeedOriginal = playerSpeed;
     }
 
     void Update()
     {
         Movement();
+
+        if (isSprinting)
+        {
+            DrainStamina();
+            ResetRecharge();
+        }
+    }
+
+    public void takeDamage(int amount)
+    {
+        HP -= amount;
+
+        if (HP <= 0)
+        {
+            //death logic
+        }
     }
 
     private void OnEnable()
@@ -117,13 +142,55 @@ public class ThirdPersonController : MonoBehaviour
 
     private void StartSprint()
     {
+        if (canSprint)
+        {
             playerSpeed *= sprintMod;
-            isSprinting = true;        
+            isSprinting = true; 
+        }
     }
 
     private void StopSprint()
     {
-        playerSpeed /= sprintMod;
-        isSprinting = false;
+        if (canSprint)
+        {
+            playerSpeed /= sprintMod;
+            isSprinting = false;
+        }
+    }
+
+    private void DrainStamina()
+    {
+        Stamina -= staminaDrain * Time.deltaTime;
+        if (Stamina < 0)
+        {
+            Stamina = 0;
+            canSprint = false;
+            isSprinting = false;
+            playerSpeed = playerSpeedOriginal;
+        }
+        //update Stamina UI logic
+    }
+
+    private IEnumerator RechargeStamina()
+    {
+        yield return new WaitForSeconds(1f);
+
+        while (Stamina < StaminaOriginal)
+        {
+            Stamina += chargeRate / 10f;
+            if (Stamina > StaminaOriginal)
+            {
+                Stamina = StaminaOriginal;
+                canSprint = true;
+            }
+            //update Stamina UI logic 
+            yield return new WaitForSeconds(0.1f);
+        }
+    }
+
+    private void ResetRecharge()
+    {
+        if (recharge != null) StopCoroutine(recharge);
+        recharge = StartCoroutine(RechargeStamina());
     }
 }

@@ -72,7 +72,7 @@ public class MeleeSlot : MonoBehaviour
         {
             IDamage dmg = collider.GetComponent<IDamage>();
 
-            if (dmg != null)
+            if (dmg != null && !collider.CompareTag("Player"))
             {
                 dmg.takeDamage(dmgAmount);
                 Instantiate(bloodSplat, collider.transform.position + new Vector3(0,1,0), Quaternion.identity);
