@@ -4,5 +4,6 @@ using UnityEngine;
 
 public interface IInteract
 {
+    string interactPrompt { get; }
     void interact();
 }
