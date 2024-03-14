@@ -1767,7 +1767,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6920547637309640438
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5282,16 +5282,16 @@ MonoBehaviour:
   m_FillRect: {fileID: 9088346952495544373}
   m_HandleRect: {fileID: 4238381564139354278}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9191462681547820545}
-        m_TargetAssemblyTypeName: UISettingsController, Assembly-CSharp
-        m_MethodName: SFXVolume
+      - m_Target: {fileID: 2207410284529624084}
+        m_TargetAssemblyTypeName: VolumeSettings, Assembly-CSharp
+        m_MethodName: SetSFXVolume
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5362,6 +5362,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68216e6a1c90d9c4e9f56409a79f391e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCamera: {fileID: 0}
   menuActive: {fileID: 0}
   menuPause: {fileID: 8482109628263014900}
   menuWin: {fileID: 90813345468924750}
@@ -8149,16 +8150,16 @@ MonoBehaviour:
   m_FillRect: {fileID: 7049297751613228926}
   m_HandleRect: {fileID: 7740830852316451473}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9191462681547820545}
-        m_TargetAssemblyTypeName: UISettingsController, Assembly-CSharp
-        m_MethodName: MusicVolume
+      - m_Target: {fileID: 2207410284529624084}
+        m_TargetAssemblyTypeName: VolumeSettings, Assembly-CSharp
+        m_MethodName: SetMusicVolume
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8595,8 +8596,31 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3819716984546792616, guid: 557baac4f07a1194aa83110e42a186e4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2207410284529624084}
   m_SourcePrefab: {fileID: 100100000, guid: 557baac4f07a1194aa83110e42a186e4, type: 3}
+--- !u!1 &6886012793560396570 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3819716984546792616, guid: 557baac4f07a1194aa83110e42a186e4, type: 3}
+  m_PrefabInstance: {fileID: 7679293201752418226}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2207410284529624084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6886012793560396570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc4f586c386d9e447b18754157a5ab83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myMixer: {fileID: 24100000, guid: 2de08a1bb0b01a74993aaf1940c1b217, type: 2}
+  musicSlider: {fileID: 590916519578789056}
+  sfxSlider: {fileID: 5553331496602607081}
 --- !u!4 &8175443396888143820 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2010670379866177662, guid: 557baac4f07a1194aa83110e42a186e4, type: 3}

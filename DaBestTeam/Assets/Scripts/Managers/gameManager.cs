@@ -10,7 +10,7 @@ public class gameManager : MonoBehaviour
 {
     [Header("--Components--")]
     public static gameManager instance;
-    [SerializeField] public Camera mainCamera;
+    [SerializeField] Camera mainCamera;
 
     [Header("--Menu--")]
     [SerializeField] GameObject menuActive;
@@ -31,6 +31,7 @@ public class gameManager : MonoBehaviour
     int HP;
     int playerCurrency;
 
+    
     public bool isPaused;
 
     int enemyCount;
@@ -38,20 +39,13 @@ public class gameManager : MonoBehaviour
     int levelCount;
 
     private int playerPocket;
-    ThirdPersonController playerController;
 
     // Start is called before the first frame update
     void Awake()
     {
         instance = this;
         player = GameObject.FindWithTag("Player");
-       /* ThirdPersonController thirdPersonController = player.GetComponent<ThirdPersonController>();
-
-        if (thirdPersonController != null)
-        {
-            mainCamera = thirdPersonController.cameraTransform;
-        }*/
-
+        mainCamera = Camera.main;
     }
 
     // Update is called once per frame
@@ -77,6 +71,7 @@ public class gameManager : MonoBehaviour
         Time.timeScale = 0;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
+
     }
 
     public void stateUnpaused()
@@ -87,6 +82,8 @@ public class gameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         menuActive.SetActive(false);
         menuActive = null;
+
+
     }
 
 
