@@ -46,11 +46,11 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
 
     int HPOriginal;
     float angleToPlayer;
-    Vector3 playerDirection;
+    /*Vector3 playerDirection;*/
     Vector3 startingPosition;
     float stoppingDistanceOrig;
     bool destChosen;
-    bool playerInRange;
+    private bool playerInRange;
     float attackRange = 2f;
     int attackAnim;
     bool animOrignal;
@@ -196,11 +196,11 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
         
     }
 
-    void faceTarget()
+    /*void faceTarget()
     {
         Quaternion rot = Quaternion.LookRotation(new Vector3(playerDirection.x, transform.position.y, playerDirection.z));
         transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * targetFaceSpeed);
-    }
+    }*/
 
     void updateUI()
     {

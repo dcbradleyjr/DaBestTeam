@@ -36,13 +36,49 @@ public class ButtonFunctions : MonoBehaviour
     {
         AudioManager.instance.PlaySFX("ButtonPress");
         gameManager.instance.stateUnpaused();
-        
     }
 
     public void StartGame()
     {
         AudioManager.instance.PlaySFX("ButtonPress");
         SceneManager.LoadScene(1);
+    }
+
+    public void Settings()
+    {
+        AudioManager.instance.PlaySFX("ButtonPress");
+        gameManager.instance.SettingsMenu.gameObject.SetActive(true);
+        if (SceneManager.GetActiveScene().name == "MainMenu")
+        {
+            gameManager.instance.MainMenu.gameObject.SetActive(false);
+        }
+        else 
+        {
+            Debug.Log("I am here");
+            gameManager.instance.menuPause.gameObject.SetActive(false);
+            gameManager.instance.SettingsMenu.gameObject.SetActive(true);
+        }
+    }
+
+
+    public void MainMenuSettingsBack()
+    {
+        AudioManager.instance.PlaySFX("ButtonPress");
+        if (SceneManager.GetActiveScene().name == "MainMenu")
+        {
+            gameManager.instance.MainMenu.gameObject.SetActive(true);
+            gameManager.instance.SettingsMenu.gameObject.SetActive(false);
+        }
+        else
+        {
+            gameManager.instance.SettingsMenu.gameObject.SetActive(false);
+            gameManager.instance.menuPause.gameObject.SetActive(true);
+        }
+    }
+
+    public void MainMenuButton()
+    {
+        SceneManager.LoadScene(0);
     }
     
 }

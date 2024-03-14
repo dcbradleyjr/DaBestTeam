@@ -13,20 +13,21 @@ public class gameManager : MonoBehaviour
 
     [Header("--Menu--")]
     [SerializeField] GameObject menuActive;
-    [SerializeField] GameObject menuPause;
+    [SerializeField] public GameObject menuPause;
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
     [SerializeField] public GameObject MainMenu;
+    [SerializeField] public GameObject SettingsMenu;
 
     [Header("--HUD--")]
     public Image playerHPBar;
     public Image playerStaminaBar;
-    public GameObject FlashDMGPanel;
-    public GameObject FlashHealPanel;
+/*    public GameObject FlashDMGPanel;
+    public GameObject FlashHealPanel;*/
 
     [Header("--Player Info--")]
     public GameObject player;
-    public GameObject SpawnPoint;
+   //public GameObject SpawnPoint;
     int HP;
     int playerCurrency;
 
@@ -43,7 +44,7 @@ public class gameManager : MonoBehaviour
     {
         instance = this;
         player = GameObject.FindWithTag("Player");
-        SpawnPoint = GameObject.FindWithTag("SpawnPoint");
+        //SpawnPoint = GameObject.FindWithTag("SpawnPoint");
         
     }
 
@@ -57,8 +58,9 @@ public class gameManager : MonoBehaviour
             menuActive.SetActive(isPaused);
         }
         
-        if (SceneManager.GetActiveScene().name != "MainMenu")
+        if (SceneManager.GetActiveScene().name != "MainMenu" && !isPaused)
         {
+            SettingsMenu.gameObject.SetActive(false);
             MainMenu.gameObject.SetActive(false);
         }
     }
