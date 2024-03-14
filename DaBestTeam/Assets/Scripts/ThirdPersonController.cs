@@ -26,9 +26,9 @@ public class ThirdPersonController : MonoBehaviour, IDamage
 
 
     int jumpCount;
-    int HPOriginal;
-    float StaminaOriginal;
-    float playerSpeedOriginal;
+    int HPMax;
+    float StaminaMax;
+    float playerSpeedMax;
     public bool isSprinting;
 
     [SerializeField] float animationSmoothTime = 0.1f;
@@ -70,9 +70,9 @@ public class ThirdPersonController : MonoBehaviour, IDamage
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        HPOriginal = HP;
-        StaminaOriginal = Stamina;
-        playerSpeedOriginal = playerSpeed;
+        HPMax = HP;
+        StaminaMax = Stamina;
+        playerSpeedMax = playerSpeed;
     }
 
     void Update()
@@ -166,7 +166,7 @@ public class ThirdPersonController : MonoBehaviour, IDamage
             Stamina = 0;
             canSprint = false;
             isSprinting = false;
-            playerSpeed = playerSpeedOriginal;
+            playerSpeed = playerSpeedMax;
         }
         //update Stamina UI logic
     }
@@ -175,12 +175,12 @@ public class ThirdPersonController : MonoBehaviour, IDamage
     {
         yield return new WaitForSeconds(1f);
 
-        while (Stamina < StaminaOriginal)
+        while (Stamina < StaminaMax)
         {
             Stamina += chargeRate / 10f;
-            if (Stamina > StaminaOriginal)
+            if (Stamina > StaminaMax)
             {
-                Stamina = StaminaOriginal;
+                Stamina = StaminaMax;
                 canSprint = true;
             }
             //update Stamina UI logic 
@@ -193,4 +193,30 @@ public class ThirdPersonController : MonoBehaviour, IDamage
         if (recharge != null) StopCoroutine(recharge);
         recharge = StartCoroutine(RechargeStamina());
     }
+
+    public void HealPlayer(int value)
+    {
+        HP += value;
+        if (HP > HPMax)
+        {
+            HP = HPMax;
+        }
+    }
+
+    public void IncreaseHPMax(int value)
+    {
+        HPMax += value;
+    }
+
+    public void IncreaseSpeed(float value)
+    {
+        playerSpeedMax += value;
+        playerSpeed = playerSpeedMax;
+    }
+
+    public void IncreaseStamina(float value)
+    {
+        StaminaMax += value;
+    }
+
 }

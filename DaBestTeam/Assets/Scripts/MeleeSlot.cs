@@ -11,6 +11,8 @@ public class MeleeSlot : MonoBehaviour
     [SerializeField] Animator animator;
     [SerializeField] GameObject bloodSplat;
     [SerializeField] float animationPlayTransition = 0.15f;
+    [SerializeField] Transform HitPoint;
+    [SerializeField] float meleeRange;
 
     InputAction meleeAction;
     int meleeAnimation;
@@ -63,9 +65,9 @@ public class MeleeSlot : MonoBehaviour
     {
 
         Vector3 boxSize = new Vector3(1.5f, 3f, 3.5f);
-        Vector3 boxCenter = transform.position + transform.forward * 1.2f;
+        Vector3 boxCenter = HitPoint.position + HitPoint.forward * 1.2f;
 
-        Collider[] colliders = Physics.OverlapBox(boxCenter, boxSize / 2f);
+        Collider[] colliders = Physics.OverlapSphere(HitPoint.position, meleeRange);
         foreach (Collider collider in colliders)
         {
             IDamage dmg = collider.GetComponent<IDamage>();
@@ -83,5 +85,16 @@ public class MeleeSlot : MonoBehaviour
                 pushBack.pushBackDir((collider.transform.position + new Vector3(0, 1, 0) + transform.position).normalized * knockBack);
             }
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(HitPoint.position, meleeRange);
+    }
+
+    public void addDamage(int value)
+    {
+        dmgAmount += value;
     }
 }
