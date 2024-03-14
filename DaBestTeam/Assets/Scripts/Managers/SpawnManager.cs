@@ -1,15 +1,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
     public static SpawnManager instance;
 
-    [SerializeField] int maxSpawnGlobal;
-
-    GameObject[] spawners;
+    int maxSpawnGlobal = 0;
+    enemySpawner[] spawners;
     int currentSpawn;
 
     private void Awake()
@@ -21,25 +22,34 @@ public class SpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spawners = GameObject.FindGameObjectsWithTag("Spawner");
+        spawners = GameObject.FindObjectsOfType<enemySpawner>();
+        for(int i = 0; i < spawners.Length; i++) 
+        {
+            maxSpawnGlobal += spawners[i].GetComponent<enemySpawner>().maxSpawn;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        for (int i = 0; i < spawners.Length; i++)
-        {
-            enemySpawner curSpawner = spawners[i].GetComponent<enemySpawner>();
 
-            if (curSpawner.isPlayerinRange() && currentSpawn <= maxSpawnGlobal)
+        if (currentSpawn <= maxSpawnGlobal)
+        {
+            for (int i = 0; i < spawners.Length; i++)
             {
-                curSpawner.canSpawn = true;
-            }
-            else
-            {
-                curSpawner.canSpawn = false;
+                enemySpawner curSpawner = spawners[i];
+
+                if (curSpawner.isPlayerInRange())
+                {
+                    curSpawner.canSpawn = true;
+                }
+                else
+                {
+                    curSpawner.canSpawn = false;
+                }
             }
         }
+
     }
 
     public void IncrementSpawnTotal()

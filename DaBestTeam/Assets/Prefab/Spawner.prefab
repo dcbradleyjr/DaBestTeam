@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 4803656553862352495}
   - component: {fileID: 2054841389000698695}
   - component: {fileID: -1352822688626934026}
-  - component: {fileID: -7051041890645378769}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Spawner
@@ -120,30 +119,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objToSpawn: {fileID: 3268026767949517252, guid: 1c0cf48071815e343bf3c2e4b077b3e1, type: 3}
-  maxSpawn: 3
   spawnDelay: 5
   spawnRadius: 5
-  playerInRange: 0
+  playerRadius: 25
+  maxSpawn: 3
   canSpawn: 0
   spawned: []
---- !u!135 &-7051041890645378769
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2118823987305982382}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 15
-  m_Center: {x: 0, y: 0, z: 0}

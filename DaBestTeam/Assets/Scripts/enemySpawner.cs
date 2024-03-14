@@ -7,11 +7,12 @@ using UnityEngine.AI;
 public class enemySpawner : MonoBehaviour
 {
     [SerializeField] GameObject objToSpawn;
-    [SerializeField] int maxSpawn;
     [SerializeField] float spawnDelay;
     [SerializeField] int spawnRadius;
+    [SerializeField] int playerRadius;
 
-    public bool canSpawn = false;
+    public int maxSpawn;
+    public bool canSpawn;
     public GameObject[] spawned;
 
     bool isSpawning;
@@ -21,7 +22,7 @@ public class enemySpawner : MonoBehaviour
     {
         //updateGameGoal();
         Array.Resize(ref spawned, maxSpawn);
-        canSpawn = false;
+        //canSpawn = false;
     }
 
     // Update is called once per frame
@@ -63,10 +64,9 @@ public class enemySpawner : MonoBehaviour
         isSpawning = false;
     }
 
-    public bool isPlayerinRange()
+    public bool isPlayerInRange()
     {
-        CharacterController player = gameManager.instance.player.GetComponent<CharacterController>();
-        if ((player.transform.position - transform.position).magnitude <= spawnRadius)
+        if ((gameManager.instance.player.transform.position - transform.position).magnitude <= playerRadius)
             return true;
         else
             return false;
