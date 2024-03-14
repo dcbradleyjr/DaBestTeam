@@ -93,7 +93,7 @@ public class MeleeSlot : MonoBehaviour
         Gizmos.DrawWireSphere(HitPoint.position, meleeRange);
     }
 
-    public void addDamage(int value)
+    public void IncreaseDamage(int value)
     {
         dmgAmount += value;
     }
