@@ -178,6 +178,8 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     {
         gameManager.instance.EarnCurrency(10);
 
+        this.EnemyUI.SetActive(false);
+
         this.GetComponent<Animator>().enabled = false;
 
         this.GetComponent<NavMeshAgent>().enabled = false;
@@ -200,17 +202,10 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
         
     }
 
-    /*void faceTarget()
-    {
-        Quaternion rot = Quaternion.LookRotation(new Vector3(playerDirection.x, transform.position.y, playerDirection.z));
-        transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * targetFaceSpeed);
-    }*/
-
     void updateUI()
     {
         HealthBar.fillAmount = (float)HP / HPOriginal;
     }
-
 
     void OnTriggerEnter(Collider other)
     {
