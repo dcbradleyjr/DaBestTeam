@@ -100,9 +100,9 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -121,7 +121,8 @@ MonoBehaviour:
   objToSpawn: {fileID: 3268026767949517252, guid: 1c0cf48071815e343bf3c2e4b077b3e1, type: 3}
   spawnDelay: 5
   spawnRadius: 5
-  playerRadius: 25
+  playerRadius: 15
   maxSpawn: 3
   canSpawn: 0
+  playerInRange: 0
   spawned: []

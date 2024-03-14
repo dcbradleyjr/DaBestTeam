@@ -13,6 +13,7 @@ public class enemySpawner : MonoBehaviour
 
     public int maxSpawn;
     public bool canSpawn;
+    public bool playerInRange;
     public GameObject[] spawned;
 
     bool isSpawning;
@@ -23,6 +24,7 @@ public class enemySpawner : MonoBehaviour
         //updateGameGoal();
         Array.Resize(ref spawned, maxSpawn);
         //canSpawn = false;
+        this.GetComponent<SphereCollider>().radius = playerRadius;
     }
 
     // Update is called once per frame
@@ -64,12 +66,16 @@ public class enemySpawner : MonoBehaviour
         isSpawning = false;
     }
 
-    public bool isPlayerInRange()
+    private void OnTriggerEnter(Collider other)
     {
-        if ((gameManager.instance.player.transform.position - transform.position).magnitude <= playerRadius)
-            return true;
-        else
-            return false;
+        if (other.CompareTag("Player"))
+            playerInRange = true;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+            playerInRange = false;
     }
 
     public void DecrementSpawnCount()

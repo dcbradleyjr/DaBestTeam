@@ -39,7 +39,7 @@ public class SpawnManager : MonoBehaviour
             {
                 enemySpawner curSpawner = spawners[i];
 
-                if (curSpawner.isPlayerInRange())
+                if (curSpawner.playerInRange)
                 {
                     curSpawner.canSpawn = true;
                 }
