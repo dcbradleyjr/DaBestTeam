@@ -41,6 +41,7 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     public UnityEngine.UI.Image HealthBar;
     public GameObject EnemyUI;
 
+    public GameObject parentSpawner; //needed for SpawnManager
 
     [SerializeField] private AIStateId _state = AIStateId.Roam;
 
@@ -54,6 +55,7 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     float attackRange = 2f;
     int attackAnim;
     bool animOrignal;
+
 
 
     public enum AIStateId { Roam = 1, ChasePlayer = 2, Attack = 3, Death = 4 };
@@ -190,6 +192,8 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
             {
                 //Instantiate(RagDollBody, transform.position, Quaternion.identity);
             }
+
+        SpawnManager.instance.DecrementSpawnTotal(this.gameObject); //spawnManager handles things while this dies
 
         Destroy(gameObject, 2f);
         yield return null;

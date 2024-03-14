@@ -11,13 +11,17 @@ public class enemySpawner : MonoBehaviour
     [SerializeField] float spawnDelay;
     [SerializeField] int spawnRadius;
 
-    bool canSpawn = true;
+    public bool canSpawn = false;
+    public GameObject[] spawned;
+
     bool isSpawning;
     int spawnCount;
     
     void Start()
     {
         //updateGameGoal();
+        Array.Resize(ref spawned, maxSpawn);
+        canSpawn = false;
     }
 
     // Update is called once per frame
@@ -38,24 +42,38 @@ public class enemySpawner : MonoBehaviour
         NavMeshHit hit;
         NavMesh.SamplePosition(randomPos, out hit, spawnRadius, 1);
         Vector3 spawnPos = hit.position;
-        GameObject spawned = Instantiate(objToSpawn, spawnPos, transform.rotation);
+        GameObject toSpawn = objToSpawn;
         float wep = UnityEngine.Random.Range(0f, 1f);
-        if(wep >= 0.5f)
-            spawned.GetComponent<ZombieAI>().canHoldWeapons = true;
+        if (wep >= 0.5f)
+            toSpawn.GetComponent<ZombieAI>().canHoldWeapons = true;
+        toSpawn.GetComponent<ZombieAI>().randomMesh = true;
+        toSpawn.GetComponent<ZombieAI>().parentSpawner = gameObject;
+        GameObject hasSpawned = Instantiate(toSpawn, spawnPos, transform.rotation);
         spawnCount++;
+        SpawnManager.instance.IncrementSpawnTotal();
+        for (int i = 0; i < maxSpawn; i++)
+        {
+            if (spawned[i] == null)
+            {
+                spawned[i] = hasSpawned;
+                break;
+            }
+        }
         yield return new WaitForSeconds(spawnDelay);
         isSpawning = false;
     }
 
-    private void OnTriggerEnter(Collider other)
+    public bool isPlayerinRange()
     {
-        if (other.CompareTag("Player"))
-            canSpawn = true;
+        CharacterController player = gameManager.instance.player.GetComponent<CharacterController>();
+        if ((player.transform.position - transform.position).magnitude <= spawnRadius)
+            return true;
+        else
+            return false;
     }
 
-    private void OnTriggerExit(Collider other)
+    public void DecrementSpawnCount()
     {
-        if (other.CompareTag("Player"))
-            canSpawn = false;
+        spawnCount--;
     }
 }
