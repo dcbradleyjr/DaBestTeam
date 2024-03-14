@@ -13,7 +13,7 @@ public class VolumeSettings : MonoBehaviour
 
     public void Start()
     {
-        if (PlayerPrefs.HasKey("musicVolume") || PlayerPrefs.HasKey("sfxVolume"));
+        if (PlayerPrefs.HasKey("musicVolume") || PlayerPrefs.HasKey("sfxVolume"))
         {
             LoadVolumeSetting();
         }
