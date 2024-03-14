@@ -29,7 +29,6 @@ public class UpgradeSkills : MonoBehaviour, IInteract
     public void interact()
     {
         gameManager.instance.SkillsMenu.SetActive(true);
-        gameManager.instance.statePaused();
     }
 
     public void HPUpgrade()
@@ -84,7 +83,6 @@ public class UpgradeSkills : MonoBehaviour, IInteract
     public void back()
     {
         gameManager.instance.SkillsMenu.SetActive(false);
-        gameManager.instance.stateUnpaused();
     }
 }
 

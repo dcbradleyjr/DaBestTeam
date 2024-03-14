@@ -9,8 +9,9 @@ public class OpenDoor : MonoBehaviour, IInteract
     public string interactPrompt => ("Door " + cost);
     
     public int cost;
-    public int currency;
+    
 
+    private gameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,17 +19,21 @@ public class OpenDoor : MonoBehaviour, IInteract
         
         // Enable the parent GameObject of this script
         door.SetActive(true);
+
+        gameManager = gameManager.instance;
     }
 
     // Update is called once per frame
     void Update()
     {
-        currency = gameManager.instance.GetCurrencyBalance();
+        
     }
 
     public void interact()
     {
-        if (currency >= cost)
+        int playerCurrency = gameManager.GetCurrencyBalance();
+
+        if (playerCurrency >= cost)
         {
             gameManager.instance.SpendCurrency(cost);
             door.gameObject.SetActive(false);
