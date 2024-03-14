@@ -28,7 +28,6 @@ public class MeleeSlot : MonoBehaviour
         meleeAction.performed += _ => MeleeAttack();
         canMelee = true;
         isAttacking = false;
-        Debug.Log("LayerWeight on");
         animator.SetLayerWeight(2, 1);
     }
 
@@ -36,7 +35,6 @@ public class MeleeSlot : MonoBehaviour
     {
         meleeAction.performed -= _ => MeleeAttack();
         canMelee = false;
-        Debug.Log("LayerWeight off");
         animator.SetLayerWeight(2, 0);
     }
 
