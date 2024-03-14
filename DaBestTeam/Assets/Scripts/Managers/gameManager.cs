@@ -19,6 +19,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuLose;
     [SerializeField] public GameObject MainMenu;
     [SerializeField] public GameObject SettingsMenu;
+    [SerializeField] public GameObject SkillsMenu;
 
     [Header("--HUD--")]
     public Image playerHPBar;
@@ -29,7 +30,7 @@ public class gameManager : MonoBehaviour
     [Header("--Player Info--")]
     public GameObject player;
     int HP;
-    int playerCurrency;
+    public int playerCurrency;
 
     
     public bool isPaused;
@@ -120,11 +121,13 @@ public class gameManager : MonoBehaviour
     {
         if (playerCurrency >= amount)
         {
+            Debug.LogError("Thanks");
             playerCurrency -= amount;
             return true; // Transaction successful
         }
         else
         {
+            Debug.Log("You broke");
             return false; // Insufficient funds
         }
     }

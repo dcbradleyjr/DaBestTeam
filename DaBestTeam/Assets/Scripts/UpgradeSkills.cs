@@ -12,50 +12,79 @@ public enum SkillType
 
 public class UpgradeSkills : MonoBehaviour, IInteract
 {
-    public int currencyCost = 500; // Cost of upgrading a skill
-    public SkillType skillType; // Type of skill to upgrade
+    public string interactPrompt => ("Skills Crate!");
 
-    // Implement your currency system here
-    public int currencyAmount = 0; // Current amount of currency
+    
+    public int currentCurrency;
+    public int level1Cost;
+    public int level2Cost;
+    public int level3Cost;
+    public int level4Cost;
+    public int level5Cost;
 
+    public void Start()
+    {
+        
+    }
     public void interact()
     {
-        if (currencyAmount >= currencyCost)
+        gameManager.instance.SkillsMenu.SetActive(true);
+        gameManager.instance.statePaused();
+    }
+
+    public void HPUpgrade()
+    {
+        int currentCurrency = gameManager.instance.GetCurrencyBalance();
+        if (currentCurrency >= level1Cost)
         {
-            UpgradeSkill();
-            currencyAmount -= currencyCost;
+           
         }
-        else
+        else if (currentCurrency >= level2Cost)
         {
-            Debug.Log("Not enough currency to upgrade the skill.");
+
+        }
+        else if(currentCurrency >= level3Cost)
+        {
+
+        }
+        else if(currentCurrency >= level4Cost)
+        {
+
+        }
+        else if(currentCurrency >= level5Cost)
+        {
+
+        }
+    }
+    public void TemplateUpgrade()
+    {
+        int currentCurrency = gameManager.instance.GetCurrencyBalance();
+        if (currentCurrency >= level1Cost)
+        {
+
+        }
+        else if (currentCurrency >= level2Cost)
+        {
+
+        }
+        else if (currentCurrency >= level3Cost)
+        {
+
+        }
+        else if (currentCurrency >= level4Cost)
+        {
+
+        }
+        else if (currentCurrency >= level5Cost)
+        {
+
         }
     }
 
-    void UpgradeSkill()
+    public void back()
     {
-        // Implement logic to upgrade the skill based on the selected enum value
-        switch (skillType)
-        {
-            case SkillType.Stamina:
-                // Upgrade stamina
-                Debug.Log("Stamina upgraded!");
-                break;
-            case SkillType.HP:
-                // Upgrade HP
-                Debug.Log("HP upgraded!");
-                break;
-            case SkillType.Speed:
-                // Upgrade speed
-                Debug.Log("Speed upgraded!");
-                break;
-            case SkillType.Damage:
-                // Upgrade damage
-                Debug.Log("Damage upgraded!");
-                break;
-            default:
-                Debug.LogError("Unknown skill type.");
-                break;
-        }
+        gameManager.instance.SkillsMenu.SetActive(false);
+        gameManager.instance.stateUnpaused();
     }
 }
 
