@@ -13,7 +13,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] Camera mainCamera;
 
     [Header("--Menu--")]
-    [SerializeField] GameObject menuActive;
+    [SerializeField] public GameObject menuActive;
     [SerializeField] public GameObject menuPause;
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
@@ -79,7 +79,7 @@ public class gameManager : MonoBehaviour
     {
         isPaused = !isPaused;
         Time.timeScale = 1;
-        Cursor.visible = false; ;
+        Cursor.visible = false; 
         Cursor.lockState = CursorLockMode.Locked;
         menuActive.SetActive(false);
         menuActive = null;
