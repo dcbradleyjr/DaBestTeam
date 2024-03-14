@@ -6,17 +6,18 @@ using UnityEngine.InputSystem;
 public class WeaponSlotManager : MonoBehaviour
 {
     public static WeaponSlotManager instance;
-    [SerializeField] GameObject MeleeSlot;
-    [SerializeField] GameObject PistolSlot;
-    [SerializeField] GameObject GunSlot;
+    public GameObject MeleeSlot;
+    public GameObject PistolSlot;
+    public GameObject GunSlot;
     [SerializeField] PlayerInput input;
 
     InputAction meleeSwitch;
     InputAction pistolSwitch;
     InputAction gunSwitch;
 
-    private PistolSlot Pistol;
-
+    public PistolSlot Pistol;
+    public MeleeSlot Melee;
+    public GunSlot Gun;
 
     void Awake()
     {
@@ -25,6 +26,8 @@ public class WeaponSlotManager : MonoBehaviour
         pistolSwitch = input.actions["PistolSelect"];
         gunSwitch = input.actions["GunSelect"];
         Pistol = PistolSlot.GetComponent<PistolSlot>();
+        Melee = MeleeSlot.GetComponent<MeleeSlot>();
+        Gun = GunSlot.GetComponent<GunSlot>();
     }
 
     private void Update()

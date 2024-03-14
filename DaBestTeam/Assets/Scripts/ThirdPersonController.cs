@@ -1,24 +1,42 @@
 using UnityEngine;
+using System.Collections;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(CharacterController), typeof(PlayerInput))]
 public class ThirdPersonController : MonoBehaviour
 {
-    [SerializeField] float playerSpeed = 2.0f;
-    [SerializeField] float jumpHeight = 1.0f;
-    [SerializeField] float gravityValue = -9.81f;
-    [SerializeField] float rotationSpeed = 4f;
-    [SerializeField] float animationSmoothTime = 0.1f;
-    [SerializeField] float animationPlayTransition = 0.15f;
-
     private CharacterController controller;
     private PlayerInput input;
     private Vector3 playerVelocity;
     private bool groundedPlayer;
     private Transform cameraTransform;
 
+    [Header("--Stats--")]
+    [SerializeField] int HP;
+    [SerializeField] int Stamina;
+    [SerializeField] int staminaDrain;
+    [SerializeField] float playerSpeed = 2.0f;
+    [SerializeField] float sprintMod;
+    [SerializeField] float jumpHeight = 1.0f;
+    [SerializeField] float gravityValue = -9.81f;
+    [SerializeField] float rotationSpeed = 4f;
+    public bool canSprint;
+
+
+    int jumpCount;
+    int HPOriginal;
+    int StaminaOriginal;
+    float playerSpeedOriginal;
+    public bool isSprinting;
+
+    [SerializeField] float animationSmoothTime = 0.1f;
+    [SerializeField] float animationPlayTransition = 0.15f;
+
+
+
     private InputAction moveAction;
     private InputAction jumpAction;
+    private InputAction sprintAction;
 
     Animator animator;
     int jumpAnimation;
@@ -37,6 +55,7 @@ public class ThirdPersonController : MonoBehaviour
             Debug.Log("Not found");
         moveAction = input.actions["Move"];
         jumpAction = input.actions["Jump"];
+        sprintAction = input.actions["Sprint"];
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -52,6 +71,17 @@ public class ThirdPersonController : MonoBehaviour
         Movement();
     }
 
+    private void OnEnable()
+    {
+        sprintAction.performed += _ => StartSprint();
+        sprintAction.canceled += _ => StopSprint();
+    }
+
+    private void OnDisable()
+    {
+        sprintAction.performed -= _ => StartSprint();
+        sprintAction.canceled -= _ => StopSprint();
+    }
     private void Movement()
     {
         groundedPlayer = controller.isGrounded;
@@ -83,5 +113,17 @@ public class ThirdPersonController : MonoBehaviour
 
         Quaternion TargetRotation = Quaternion.Euler(0, cameraTransform.eulerAngles.y, 0);
         transform.rotation = Quaternion.Lerp(transform.rotation, TargetRotation, rotationSpeed * Time.deltaTime);
+    }
+
+    private void StartSprint()
+    {
+            playerSpeed *= sprintMod;
+            isSprinting = true;        
+    }
+
+    private void StopSprint()
+    {
+        playerSpeed /= sprintMod;
+        isSprinting = false;
     }
 }
