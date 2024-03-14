@@ -10,6 +10,7 @@ public class gameManager : MonoBehaviour
 {
     [Header("--Components--")]
     public static gameManager instance;
+    [SerializeField] public Camera mainCamera;
 
     [Header("--Menu--")]
     [SerializeField] GameObject menuActive;
@@ -27,7 +28,6 @@ public class gameManager : MonoBehaviour
 
     [Header("--Player Info--")]
     public GameObject player;
-   //public GameObject SpawnPoint;
     int HP;
     int playerCurrency;
 
@@ -38,14 +38,20 @@ public class gameManager : MonoBehaviour
     int levelCount;
 
     private int playerPocket;
+    ThirdPersonController playerController;
 
     // Start is called before the first frame update
     void Awake()
     {
         instance = this;
         player = GameObject.FindWithTag("Player");
-        //SpawnPoint = GameObject.FindWithTag("SpawnPoint");
-        
+       /* ThirdPersonController thirdPersonController = player.GetComponent<ThirdPersonController>();
+
+        if (thirdPersonController != null)
+        {
+            mainCamera = thirdPersonController.cameraTransform;
+        }*/
+
     }
 
     // Update is called once per frame
