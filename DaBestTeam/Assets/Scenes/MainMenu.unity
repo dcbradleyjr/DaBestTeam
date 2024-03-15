@@ -309,6 +309,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &966702543 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8362046629739154183, guid: 19d5ffaba77116645b48a45543a6e4f5, type: 3}
+  m_PrefabInstance: {fileID: 1323310891}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d27880abf7bcb44788dc5a4878da09e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1323310891
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -317,6 +328,42 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 590916519578789056, guid: 19d5ffaba77116645b48a45543a6e4f5, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 966702543}
+    - target: {fileID: 590916519578789056, guid: 19d5ffaba77116645b48a45543a6e4f5, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MusicVolume
+      objectReference: {fileID: 0}
+    - target: {fileID: 590916519578789056, guid: 19d5ffaba77116645b48a45543a6e4f5, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UISettingsController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 756365053289670286, guid: 19d5ffaba77116645b48a45543a6e4f5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 966702543}
+    - target: {fileID: 756365053289670286, guid: 19d5ffaba77116645b48a45543a6e4f5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleMusic
+      objectReference: {fileID: 0}
+    - target: {fileID: 756365053289670286, guid: 19d5ffaba77116645b48a45543a6e4f5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UISettingsController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1339580605120677069, guid: 19d5ffaba77116645b48a45543a6e4f5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 966702543}
+    - target: {fileID: 1339580605120677069, guid: 19d5ffaba77116645b48a45543a6e4f5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleSFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 1339580605120677069, guid: 19d5ffaba77116645b48a45543a6e4f5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UISettingsController, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 1374656942754866665, guid: 19d5ffaba77116645b48a45543a6e4f5, type: 3}
       propertyPath: m_Name
       value: UI
@@ -400,6 +447,18 @@ PrefabInstance:
     - target: {fileID: 3455987031511820296, guid: 19d5ffaba77116645b48a45543a6e4f5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5553331496602607081, guid: 19d5ffaba77116645b48a45543a6e4f5, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 966702543}
+    - target: {fileID: 5553331496602607081, guid: 19d5ffaba77116645b48a45543a6e4f5, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SFXVolume
+      objectReference: {fileID: 0}
+    - target: {fileID: 5553331496602607081, guid: 19d5ffaba77116645b48a45543a6e4f5, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UISettingsController, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -5,14 +5,14 @@ using UnityEngine.UI;
 
 public class UISettingsController : MonoBehaviour
 {
-   public Slider _musicSlider, _sfxSlider;
+    public Slider _musicSlider, _sfxSlider;
 
     public void ToggleMusic()
     {
         AudioManager.instance.ToggleMusic();
     }
 
-    public void ToggleSFX() 
+    public void ToggleSFX()
     {
         AudioManager.instance.ToggleSFX();
     }
