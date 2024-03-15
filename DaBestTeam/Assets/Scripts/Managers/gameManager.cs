@@ -45,7 +45,11 @@ public class gameManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        instance = this;
+        if(instance == null)
+            instance = this;
+        if(instance != this)
+            Destroy(gameObject);
+
         player = GameObject.FindWithTag("Player");
         mainCamera = Camera.main;
     }
@@ -92,9 +96,9 @@ public class gameManager : MonoBehaviour
     public void youWin()
     {
         // you win!!
+        statePaused();
         menuActive = menuWin;
         menuActive.SetActive(true);
-        statePaused();
     }
 
     public void youLose()

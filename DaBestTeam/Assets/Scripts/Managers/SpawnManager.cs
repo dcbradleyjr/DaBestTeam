@@ -17,6 +17,8 @@ public class SpawnManager : MonoBehaviour
     {
         if (instance == null)
             instance = this;
+        if(instance != this)
+            Destroy(gameObject);
     }
 
     // Start is called before the first frame update
