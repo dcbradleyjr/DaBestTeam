@@ -13,11 +13,11 @@ public class healthPickUp : MonoBehaviour
         {
              IHealth health = other.GetComponent<IHealth>();
 
-            if (health != null)
+            if (other.CompareTag("Player"))
             {
-                thirdPersonController.HealPlayer(healAmount);
+                gameManager.instance.player.HealPlayer(healAmount);
+                Destroy(gameObject);
             }
-            Destroy(gameObject);
         }
             
     }

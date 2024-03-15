@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.Xml.Linq;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class gameManager : MonoBehaviour
 {
@@ -20,10 +21,11 @@ public class gameManager : MonoBehaviour
         public GameObject FlashHealPanel;*/
 
     [Header("--Player Info--")]
-    public GameObject player;
+    public ThirdPersonController player;
     int HP;
     public int playerCurrency;
-
+    public PlayerInput playerInput;
+    public Animator playerAnim;
     public bool isPaused;
 
     // Start is called before the first frame update
@@ -34,7 +36,10 @@ public class gameManager : MonoBehaviour
         if(instance != this)
             Destroy(gameObject);
 
-        player = GameObject.FindWithTag("Player");
+        player = GameObject.FindWithTag("Player").GetComponent<ThirdPersonController>();
+        playerAnim = GameObject.FindWithTag("Player").GetComponent<Animator>();
+        playerInput = GameObject.FindWithTag("Player").GetComponent<PlayerInput>();
+
         mainCamera = Camera.main;
     }
 
