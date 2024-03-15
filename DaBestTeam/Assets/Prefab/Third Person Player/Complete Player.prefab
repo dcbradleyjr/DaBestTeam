@@ -3325,6 +3325,14 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7395496186127156928, guid: 4df748577a7d4154081ae548807cab8a, type: 3}
+      propertyPath: canJump
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7395496186127156928, guid: 4df748577a7d4154081ae548807cab8a, type: 3}
+      propertyPath: canCrouch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7395496186127156928, guid: 4df748577a7d4154081ae548807cab8a, type: 3}
       propertyPath: canSprint
       value: 1
       objectReference: {fileID: 0}
@@ -3353,12 +3361,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9213852562276272281, guid: 4df748577a7d4154081ae548807cab8a, type: 3}
+      propertyPath: m_Height
+      value: 1.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 9213852562276272281, guid: 4df748577a7d4154081ae548807cab8a, type: 3}
       propertyPath: m_Radius
-      value: 0.35
+      value: 0.26
       objectReference: {fileID: 0}
     - target: {fileID: 9213852562276272281, guid: 4df748577a7d4154081ae548807cab8a, type: 3}
       propertyPath: m_Center.y
-      value: 0.94
+      value: 0.88
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1088807024230941853, guid: 4df748577a7d4154081ae548807cab8a, type: 3}

@@ -5,47 +5,61 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(CharacterController), typeof(PlayerInput))]
 public class ThirdPersonController : MonoBehaviour, IDamage
 {
+    [Header("--Components--")]
     public CharacterController controller;
+    Transform cameraTransform;
     private PlayerInput input;
-    private Vector3 playerVelocity;
-    private bool groundedPlayer;
-    private Transform cameraTransform;
+    Animator animator;
+    Vector3 playerVelocity;
 
     [Header("--Stats--")]
     [SerializeField] int HP;
     [SerializeField] float Stamina;
     [SerializeField] float staminaDrain;
     [SerializeField] float chargeRate;
-    private Coroutine recharge;
     [SerializeField] float playerSpeed;
     [SerializeField] float sprintMod;
     [SerializeField] float jumpHeight;
     [SerializeField] float gravityValue;
     [SerializeField] float rotationSpeed;
-    public bool canSprint;
+    private Coroutine recharge;
 
+    [Header("--Restrictions--")]
+    public bool canSprint;
+    public bool canCrouch;
+    public bool canJump;
+
+    [Header("--Current Action--")]
+    public bool isSprinting;
+    public bool isCrouching;
+    public bool isJumping;
+    bool isGrounded;
+
+    //Stat max
     int HPMax;
     float StaminaMax;
     float playerSpeedMax;
-    public bool isSprinting;
 
+    //animation timing
     [SerializeField] float animationSmoothTime = 0.1f;
     [SerializeField] float animationPlayTransition = 0.15f;
 
-
-
+    //input actions
     private InputAction moveAction;
     private InputAction jumpAction;
     private InputAction sprintAction;
+    private InputAction crouchAction;
 
-    Animator animator;
+    //ints
     int jumpAnimation;
     int moveXAnimationParameterId;
     int moveZAnimationParameterId;
 
+    //vector 2
     Vector2 currentAnimationBlendVector;
     Vector2 animationVelocity;
 
+    //colors
     Color StaminaColorOrig;
     Color HealthColorOrig;
 
@@ -64,6 +78,7 @@ public class ThirdPersonController : MonoBehaviour, IDamage
         moveAction = input.actions["Move"];
         jumpAction = input.actions["Jump"];
         sprintAction = input.actions["Sprint"];
+        crouchAction = input.actions["Crouch"];
     }
 
     private void Start()
@@ -105,17 +120,21 @@ public class ThirdPersonController : MonoBehaviour, IDamage
     {
         sprintAction.performed += _ => StartSprint();
         sprintAction.canceled += _ => StopSprint();
+        crouchAction.performed += _ => StartCrouch();
+        crouchAction.canceled += _ => StopCrouch();
     }
 
     private void OnDisable()
     {
         sprintAction.performed -= _ => StartSprint();
         sprintAction.canceled -= _ => StopSprint();
+        crouchAction.performed -= _ => StartCrouch();
+        crouchAction.canceled -= _ => StopCrouch();
     }
     private void Movement()
     {
-        groundedPlayer = controller.isGrounded;
-        if (groundedPlayer && playerVelocity.y < 0)
+        isGrounded = controller.isGrounded;
+        if (isGrounded && playerVelocity.y < 0)
         {
             playerVelocity.y = 0f;
         }
@@ -129,25 +148,25 @@ public class ThirdPersonController : MonoBehaviour, IDamage
         animator.SetFloat(moveXAnimationParameterId, currentAnimationBlendVector.x);
         animator.SetFloat(moveZAnimationParameterId, currentAnimationBlendVector.y);
 
-        // Changes the height position of the player..
-        if (jumpAction.triggered && groundedPlayer)
+        // jump logic
+        if (jumpAction.triggered && isGrounded && canJump && !isCrouching)
         {
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
             animator.CrossFade(jumpAnimation, animationPlayTransition);
         }
 
+        //gravity logic 
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
 
         //rotate towards camera
-
         Quaternion TargetRotation = Quaternion.Euler(0, cameraTransform.eulerAngles.y, 0);
         transform.rotation = Quaternion.Lerp(transform.rotation, TargetRotation, rotationSpeed * Time.deltaTime);
     }
 
     private void StartSprint()
     {
-        if (canSprint)
+        if (canSprint && !isCrouching)
         {
             playerSpeed *= sprintMod;
             isSprinting = true; 
@@ -156,9 +175,9 @@ public class ThirdPersonController : MonoBehaviour, IDamage
 
     private void StopSprint()
     {
-        if (canSprint)
+        if (canSprint && !isCrouching)
         {
-            playerSpeed /= sprintMod;
+            playerSpeed = playerSpeedMax;
             isSprinting = false;
         }
     }
@@ -199,6 +218,32 @@ public class ThirdPersonController : MonoBehaviour, IDamage
     {
         if (recharge != null) StopCoroutine(recharge);
         recharge = StartCoroutine(RechargeStamina());
+    }
+
+    private void StartCrouch()
+    {
+        if (canCrouch && !isSprinting)
+        {
+            isCrouching = true;
+            canSprint = false;
+            controller.height = 0.815f;
+            controller.center = new Vector3(0,0.44f,0);
+            animator.SetLayerWeight(4, 1);
+            playerSpeed = playerSpeed / 2;
+        }
+    }
+
+    private void StopCrouch()
+    {
+        if (canCrouch && !isSprinting)
+        {
+            isCrouching = false;
+            canSprint = true;
+            controller.height = 1.63f;
+            controller.center = new Vector3(0, 0.88f, 0);
+            animator.SetLayerWeight(4, 0);
+            playerSpeed = playerSpeedMax;
+        }
     }
 
     public void HealPlayer(int value)
