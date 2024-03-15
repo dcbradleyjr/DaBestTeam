@@ -113,6 +113,9 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
 
             }
         }
+
+    private bool isDead;
+
     public IEnumerator roamState()
     {
         while (true)
@@ -173,34 +176,37 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     }
     public IEnumerator deathState()
     {
-        gameManager.instance.EarnCurrency(10);
-
-        this.EnemyUI.SetActive(false);
-
-        this.GetComponent<Animator>().enabled = false;
-
-        this.GetComponent<NavMeshAgent>().enabled = false;
-
-        this.GetComponent<Collider>().enabled = false;
-
-        EnableRagdoll();
-
-        bool dropItem = Random.value <= dropRate;// Drop rate set on SerializedField .01 = 1%
-
-        if (dropItem)
+        if (!isDead)
         {
-            //Instantiate(RagDollBody, transform.position, Quaternion.identity);
-        }
+            isDead = true;
+            gameManager.instance.EarnCurrency(10);
 
-        if (SpawnManager.instance != null)
-        {
-            SpawnManager.instance.DecrementSpawnTotal(this.gameObject); //spawnManager handles things while this dies
-        }
-        
+            this.EnemyUI.SetActive(false);
 
-        Destroy(gameObject, 2f);
-        yield return null;
-        
+            this.GetComponent<Animator>().enabled = false;
+
+            this.GetComponent<NavMeshAgent>().enabled = false;
+
+            this.GetComponent<Collider>().enabled = false;
+
+            EnableRagdoll();
+
+            bool dropItem = Random.value <= dropRate;// Drop rate set on SerializedField .01 = 1%
+
+            if (dropItem)
+            {
+                //Instantiate(RagDollBody, transform.position, Quaternion.identity);
+            }
+
+            if (SpawnManager.instance != null)
+            {
+                SpawnManager.instance.DecrementSpawnTotal(this.gameObject); //spawnManager handles things while this dies
+            }
+
+
+            Destroy(gameObject, 2f);
+            yield return null;
+        }
     }
 
     void updateUI()

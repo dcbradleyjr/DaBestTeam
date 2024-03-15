@@ -32,6 +32,7 @@ public class gameManager : MonoBehaviour
     int HP;
     public int playerCurrency;
 
+    [SerializeField]public TextMeshProUGUI currency;
     
     public bool isPaused;
 
@@ -63,7 +64,7 @@ public class gameManager : MonoBehaviour
         {
             MainMenu.gameObject.SetActive(false);
         }
-        
+        currency.text = playerCurrency.ToString();
     }
 
     public void statePaused()
@@ -83,7 +84,6 @@ public class gameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         menuActive.SetActive(false);
         menuActive = null;
-
 
     }
 
