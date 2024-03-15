@@ -24,8 +24,6 @@ public class ThirdPersonController : MonoBehaviour, IDamage
     [SerializeField] float rotationSpeed;
     public bool canSprint;
 
-
-    int jumpCount;
     int HPMax;
     float StaminaMax;
     float playerSpeedMax;
@@ -47,6 +45,9 @@ public class ThirdPersonController : MonoBehaviour, IDamage
 
     Vector2 currentAnimationBlendVector;
     Vector2 animationVelocity;
+
+    Color StaminaColorOrig;
+    Color HealthColorOrig;
 
     private void Awake()
     {
@@ -73,6 +74,9 @@ public class ThirdPersonController : MonoBehaviour, IDamage
         HPMax = HP;
         StaminaMax = Stamina;
         playerSpeedMax = playerSpeed;
+        StaminaColorOrig = gameManager.instance.playerStaminaBar.color;
+        HealthColorOrig = gameManager.instance.playerHPBar.color;
+        updateUI();
     }
 
     void Update()
@@ -94,6 +98,7 @@ public class ThirdPersonController : MonoBehaviour, IDamage
         {
             //death logic
         }
+        updateHealthUI();
     }
 
     private void OnEnable()
@@ -169,6 +174,7 @@ public class ThirdPersonController : MonoBehaviour, IDamage
             playerSpeed = playerSpeedMax;
         }
         //update Stamina UI logic
+        updateStaminaUI();
     }
 
     private IEnumerator RechargeStamina()
@@ -184,6 +190,7 @@ public class ThirdPersonController : MonoBehaviour, IDamage
                 canSprint = true;
             }
             //update Stamina UI logic 
+            updateStaminaUI();
             yield return new WaitForSeconds(0.1f);
         }
     }
@@ -201,11 +208,14 @@ public class ThirdPersonController : MonoBehaviour, IDamage
         {
             HP = HPMax;
         }
+        updateHealthUI();
     }
 
     public void IncreaseHPMax(int value)
     {
         HPMax += value;
+        HealPlayer(value);
+        updateHealthUI();
     }
 
     public void IncreaseSpeed(float value)
@@ -219,4 +229,37 @@ public class ThirdPersonController : MonoBehaviour, IDamage
         StaminaMax += value;
     }
 
+    void updateUI()
+    {
+        updateHealthUI();
+        updateStaminaUI();
+    }
+    void updateStaminaUI()
+    {
+        float newAmount = (float)Stamina / StaminaMax;
+        gameManager.instance.playerStaminaBar.fillAmount = newAmount;
+
+        if (canSprint)
+        {
+            if (newAmount > 0.4f)
+                gameManager.instance.playerStaminaBar.color = StaminaColorOrig;
+            else
+                gameManager.instance.playerStaminaBar.color = new Color(1f, 0.5f, 0f);
+        }
+        else
+            gameManager.instance.playerStaminaBar.color = Color.red;
+    }
+
+    void updateHealthUI()
+    {
+        float newAmount = (float)HP / HPMax;
+        gameManager.instance.playerHPBar.fillAmount = newAmount;
+
+        if (newAmount >= 0.6f)
+            gameManager.instance.playerHPBar.color = HealthColorOrig;
+        else if (newAmount < 0.6f && newAmount > 0.3f)
+            gameManager.instance.playerHPBar.color = new Color(1f, 0.5f, 0f);
+        else
+            gameManager.instance.playerHPBar.color = Color.red;
+    }
 }
