@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class healthPickUp : MonoBehaviour
 {
+    public ThirdPersonController thirdPersonController;
 
     [SerializeField] int healAmount;
     private void OnTriggerEnter(Collider other)
@@ -14,7 +15,7 @@ public class healthPickUp : MonoBehaviour
 
             if (health != null)
             {
-                health.healHP(healAmount);
+                thirdPersonController.HealPlayer(healAmount);
             }
             Destroy(gameObject);
         }

@@ -11,7 +11,7 @@ public class Rotator : MonoBehaviour
     [Range(0.01f,0.5f)][SerializeField] float bounceHeight;
     [Range(0.1f, 3f)][SerializeField] float bounceSpeed;
 
-    private Vector3 startPos;
+    [SerializeField] Vector3 startPos;
 
     void Start()
     {
