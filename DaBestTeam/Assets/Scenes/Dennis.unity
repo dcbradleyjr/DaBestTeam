@@ -5736,6 +5736,18 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 669623689}
+    - target: {fileID: 5432442830158225183, guid: 19d5ffaba77116645b48a45543a6e4f5, type: 3}
+      propertyPath: sfxSounds.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5432442830158225183, guid: 19d5ffaba77116645b48a45543a6e4f5, type: 3}
+      propertyPath: sfxSounds.Array.data[3].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: b2b9a54139be81e489f278637bff4e7a, type: 3}
+    - target: {fileID: 5432442830158225183, guid: 19d5ffaba77116645b48a45543a6e4f5, type: 3}
+      propertyPath: sfxSounds.Array.data[3].name
+      value: Buzz
+      objectReference: {fileID: 0}
     - target: {fileID: 5805555146581058563, guid: 19d5ffaba77116645b48a45543a6e4f5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

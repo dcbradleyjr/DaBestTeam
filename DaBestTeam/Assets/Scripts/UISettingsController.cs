@@ -7,6 +7,7 @@ public class UISettingsController : MonoBehaviour
 {
     public Slider _musicSlider, _sfxSlider;
 
+    bool isPlaying;
     public void ToggleMusic()
     {
         AudioManager.instance.ToggleMusic();
@@ -19,13 +20,15 @@ public class UISettingsController : MonoBehaviour
 
     public void MusicVolume()
     {
-        AudioManager.instance.MusicVolume(_musicSlider.value);
+        AudioManager.instance.PlaySFX("Buzz");
+        AudioManager.instance.MusicVolume(_musicSlider.value);       
     }
 
     public void SFXVolume()
     {
+        AudioManager.instance.PlaySFX("Buzz");
         AudioManager.instance.SFXVolume(_sfxSlider.value);
     }
 
-
+  
 }

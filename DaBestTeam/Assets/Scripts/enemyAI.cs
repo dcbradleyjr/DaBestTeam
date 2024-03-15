@@ -20,7 +20,7 @@ public class enemyAI : MonoBehaviour, IDamage
     [Header("--Stats--")]
     [Range(1, 50)][SerializeField] int HP;
     [Range(30, 180)][SerializeField] int viewCone;
-    [Range(30,90)][SerializeField] int shootCone;
+    [Range(30, 90)][SerializeField] int shootCone;
     [Range(1, 10)][SerializeField] int targetFaceSpeed;
     [Range(1, 8)][SerializeField] int roamPauseTime;
     [Range(0, 45)][SerializeField] int roamDistance;
@@ -59,7 +59,7 @@ public class enemyAI : MonoBehaviour, IDamage
         {
             StartCoroutine(roam());
         }
-       else if (!playerInRange)
+        else if (!playerInRange)
         {
             StartCoroutine(roam());
         }
@@ -140,13 +140,13 @@ public class enemyAI : MonoBehaviour, IDamage
 
         HP -= amount;
         updateUI();
-        if(!EnemyUI.gameObject.activeSelf)
+        if (!EnemyUI.gameObject.activeSelf)
             EnemyUI.gameObject.SetActive(true);
 
         StartCoroutine(flashMat());
         if (HP <= 0)
         {
-            Instantiate(healthDrop, headPosition.position - new Vector3(0,0.5f,0), transform.rotation);
+            Instantiate(healthDrop, headPosition.position - new Vector3(0, 0.5f, 0), transform.rotation);
             Destroy(gameObject);
             gameManager.instance.updateEnemyCount(-1);
         }
