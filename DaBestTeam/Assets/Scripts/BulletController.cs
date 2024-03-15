@@ -22,7 +22,7 @@ public class BulletController : MonoBehaviour
     void Update()
     {
         transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
-        if(!hit && Vector3.Distance(transform.position, target) < 0.1f)
+        if (!hit && Vector3.Distance(transform.position, target) < 0.1f)
         {
             Destroy(gameObject);
         }
@@ -32,17 +32,19 @@ public class BulletController : MonoBehaviour
     {
         if (other.isTrigger)
             return;
-        
+
         IDamage dmg = other.GetComponent<IDamage>();
 
         if (dmg != null)
         {
             dmg.takeDamage(damageAmount);
-            Instantiate(bloodSplat, transform.position, Quaternion.identity);
+            GameObject blood = Instantiate(bloodSplat, transform.position, Quaternion.identity);
+            Destroy(blood, 0.5f);
         }
         else
         {
-          Instantiate(impact, transform.position, Quaternion.identity);
+            GameObject spark = Instantiate(impact, transform.position, Quaternion.identity);
+            Destroy(spark, 0.5f);
         }
         Destroy(gameObject);
     }

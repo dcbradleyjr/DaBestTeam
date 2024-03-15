@@ -75,7 +75,8 @@ public class MeleeSlot : MonoBehaviour
             if (dmg != null && !collider.CompareTag("Player"))
             {
                 dmg.takeDamage(dmgAmount);
-                Instantiate(bloodSplat, collider.transform.position + new Vector3(0,1,0), Quaternion.identity);
+                GameObject blood = Instantiate(bloodSplat, collider.transform.position + new Vector3(0,1,0), Quaternion.identity);
+                Destroy(blood, 0.5f);
             }
 
             IPushBack pushBack = collider.GetComponent<IPushBack>();
