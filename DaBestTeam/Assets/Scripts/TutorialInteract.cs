@@ -16,7 +16,7 @@ public class TutorialInteract : MonoBehaviour, IInteract
     {
         if (this.name == "Melee Pickup")
             isMeleePickUp = true;
-        if (this.name == "Gun Pickup")
+        if (this.name == "Ranged Pickup")
             isRangedPickUp = true;
     }
 
@@ -25,12 +25,16 @@ public class TutorialInteract : MonoBehaviour, IInteract
         if (isMeleePickUp)
         {
             WeaponSlotManager.instance.canToggleMelee = true;
+            if(WeaponSlotManager.instance.PistolSlot)
+                WeaponSlotManager.instance.PistolSlot.SetActive(false);
             WeaponSlotManager.instance.MeleeSlot.SetActive(true);
             gameObject.SetActive(false);
         }
         if (isRangedPickUp)
         {
             WeaponSlotManager.instance.canTogglePistol = true;
+            if (WeaponSlotManager.instance.MeleeSlot)
+                WeaponSlotManager.instance.MeleeSlot.SetActive(false);
             WeaponSlotManager.instance.PistolSlot.SetActive(true);
             gameObject.SetActive(false);
         }
