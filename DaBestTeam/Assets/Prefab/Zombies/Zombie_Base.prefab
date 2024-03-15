@@ -132,7 +132,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.041157667, y: -0.026920825, z: -0.098967075}
+  m_ConnectedAnchor: {x: 0.041157704, y: -0.026920589, z: -0.098967075}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: -1}
   m_TwistLimitSpring:
@@ -505,7 +505,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: -1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.39930925, y: -0.00000037252903, z: -0.00000008940697}
+  m_ConnectedAnchor: {x: 0.39930925, y: -0.00000037252903, z: 0.00000015646219}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
@@ -1670,7 +1670,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.5898723, y: 0.018647715, z: -1.3761266e-15}
+  m_ConnectedAnchor: {x: -0.5898724, y: 0.018647984, z: -1.3761269e-15}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -2656,7 +2656,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.339474, y: -0.0014490336, z: -0.0014363546}
+  m_ConnectedAnchor: {x: -0.3394741, y: -0.0014490238, z: -0.0014363602}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
@@ -2884,7 +2884,7 @@ GameObject:
   - component: {fileID: 7234920471940303235}
   m_Layer: 0
   m_Name: Zombie_Base
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2902,6 +2902,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2246558348447114281}
   - {fileID: 6411893139823719231}
   - {fileID: 7205648766685112197}
   - {fileID: 3616991642540007939}
@@ -3054,6 +3055,8 @@ MonoBehaviour:
   - {fileID: 1059587069650662760}
   canHoldWeapons: 0
   randomMesh: 0
+  HitPoint: {fileID: 2246558348447114281}
+  meleeRange: 0.58
   HP: 10
   roamPauseTime: 3
   roamDistance: 5
@@ -3061,10 +3064,11 @@ MonoBehaviour:
   targetFaceSpeed: 0
   attackCooldown: 1
   dropRate: 0.5
-  damageAmount: 0
+  damageAmount: 1
   attackAnimSpeed: 1
   HealthBar: {fileID: 602742350953240676}
   EnemyUI: {fileID: 4023311822676355477}
+  parentSpawner: {fileID: 0}
   _state: 1
 --- !u!136 &8938389325397104656
 CapsuleCollider:
@@ -4877,6 +4881,37 @@ Transform:
   - {fileID: 5555317314033872363}
   m_Father: {fileID: 1160507385431530582}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4904196093645003991
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2246558348447114281}
+  m_Layer: 0
+  m_Name: HitPoint
+  m_TagString: Enemy
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2246558348447114281
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4904196093645003991}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.303, z: 0.355}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6354978124117494526}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4972980415278719227
 GameObject:
   m_ObjectHideFlags: 0
@@ -5879,7 +5914,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: -1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.39930925, y: -0.000000044703484, z: 0.00000013411045}
+  m_ConnectedAnchor: {x: -0.39930922, y: -0.000000044703484, z: -0.00000010430813}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: -1, z: 0}
   m_TwistLimitSpring:

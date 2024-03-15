@@ -25,6 +25,8 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     [SerializeField] GameObject[] zombieWeapon;
     public bool canHoldWeapons;
     public bool randomMesh;
+    [SerializeField] Transform HitPoint;
+    [SerializeField] float meleeRange;
 
     [Header("--Stats--")]
     [Range(1, 50000)][SerializeField] int HP;
@@ -160,8 +162,16 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
 
             anim.CrossFade(attackAnim, attackAnimSpeed);
 
-            gameManager.instance.takeDamage(damageAmount); //Update when player is complete
+            Collider[] colliders = Physics.OverlapSphere(HitPoint.position, meleeRange);
+            foreach (Collider collider in colliders)
+            {
+                IDamage dmg = GetComponent<Collider>().GetComponent<IDamage>();
 
+                if (dmg != null && !GetComponent<Collider>().CompareTag("Enemy"))
+                {
+                    dmg.takeDamage(damageAmount);
+                }
+            }
             // Check if the player is still in range
             float distanceToPlayer = Vector3.Distance(transform.position, gameManager.instance.player.transform.position);
             if (distanceToPlayer > attackRange)
@@ -295,6 +305,12 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
         {
             rigidbody.isKinematic = false;
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(HitPoint.position, meleeRange);
     }
 }
 
