@@ -63,10 +63,6 @@ public class MeleeSlot : MonoBehaviour
 
     public void CheckForDamageable()
     {
-
-        Vector3 boxSize = new Vector3(1.5f, 3f, 3.5f);
-        Vector3 boxCenter = HitPoint.position + HitPoint.forward * 1.2f;
-
         Collider[] colliders = Physics.OverlapSphere(HitPoint.position, meleeRange);
         foreach (Collider collider in colliders)
         {
