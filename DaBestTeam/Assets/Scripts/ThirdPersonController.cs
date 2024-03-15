@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(CharacterController), typeof(PlayerInput))]
 public class ThirdPersonController : MonoBehaviour, IDamage
 {
-    private CharacterController controller;
+    public CharacterController controller;
     private PlayerInput input;
     private Vector3 playerVelocity;
     private bool groundedPlayer;

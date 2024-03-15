@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UIElements;
@@ -165,11 +166,16 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
             Collider[] colliders = Physics.OverlapSphere(HitPoint.position, meleeRange);
             foreach (Collider collider in colliders)
             {
-                IDamage dmg = GetComponent<Collider>().GetComponent<IDamage>();
+                CharacterController characterController = collider.GetComponent<CharacterController>();
 
-                if (dmg != null && !GetComponent<Collider>().CompareTag("Enemy"))
+                if (characterController != null)
                 {
-                    dmg.takeDamage(damageAmount);
+                    IDamage dmg = collider.GetComponent<IDamage>();
+
+                    if (dmg != null && collider.CompareTag("Player"))
+                    {
+                        dmg.takeDamage(damageAmount);
+                    }
                 }
             }
             // Check if the player is still in range
@@ -233,6 +239,8 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
             if (state  != AIStateId.Death)
             state = AIStateId.ChasePlayer;
         }
+
+        
     }
 
     void OnTriggerExit(Collider other)
@@ -259,6 +267,8 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
         }
         else if (HP > 0) 
         state = AIStateId.ChasePlayer;
+
+
     }
 
     public void pushBackDir(Vector3 dir)
@@ -312,5 +322,7 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(HitPoint.position, meleeRange);
     }
+    
+
 }
 
