@@ -3057,6 +3057,7 @@ MonoBehaviour:
   randomMesh: 0
   HitPoint: {fileID: 2246558348447114281}
   meleeRange: 0.58
+  zombieScratch: {fileID: 3257358659001034792, guid: d1fcf89608676454689916f9d5d59492, type: 3}
   HP: 10
   roamPauseTime: 3
   roamDistance: 5
