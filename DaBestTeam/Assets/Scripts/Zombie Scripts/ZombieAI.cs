@@ -58,6 +58,7 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     private bool playerInRange;
     float attackRange = 1.5f;
     int attackAnim;
+    int walkAnim;
     bool animOrignal;
 
 
@@ -79,7 +80,9 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
         animOrignal = anim;
 
         attackAnim = Animator.StringToHash("Zombie@Attack01");
-     
+
+        walkAnim = Animator.StringToHash("Zombie@Walk01");
+
         _ragdollRigidbodies = GetComponentsInChildren<Rigidbody>();        
     }
 
@@ -119,6 +122,7 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
         }
 
     private bool isDead;
+    private bool isAttacking;
 
     public IEnumerator roamState()
     {
@@ -150,6 +154,10 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
                 // Exit chase state
                 yield break;
             }
+
+            int AnimSpeed = Random.Range(0, 1);
+
+            anim.CrossFade(walkAnim, AnimSpeed);
             // Chase the player
             agent.SetDestination(gameManager.instance.player.transform.position);
 
@@ -160,17 +168,18 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     {
         while (true)
         {
-            int attackAnimSpeed = Random.Range(0,1);
 
+            if (!isAttacking)
+            {
+                isAttacking = true;
+                GameObject scratch = Instantiate(zombieScratch, HitPoint.position, HitPoint.rotation);
+                scratch.GetComponent<ZombieScratch>().damage = damageAmount;
 
-            
-            anim.CrossFade(attackAnim, attackAnimSpeed);
+                int attackAnimSpeed = Random.Range(0, 1);
 
-
-
-            GameObject scratch = Instantiate(zombieScratch, HitPoint.position, HitPoint.rotation);
-            scratch.GetComponent<ZombieScratch>().damage = damageAmount;
-
+                anim.CrossFade(attackAnim, attackAnimSpeed); 
+                isAttacking = false;
+            }
 
             // Check if the player is still in range
             float distanceToPlayer = Vector3.Distance(transform.position, gameManager.instance.player.transform.position);

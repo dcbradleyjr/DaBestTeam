@@ -64,14 +64,16 @@ public class UpgradeSkills : MonoBehaviour, IInteract
     }
    public void interact()
     {
-        gameManager.instance.SkillsMenu.SetActive(true);
+        AudioManager.instance.PlaySFX("ButtonPress");
+        UIManager.instance.SkillsMenu.SetActive(true);
         gameManager.instance.statePaused();
-        gameManager.instance.menuActive = gameManager.instance.SkillsMenu;
-        gameManager.instance.menuActive.SetActive(true);
+        UIManager.instance.menuActive = UIManager.instance.SkillsMenu;
+        UIManager.instance.menuActive.SetActive(true);
     }
 
    public void HPUpgrade()
     {
+        AudioManager.instance.PlaySFX("ButtonPress");
         int currentCurrency = gameManager.instance.GetCurrencyBalance();
 
         if (!level1HPAcquired && currentCurrency >= level1Cost)
@@ -123,6 +125,7 @@ public class UpgradeSkills : MonoBehaviour, IInteract
     }
    public void StaminaUpgrade()
     {
+        AudioManager.instance.PlaySFX("ButtonPress");
         int currentCurrency = gameManager.instance.GetCurrencyBalance();
 
         if (!level1StaminaAcquired && currentCurrency >= level1Cost)
@@ -174,6 +177,7 @@ public class UpgradeSkills : MonoBehaviour, IInteract
     }
     public void SpeedUpgrade()
     {
+        AudioManager.instance.PlaySFX("ButtonPress");
         int currentCurrency = gameManager.instance.GetCurrencyBalance();
         if (!level1SpeedAcquired && currentCurrency >= level1Cost)
         {
@@ -223,7 +227,8 @@ public class UpgradeSkills : MonoBehaviour, IInteract
     }
    public void back()
     {
-        gameManager.instance.SkillsMenu.SetActive(false);
+        AudioManager.instance.PlaySFX("ButtonPress");
+        UIManager.instance.SkillsMenu.SetActive(false);
         gameManager.instance.stateUnpaused();
     }
 }

@@ -6,12 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class ButtonFunctions : MonoBehaviour
 {
-
+    
+    
     public void resume()
     {
         AudioManager.instance.PlaySFX("ButtonPress");
         gameManager.instance.stateUnpaused();
-        
     }
 
     public void restart()
@@ -19,11 +19,11 @@ public class ButtonFunctions : MonoBehaviour
         AudioManager.instance.PlaySFX("ButtonPress");
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         gameManager.instance.stateUnpaused();
-
     }
 
     public void exit()// use for exit and quit
     {
+        AudioManager.instance.PlaySFX("ButtonPress");
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
@@ -46,39 +46,77 @@ public class ButtonFunctions : MonoBehaviour
 
     public void Settings()
     {
-        Debug.Log("Here");
         AudioManager.instance.PlaySFX("ButtonPress");
-        gameManager.instance.SettingsMenu.gameObject.SetActive(true);
-        if (SceneManager.GetActiveScene().name == "MainMenu")
+        if (!UIManager.instance.inSettings)
         {
-            gameManager.instance.MainMenu.gameObject.SetActive(false);
+            
+            UIManager.instance.inSettings = true;
+            if (SceneManager.GetActiveScene().name == "MainMenu")
+            {
+                UIManager.instance.ToggleButtons(UIManager.instance.mainmenuButtons);
+                UIManager.instance.backButton.SetActive(true);
+                UIManager.instance.ToggleButtons(UIManager.instance.settingsMenuButtons);
+            }
+            if(SceneManager.GetActiveScene().name != "MainMenu")            
+            {
+                UIManager.instance.ToggleButtons(UIManager.instance.PausemenuButtons);
+                UIManager.instance.pausebackButton.SetActive(true);
+                UIManager.instance.ToggleButtons(UIManager.instance.PausesettingsMenuButtons);
+            }
+            Debug.Log("Here");
+            
         }
-        else 
-        {
-            gameManager.instance.menuPause.gameObject.SetActive(false);
-            gameManager.instance.SettingsMenu.gameObject.SetActive(true);
-        }
+        
+       
+
     }
 
 
-    public void MainMenuSettingsBack()
+    public void MainMenuBack()
     {
         AudioManager.instance.PlaySFX("ButtonPress");
         if (SceneManager.GetActiveScene().name == "MainMenu")
         {
-            gameManager.instance.MainMenu.gameObject.SetActive(true);
-            gameManager.instance.SettingsMenu.gameObject.SetActive(false);
+            UIManager.instance.MainMenu.gameObject.SetActive(true);
+            UIManager.instance.creditScene.SetActive(false);
+            UIManager.instance.backButton.SetActive(false);
+            UIManager.instance.ToggleButtons(UIManager.instance.mainmenuButtons);
+            UIManager.instance.ToggleButtons(UIManager.instance.settingsMenuButtons);
+            
         }
-        else
+        if (UIManager.instance.inSettings && SceneManager.GetActiveScene().name != "MainMenu")
         {
-            gameManager.instance.SettingsMenu.gameObject.SetActive(false);
-            gameManager.instance.menuPause.gameObject.SetActive(true);
+            UIManager.instance.ToggleButtons(UIManager.instance.PausemenuButtons);
+            UIManager.instance.pausebackButton.SetActive(false);
+            UIManager.instance.ToggleButtons(UIManager.instance.PausesettingsMenuButtons);
         }
+        if (!UIManager.instance.inSettings)
+        {
+            UIManager.instance.ToggleButtons(UIManager.instance.settingsMenuButtons); 
+        }
+        UIManager.instance.inSettings = false;
+        UIManager.instance.inCredits = false;
     }
 
     public void MainMenuButton()
     {
+        AudioManager.instance.PlaySFX("ButtonPress");
         SceneManager.LoadScene(0);
+        
     }
     
+    public void Credits()
+    {
+        AudioManager.instance.PlaySFX("ButtonPress");
+        if (!UIManager.instance.inCredits)
+        {
+            UIManager.instance.creditScene.SetActive(true);
+            UIManager.instance.backButton.SetActive(true);            
+            UIManager.instance.ToggleButtons(UIManager.instance.mainmenuButtons);
+            UIManager.instance.ActivateText();
+            UIManager.instance.inCredits = true;
+        }
+    }
+
+   
 }
