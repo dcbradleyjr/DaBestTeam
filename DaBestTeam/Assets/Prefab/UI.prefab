@@ -7505,6 +7505,8 @@ MonoBehaviour:
   playerStaminaBar: {fileID: 569790207610305808}
   player: {fileID: 0}
   playerCurrency: 1000
+  playerInput: {fileID: 0}
+  playerAnim: {fileID: 0}
   isPaused: 0
 --- !u!1 &5503795542480496860
 GameObject:
@@ -12484,6 +12486,18 @@ PrefabInstance:
       propertyPath: musicSlider
       value: 
       objectReference: {fileID: 8523589051190107691}
+    - target: {fileID: 4221010413006885893, guid: 557baac4f07a1194aa83110e42a186e4, type: 3}
+      propertyPath: sfxSounds.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221010413006885893, guid: 557baac4f07a1194aa83110e42a186e4, type: 3}
+      propertyPath: sfxSounds.Array.data[3].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: b2b9a54139be81e489f278637bff4e7a, type: 3}
+    - target: {fileID: 4221010413006885893, guid: 557baac4f07a1194aa83110e42a186e4, type: 3}
+      propertyPath: sfxSounds.Array.data[3].name
+      value: Buzz
+      objectReference: {fileID: 0}
     - target: {fileID: 4496517678974164465, guid: 557baac4f07a1194aa83110e42a186e4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -965.59674

@@ -14,10 +14,8 @@ Death*/
 
 public class ZombieAI : MonoBehaviour, IDamage, IPushBack
 {
-    [SerializeField] Rigidbody[] _ragdollRigidbodies;
-    [SerializeField] NavMeshAgent agent;
-    [SerializeField] Animator anim;
-
+    [Header("--Dropped Items--")]
+    [SerializeField] GameObject HealthBox;
 
     [Header("--Components--")]
     [SerializeField] Transform headPosition;    
@@ -29,6 +27,9 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     [SerializeField] Transform HitPoint;
     [SerializeField] float meleeRange;
     [SerializeField] GameObject zombieScratch;
+    [SerializeField] Rigidbody[] _ragdollRigidbodies;
+    [SerializeField] NavMeshAgent agent;
+    [SerializeField] Animator anim;
 
     [Header("--Stats--")]
     [Range(1, 50000)][SerializeField] int HP;
@@ -39,7 +40,6 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     [SerializeField] float attackCooldown;
     [SerializeField] float dropRate;
     [SerializeField] int damageAmount;
-    [SerializeField] float attackAnimSpeed;
 
     [Header("--UI--")]
     public UnityEngine.UI.Image HealthBar;
@@ -51,12 +51,15 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
 
     int HPOriginal;
     float angleToPlayer;
-    /*Vector3 playerDirection;*/
+
     Vector3 startingPosition;
+    Vector3 playerDir;
     float stoppingDistanceOrig;
     bool destChosen;
     private bool playerInRange;
-    float attackRange = 1.5f;
+    float attackRange = 2f;
+
+    int hurtAnim;
     int attackAnim;
     int walkAnim;
     bool animOrignal;
@@ -80,7 +83,7 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
         animOrignal = anim;
 
         attackAnim = Animator.StringToHash("Zombie@Attack01");
-
+        hurtAnim = Animator.StringToHash("Zombie@Damage01");
         walkAnim = Animator.StringToHash("Zombie@Walk01");
 
         _ragdollRigidbodies = GetComponentsInChildren<Rigidbody>();        
@@ -123,11 +126,13 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
 
     private bool isDead;
     private bool isAttacking;
+    private bool isDamage;
 
     public IEnumerator roamState()
     {
         while (true)
         {
+            //AudioManager.instance.PlaySFX("ZombieRoam");
             if (!agent.pathPending && agent.remainingDistance < 0.1f)
             {
                 Vector3 randomPos = Random.insideUnitSphere * roamDistance;
@@ -146,6 +151,7 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     {
         while (true)
         {
+            AudioManager.instance.PlaySFX("ZombieChase");
             float distanceToPlayer = Vector3.Distance(transform.position, gameManager.instance.player.transform.position);
             if (distanceToPlayer < attackRange)
             { 
@@ -168,19 +174,29 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     {
         while (true)
         {
+            playerDir = gameManager.instance.player.transform.position;
+            angleToPlayer = Vector3.Angle(new Vector3(playerDir.x, 0, playerDir.z), transform.forward);
+            Debug.Log("Angle" + angleToPlayer);
+            Debug.Log("View" + viewCone);
 
-            if (!isAttacking)
+            Debug.DrawRay(HitPoint.position, playerDir);
+            if (!isAttacking && angleToPlayer <= viewCone)
             {
+                faceTarget();
+                Debug.Log("See you");
                 isAttacking = true;
+                
                 GameObject scratch = Instantiate(zombieScratch, HitPoint.position, HitPoint.rotation);
                 scratch.GetComponent<ZombieScratch>().damage = damageAmount;
 
-                int attackAnimSpeed = Random.Range(0, 1);
+                AudioManager.instance.PlaySFX("ZombieAttack");
 
+                int attackAnimSpeed = Random.Range(0, 1);
                 anim.CrossFade(attackAnim, attackAnimSpeed); 
+
                 isAttacking = false;
             }
-
+            
             // Check if the player is still in range
             float distanceToPlayer = Vector3.Distance(transform.position, gameManager.instance.player.transform.position);
             if (distanceToPlayer > attackRange)
@@ -198,6 +214,10 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
         if (!isDead)
         {
             isDead = true;
+            
+
+            AudioManager.instance.PlaySFX("ZombieDeath");
+
             gameManager.instance.EarnCurrency(10);
 
             this.EnemyUI.SetActive(false);
@@ -214,7 +234,7 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
 
             if (dropItem)
             {
-                //Instantiate(RagDollBody, transform.position, Quaternion.identity);
+                Instantiate(HealthBox, HitPoint.position, Quaternion.identity);
             }
 
             if (SpawnManager.instance != null)
@@ -237,7 +257,7 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     {
         if (other.CompareTag("Player"))
         {
-            playerInRange = true;
+            
 
             if (state  != AIStateId.Death)
             state = AIStateId.ChasePlayer;
@@ -250,18 +270,32 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     {
         if (other.CompareTag("Player"))
         {
-            playerInRange = false;
+            
         }
         agent.stoppingDistance = 0;
     }
-
+    void faceTarget()
+    {
+        Quaternion rot = Quaternion.LookRotation(new Vector3(playerDir.x, transform.position.y, playerDir.z));
+        transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * targetFaceSpeed);
+    }
     public void takeDamage(int amount)
     {
+        if (!isDamage)
+        {
+            isDamage = true;
+            AudioManager.instance.PlaySFX("ZombieHurt");
+
+            int hurtAnimSpeed = Random.Range(0, 1);
+
+            anim.CrossFade(hurtAnim, hurtAnimSpeed); 
+            isDamage = false;
+        }
         HP -= amount;
         updateUI();
         if (!EnemyUI.gameObject.activeSelf)
             EnemyUI.gameObject.SetActive(true);
-
+        faceTarget();
         if (HP <= 0)
         {
             StopAllCoroutines();

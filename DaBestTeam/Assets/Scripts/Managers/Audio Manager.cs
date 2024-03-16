@@ -22,7 +22,6 @@ public class AudioManager : MonoBehaviour
             instance = this;
         if (PlayerPrefs.HasKey("musicVolume") || PlayerPrefs.HasKey("sfxVolume"))
         {
-            Debug.Log("sound");
             LoadVolumeSetting();
         }
         else

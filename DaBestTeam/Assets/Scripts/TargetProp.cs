@@ -18,6 +18,6 @@ public class TargetProp : MonoBehaviour, IDamage
 
     public void takeDamage(int amount)
     {
-        Debug.Log(amount);
+        /*Debug.Log(amount);*/
     }
 }
