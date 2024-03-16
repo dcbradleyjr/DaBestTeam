@@ -564,7 +564,7 @@ Transform:
   m_GameObject: {fileID: 750500813734276386}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.03, y: 1.125, z: 0.439}
+  m_LocalPosition: {x: -0.03, y: 1.125, z: 0.254}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2919,7 +2919,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6354978124117494526
 Transform:
   m_ObjectHideFlags: 0
@@ -3022,7 +3022,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1029e2614d72596428af1a414ed09800, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthBox: {fileID: 3449207795767113933, guid: 7928a3fe23be9fc4fb2c2e408e302209, type: 3}
+  pickupBox:
+  - {fileID: 5158426682093927698, guid: bdb1e03499950024c8bbef8f91698145, type: 3}
+  - {fileID: 3449207795767113933, guid: a77c0523a76e8f9498544cd5f3651556, type: 3}
+  - {fileID: 4957860631320672637, guid: e65193fd0b948284ca006a081f6e9b32, type: 3}
   headPosition: {fileID: 2765989629564435325}
   meshMilitaryOptions:
   - {fileID: 1938837853794670, guid: 30c23f6bcd4f35648bbfc61c9f671e51, type: 3}
@@ -3097,14 +3100,15 @@ MonoBehaviour:
   roamDistance: 5
   viewCone: 30
   targetFaceSpeed: 10
-  attackCooldown: 1
+  attackCooldown: 2
   attackRange: 2
-  attackAnimSpeed: 0.5
+  attackAnimSpeed: 1
   dropRate: 0.5
   damageAmount: 1
   HealthBar: {fileID: 602742350953240676}
   EnemyUI: {fileID: 4023311822676355477}
   parentSpawner: {fileID: 0}
+  hasBossMechs: 0
   _state: 1
 --- !u!136 &8938389325397104656
 CapsuleCollider:

@@ -15,7 +15,7 @@ Death*/
 public class ZombieAI : MonoBehaviour, IDamage, IPushBack
 {
     [Header("--Dropped Items--")]
-    [SerializeField] GameObject HealthBox;
+    [SerializeField] GameObject[] pickupBox;
 
     [Header("--Components--")]
     [SerializeField] Transform headPosition;    
@@ -239,7 +239,8 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
 
             if (dropItem)
             {
-                Instantiate(HealthBox, HitPoint.position, Quaternion.identity);
+                int i = Random.Range(0, pickupBox.Length);
+                Instantiate(pickupBox[i], HitPoint.position, Quaternion.identity);
             }
 
             if (SpawnManager.instance != null)
