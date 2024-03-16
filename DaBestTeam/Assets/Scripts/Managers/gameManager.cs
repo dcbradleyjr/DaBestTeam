@@ -51,7 +51,7 @@ public class gameManager : MonoBehaviour
     {
 
 
-
+        
     }
 
     public void statePaused()
