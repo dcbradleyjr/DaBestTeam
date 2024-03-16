@@ -1461,6 +1461,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zombie_Base
       objectReference: {fileID: 0}
+    - target: {fileID: 3268026767949517252, guid: 1c0cf48071815e343bf3c2e4b077b3e1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3575731009818431903, guid: 1c0cf48071815e343bf3c2e4b077b3e1, type: 3}
       propertyPath: attackCooldown
       value: 2
@@ -2374,7 +2378,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2655668514761680859, guid: f4bc993695675814796693841ee39781, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.893166
+      value: -4.71
       objectReference: {fileID: 0}
     - target: {fileID: 2655668514761680859, guid: f4bc993695675814796693841ee39781, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2382,7 +2386,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2655668514761680859, guid: f4bc993695675814796693841ee39781, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 19.87838
+      value: 3.2
       objectReference: {fileID: 0}
     - target: {fileID: 2655668514761680859, guid: f4bc993695675814796693841ee39781, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2414,15 +2418,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3138219244503313788, guid: f4bc993695675814796693841ee39781, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.1587577
+      value: 1.1587565
       objectReference: {fileID: 0}
     - target: {fileID: 3138219244503313788, guid: f4bc993695675814796693841ee39781, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.220538
+      value: 2.2205362
       objectReference: {fileID: 0}
     - target: {fileID: 3138219244503313788, guid: f4bc993695675814796693841ee39781, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.804727
+      value: -4.8047104
       objectReference: {fileID: 0}
     - target: {fileID: 3138219244503313788, guid: f4bc993695675814796693841ee39781, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2446,15 +2450,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5953442859610446821, guid: f4bc993695675814796693841ee39781, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.71016455
+      value: 0.71016335
       objectReference: {fileID: 0}
     - target: {fileID: 5953442859610446821, guid: f4bc993695675814796693841ee39781, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.9639645
+      value: 1.9639629
       objectReference: {fileID: 0}
     - target: {fileID: 5953442859610446821, guid: f4bc993695675814796693841ee39781, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.007342
+      value: -2.0073247
       objectReference: {fileID: 0}
     - target: {fileID: 5953442859610446821, guid: f4bc993695675814796693841ee39781, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2478,15 +2482,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8416040396745253804, guid: f4bc993695675814796693841ee39781, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.1587577
+      value: 1.1587565
       objectReference: {fileID: 0}
     - target: {fileID: 8416040396745253804, guid: f4bc993695675814796693841ee39781, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.220538
+      value: 2.2205362
       objectReference: {fileID: 0}
     - target: {fileID: 8416040396745253804, guid: f4bc993695675814796693841ee39781, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.804727
+      value: -4.8047104
       objectReference: {fileID: 0}
     - target: {fileID: 8416040396745253804, guid: f4bc993695675814796693841ee39781, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4049,10 +4053,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SafeRoom
       objectReference: {fileID: 0}
-    - target: {fileID: 9078453291954637497, guid: fed3a724a9f9892498e15374409f0c41, type: 3}
-      propertyPath: thirdPersonController
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4201,14 +4201,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
-    - target: {fileID: 2382514563778866333, guid: 19d5ffaba77116645b48a45543a6e4f5, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 39.80005
-      objectReference: {fileID: 0}
-    - target: {fileID: 3189525821167730359, guid: 19d5ffaba77116645b48a45543a6e4f5, type: 3}
-      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
-      value: 0.445
-      objectReference: {fileID: 0}
     - target: {fileID: 3442792759658854964, guid: 19d5ffaba77116645b48a45543a6e4f5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -4301,54 +4293,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 669623689}
-    - target: {fileID: 4490754579074973019, guid: 19d5ffaba77116645b48a45543a6e4f5, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 39.80005
-      objectReference: {fileID: 0}
-    - target: {fileID: 5432442830158225183, guid: 19d5ffaba77116645b48a45543a6e4f5, type: 3}
-      propertyPath: sfxSounds.Array.size
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 5432442830158225183, guid: 19d5ffaba77116645b48a45543a6e4f5, type: 3}
-      propertyPath: sfxSounds.Array.data[4].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: b2b9a54139be81e489f278637bff4e7a, type: 3}
-    - target: {fileID: 5432442830158225183, guid: 19d5ffaba77116645b48a45543a6e4f5, type: 3}
-      propertyPath: sfxSounds.Array.data[4].name
-      value: ZombieRoam
-      objectReference: {fileID: 0}
-    - target: {fileID: 5432442830158225183, guid: 19d5ffaba77116645b48a45543a6e4f5, type: 3}
-      propertyPath: sfxSounds.Array.data[5].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: b2b9a54139be81e489f278637bff4e7a, type: 3}
-    - target: {fileID: 5432442830158225183, guid: 19d5ffaba77116645b48a45543a6e4f5, type: 3}
-      propertyPath: sfxSounds.Array.data[5].name
-      value: ZombieChase
-      objectReference: {fileID: 0}
-    - target: {fileID: 5432442830158225183, guid: 19d5ffaba77116645b48a45543a6e4f5, type: 3}
-      propertyPath: sfxSounds.Array.data[6].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: b2b9a54139be81e489f278637bff4e7a, type: 3}
-    - target: {fileID: 5432442830158225183, guid: 19d5ffaba77116645b48a45543a6e4f5, type: 3}
-      propertyPath: sfxSounds.Array.data[6].name
-      value: ZombieAttack
-      objectReference: {fileID: 0}
-    - target: {fileID: 5432442830158225183, guid: 19d5ffaba77116645b48a45543a6e4f5, type: 3}
-      propertyPath: sfxSounds.Array.data[7].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: b2b9a54139be81e489f278637bff4e7a, type: 3}
-    - target: {fileID: 5432442830158225183, guid: 19d5ffaba77116645b48a45543a6e4f5, type: 3}
-      propertyPath: sfxSounds.Array.data[7].name
-      value: ZombieDeath
-      objectReference: {fileID: 0}
-    - target: {fileID: 5432442830158225183, guid: 19d5ffaba77116645b48a45543a6e4f5, type: 3}
-      propertyPath: sfxSounds.Array.data[8].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: b2b9a54139be81e489f278637bff4e7a, type: 3}
-    - target: {fileID: 5432442830158225183, guid: 19d5ffaba77116645b48a45543a6e4f5, type: 3}
-      propertyPath: sfxSounds.Array.data[8].name
-      value: ZombieHurt
-      objectReference: {fileID: 0}
     - target: {fileID: 5805555146581058563, guid: 19d5ffaba77116645b48a45543a6e4f5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

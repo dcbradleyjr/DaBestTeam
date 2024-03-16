@@ -565,6 +565,26 @@ MonoBehaviour:
   level3Cost: 200
   level4Cost: 300
   level5Cost: 400
+  level1HPAcquired: 0
+  level2HPAcquired: 0
+  level3HPAcquired: 0
+  level4HPAcquired: 0
+  level5HPAcquired: 0
+  level1StaminaAcquired: 0
+  level2StaminaAcquired: 0
+  level3StaminaAcquired: 0
+  level4StaminaAcquired: 0
+  level5StaminaAcquired: 0
+  level1DamageAcquired: 0
+  level2DamageAcquired: 0
+  level3DamageAcquired: 0
+  level4DamageAcquired: 0
+  level5DamageAcquired: 0
+  level1SpeedAcquired: 0
+  level2SpeedAcquired: 0
+  level3SpeedAcquired: 0
+  level4SpeedAcquired: 0
+  level5SpeedAcquired: 0
   HPlevel1: {fileID: 7832052614400022006}
   HPlevel2: {fileID: 2988611103828923595}
   HPlevel3: {fileID: 8762780332520233458}

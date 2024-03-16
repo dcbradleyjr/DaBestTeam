@@ -807,7 +807,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 39.800003}
+  m_AnchoredPosition: {x: 0, y: 39.80005}
   m_SizeDelta: {x: 85, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5327974356227367808
@@ -11241,7 +11241,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 39.800003}
+  m_AnchoredPosition: {x: 0, y: 39.80005}
   m_SizeDelta: {x: 85, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1593957119349299438
@@ -12488,7 +12488,7 @@ PrefabInstance:
       objectReference: {fileID: 8523589051190107691}
     - target: {fileID: 4221010413006885893, guid: 557baac4f07a1194aa83110e42a186e4, type: 3}
       propertyPath: sfxSounds.Array.size
-      value: 4
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4221010413006885893, guid: 557baac4f07a1194aa83110e42a186e4, type: 3}
       propertyPath: sfxSounds.Array.data[3].clip
@@ -12497,6 +12497,46 @@ PrefabInstance:
     - target: {fileID: 4221010413006885893, guid: 557baac4f07a1194aa83110e42a186e4, type: 3}
       propertyPath: sfxSounds.Array.data[3].name
       value: Buzz
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221010413006885893, guid: 557baac4f07a1194aa83110e42a186e4, type: 3}
+      propertyPath: sfxSounds.Array.data[4].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: b2b9a54139be81e489f278637bff4e7a, type: 3}
+    - target: {fileID: 4221010413006885893, guid: 557baac4f07a1194aa83110e42a186e4, type: 3}
+      propertyPath: sfxSounds.Array.data[4].name
+      value: ZombieRoam
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221010413006885893, guid: 557baac4f07a1194aa83110e42a186e4, type: 3}
+      propertyPath: sfxSounds.Array.data[5].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: b2b9a54139be81e489f278637bff4e7a, type: 3}
+    - target: {fileID: 4221010413006885893, guid: 557baac4f07a1194aa83110e42a186e4, type: 3}
+      propertyPath: sfxSounds.Array.data[5].name
+      value: ZombieChase
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221010413006885893, guid: 557baac4f07a1194aa83110e42a186e4, type: 3}
+      propertyPath: sfxSounds.Array.data[6].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: b2b9a54139be81e489f278637bff4e7a, type: 3}
+    - target: {fileID: 4221010413006885893, guid: 557baac4f07a1194aa83110e42a186e4, type: 3}
+      propertyPath: sfxSounds.Array.data[6].name
+      value: ZombieAttack
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221010413006885893, guid: 557baac4f07a1194aa83110e42a186e4, type: 3}
+      propertyPath: sfxSounds.Array.data[7].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: b2b9a54139be81e489f278637bff4e7a, type: 3}
+    - target: {fileID: 4221010413006885893, guid: 557baac4f07a1194aa83110e42a186e4, type: 3}
+      propertyPath: sfxSounds.Array.data[7].name
+      value: ZombieDeath
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221010413006885893, guid: 557baac4f07a1194aa83110e42a186e4, type: 3}
+      propertyPath: sfxSounds.Array.data[8].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: b2b9a54139be81e489f278637bff4e7a, type: 3}
+    - target: {fileID: 4221010413006885893, guid: 557baac4f07a1194aa83110e42a186e4, type: 3}
+      propertyPath: sfxSounds.Array.data[8].name
+      value: ZombieHurt
       objectReference: {fileID: 0}
     - target: {fileID: 4496517678974164465, guid: 557baac4f07a1194aa83110e42a186e4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12537,6 +12577,10 @@ PrefabInstance:
     - target: {fileID: 4496517678974164465, guid: 557baac4f07a1194aa83110e42a186e4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752192949235332525, guid: 557baac4f07a1194aa83110e42a186e4, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 0.445
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

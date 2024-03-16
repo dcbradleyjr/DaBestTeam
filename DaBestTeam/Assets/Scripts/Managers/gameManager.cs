@@ -36,7 +36,8 @@ public class gameManager : MonoBehaviour
         if(instance != this)
             Destroy(gameObject);
 
-        player = GameObject.FindWithTag("Player").GetComponent<ThirdPersonController>();
+        
+        player = GameObject.FindWithTag("Player").GetComponent<ThirdPersonController>();                
         playerAnim = GameObject.FindWithTag("Player").GetComponent<Animator>();
         playerInput = GameObject.FindWithTag("Player").GetComponent<PlayerInput>();
 
