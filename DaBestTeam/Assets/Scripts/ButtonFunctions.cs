@@ -104,7 +104,7 @@ public class ButtonFunctions : MonoBehaviour
     {
         AudioManager.instance.PlaySFX("ButtonPress");
         SceneManager.LoadScene(0);
-        
+        gameManager.instance.stateUnpaused();
     }
     
     public void Credits()

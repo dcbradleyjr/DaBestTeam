@@ -15,6 +15,8 @@ public class healthPickUp : MonoBehaviour
 
             if (other.CompareTag("Player"))
             {
+                WeaponSlotManager.instance.Gun.AddAmmo(1);
+                WeaponSlotManager.instance.Pistol.AddAmmo(1);
                 gameManager.instance.player.HealPlayer(healAmount);
                 Destroy(gameObject);
             }

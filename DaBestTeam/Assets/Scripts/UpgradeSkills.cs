@@ -5,41 +5,39 @@ using UnityEngine;
 
 public class UpgradeSkills : MonoBehaviour, IInteract
 {
-   public ThirdPersonController thirdPersonController;
-
-   public string interactPrompt => ("Skills Crate!");
-
+    public ThirdPersonController thirdPersonController;
+   
+    public string interactPrompt => ("Skills Crate!");
+   
+    public int level1Cost;
+    public int level2Cost;
+    public int level3Cost;
+    public int level4Cost;
+    public int level5Cost;
+   
+    public bool level1HPAcquired = false;
+    public bool level2HPAcquired = false;
+    public bool level3HPAcquired = false;
+    public bool level4HPAcquired = false;
+    public bool level5HPAcquired = false;
     
-
-   public int level1Cost;
-   public int level2Cost;
-   public int level3Cost;
-   public int level4Cost;
-   public int level5Cost;
-
-   public bool level1HPAcquired = false;
-   public bool level2HPAcquired = false;
-   public bool level3HPAcquired = false;
-   public bool level4HPAcquired = false;
-   public bool level5HPAcquired = false;
-   
-   public bool level1StaminaAcquired = false;
-   public bool level2StaminaAcquired = false;
-   public bool level3StaminaAcquired = false;
-   public bool level4StaminaAcquired = false;
-   public bool level5StaminaAcquired = false;
-   
-   public bool level1DamageAcquired = false;
-   public bool level2DamageAcquired = false;
-   public bool level3DamageAcquired = false;
-   public bool level4DamageAcquired = false;
-   public bool level5DamageAcquired = false;
-   
-   public bool level1SpeedAcquired = false;
-   public bool level2SpeedAcquired = false;
-   public bool level3SpeedAcquired = false;
-   public bool level4SpeedAcquired = false;
-   public bool level5SpeedAcquired = false;
+    public bool level1StaminaAcquired = false;
+    public bool level2StaminaAcquired = false;
+    public bool level3StaminaAcquired = false;
+    public bool level4StaminaAcquired = false;
+    public bool level5StaminaAcquired = false;
+    
+    public bool level1DamageAcquired = false;
+    public bool level2DamageAcquired = false;
+    public bool level3DamageAcquired = false;
+    public bool level4DamageAcquired = false;
+    public bool level5DamageAcquired = false;
+    
+    public bool level1SpeedAcquired = false;
+    public bool level2SpeedAcquired = false;
+    public bool level3SpeedAcquired = false;
+    public bool level4SpeedAcquired = false;
+    public bool level5SpeedAcquired = false;
 
     [Header("--HP--")]
     [SerializeField] GameObject HPlevel1;
@@ -65,7 +63,7 @@ public class UpgradeSkills : MonoBehaviour, IInteract
         LoadUpgradeState();
         EnableUpgradeGameObjects();
     }
-   public void interact()
+    public void interact()
     {
         AudioManager.instance.PlaySFX("ButtonPress");
         UIManager.instance.SkillsMenu.SetActive(true);
@@ -73,7 +71,6 @@ public class UpgradeSkills : MonoBehaviour, IInteract
         UIManager.instance.menuActive = UIManager.instance.SkillsMenu;
         UIManager.instance.menuActive.SetActive(true);        
     }
-
     public void Update()
     {
         
@@ -82,7 +79,6 @@ public class UpgradeSkills : MonoBehaviour, IInteract
     {
         return PlayerPrefs.GetInt(key, defaultValue ? 1 : 0) == 1;
     }
-
     public static void SetBool(string key, bool value)
     {
         PlayerPrefs.SetInt(key, value ? 1 : 0);
@@ -140,7 +136,7 @@ public class UpgradeSkills : MonoBehaviour, IInteract
         }
 
     }
-   public void StaminaUpgrade()
+    public void StaminaUpgrade()
     {
         AudioManager.instance.PlaySFX("ButtonPress");
         int currentCurrency = gameManager.instance.GetCurrencyBalance();
@@ -242,14 +238,19 @@ public class UpgradeSkills : MonoBehaviour, IInteract
             return;
         }
     }
-   public void back()
+    public void DamageUpgrade()
+    {
+
+    }
+    public void back()
     {
         AudioManager.instance.PlaySFX("ButtonPress");
         UIManager.instance.SkillsMenu.SetActive(false);
         gameManager.instance.stateUnpaused();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         SaveUpgradeState();
     }
-
     public void SaveUpgradeState()
     {
        SetBool("Level1HPAcquired", level1HPAcquired);
@@ -272,7 +273,6 @@ public class UpgradeSkills : MonoBehaviour, IInteract
 
         PlayerPrefs.Save();
     }
-
     public void LoadUpgradeState()
     {
         level1HPAcquired = GetBool("Level1HPAcquired");
@@ -293,7 +293,6 @@ public class UpgradeSkills : MonoBehaviour, IInteract
         level4SpeedAcquired = GetBool("Level4SpeedAcquired");
         level5SpeedAcquired = GetBool("Level5SpeedAcquired");
     }
-
     public void EnableUpgradeGameObjects()
     {
         EnableHPUpgradeGameObjects();
@@ -313,7 +312,6 @@ public class UpgradeSkills : MonoBehaviour, IInteract
         if(level5HPAcquired)
             HPlevel5.SetActive(true);
     }
-
     void EnableStaminaUpgradeGameObjects()
     {
         if (level1StaminaAcquired)
@@ -327,7 +325,6 @@ public class UpgradeSkills : MonoBehaviour, IInteract
         if(level5StaminaAcquired)
             Staminalevel5.SetActive(true);
     }
-
     void EnableSpeedUpgradeGameObjects()
     {
         if (level1SpeedAcquired)

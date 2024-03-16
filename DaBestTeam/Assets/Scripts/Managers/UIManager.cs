@@ -33,11 +33,15 @@ public class UIManager : MonoBehaviour
     [SerializeField] private float textSpeed = 0.01f;
 
     [Header("--HUD--")]
-    [SerializeField] GameObject StaminaDisplay;
-    [SerializeField] GameObject HPDisplay;
-    [SerializeField] GameObject AmmoDisplay;
-    [SerializeField] GameObject CurrencyDisplay;
+    [SerializeField] public GameObject StaminaDisplay;
+    [SerializeField] public GameObject HPDisplay;
+    [SerializeField] public GameObject AmmoDisplay;
+    [SerializeField] public GameObject CurrencyDisplay;
     [SerializeField] public TextMeshProUGUI currency;
+    [SerializeField] public TextMeshProUGUI ammoCurrentDisplay;
+    [SerializeField] public TextMeshProUGUI weaponNameDisplay;
+    [SerializeField] public TextMeshProUGUI ammoReloadDisplay;
+
 
     public bool inSettings;
     public bool inCredits;
@@ -66,6 +70,8 @@ public class UIManager : MonoBehaviour
             MainMenu.gameObject.SetActive(false);
             if (!gameManager.instance.isPaused)
             {
+                Cursor.lockState = CursorLockMode.Confined;
+                Cursor.visible = false;
                 CurrencyDisplay.gameObject.SetActive(true);
                 StaminaDisplay.gameObject.SetActive(true);
                 AmmoDisplay.gameObject.SetActive(true);
@@ -88,7 +94,6 @@ public class UIManager : MonoBehaviour
         {
             button.SetActive(!button.activeSelf);
         }
-
     }
     public void ActivateText()
     {

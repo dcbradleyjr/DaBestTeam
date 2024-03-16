@@ -31,15 +31,17 @@ public class gameManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        if(instance == null)
+        if (instance == null)
             instance = this;
-        if(instance != this)
+        if (instance != this)
             Destroy(gameObject);
 
-        
-        player = GameObject.FindWithTag("Player").GetComponent<ThirdPersonController>();                
-        playerAnim = GameObject.FindWithTag("Player").GetComponent<Animator>();
-        playerInput = GameObject.FindWithTag("Player").GetComponent<PlayerInput>();
+        if (SceneManager.GetActiveScene().name != "MainMenu")
+        {
+            player = GameObject.FindWithTag("Player").GetComponent<ThirdPersonController>();
+            playerAnim = GameObject.FindWithTag("Player").GetComponent<Animator>();
+            playerInput = GameObject.FindWithTag("Player").GetComponent<PlayerInput>();
+        }
 
         mainCamera = Camera.main;
     }
@@ -47,11 +49,11 @@ public class gameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        
-        
+
+
+
     }
-   
+
     public void statePaused()
     {
         isPaused = !isPaused;
@@ -65,7 +67,7 @@ public class gameManager : MonoBehaviour
     {
         isPaused = !isPaused;
         Time.timeScale = 1;
-        Cursor.visible = false; 
+        Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         UIManager.instance.menuActive.SetActive(false);
         UIManager.instance.menuActive = null;
@@ -87,8 +89,8 @@ public class gameManager : MonoBehaviour
         UIManager.instance.menuActive = UIManager.instance.menuLose;
         UIManager.instance.menuActive.SetActive(true);
     }
-    
-   
+
+
     // Method to earn currency
     public void EarnCurrency(int amount)
     {
@@ -115,7 +117,7 @@ public class gameManager : MonoBehaviour
         return playerCurrency;
     }
 
-    
+
 
 }
 
