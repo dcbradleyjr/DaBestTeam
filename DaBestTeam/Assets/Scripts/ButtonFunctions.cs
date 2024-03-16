@@ -44,8 +44,6 @@ public class ButtonFunctions : MonoBehaviour
     public void StartGame()
     {
         AudioManager.instance.PlaySFX("ButtonPress");
-
-
         AudioManager.instance.SetSFXVolume();
         AudioManager.instance.SetMusicVolume();
     }

@@ -6,14 +6,13 @@ using UnityEngine.UI;
 
 public class Loader : MonoBehaviour
 {
-    [SerializeField] GameObject loadingScreen;
-  
-
     [SerializeField] Slider loadingSlider;
 
     public void LoadLevelButton(string level)
     {
-        loadingScreen.SetActive(true);
+        UIManager.instance.loadingScreen.SetActive(true);
+        UIManager.instance.MainMenu.SetActive(false);
+        
 
         // run async
         StartCoroutine(LoadLevelASync(level));
@@ -21,6 +20,7 @@ public class Loader : MonoBehaviour
 
     IEnumerator LoadLevelASync(string level)
     {
+        yield return new WaitForSeconds(5f);
         AsyncOperation op = SceneManager.LoadSceneAsync(level);
 
         while (!op.isDone)
@@ -29,6 +29,5 @@ public class Loader : MonoBehaviour
             loadingSlider.value = progressValue;
             yield return new WaitForSeconds(5f);
         }
-        yield return new WaitForSeconds(5f);
     }
 }

@@ -25,6 +25,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] public GameObject menuLose;
     [SerializeField] public GameObject MainMenu;
     [SerializeField] public GameObject SkillsMenu;
+    [SerializeField] public GameObject loadingScreen;
 
     [Header("--Text Credit Settings--")]
     [SerializeField] private TextMeshProUGUI itemInfoText;
