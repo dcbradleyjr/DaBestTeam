@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class ButtonFunctions : MonoBehaviour
 {
     
-
+    Loader loader;
     public void resume()
     {
         AudioManager.instance.PlaySFX("ButtonPress");
@@ -44,7 +44,8 @@ public class ButtonFunctions : MonoBehaviour
     public void StartGame()
     {
         AudioManager.instance.PlaySFX("ButtonPress");
-        SceneManager.LoadScene(1);
+
+
         AudioManager.instance.SetSFXVolume();
         AudioManager.instance.SetMusicVolume();
     }
