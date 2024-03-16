@@ -2,16 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ButtonFunctions : MonoBehaviour
 {
     
-    
+
     public void resume()
     {
         AudioManager.instance.PlaySFX("ButtonPress");
         gameManager.instance.stateUnpaused();
+        
     }
 
     public void restart()
@@ -48,6 +51,7 @@ public class ButtonFunctions : MonoBehaviour
 
     public void Settings()
     {
+        
         AudioManager.instance.PlaySFX("ButtonPress");
         if (!UIManager.instance.inSettings)
         {
@@ -98,6 +102,7 @@ public class ButtonFunctions : MonoBehaviour
         }
         UIManager.instance.inSettings = false;
         UIManager.instance.inCredits = false;
+        
     }
 
     public void MainMenuButton()
@@ -109,6 +114,7 @@ public class ButtonFunctions : MonoBehaviour
     
     public void Credits()
     {
+        
         AudioManager.instance.PlaySFX("ButtonPress");
         if (!UIManager.instance.inCredits)
         {
