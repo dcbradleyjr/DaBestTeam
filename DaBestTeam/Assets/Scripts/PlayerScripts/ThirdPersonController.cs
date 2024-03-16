@@ -115,6 +115,7 @@ public class ThirdPersonController : MonoBehaviour, IDamage
         if (HP <= 0)
         {
             //death logic
+            gameManager.instance.youLose();
         }
         updateHealthUI();
     }

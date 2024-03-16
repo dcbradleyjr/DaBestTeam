@@ -12,7 +12,12 @@ TagManager:
   - PistolSlot
   - GunSlot
   - Spawner
+  - AimCinemachine
+  - ThirdPersonCinemachine
   - SwitchCam
+  - MeleeList
+  - GunList
+  - PistolList
   layers:
   - Default
   - TransparentFX

@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,7 +15,13 @@ public class GunSlot : MonoBehaviour
     [Header("---Pistol = 1, Gun = 3---")]
     [SerializeField] int layerIndex;
 
+    [Header("---GunList---")]
+    [SerializeField] List<GameObject> gunList;
+    [SerializeField] List<Gun> gunStats;
+    [SerializeField] int currentGunIndex;
+
     [Header("---Stats---")]
+    [SerializeField] string gunName;
     [SerializeField] int damage;
     [SerializeField] int clipSize;
     [SerializeField] int clipSizeMax;
@@ -51,6 +58,11 @@ public class GunSlot : MonoBehaviour
 
             if(CanReload())
                 StartCoroutine(reloadGun());
+
+            if (!IsAnyGunActive() && currentGunIndex != -1)
+            {
+                ActivateGun(currentGunIndex);
+            }
         }
     }
 
@@ -70,6 +82,46 @@ public class GunSlot : MonoBehaviour
         isShooting = false;
         StopAllCoroutines();
         animator.SetLayerWeight(layerIndex, 0);
+    }
+
+    public void ActivateGun(int index)
+    {
+        if (index >= 0 && index < gunList.Count)
+        {
+            DisableAllGuns(); 
+
+            gunList[index].SetActive(true);
+            currentGunIndex = index;
+            TransferStats(gunStats[index]);
+        }
+        else
+        {
+            Debug.LogError("Invalid gun index!");
+        }
+    }
+
+    private void TransferStats(Gun gun)
+    {
+        gunName = gun.gunName;
+        damage = gun.damage;
+        bulletPrefab = gun.bulletPrefab;
+        muzzleFlash = gun.muzzleFlash;
+        ammo = gun.ammo;
+        clipSizeMax = gun.clipSizeMax;
+        clipSize = clipSizeMax;
+        fireRate = gun.fireRate;
+        reloadRate = gun.reloadRate;
+        bulletDistance = gun.bulletDistance;
+
+        isAuto = gun.isAuto;
+    }
+
+    private void DisableAllGuns()
+    {
+        foreach (GameObject gunObject in gunList)
+        {
+            gunObject.SetActive(false);
+        }
     }
 
     private void StartShooting()
@@ -179,6 +231,18 @@ public class GunSlot : MonoBehaviour
         return toggleShoot && isAuto && !isShooting && clipSize > 0 && !isReloading;
     }
 
+    public bool IsAnyGunActive()
+    {
+        foreach (GameObject gunObject in gunList)
+        {
+            if (gunObject.activeSelf)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void IncreaseDamage(int value)
     {
         damage += value;
@@ -191,5 +255,4 @@ public class GunSlot : MonoBehaviour
         ammo += value;
         UpdateUI();
     }
-
 }
