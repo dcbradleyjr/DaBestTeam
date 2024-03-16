@@ -9,35 +9,37 @@ public class UpgradeSkills : MonoBehaviour, IInteract
 
    public string interactPrompt => ("Skills Crate!");
 
-   public int level1Cost;
+    
+
+    public int level1Cost;
    public int level2Cost;
    public int level3Cost;
    public int level4Cost;
    public int level5Cost;
 
-   private bool level1HPAcquired = false;
-   private bool level2HPAcquired = false;
-   private bool level3HPAcquired = false;
-   private bool level4HPAcquired = false;
-   private bool level5HPAcquired = false;
-
-   private bool level1StaminaAcquired = false;
-   private bool level2StaminaAcquired = false;
-   private bool level3StaminaAcquired = false;
-   private bool level4StaminaAcquired = false;
-   private bool level5StaminaAcquired = false;
-
-   /*private bool level1DamageAcquired = false;
-   private bool level2DamageAcquired = false;
-   private bool level3DamageAcquired = false;
-   private bool level4DamageAcquired = false;
-   private bool level5DamageAcquired = false;*/
-
-   private bool level1SpeedAcquired = false;
-   private bool level2SpeedAcquired = false;
-   private bool level3SpeedAcquired = false;
-   private bool level4SpeedAcquired = false;
-   private bool level5SpeedAcquired = false;
+   public bool level1HPAcquired = false;
+   public bool level2HPAcquired = false;
+   public bool level3HPAcquired = false;
+   public bool level4HPAcquired = false;
+   public bool level5HPAcquired = false;
+   
+   public bool level1StaminaAcquired = false;
+   public bool level2StaminaAcquired = false;
+   public bool level3StaminaAcquired = false;
+   public bool level4StaminaAcquired = false;
+   public bool level5StaminaAcquired = false;
+   
+   public bool level1DamageAcquired = false;
+   public bool level2DamageAcquired = false;
+   public bool level3DamageAcquired = false;
+   public bool level4DamageAcquired = false;
+   public bool level5DamageAcquired = false;
+   
+   public bool level1SpeedAcquired = false;
+   public bool level2SpeedAcquired = false;
+   public bool level3SpeedAcquired = false;
+   public bool level4SpeedAcquired = false;
+   public bool level5SpeedAcquired = false;
 
     [Header("--HP--")]
     [SerializeField] GameObject HPlevel1;
@@ -60,7 +62,7 @@ public class UpgradeSkills : MonoBehaviour, IInteract
 
     public void Start()
     {
-        
+        LoadUpgradeState();
     }
    public void interact()
     {
@@ -71,7 +73,21 @@ public class UpgradeSkills : MonoBehaviour, IInteract
         UIManager.instance.menuActive.SetActive(true);
     }
 
-   public void HPUpgrade()
+    public void Update()
+    {
+        
+    }
+    public static bool GetBool(string key, bool defaultValue = false)
+    {
+        return PlayerPrefs.GetInt(key, defaultValue ? 1 : 0) == 1;
+    }
+
+    public static void SetBool(string key, bool value)
+    {
+        PlayerPrefs.SetInt(key, value ? 1 : 0);
+        PlayerPrefs.Save();
+    }
+    public void HPUpgrade()
     {
         AudioManager.instance.PlaySFX("ButtonPress");
         int currentCurrency = gameManager.instance.GetCurrencyBalance();
@@ -230,6 +246,53 @@ public class UpgradeSkills : MonoBehaviour, IInteract
         AudioManager.instance.PlaySFX("ButtonPress");
         UIManager.instance.SkillsMenu.SetActive(false);
         gameManager.instance.stateUnpaused();
+        SaveUpgradeState();
+    }
+
+    // Saving the upgrade state
+    public void SaveUpgradeState()
+    {
+       SetBool("Level1HPAcquired", level1HPAcquired);
+       SetBool("Level2HPAcquired", level2HPAcquired);
+       SetBool("Level3HPAcquired", level3HPAcquired);
+       SetBool("Level4HPAcquired", level4HPAcquired);
+       SetBool("Level5HPAcquired", level5HPAcquired);
+
+       SetBool("Level1StaminaAcquired", level1StaminaAcquired);
+       SetBool("Level2StaminaAcquired", level2StaminaAcquired);
+       SetBool("Level3StaminaAcquired", level3StaminaAcquired);
+       SetBool("Level4StaminaAcquired", level4StaminaAcquired);
+       SetBool("Level5StaminaAcquired", level5StaminaAcquired);
+
+       SetBool("Level1SpeedAcquired", level1SpeedAcquired);
+       SetBool("Level2SpeedAcquired", level2SpeedAcquired);
+       SetBool("Level3SpeedAcquired", level3SpeedAcquired);
+       SetBool("Level4SpeedAcquired", level4SpeedAcquired);
+       SetBool("Level5SpeedAcquired", level5SpeedAcquired);
+
+        PlayerPrefs.Save();
+    }
+
+    // Loading the upgrade state
+    public void LoadUpgradeState()
+    {
+        level1HPAcquired = GetBool("Level1HPAcquired");
+        level2HPAcquired = GetBool("Level2HPAcquired");
+        level3HPAcquired = GetBool("Level3HPAcquired");
+        level4HPAcquired = GetBool("Level4HPAcquired");
+        level5HPAcquired = GetBool("Level5HPAcquired");
+
+        level1StaminaAcquired = GetBool("Level1StaminaAcquired");
+        level2StaminaAcquired = GetBool("Level2StaminaAcquired");
+        level3StaminaAcquired = GetBool("Level3StaminaAcquired");
+        level4StaminaAcquired = GetBool("Level4StaminaAcquired");
+        level5StaminaAcquired = GetBool("Level5StaminaAcquired");
+
+        level1SpeedAcquired = GetBool("Level1SpeedAcquired");
+        level2SpeedAcquired = GetBool("Level2SpeedAcquired");
+        level3SpeedAcquired = GetBool("Level3SpeedAcquired");
+        level4SpeedAcquired = GetBool("Level4SpeedAcquired");
+        level5SpeedAcquired = GetBool("Level5SpeedAcquired");
     }
 }
 

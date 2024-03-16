@@ -7,20 +7,22 @@ public class ZombieScratch : MonoBehaviour
     public int damage { get;set; }
     [SerializeField] float timeToDestroy = 0.2f;
 
-    void Start()
+    void Awake()
     {
+        Debug.Log("Boom");
         Destroy(gameObject, timeToDestroy);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.isTrigger || other.CompareTag("Enemy"))
+        if (other.isTrigger || !other.CompareTag("Player"))
             return;
 
         IDamage dmg = other.GetComponent<IDamage>();
 
         if (dmg != null)
         {
+            Debug.Log(other.name);
             dmg.takeDamage(damage);
             Destroy(gameObject);
         }

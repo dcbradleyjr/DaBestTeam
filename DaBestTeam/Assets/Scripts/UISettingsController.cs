@@ -20,13 +20,13 @@ public class UISettingsController : MonoBehaviour
 
     public void MusicVolume()
     {
-        AudioManager.instance.PlaySFX("Buzz");
+        //AudioManager.instance.PlaySFX("Buzz");
         AudioManager.instance.MusicVolume(_musicSlider.value);       
     }
 
     public void SFXVolume()
     {
-        AudioManager.instance.PlaySFX("Buzz");
+        //AudioManager.instance.PlaySFX("Buzz");
         AudioManager.instance.SFXVolume(_sfxSlider.value);
     }
 

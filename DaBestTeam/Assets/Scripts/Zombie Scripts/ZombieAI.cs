@@ -25,6 +25,7 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     public bool canHoldWeapons;
     public bool randomMesh;
     [SerializeField] Transform HitPoint;
+    [SerializeField] Transform HitBox;
     [SerializeField] float meleeRange;
     [SerializeField] GameObject zombieScratch;
     [SerializeField] Rigidbody[] _ragdollRigidbodies;
@@ -36,10 +37,13 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     [Range(1, 8)][SerializeField] int roamPauseTime;
     [Range(0, 45)][SerializeField] int roamDistance;
     [Range(30, 180)][SerializeField] int viewCone;
-    [Range(1, 10)][SerializeField] int targetFaceSpeed;
+    [Range(1, 1000)][SerializeField] int targetFaceSpeed;
     [SerializeField] float attackCooldown;
+    [SerializeField] float attackRange;
+    [SerializeField] float attackAnimSpeed;
     [SerializeField] float dropRate;
     [SerializeField] int damageAmount;
+
 
     [Header("--UI--")]
     public UnityEngine.UI.Image HealthBar;
@@ -57,14 +61,14 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     float stoppingDistanceOrig;
     bool destChosen;
     private bool playerInRange;
-    float attackRange = 2f;
+    
 
     int hurtAnim;
     int attackAnim;
     int walkAnim;
     bool animOrignal;
 
-
+    
 
     public enum AIStateId { Roam = 1, ChasePlayer = 2, Attack = 3, Death = 4 };
 
@@ -93,7 +97,7 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     {
         /*if(state != AIStateId.Death)
         takeDamage(1);*/
-
+        playerDir = gameManager.instance.player.transform.position - HitPoint.position;
     }
     public AIStateId state
         {
@@ -151,10 +155,12 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     {
         while (true)
         {
-            AudioManager.instance.PlaySFX("ZombieChase");
+            faceTarget();
+            //AudioManager.instance.PlaySFX("ZombieChase");
             float distanceToPlayer = Vector3.Distance(transform.position, gameManager.instance.player.transform.position);
             if (distanceToPlayer < attackRange)
-            { 
+            {
+                Debug.Log(distanceToPlayer + "Player Distance");
                 // Transition to attack state
                 StartCoroutine(attackState());
                 // Exit chase state
@@ -174,39 +180,37 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     {
         while (true)
         {
-            playerDir = gameManager.instance.player.transform.position;
-            angleToPlayer = Vector3.Angle(new Vector3(playerDir.x, 0, playerDir.z), transform.forward);
-            Debug.Log("Angle" + angleToPlayer);
-            Debug.Log("View" + viewCone);
+            faceTarget();
+            
+            //angleToPlayer = Vector3.Angle(new Vector3(playerDir.x, 0, playerDir.z), transform.forward);
 
-            Debug.DrawRay(HitPoint.position, playerDir);
-            if (!isAttacking && angleToPlayer <= viewCone)
+            agent.SetDestination(gameManager.instance.player.transform.position);
+            
+
+            if (!isAttacking)
             {
-                faceTarget();
-                Debug.Log("See you");
                 isAttacking = true;
-                
-                GameObject scratch = Instantiate(zombieScratch, HitPoint.position, HitPoint.rotation);
+                anim.SetTrigger("Attack");
+                yield return new WaitForSeconds(attackAnimSpeed);
+
+                //AudioManager.instance.PlaySFX("ZombieAttack");
+
+                GameObject scratch = Instantiate(zombieScratch, HitBox.position, HitBox.rotation);
                 scratch.GetComponent<ZombieScratch>().damage = damageAmount;
 
-                AudioManager.instance.PlaySFX("ZombieAttack");
-
-                int attackAnimSpeed = Random.Range(0, 1);
-                anim.CrossFade(attackAnim, attackAnimSpeed); 
-
+                yield return new WaitForSeconds(attackCooldown);
                 isAttacking = false;
             }
-            
+           
             // Check if the player is still in range
-            float distanceToPlayer = Vector3.Distance(transform.position, gameManager.instance.player.transform.position);
+           /* float distanceToPlayer = Vector3.Distance(transform.position, gameManager.instance.player.transform.position);
             if (distanceToPlayer > attackRange)
             {
                 state = AIStateId.ChasePlayer;
                 yield break;
-            }
+            }*/
 
-            // Attack cooldown
-            yield return new WaitForSeconds(attackCooldown);
+            yield return new WaitForSeconds(0.1f);
         }
     }
     public IEnumerator deathState()
@@ -215,8 +219,7 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
         {
             isDead = true;
             
-
-            AudioManager.instance.PlaySFX("ZombieDeath");
+            //AudioManager.instance.PlaySFX("ZombieDeath");
 
             gameManager.instance.EarnCurrency(10);
 
@@ -242,12 +245,11 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
                 SpawnManager.instance.DecrementSpawnTotal(this.gameObject); //spawnManager handles things while this dies
             }
 
-
             Destroy(gameObject, 2f);
             yield return null;
         }
     }
-
+    
     void updateUI()
     {
         HealthBar.fillAmount = (float)HP / HPOriginal;
@@ -257,13 +259,11 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     {
         if (other.CompareTag("Player"))
         {
-            
-
+            faceTarget();
             if (state  != AIStateId.Death)
             state = AIStateId.ChasePlayer;
         }
 
-        
     }
 
     void OnTriggerExit(Collider other)
@@ -286,26 +286,29 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
             isDamage = true;
             AudioManager.instance.PlaySFX("ZombieHurt");
 
-            int hurtAnimSpeed = Random.Range(0, 1);
-
-            anim.CrossFade(hurtAnim, hurtAnimSpeed); 
+            anim.SetTrigger("Hurt");
             isDamage = false;
         }
+
         HP -= amount;
+
         updateUI();
+
         if (!EnemyUI.gameObject.activeSelf)
             EnemyUI.gameObject.SetActive(true);
+
         faceTarget();
+
         if (HP <= 0)
         {
             StopAllCoroutines();
             state = AIStateId.Death;
             return;
         }
-        else if (HP > 0) 
-        state = AIStateId.ChasePlayer;
-
-
+        else if (HP > 0 && !isAttacking)
+        {
+            state = AIStateId.ChasePlayer;
+        }
     }
 
     public void pushBackDir(Vector3 dir)

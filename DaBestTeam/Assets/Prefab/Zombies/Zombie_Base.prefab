@@ -539,6 +539,37 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!1 &750500813734276386
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9040440409492318489}
+  m_Layer: 0
+  m_Name: HitBox
+  m_TagString: Enemy
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9040440409492318489
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 750500813734276386}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.03, y: 1.125, z: 0.439}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6354978124117494526}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &805674474206080435
 GameObject:
   m_ObjectHideFlags: 0
@@ -2882,7 +2913,7 @@ GameObject:
   - component: {fileID: 8938389325397104656}
   - component: {fileID: 315453727248882514}
   - component: {fileID: 7234920471940303235}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Zombie_Base
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -2903,6 +2934,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2246558348447114281}
+  - {fileID: 9040440409492318489}
   - {fileID: 6411893139823719231}
   - {fileID: 950665876493624504}
   - {fileID: 7205648766685112197}
@@ -3054,6 +3086,7 @@ MonoBehaviour:
   canHoldWeapons: 0
   randomMesh: 0
   HitPoint: {fileID: 2246558348447114281}
+  HitBox: {fileID: 9040440409492318489}
   meleeRange: 0.58
   zombieScratch: {fileID: 3257358659001034792, guid: d1fcf89608676454689916f9d5d59492, type: 3}
   _ragdollRigidbodies: []
@@ -3063,8 +3096,10 @@ MonoBehaviour:
   roamPauseTime: 3
   roamDistance: 5
   viewCone: 30
-  targetFaceSpeed: 0
+  targetFaceSpeed: 10
   attackCooldown: 1
+  attackRange: 2
+  attackAnimSpeed: 0.5
   dropRate: 0.5
   damageAmount: 1
   HealthBar: {fileID: 602742350953240676}
@@ -4907,7 +4942,7 @@ Transform:
   m_GameObject: {fileID: 4904196093645003991}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.02, y: 1.059, z: 0.677}
+  m_LocalPosition: {x: -0.03, y: 1.55, z: 0.091}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
