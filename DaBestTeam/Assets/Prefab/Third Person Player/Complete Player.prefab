@@ -1072,7 +1072,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2865962326841373438}
-  - component: {fileID: 605276559650090647}
+  - component: {fileID: 2311567983581430219}
   m_Layer: 0
   m_Name: PistolSlot
   m_TagString: PistolSlot
@@ -1097,7 +1097,7 @@ Transform:
   - {fileID: 3806285387958960319}
   m_Father: {fileID: 6355068029615329823}
   m_LocalEulerAnglesHint: {x: 15.336, y: 100.404, z: 84.36}
---- !u!114 &605276559650090647
+--- !u!114 &2311567983581430219
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1106,7 +1106,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2720811337292947119}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc81c933ed5bc054d860386fa375d09a, type: 3}
+  m_Script: {fileID: 11500000, guid: 7615273f596b3e446af0e7cb3cfd6b60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   input: {fileID: 6552129734987214672}
@@ -1114,7 +1114,18 @@ MonoBehaviour:
   muzzleFlash: {fileID: 8573344195166953213, guid: 599f177c3e7351e469cc55e9800ed44b, type: 3}
   shootPoint: {fileID: 3806285387958960319}
   animator: {fileID: 7739185534096629374}
-  bulletHitMissDistance: 25
+  layerIndex: 1
+  damage: 2
+  clipSize: 0
+  clipSizeMax: 8
+  ammo: 30
+  reloadRate: 1.5
+  fireRate: 0.4
+  bulletDistance: 15
+  toggleShoot: 0
+  isShooting: 0
+  isReloading: 0
+  isAuto: 0
 --- !u!1 &2825000141646943583
 GameObject:
   m_ObjectHideFlags: 0
@@ -1265,8 +1276,8 @@ MonoBehaviour:
   PistolSlot: {fileID: 2720811337292947119}
   GunSlot: {fileID: 3669780237350143134}
   input: {fileID: 6552129734987214672}
-  Pistol: {fileID: 0}
   Melee: {fileID: 0}
+  Pistol: {fileID: 0}
   Gun: {fileID: 0}
   canToggleMelee: 1
   canTogglePistol: 1
@@ -1322,14 +1333,17 @@ MonoBehaviour:
   muzzleFlash: {fileID: 8573344195166953213, guid: 599f177c3e7351e469cc55e9800ed44b, type: 3}
   shootPoint: {fileID: 4750193528217348220}
   animator: {fileID: 7739185534096629374}
-  damage: 0
+  layerIndex: 3
+  damage: 1
   clipSize: 0
-  maxClipsize: 0
-  reloadRate: 0
-  fireRate: 0.2
+  clipSizeMax: 30
+  ammo: 120
+  reloadRate: 2
+  fireRate: 0.1
   bulletDistance: 25
   toggleShoot: 0
   isShooting: 0
+  isReloading: 0
   isAuto: 1
 --- !u!1 &3906543066544887298
 GameObject:

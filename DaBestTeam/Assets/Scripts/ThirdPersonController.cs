@@ -96,12 +96,15 @@ public class ThirdPersonController : MonoBehaviour, IDamage
 
     void Update()
     {
-        Movement();
-
-        if (isSprinting)
+        if (!gameManager.instance.isPaused)
         {
-            DrainStamina();
-            ResetRecharge();
+            Movement();
+
+            if (isSprinting)
+            {
+                DrainStamina();
+                ResetRecharge();
+            } 
         }
     }
 
@@ -169,7 +172,7 @@ public class ThirdPersonController : MonoBehaviour, IDamage
         if (canSprint && !isCrouching)
         {
             playerSpeed *= sprintMod;
-            isSprinting = true; 
+            isSprinting = true;
         }
     }
 
@@ -226,9 +229,14 @@ public class ThirdPersonController : MonoBehaviour, IDamage
         {
             isCrouching = true;
             canSprint = false;
-            controller.height = 0.815f;
-            controller.center = new Vector3(0,0.44f,0);
-            animator.SetLayerWeight(4, 1);
+            if (controller != null)
+            {
+                controller.height = 0.815f;
+                controller.center = new Vector3(0, 0.44f, 0);
+            }
+            if (animator != null)
+                animator.SetLayerWeight(4, 1);
+
             playerSpeed = playerSpeed / 2;
         }
     }
@@ -239,9 +247,14 @@ public class ThirdPersonController : MonoBehaviour, IDamage
         {
             isCrouching = false;
             canSprint = true;
-            controller.height = 1.63f;
-            controller.center = new Vector3(0, 0.88f, 0);
-            animator.SetLayerWeight(4, 0);
+            if (controller != null)
+            {
+                controller.height = 1.63f;
+                controller.center = new Vector3(0, 0.88f, 0);
+            }
+            if (animator != null)
+                animator.SetLayerWeight(4, 0);
+
             playerSpeed = playerSpeedMax;
         }
     }

@@ -5,20 +5,24 @@ using UnityEngine.InputSystem;
 
 public class WeaponSlotManager : MonoBehaviour
 {
+    [Header("---Components---")]
     public static WeaponSlotManager instance;
     public GameObject MeleeSlot;
     public GameObject PistolSlot;
     public GameObject GunSlot;
     [SerializeField] PlayerInput input;
 
+    //inputs
     InputAction meleeSwitch;
     InputAction pistolSwitch;
     InputAction gunSwitch;
 
-    public PistolSlot Pistol;
+    [Header("---Weapon Slots---")]
     public MeleeSlot Melee;
+    public GunSlot Pistol;
     public GunSlot Gun;
 
+    [Header("---Toggles---")]
     public bool canToggleMelee;
     public bool canTogglePistol;
     public bool canToggleGun;
@@ -29,8 +33,8 @@ public class WeaponSlotManager : MonoBehaviour
         meleeSwitch = input.actions["MeleeSelect"];
         pistolSwitch = input.actions["PistolSelect"];
         gunSwitch = input.actions["GunSelect"];
-        Pistol = PistolSlot.GetComponent<PistolSlot>();
         Melee = MeleeSlot.GetComponent<MeleeSlot>();
+        Pistol = PistolSlot.GetComponent<GunSlot>();
         Gun = GunSlot.GetComponent<GunSlot>();
     }
 
@@ -62,5 +66,30 @@ public class WeaponSlotManager : MonoBehaviour
         MeleeSlot.SetActive(false);
         PistolSlot.SetActive(false);
         GunSlot.SetActive(true);
+    }
+
+    public void DeactivateSlots()
+    {
+        MeleeSlot.SetActive(false);
+        PistolSlot.SetActive(false);
+        GunSlot.SetActive(false);
+    }
+
+    public void LockMeleeSlot()
+    {
+        canToggleMelee = false;
+        MeleeSlot.SetActive(false);
+    }
+
+    public void LockPistolSlot()
+    {
+        canTogglePistol = false;
+        PistolSlot.SetActive(false);
+    }
+
+    public void LockGunSlot()
+    {
+        canToggleGun = false;
+        GunSlot.SetActive(false);
     }
 }

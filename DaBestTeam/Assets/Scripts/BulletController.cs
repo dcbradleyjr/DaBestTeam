@@ -6,10 +6,10 @@ public class BulletController : MonoBehaviour
 {
     [SerializeField] GameObject bloodSplat;
     [SerializeField] GameObject impact;
-    [SerializeField] int damageAmount = 1;
     [SerializeField] float speed = 50f;
     [SerializeField] float timeToDestroy = 3f;
 
+    public int damageAmount { get; set; }
     public Vector3 target { get; set; }
     public bool hit { get; set; }
 
