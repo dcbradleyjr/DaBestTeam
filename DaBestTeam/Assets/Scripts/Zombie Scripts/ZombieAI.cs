@@ -51,6 +51,8 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
 
     public GameObject parentSpawner; //needed for SpawnManager
 
+    public bool hasBossMechs;
+
     [SerializeField] private AIStateId _state = AIStateId.Roam;
 
     int HPOriginal;
