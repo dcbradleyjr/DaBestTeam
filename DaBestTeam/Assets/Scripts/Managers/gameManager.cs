@@ -99,13 +99,11 @@ public class gameManager : MonoBehaviour
     {
         if (playerCurrency >= amount)
         {
-            Debug.LogError("Thanks");
             playerCurrency -= amount;
             return true; // Transaction successful
         }
         else
         {
-            Debug.Log("You broke");
             return false; // Insufficient funds
         }
     }
