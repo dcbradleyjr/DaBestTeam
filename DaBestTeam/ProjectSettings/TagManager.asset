@@ -12,6 +12,7 @@ TagManager:
   - PistolSlot
   - GunSlot
   - Spawner
+  - SwitchCam
   layers:
   - Default
   - TransparentFX

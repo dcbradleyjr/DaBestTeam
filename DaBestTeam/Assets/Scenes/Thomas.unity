@@ -123,6 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 7945a8439d5582942af36b70a09ac3e0, type: 2}
+--- !u!114 &47584543 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2221897179072854595, guid: f4bc993695675814796693841ee39781, type: 3}
+  m_PrefabInstance: {fileID: 4197629642588772648}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &213897214
 GameObject:
   m_ObjectHideFlags: 0
@@ -844,6 +855,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prompt: Press E to open the cube
+--- !u!114 &1807221021 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 241076584972450175, guid: f4bc993695675814796693841ee39781, type: 3}
+  m_PrefabInstance: {fileID: 4197629642588772648}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1976930776
 GameObject:
   m_ObjectHideFlags: 0
@@ -1184,6 +1206,54 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 241076584972450175, guid: f4bc993695675814796693841ee39781, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1317528261991667919, guid: f4bc993695675814796693841ee39781, type: 3}
+      propertyPath: AimReticle
+      value: 
+      objectReference: {fileID: 47584543}
+    - target: {fileID: 1317528261991667919, guid: f4bc993695675814796693841ee39781, type: 3}
+      propertyPath: aimPriority
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1317528261991667919, guid: f4bc993695675814796693841ee39781, type: 3}
+      propertyPath: meleeReticle
+      value: 
+      objectReference: {fileID: 21300000, guid: 05c485256c095504994d1b111129af1d, type: 3}
+    - target: {fileID: 1317528261991667919, guid: f4bc993695675814796693841ee39781, type: 3}
+      propertyPath: gunAimReticle
+      value: 
+      objectReference: {fileID: 21300000, guid: d618192eec2c5b54ea1257a129c5ade6, type: 3}
+    - target: {fileID: 1317528261991667919, guid: f4bc993695675814796693841ee39781, type: 3}
+      propertyPath: RegularReticle
+      value: 
+      objectReference: {fileID: 1807221021}
+    - target: {fileID: 1317528261991667919, guid: f4bc993695675814796693841ee39781, type: 3}
+      propertyPath: regularPriority
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1317528261991667919, guid: f4bc993695675814796693841ee39781, type: 3}
+      propertyPath: pistolAimReticle
+      value: 
+      objectReference: {fileID: 21300000, guid: bd8aee56b84dd3843bcbcc7098498a9a, type: 3}
+    - target: {fileID: 1317528261991667919, guid: f4bc993695675814796693841ee39781, type: 3}
+      propertyPath: gunRegularReticle
+      value: 
+      objectReference: {fileID: 21300000, guid: be510d0ab7e88df45ad82c3c29b5c630, type: 3}
+    - target: {fileID: 1317528261991667919, guid: f4bc993695675814796693841ee39781, type: 3}
+      propertyPath: pistolRegularReticle
+      value: 
+      objectReference: {fileID: 21300000, guid: ba559c298ed56b84dacda98c7c37315f, type: 3}
+    - target: {fileID: 2221897179072854595, guid: f4bc993695675814796693841ee39781, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2461468207453376911, guid: f4bc993695675814796693841ee39781, type: 3}
+      propertyPath: m_TagString
+      value: SwitchCam
+      objectReference: {fileID: 0}
     - target: {fileID: 2655668514761680859, guid: f4bc993695675814796693841ee39781, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.4077858
@@ -1227,6 +1297,14 @@ PrefabInstance:
     - target: {fileID: 5791115153234258182, guid: f4bc993695675814796693841ee39781, type: 3}
       propertyPath: m_Name
       value: Complete Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416040396745253804, guid: f4bc993695675814796693841ee39781, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.2205362
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416040396745253804, guid: f4bc993695675814796693841ee39781, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.8047085
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
