@@ -32,6 +32,7 @@ public class GunSlot : MonoBehaviour
     public bool isShooting;
     public bool isReloading;
     public bool isAuto;
+    public bool isInfiniteAmmo;
 
     void Awake()
     {
@@ -92,6 +93,7 @@ public class GunSlot : MonoBehaviour
             GameObject bullet = GameObject.Instantiate(bulletPrefab, shootPoint.position, Quaternion.identity);
             GameObject flash = Instantiate(muzzleFlash, shootPoint.position, shootPoint.rotation);
             clipSize--;
+            UpdateUI();
             Destroy(flash, 0.5f);
             BulletController bulletController = bullet.GetComponent<BulletController>();
             bulletController.damageAmount = damage;
@@ -114,15 +116,20 @@ public class GunSlot : MonoBehaviour
     {
         //audio 
         isReloading = true;
-        //reload visuals coroutine
+        StartCoroutine(reloadingVisuals());
         yield return new WaitForSeconds(reloadRate);
         ammoDeduction();
-        //updateUI
+        UpdateUI();
         isReloading = false;
     }
 
     void ammoDeduction()
     {
+        if (isInfiniteAmmo)
+        {
+            clipSize = clipSizeMax;
+            return;
+        }
         if (ammo >= clipSizeMax)
         {
             int ammoToReload = clipSizeMax - clipSize;
@@ -134,6 +141,27 @@ public class GunSlot : MonoBehaviour
             clipSize = ammo;
             ammo = 0;
         }
+    }
+
+    IEnumerator reloadingVisuals()
+    {
+        UIManager.instance.ammoReloadDisplay.text = "Reloading";
+        yield return new WaitForSeconds(reloadRate / 4);
+        UIManager.instance.ammoReloadDisplay.text = "Reloading.";
+        yield return new WaitForSeconds(reloadRate / 4);
+        UIManager.instance.ammoReloadDisplay.text = "Reloading..";
+        yield return new WaitForSeconds(reloadRate / 4);
+        UIManager.instance.ammoReloadDisplay.text = "Reloading...";
+        yield return new WaitForSeconds(reloadRate / 4);
+        UIManager.instance.ammoReloadDisplay.text = "";
+    }
+
+    public void UpdateUI()
+    {
+        if (!isInfiniteAmmo)
+        UIManager.instance.ammoCurrentDisplay.text = "" + clipSize + " / " + ammo;
+        else
+        UIManager.instance.ammoCurrentDisplay.text = "" + clipSize + " / 999";
     }
 
     bool CanReload()
@@ -161,6 +189,7 @@ public class GunSlot : MonoBehaviour
     public void AddAmmo (int value)
     {
         ammo += value;
+        UpdateUI();
     }
 
 }

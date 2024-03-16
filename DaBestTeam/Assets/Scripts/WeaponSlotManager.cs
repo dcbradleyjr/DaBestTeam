@@ -10,6 +10,7 @@ public class WeaponSlotManager : MonoBehaviour
     public GameObject MeleeSlot;
     public GameObject PistolSlot;
     public GameObject GunSlot;
+    [SerializeField] SwitchVCam switchCam;
     [SerializeField] PlayerInput input;
 
     //inputs
@@ -27,6 +28,10 @@ public class WeaponSlotManager : MonoBehaviour
     public bool canTogglePistol;
     public bool canToggleGun;
 
+    public bool isMeleeActive;
+    public bool isPistolActive;
+    public bool isGunActive;
+
     void Awake()
     {
         instance = this;
@@ -36,15 +41,16 @@ public class WeaponSlotManager : MonoBehaviour
         Melee = MeleeSlot.GetComponent<MeleeSlot>();
         Pistol = PistolSlot.GetComponent<GunSlot>();
         Gun = GunSlot.GetComponent<GunSlot>();
+        switchCam = GameObject.FindWithTag("AimCinemachine").GetComponent<SwitchVCam>();
     }
 
     private void Update()
     {
-        if (meleeSwitch.triggered && canToggleMelee)
+        if (meleeSwitch.triggered && canToggleMelee && !IsReloadingGuns())
             ActivateMeleeSlot();
-        if (pistolSwitch.triggered & canTogglePistol)
+        if (pistolSwitch.triggered & canTogglePistol && !IsReloadingGuns())
             ActivatePistolSlot();
-        if (gunSwitch.triggered && canToggleGun)
+        if (gunSwitch.triggered && canToggleGun && !IsReloadingGuns())
             ActivateGunSlot();
     }
 
@@ -53,6 +59,9 @@ public class WeaponSlotManager : MonoBehaviour
         PistolSlot.SetActive(false);
         GunSlot.SetActive(false);
         MeleeSlot.SetActive(true);
+        isMeleeActive = true;
+        switchCam.MeleeReticle();
+        UIManager.instance.AmmoDisplay.SetActive(false);
     }
 
     public void ActivatePistolSlot()
@@ -60,12 +69,20 @@ public class WeaponSlotManager : MonoBehaviour
         MeleeSlot.SetActive(false);
         GunSlot.SetActive(false);
         PistolSlot.SetActive(true);
+        isPistolActive = true;
+        switchCam.PistolReticle();
+        UIManager.instance.AmmoDisplay.SetActive(true);
+        Pistol.UpdateUI();
     }
     public void ActivateGunSlot()
     {
         MeleeSlot.SetActive(false);
         PistolSlot.SetActive(false);
         GunSlot.SetActive(true);
+        isGunActive = true;
+        switchCam.GunReticle();
+        UIManager.instance.AmmoDisplay.SetActive(true);
+        Gun.UpdateUI();
     }
 
     public void DeactivateSlots()
@@ -73,23 +90,36 @@ public class WeaponSlotManager : MonoBehaviour
         MeleeSlot.SetActive(false);
         PistolSlot.SetActive(false);
         GunSlot.SetActive(false);
+        isMeleeActive = false;
+        isPistolActive = false;
+        isGunActive = false;
+        switchCam.MeleeReticle();
+        UIManager.instance.AmmoDisplay.SetActive(false);
     }
 
     public void LockMeleeSlot()
     {
         canToggleMelee = false;
         MeleeSlot.SetActive(false);
+        isMeleeActive = false;
     }
 
     public void LockPistolSlot()
     {
         canTogglePistol = false;
         PistolSlot.SetActive(false);
+        isPistolActive = false;
     }
 
     public void LockGunSlot()
     {
         canToggleGun = false;
         GunSlot.SetActive(false);
+        isGunActive = false;
+    }
+
+    public bool IsReloadingGuns()
+    {
+        return Gun.isReloading || Pistol.isReloading;
     }
 }

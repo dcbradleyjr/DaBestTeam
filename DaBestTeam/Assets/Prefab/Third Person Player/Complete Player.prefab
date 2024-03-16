@@ -1126,6 +1126,7 @@ MonoBehaviour:
   isShooting: 0
   isReloading: 0
   isAuto: 0
+  isInfiniteAmmo: 1
 --- !u!1 &2825000141646943583
 GameObject:
   m_ObjectHideFlags: 0
@@ -1275,6 +1276,7 @@ MonoBehaviour:
   MeleeSlot: {fileID: 5659806458967011608}
   PistolSlot: {fileID: 2720811337292947119}
   GunSlot: {fileID: 3669780237350143134}
+  switchCam: {fileID: 0}
   input: {fileID: 6552129734987214672}
   Melee: {fileID: 0}
   Pistol: {fileID: 0}
@@ -1282,6 +1284,9 @@ MonoBehaviour:
   canToggleMelee: 1
   canTogglePistol: 1
   canToggleGun: 1
+  isMeleeActive: 0
+  isPistolActive: 0
+  isGunActive: 0
 --- !u!1 &3669780237350143134
 GameObject:
   m_ObjectHideFlags: 0
@@ -1345,6 +1350,7 @@ MonoBehaviour:
   isShooting: 0
   isReloading: 0
   isAuto: 1
+  isInfiniteAmmo: 0
 --- !u!1 &3906543066544887298
 GameObject:
   m_ObjectHideFlags: 0
@@ -3200,6 +3206,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 633692630008134591, guid: b72389ecc4e1b97409856c617ff6d262, type: 3}
+      propertyPath: m_TagString
+      value: AimCinemachine
+      objectReference: {fileID: 0}
     - target: {fileID: 3200768373781281586, guid: b72389ecc4e1b97409856c617ff6d262, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -3216,6 +3226,10 @@ PrefabInstance:
       propertyPath: m_CameraDistance
       value: 2.04
       objectReference: {fileID: 0}
+    - target: {fileID: 3762321994709962867, guid: b72389ecc4e1b97409856c617ff6d262, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4083494534091830015, guid: b72389ecc4e1b97409856c617ff6d262, type: 3}
       propertyPath: input
       value: 
@@ -3225,9 +3239,45 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7739185534096629374}
     - target: {fileID: 4083494534091830015, guid: b72389ecc4e1b97409856c617ff6d262, type: 3}
+      propertyPath: AimReticle
+      value: 
+      objectReference: {fileID: 2221897179072854595}
+    - target: {fileID: 4083494534091830015, guid: b72389ecc4e1b97409856c617ff6d262, type: 3}
+      propertyPath: aimPriority
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4083494534091830015, guid: b72389ecc4e1b97409856c617ff6d262, type: 3}
+      propertyPath: meleeReticle
+      value: 
+      objectReference: {fileID: 21300000, guid: 05c485256c095504994d1b111129af1d, type: 3}
+    - target: {fileID: 4083494534091830015, guid: b72389ecc4e1b97409856c617ff6d262, type: 3}
+      propertyPath: gunAimReticle
+      value: 
+      objectReference: {fileID: 21300000, guid: d618192eec2c5b54ea1257a129c5ade6, type: 3}
+    - target: {fileID: 4083494534091830015, guid: b72389ecc4e1b97409856c617ff6d262, type: 3}
+      propertyPath: RegularReticle
+      value: 
+      objectReference: {fileID: 241076584972450175}
+    - target: {fileID: 4083494534091830015, guid: b72389ecc4e1b97409856c617ff6d262, type: 3}
+      propertyPath: regularPriority
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4083494534091830015, guid: b72389ecc4e1b97409856c617ff6d262, type: 3}
+      propertyPath: pistolAimReticle
+      value: 
+      objectReference: {fileID: 21300000, guid: bd8aee56b84dd3843bcbcc7098498a9a, type: 3}
+    - target: {fileID: 4083494534091830015, guid: b72389ecc4e1b97409856c617ff6d262, type: 3}
+      propertyPath: gunRegularReticle
+      value: 
+      objectReference: {fileID: 21300000, guid: be510d0ab7e88df45ad82c3c29b5c630, type: 3}
+    - target: {fileID: 4083494534091830015, guid: b72389ecc4e1b97409856c617ff6d262, type: 3}
       propertyPath: thirdPersonCanvas
       value: 
       objectReference: {fileID: 1157040348950212949}
+    - target: {fileID: 4083494534091830015, guid: b72389ecc4e1b97409856c617ff6d262, type: 3}
+      propertyPath: pistolRegularReticle
+      value: 
+      objectReference: {fileID: 21300000, guid: ba559c298ed56b84dacda98c7c37315f, type: 3}
     - target: {fileID: 4869011536040163751, guid: b72389ecc4e1b97409856c617ff6d262, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -3285,6 +3335,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b72389ecc4e1b97409856c617ff6d262, type: 3}
+--- !u!114 &2221897179072854595 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3762321994709962867, guid: b72389ecc4e1b97409856c617ff6d262, type: 3}
+  m_PrefabInstance: {fileID: 3090507687067642416}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &5953442859610446821 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8682184584121381333, guid: b72389ecc4e1b97409856c617ff6d262, type: 3}
@@ -3352,7 +3413,7 @@ PrefabInstance:
       objectReference: {fileID: 5349426378656238502}
     - target: {fileID: 7395496186127156928, guid: 4df748577a7d4154081ae548807cab8a, type: 3}
       propertyPath: HP
-      value: 3
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7395496186127156928, guid: 4df748577a7d4154081ae548807cab8a, type: 3}
       propertyPath: Stamina
@@ -3634,6 +3695,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 2505100818145416569, guid: 993217dc485d70040841088ea93cd2d8, type: 3}
+      propertyPath: m_TagString
+      value: ThirdPersonCinemachine
+      objectReference: {fileID: 0}
     - target: {fileID: 3219187111605680324, guid: 993217dc485d70040841088ea93cd2d8, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -3646,6 +3711,10 @@ PrefabInstance:
       propertyPath: m_LookAt
       value: 
       objectReference: {fileID: 1578805394600632393}
+    - target: {fileID: 6848860328455215859, guid: 993217dc485d70040841088ea93cd2d8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7780285285765953628, guid: 993217dc485d70040841088ea93cd2d8, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -3695,6 +3764,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 993217dc485d70040841088ea93cd2d8, type: 3}
+--- !u!114 &241076584972450175 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6848860328455215859, guid: 993217dc485d70040841088ea93cd2d8, type: 3}
+  m_PrefabInstance: {fileID: 6653069881944368012}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!223 &1157040348950212949 stripped
 Canvas:
   m_CorrespondingSourceObject: {fileID: 5501940653964939993, guid: 993217dc485d70040841088ea93cd2d8, type: 3}

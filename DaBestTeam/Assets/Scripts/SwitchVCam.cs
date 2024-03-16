@@ -1,23 +1,71 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 using Cinemachine;
 
 public class SwitchVCam : MonoBehaviour
 {
 
     [SerializeField] PlayerInput input;
-    [SerializeField] int priorityBoost;
+    [SerializeField] int regularPriority;
+    [SerializeField] int aimPriority;
     [SerializeField] Canvas thirdPersonCanvas;
     [SerializeField] Canvas aimCanvas;
 
-    CinemachineVirtualCamera cam;
+    [SerializeField] Image RegularReticle;
+    [SerializeField] Image AimReticle;
+
+
+    [SerializeField] Sprite meleeReticle;
+    [SerializeField] Sprite pistolRegularReticle;
+    [SerializeField] Sprite pistolAimReticle;
+    [SerializeField] Sprite gunRegularReticle;
+    [SerializeField] Sprite gunAimReticle;
+
+    public CinemachineVirtualCamera AimCam;
+    public CinemachineVirtualCamera ThirdPersonCam;
     InputAction aimAction;
+
+    //bool isAiming;
+    bool isPaused;
 
 
     private void Awake()
     {
-        cam = GetComponent<CinemachineVirtualCamera>();
+        AimCam = GetComponent<CinemachineVirtualCamera>();
+        ThirdPersonCam = GameObject.FindWithTag("ThirdPersonCinemachine").GetComponent<CinemachineVirtualCamera>();
         aimAction = input.actions["Aim"];
+    }
+    private void Update()
+    {
+        if (gameManager.instance.isPaused)
+        {
+            thirdPersonCanvas.enabled = false;
+            aimCanvas.enabled = false;
+            isPaused = true;
+            AimCam.enabled = false;
+            ThirdPersonCam.enabled = false;
+        }
+        else
+        {
+            if (isPaused)
+            {
+                CancelAim();
+                isPaused = false;
+                AimCam.enabled = true;
+                ThirdPersonCam.enabled = true;
+            }
+        }
+
+        if (RegularReticle.sprite == null)
+        {
+            RegularReticle.sprite = meleeReticle;
+        }
+
+        if (AimReticle.sprite == null)
+        {
+            AimReticle.sprite = meleeReticle;
+        }
     }
 
     private void OnEnable()
@@ -33,7 +81,8 @@ public class SwitchVCam : MonoBehaviour
     }
     private void StartAim()
     {
-        cam.Priority += priorityBoost;
+        //isAiming = true;
+        AimCam.Priority = aimPriority;
         if (aimCanvas != null)
             aimCanvas.enabled = true;
         if (thirdPersonCanvas != null)
@@ -42,10 +91,32 @@ public class SwitchVCam : MonoBehaviour
 
     private void CancelAim()
     {
-        cam.Priority -= priorityBoost;
+        //isAiming = false;
+        AimCam.Priority = regularPriority;
         if (aimCanvas != null)
             aimCanvas.enabled = false;
         if (thirdPersonCanvas != null)
             thirdPersonCanvas.enabled = true;
+    }
+
+    public void MeleeReticle()
+    {
+        Debug.Log("Melee");
+        RegularReticle.sprite = meleeReticle;
+        AimReticle.sprite = meleeReticle;
+    }
+
+    public void PistolReticle()
+    {
+        Debug.Log("Pistol");
+        RegularReticle.sprite = pistolRegularReticle;
+        AimReticle.sprite = pistolAimReticle;
+    }
+
+    public void GunReticle()
+    {
+        Debug.Log("Gun");
+        RegularReticle.sprite = gunRegularReticle;
+        AimReticle.sprite = gunAimReticle;
     }
 }
