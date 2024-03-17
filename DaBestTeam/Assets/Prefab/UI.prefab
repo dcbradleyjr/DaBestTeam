@@ -5074,7 +5074,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UpgradeSkills, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: back
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7934,6 +7934,8 @@ MonoBehaviour:
   playerInput: {fileID: 0}
   playerAnim: {fileID: 0}
   isPaused: 0
+  spawnPoint: {fileID: 0}
+  SaveStuff: {fileID: 0}
 --- !u!1 &5503795542480496860
 GameObject:
   m_ObjectHideFlags: 0

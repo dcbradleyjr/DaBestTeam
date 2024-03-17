@@ -38,6 +38,7 @@ public class ButtonFunctions : MonoBehaviour
         gameManager.instance.stateUnpaused();
         gameManager.instance.player.Respawn();
 
+
     }
 
     public void StartGame()
