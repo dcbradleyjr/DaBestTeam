@@ -326,6 +326,62 @@ public class UpgradeSkills : MonoBehaviour, IInteract
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
+    public void StatReset()
+    {
+        
+
+        level1HPAcquired = false;
+        level2HPAcquired = false;
+        level3HPAcquired = false;
+        level4HPAcquired = false;
+        level5HPAcquired = false;
+
+        level1StaminaAcquired = false;
+        level2StaminaAcquired = false;
+        level3StaminaAcquired = false;
+        level4StaminaAcquired = false;
+        level5StaminaAcquired = false;
+
+        level1SpeedAcquired = false;
+        level2SpeedAcquired = false;
+        level3SpeedAcquired = false;
+        level4SpeedAcquired = false;
+        level5SpeedAcquired = false;
+
+        level1DamageAcquired = false;
+        level2DamageAcquired = false;
+        level3DamageAcquired = false;
+        level4DamageAcquired = false;
+        level5DamageAcquired = false;
+        DisableAllUpgradeGameObjects();
+        SaveUpgradeState();
+    }
+    void DisableAllUpgradeGameObjects()
+    {
+        HPlevel1.SetActive(false);
+        HPlevel2.SetActive(false);
+        HPlevel3.SetActive(false);
+        HPlevel4.SetActive(false);
+        HPlevel5.SetActive(false);
+
+        Staminalevel1.SetActive(false);
+        Staminalevel2.SetActive(false);
+        Staminalevel3.SetActive(false);
+        Staminalevel4.SetActive(false);
+        Staminalevel5.SetActive(false);
+
+        Speedlevel1.SetActive(false);
+        Speedlevel2.SetActive(false);
+        Speedlevel3.SetActive(false);
+        Speedlevel4.SetActive(false);
+        Speedlevel5.SetActive(false);
+
+        Damagelevel1.SetActive(false);
+        Damagelevel2.SetActive(false);
+        Damagelevel3.SetActive(false);
+        Damagelevel4.SetActive(false);
+        Damagelevel5.SetActive(false);
+    }
     public void SaveUpgradeState()
     {
         SetBool("Level1HPAcquired", level1HPAcquired);
