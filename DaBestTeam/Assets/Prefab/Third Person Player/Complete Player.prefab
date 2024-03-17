@@ -1074,9 +1074,9 @@ MonoBehaviour:
   Melee: {fileID: 0}
   Pistol: {fileID: 0}
   Gun: {fileID: 0}
-  canToggleMelee: 1
-  canTogglePistol: 1
-  canToggleGun: 1
+  canToggleMelee: 0
+  canTogglePistol: 0
+  canToggleGun: 0
   isMeleeActive: 0
   isPistolActive: 0
   isGunActive: 0
@@ -1680,7 +1680,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9153169781548239369
 Transform:
   m_ObjectHideFlags: 0
@@ -1728,7 +1728,7 @@ MonoBehaviour:
   - {fileID: 990032674139784636}
   - {fileID: 2384000369480215178}
   - {fileID: 1762594755100132352}
-  currentGunIndex: 5
+  currentGunIndex: -1
   meleeName: 
   dmgAmount: 1
   knockBack: 2
@@ -3369,11 +3369,11 @@ PrefabInstance:
       objectReference: {fileID: 1578805394600632393}
     - target: {fileID: 8682184584121381333, guid: b72389ecc4e1b97409856c617ff6d262, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.7101592
+      value: 0.7101593
       objectReference: {fileID: 0}
     - target: {fileID: 8682184584121381333, guid: b72389ecc4e1b97409856c617ff6d262, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.9639626
+      value: 1.9639622
       objectReference: {fileID: 0}
     - target: {fileID: 8682184584121381333, guid: b72389ecc4e1b97409856c617ff6d262, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4260,15 +4260,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8636006364680736496, guid: 993217dc485d70040841088ea93cd2d8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.881447
+      value: -4.8813934
       objectReference: {fileID: 0}
     - target: {fileID: 8636006364680736496, guid: 993217dc485d70040841088ea93cd2d8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.8359754
+      value: 1.8359741
       objectReference: {fileID: 0}
     - target: {fileID: 8636006364680736496, guid: 993217dc485d70040841088ea93cd2d8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.9637327
+      value: -0.96369934
       objectReference: {fileID: 0}
     - target: {fileID: 8636006364680736496, guid: 993217dc485d70040841088ea93cd2d8, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4452,15 +4452,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1607408290639340835, guid: e5cae9fa75076254995502218f523ea5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.881447
+      value: -4.8813934
       objectReference: {fileID: 0}
     - target: {fileID: 1607408290639340835, guid: e5cae9fa75076254995502218f523ea5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.8359754
+      value: 1.8359741
       objectReference: {fileID: 0}
     - target: {fileID: 1607408290639340835, guid: e5cae9fa75076254995502218f523ea5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.9637327
+      value: -0.96369934
       objectReference: {fileID: 0}
     - target: {fileID: 1607408290639340835, guid: e5cae9fa75076254995502218f523ea5, type: 3}
       propertyPath: m_LocalRotation.w

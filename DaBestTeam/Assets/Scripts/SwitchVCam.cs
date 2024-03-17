@@ -81,12 +81,15 @@ public class SwitchVCam : MonoBehaviour
     }
     private void StartAim()
     {
-        //isAiming = true;
-        AimCam.Priority = aimPriority;
-        if (aimCanvas != null)
-            aimCanvas.enabled = true;
-        if (thirdPersonCanvas != null)
-            thirdPersonCanvas.enabled = false;
+        if (WeaponSlotManager.instance.isPistolActive || WeaponSlotManager.instance.isGunActive)
+        {
+            //isAiming = true;
+            AimCam.Priority = aimPriority;
+            if (aimCanvas != null)
+                aimCanvas.enabled = true;
+            if (thirdPersonCanvas != null)
+                thirdPersonCanvas.enabled = false; 
+        }
     }
 
     private void CancelAim()
@@ -101,21 +104,18 @@ public class SwitchVCam : MonoBehaviour
 
     public void MeleeReticle()
     {
-        Debug.Log("Melee");
         RegularReticle.sprite = meleeReticle;
         AimReticle.sprite = meleeReticle;
     }
 
     public void PistolReticle()
     {
-        Debug.Log("Pistol");
         RegularReticle.sprite = pistolRegularReticle;
         AimReticle.sprite = pistolAimReticle;
     }
 
     public void GunReticle()
     {
-        Debug.Log("Gun");
         RegularReticle.sprite = gunRegularReticle;
         AimReticle.sprite = gunAimReticle;
     }

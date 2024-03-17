@@ -21,8 +21,6 @@ public class playerPickUp : MonoBehaviour
                 gameManager.instance.player.HealPlayer(healAmount);
             if (other.CompareTag("Player")&& GunAmmo)
                 WeaponSlotManager.instance.Gun.AddAmmo(GunAmmoAmount);
-            if (other.CompareTag("Player")&& PistolAmmo)
-                WeaponSlotManager.instance.Pistol.AddAmmo(PistolAmmoAmount);
 
             Destroy(gameObject);
         }

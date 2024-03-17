@@ -54,14 +54,14 @@ public class GunSlot : MonoBehaviour
         if (!gameManager.instance.isPaused)
         {
             if (CanShootAuto())
-                StartCoroutine(ShootGun()); 
+                StartCoroutine(ShootGun());
 
-            if(CanReload())
+            if (CanReload())
                 StartCoroutine(reloadGun());
 
             if (!IsAnyGunActive() && currentGunIndex != -1)
             {
-                ActivateGun(currentGunIndex);
+                ToggleGun(currentGunIndex);
             }
         }
     }
@@ -84,11 +84,11 @@ public class GunSlot : MonoBehaviour
         animator.SetLayerWeight(layerIndex, 0);
     }
 
-    public void ActivateGun(int index)
+    public void ToggleGun(int index)
     {
         if (index >= 0 && index < gunList.Count)
         {
-            DisableAllGuns(); 
+            DisableAllGuns();
 
             gunList[index].SetActive(true);
             currentGunIndex = index;
@@ -116,7 +116,7 @@ public class GunSlot : MonoBehaviour
         isAuto = gun.isAuto;
     }
 
-    private void DisableAllGuns()
+    public void DisableAllGuns()
     {
         foreach (GameObject gunObject in gunList)
         {
@@ -127,8 +127,8 @@ public class GunSlot : MonoBehaviour
     private void StartShooting()
     {
         toggleShoot = true;
-        if(CanShoot())
-        StartCoroutine(ShootGun());
+        if (CanShoot())
+            StartCoroutine(ShootGun());
     }
 
     private void StopShooting()
@@ -212,9 +212,14 @@ public class GunSlot : MonoBehaviour
     public void UpdateUI()
     {
         if (!isInfiniteAmmo)
-        UIManager.instance.ammoCurrentDisplay.text = "" + clipSize + " / " + ammo;
+            if (WeaponSlotManager.instance.isMeleeActive)
+                UIManager.instance.ammoReloadDisplay.text = "";
+            else
+                UIManager.instance.ammoCurrentDisplay.text = "" + clipSize + " / " + ammo;
         else
-        UIManager.instance.ammoCurrentDisplay.text = "" + clipSize + " / 999";
+            UIManager.instance.ammoCurrentDisplay.text = "" + clipSize + " / 999";
+
+        UIManager.instance.weaponNameDisplay.text = gunName;
     }
 
     bool CanReload()
@@ -251,7 +256,7 @@ public class GunSlot : MonoBehaviour
 
     public int GetAmmo() { return ammo; }
 
-    public void AddAmmo (int value)
+    public void AddAmmo(int value)
     {
         ammo += value;
         UpdateUI();

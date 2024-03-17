@@ -34,6 +34,7 @@ public class ThirdPersonController : MonoBehaviour, IDamage
     public bool isCrouching;
     public bool isJumping;
     bool isGrounded;
+    bool staminaDrained;
 
     //Stat max
     int HPMax;
@@ -193,6 +194,7 @@ public class ThirdPersonController : MonoBehaviour, IDamage
         {
             Stamina = 0;
             canSprint = false;
+            staminaDrained = true;
             isSprinting = false;
             playerSpeed = playerSpeedMax;
         }
@@ -210,6 +212,7 @@ public class ThirdPersonController : MonoBehaviour, IDamage
             if (Stamina > StaminaMax)
             {
                 Stamina = StaminaMax;
+                staminaDrained = false;
                 canSprint = true;
             }
             //update Stamina UI logic 
@@ -247,6 +250,7 @@ public class ThirdPersonController : MonoBehaviour, IDamage
         if (canCrouch && !isSprinting)
         {
             isCrouching = false;
+            if(!staminaDrained)
             canSprint = true;
             if (controller != null)
             {
@@ -305,7 +309,7 @@ public class ThirdPersonController : MonoBehaviour, IDamage
             else
                 gameManager.instance.playerStaminaBar.color = new Color(1f, 0.5f, 0f);
         }
-        else
+        else if (!canSprint && staminaDrained)
             gameManager.instance.playerStaminaBar.color = Color.red;
     }
 

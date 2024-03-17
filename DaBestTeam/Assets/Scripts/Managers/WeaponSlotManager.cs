@@ -47,39 +47,47 @@ public class WeaponSlotManager : MonoBehaviour
     private void Update()
     {
         if (meleeSwitch.triggered && canToggleMelee && !IsReloadingGuns())
-            ActivateMeleeSlot();
+            ToggleMeleeSlot();
         if (pistolSwitch.triggered & canTogglePistol && !IsReloadingGuns())
-            ActivatePistolSlot();
+            TogglePistolSlot();
         if (gunSwitch.triggered && canToggleGun && !IsReloadingGuns())
-            ActivateGunSlot();
+            ToggleGunSlot();
     }
 
-    public void ActivateMeleeSlot()
+    public void ToggleMeleeSlot()
     {
         PistolSlot.SetActive(false);
         GunSlot.SetActive(false);
         MeleeSlot.SetActive(true);
         isMeleeActive = true;
+        isPistolActive = false;
+        isGunActive = false;
         switchCam.MeleeReticle();
-        UIManager.instance.AmmoDisplay.SetActive(false);
+        UIManager.instance.ammoCurrentDisplay.text = "";
+        UIManager.instance.weaponNameDisplay.text = Melee.GetName();
+        Debug.Log(Melee.GetName().ToString());
     }
 
-    public void ActivatePistolSlot()
+    public void TogglePistolSlot()
     {
         MeleeSlot.SetActive(false);
         GunSlot.SetActive(false);
         PistolSlot.SetActive(true);
         isPistolActive = true;
+        isMeleeActive = false;
+        isGunActive = false;
         switchCam.PistolReticle();
         UIManager.instance.AmmoDisplay.SetActive(true);
         Pistol.UpdateUI();
     }
-    public void ActivateGunSlot()
+    public void ToggleGunSlot()
     {
         MeleeSlot.SetActive(false);
         PistolSlot.SetActive(false);
         GunSlot.SetActive(true);
         isGunActive = true;
+        isPistolActive = false;
+        isMeleeActive = false;
         switchCam.GunReticle();
         UIManager.instance.AmmoDisplay.SetActive(true);
         Gun.UpdateUI();
@@ -94,7 +102,7 @@ public class WeaponSlotManager : MonoBehaviour
         isPistolActive = false;
         isGunActive = false;
         switchCam.MeleeReticle();
-        UIManager.instance.AmmoDisplay.SetActive(false);
+        UIManager.instance.ammoCurrentDisplay.text = "";
     }
 
     public void LockMeleeSlot()
@@ -130,6 +138,13 @@ public class WeaponSlotManager : MonoBehaviour
     public void UnlockGunSlot()
     {
         canToggleGun = true;
+    }
+
+    public void ClearEquippedWeapons()
+    {
+        Melee.DisableAllMelee();
+        Pistol.DisableAllGuns();
+        Gun.DisableAllGuns();
     }
 
     public bool IsReloadingGuns()

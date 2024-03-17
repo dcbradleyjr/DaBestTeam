@@ -39,7 +39,7 @@ public class MeleeSlot : MonoBehaviour
     {
         if (!IsAnyMeleeActive() && currentGunIndex != -1)
         {
-            ActivateMelee(currentGunIndex);
+            ToggleMelee(currentGunIndex);
         }
     }
 
@@ -58,7 +58,7 @@ public class MeleeSlot : MonoBehaviour
         animator.SetLayerWeight(2, 0);
     }
 
-    public void ActivateMelee(int index)
+    public void ToggleMelee(int index)
     {
         if (index >= 0 && index < meleeList.Count)
         {
@@ -82,7 +82,7 @@ public class MeleeSlot : MonoBehaviour
         meleeRange = melee.meleeRange;
     }
 
-    private void DisableAllMelee()
+    public void DisableAllMelee()
     {
         foreach (GameObject gunObject in meleeList)
         {
@@ -118,7 +118,7 @@ public class MeleeSlot : MonoBehaviour
         {
             IDamage dmg = collider.GetComponent<IDamage>();
 
-            if (dmg != null && !collider.CompareTag("Player"))
+            if (dmg != null && !collider.CompareTag("Player") && !collider.isTrigger)
             {
                 dmg.takeDamage(dmgAmount);
                 GameObject blood = Instantiate(bloodSplat, collider.transform.position + new Vector3(0,1,0), Quaternion.identity);
@@ -156,4 +156,7 @@ public class MeleeSlot : MonoBehaviour
     {
         dmgAmount += value;
     }
+
+    public string GetName() { return meleeName; }
+
 }
