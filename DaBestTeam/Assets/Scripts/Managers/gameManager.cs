@@ -28,7 +28,7 @@ public class gameManager : MonoBehaviour
     public Animator playerAnim;
     public bool isPaused;
 
-    GameObject spawnPoint;
+    public GameObject spawnPoint;
 
     // Start is called before the first frame update
     void Awake()

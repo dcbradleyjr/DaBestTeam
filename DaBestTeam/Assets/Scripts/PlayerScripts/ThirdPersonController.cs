@@ -321,4 +321,15 @@ public class ThirdPersonController : MonoBehaviour, IDamage
         else
             gameManager.instance.playerHPBar.color = Color.red;
     }
+
+    public void Respawn()
+    {
+        HP = HPMax;
+        Stamina = StaminaMax;
+        canSprint = true;
+        updateUI();
+        controller.enabled = false;
+        transform.position = gameManager.instance.spawnPoint.transform.position;
+        controller.enabled = true;
+    }
 }
