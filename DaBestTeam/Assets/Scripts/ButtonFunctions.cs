@@ -121,8 +121,7 @@ public class ButtonFunctions : MonoBehaviour
     }
     
     public void Credits()
-    {
-        
+    {        
         AudioManager.instance.PlaySFX("ButtonPress");
         if (!UIManager.instance.inCredits)
         {

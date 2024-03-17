@@ -120,10 +120,11 @@ public class UIManager : MonoBehaviour
 
     IEnumerator AnimateText()
     {
+        
         for (int i = 0; i < itemInfo[currentDisplayText].Length + 1; i++)
         {
             itemInfoText.text = itemInfo[currentDisplayText].Substring(0, i);
-            yield return new WaitForSeconds(textSpeed);
+            yield return new WaitForSecondsRealtime(textSpeed);
         }
 
     }

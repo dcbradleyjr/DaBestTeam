@@ -1,0 +1,299 @@
+commit f16690b4756d905a34aafbfae2af9001731332f1
+Author: Thomas Claiborne <thomas.claiborne123@gmail.com>
+Date:   Sun Mar 17 18:22:57 2024 -0400
+
+    Final Sprint Push
+    
+    - Created Weapon Create script to purchase weapons
+    - Created a weapon crate prefab
+    - Added flash damage
+
+commit ee40807b35b9b3a3354b69b2c4ef2b1c5fa8f2d4
+Author: Thomas Claiborne <thomas.claiborne123@gmail.com>
+Date:   Sun Mar 17 16:43:13 2024 -0400
+
+    Build Update
+    
+    - Save Manager Created and functional
+    - Weapons, upgrades, and currency persist between levels
+    - Ability to reset all stats
+
+commit 69d41491cd04eda4e715f2a18a1fbf7513cb5bfa
+Author: Thomas Claiborne <thomas.claiborne123@gmail.com>
+Date:   Sun Mar 17 13:44:48 2024 -0400
+
+    Fixes for build
+    
+    - Removed mesh colliders from picks (the reason the player collides with it)
+    - Removed pistol receiving ammo from pickups (Since pistol is infinite)
+    - Fixed range of melee attack (was interacting with the enemy trigger)
+    - Adjusted tutorial level (more text, arrows, opened exit door)
+    - Added loading text to the load screen (so player is aware it is a loading screen and not a bug)
+    - Adjusted UI's ammo display to fit better on the screen
+    - Weapon names now display on the UI
+    - Renamed Activate(Weapon)Slot() function in WeaponSlotManager to Toggle(Weapon)Slot()
+    - Renamed ActivateGun(index) from GunSlot and ActivateMelee(index) from MeleeSlot to ToggleGun(index) and ToggleMelee(index)
+    - Fixed stamina bar turning red when crouching
+    - Fixed crouching giving the player the ability to run again when stamina is drained
+    - Player can no longer aim with melee equipped
+    - WeaponSlotManager now successfully tracks which slot is currently active
+
+commit ce4c1c403d9b9f05bb77c6969595b2ae2ce6ec35
+Author: Thomas Claiborne <thomas.claiborne123@gmail.com>
+Date:   Sat Mar 16 23:08:36 2024 -0400
+
+    Functions
+
+commit 7a4f6022bee4fdf6b0d1632c2d8bd05dd038788c
+Author: Thomas Claiborne <thomas.claiborne123@gmail.com>
+Date:   Sat Mar 16 22:45:24 2024 -0400
+
+    Respawn Player
+
+commit e4842b39e551e7c10ce294f8c8ef0ed35cae3845
+Author: Thomas Claiborne <thomas.claiborne123@gmail.com>
+Date:   Sat Mar 16 21:50:25 2024 -0400
+
+    Prefab
+
+commit c9cbed5ff0bd5460a1ff8508067ce7b65a130640
+Author: Thomas Claiborne <thomas.claiborne123@gmail.com>
+Date:   Sat Mar 16 20:03:56 2024 -0400
+
+    Sprint Update
+    
+    - Finished adding melee weapons ( Bat, Crowbar, Axe, Sword, Pan)
+    - Gun controls the time to destroy bullets for range control
+
+commit 9880ea212455316e7798463b15b5d168c4c44ce0
+Author: Thomas Claiborne <thomas.claiborne123@gmail.com>
+Date:   Sat Mar 16 17:58:11 2024 -0400
+
+    Sprint Update
+    
+    - Added multiple guns (Shotgun, Sniper, SMG, Revolver) with the ability to assign weapons through the WeaponSlotManager's Pistol and Gun (Melee isn't finished).
+
+commit 47b9d81248f5ab07ec895d9d5636dfca35f50408
+Author: Thomas Claiborne <thomas.claiborne123@gmail.com>
+Date:   Sat Mar 16 13:06:14 2024 -0400
+
+    Sprint Update
+    
+    - Added reticle changes for each active weapon slot
+    - UI now updates with ammo information (I put in place an algorithm to turn off the ammo display when melee is active but the UIManager constantly enables it)
+    - Added infinite ammo toggle to GunSlot (Applied to the pistol)
+
+commit bc187b46362e4213a097bc81a79f661deb1940bc
+Author: Thomas Claiborne <thomas.claiborne123@gmail.com>
+Date:   Fri Mar 15 21:30:59 2024 -0400
+
+    Player has the player layer
+
+commit 8fd3362a606a4f6d395b66a7f3d6e80066d8d33c
+Author: Thomas Claiborne <thomas.claiborne123@gmail.com>
+Date:   Fri Mar 15 20:04:51 2024 -0400
+
+    Sprint Update
+    
+    - BulletController's damage is now settable
+    - Gun Slot now has reload, fire rate, damage control, and ammo management
+    - Removed PistolSlot script as it was repetitive with GunSlot (PistolSlot uses GunSlot with isAuto turned off)
+    - Player Prefab updated with new changes
+    - Fixed crouch error when restarting
+
+commit d5833c9cb41697c0ad9f94e7d010e240d2d77ca3
+Author: Thomas Claiborne <thomas.claiborne123@gmail.com>
+Date:   Fri Mar 15 17:32:03 2024 -0400
+
+    Sprint Update
+    
+    - Added Crouch with left control button
+    - Crouch animations for the player
+    - Bug: Player can un-crouch when under objects
+
+commit e586dab5c46fd76416efa65b52ae820d2029316b
+Author: Thomas Claiborne <thomas.claiborne123@gmail.com>
+Date:   Thu Mar 14 22:20:56 2024 -0400
+
+    Zombie Scratch
+
+commit 0cf8ba1a7be1c8a4b54685158e0e0baf6dd5cebd
+Author: Thomas Claiborne <thomas.claiborne123@gmail.com>
+Date:   Thu Mar 14 21:15:27 2024 -0400
+
+    melee adjustment
+
+commit 8c8a47038a99c3059c225979778251206c2af8e4
+Author: Thomas Claiborne <thomas.claiborne123@gmail.com>
+Date:   Thu Mar 14 21:14:49 2024 -0400
+
+    Particle cleanup and collider added to player
+
+commit 58c2ff16e60e738c85b05cc59473dccda6d3d202
+Author: Thomas Claiborne <thomas.claiborne123@gmail.com>
+Date:   Thu Mar 14 20:07:55 2024 -0400
+
+    Updated Player Prefab and Controller
+
+commit 73b3d44c48c4f0746a0f4e82ec36a0df3082db3c
+Author: Thomas Claiborne <thomas.claiborne123@gmail.com>
+Date:   Thu Mar 14 18:41:03 2024 -0400
+
+    prefab
+
+commit 2ea428b7d7af6993ac793c6c2cbf0f393d011f60
+Author: Thomas Claiborne <thomas.claiborne123@gmail.com>
+Date:   Thu Mar 14 18:37:37 2024 -0400
+
+    Updated function name
+
+commit 4c5bb3e9c28d9a1d285f7adb17900b4d5050ed75
+Author: Thomas Claiborne <thomas.claiborne123@gmail.com>
+Date:   Thu Mar 14 18:36:57 2024 -0400
+
+    Sprint Update
+    
+    - Added functions on the ThirdPersonController to increase variable max
+    - Added function to increase melee damage
+
+commit ae7859939fc14df245ad82b4381a1b15ed125bff
+Author: Thomas Claiborne <thomas.claiborne123@gmail.com>
+Date:   Thu Mar 14 15:47:49 2024 -0400
+
+    Sprint Update
+    
+    - Added a canvas to the player for interact prompts
+    - New InteractionPromptUI to read interactable prompts
+    - Updated Interactor to toggle canvas on and off
+    - WeaponSlotManager now has bools to gatekeep slots
+
+commit 9a99f00f2e7d3f2757dbc5dc295ef4855ed1f69c
+Author: Thomas Claiborne <thomas.claiborne123@gmail.com>
+Date:   Thu Mar 14 14:22:37 2024 -0400
+
+    Sprint Update
+    
+    - Created interactor script for the player (IInteract)
+    - Added prompt variable to IInteract
+    - Added a new tag called Interactable
+    - Removed debugs
+
+commit 09fbd2e8bc86542819a69a20b5360f98f4698b12
+Author: Thomas Claiborne <thomas.claiborne123@gmail.com>
+Date:   Thu Mar 14 11:55:28 2024 -0400
+
+    Sprint Update
+    - Player can now take damage (no death logic yet)
+    - New Stamina System (soon implement UI logic)
+    - Fixed melee registering self
+    - Player prefab updated
+
+commit 2e6c2a0e5c4c5e4260df182949236dbac444c2f7
+Author: Thomas Claiborne <thomas.claiborne123@gmail.com>
+Date:   Wed Mar 13 23:43:55 2024 -0400
+
+    Updated Completed Player
+
+commit 0bba5f896c5017096e4d91bb440025af2c2fabda
+Author: Thomas Claiborne <thomas.claiborne123@gmail.com>
+Date:   Wed Mar 13 23:42:13 2024 -0400
+
+    Sprint Update
+    - Melee can now damage (knockback not tested)
+    - Gun slot now has a weapon that can shoot auto
+    - Added more attributes to third person controller (still needs work)
+    - Added sprint (no sprint cooldown yet)
+
+commit 3344953b7a9623c6170123fd42e1e70b17c74ab6
+Author: Thomas Claiborne <thomas.claiborne123@gmail.com>
+Date:   Wed Mar 13 13:54:22 2024 -0400
+
+    Bullet fix
+
+commit 300c3acbe2315ac6cdd2849a3edc8ca08ce8e881
+Author: Thomas Claiborne <thomas.claiborne123@gmail.com>
+Date:   Wed Mar 13 13:39:17 2024 -0400
+
+    Sprint Update
+    - Added Melee with animation
+    - Third person controller adjustment
+    - Bullet prefab
+
+commit ce403c6466bbc56a27a797477baba4fa993ccea6
+Author: Thomas Claiborne <thomas.claiborne123@gmail.com>
+Date:   Wed Mar 13 10:54:21 2024 -0400
+
+    Sprint Update
+    - Updated poloygon packs
+    - Player prefab changes are overrides
+
+commit ca024f6fc7047100ea740e0ae404f687035f60d2
+Author: Thomas Claiborne <thomas.claiborne123@gmail.com>
+Date:   Wed Mar 13 09:02:01 2024 -0400
+
+    PistolSlot adjustment
+
+commit a51c168cc61cb4616b98f8c0daf947ba7095dfa8
+Author: Thomas Claiborne <thomas.claiborne123@gmail.com>
+Date:   Wed Mar 13 09:01:06 2024 -0400
+
+    Sprint Update
+    - Fixed shot raycast not ignoring triggers
+    - Fixed aim error when restarting
+
+commit e79753730c412f3d32b203e24ca0979b0abbb9e7
+Author: Thomas Claiborne <thomas.claiborne123@gmail.com>
+Date:   Wed Mar 13 00:02:00 2024 -0400
+
+    Sprint Update
+    - Imported particle effects
+    - Pistol now has muzzle flash and new bullet
+    - PistolSlot updated for muzzle flash
+
+commit 553df13f163a65bcd206716bffaf0b294728e281
+Author: Thomas Claiborne <thomas.claiborne123@gmail.com>
+Date:   Tue Mar 12 22:23:37 2024 -0400
+
+    Sprint Update
+    - Bullets have been modified to interact with IDamage
+    - Created TargetProp script to demonstrate IDamage interaction
+    - Added new impact effects
+
+commit cfd745a8d83202d3905a998fce7875ca34dfb717
+Author: Thomas Claiborne <thomas.claiborne123@gmail.com>
+Date:   Tue Mar 12 20:33:19 2024 -0400
+
+    Sprint Update
+    - Updated Complete Player Prefab
+    - Added weapon slots
+    - Weapon manager to switch between slots
+    - Decoupled shooting mechanics from controller
+
+commit 10b37aaaac7af72ec7fd718dea8a3321e3585fb0
+Author: Thomas Claiborne <thomas.claiborne123@gmail.com>
+Date:   Tue Mar 12 16:42:53 2024 -0400
+
+    Sprint Update
+    - Imported animations
+    - Created animation controller for the player
+    - Removed capsule and replaced with humanoid
+    - Temporarily removed gun and commented out shoot logic to focus on visuals
+    - Updated cameras
+
+commit e482d1c38f3871a3d0b7ad9e1c7ca0a295ab83c3
+Author: Thomas Claiborne <thomas.claiborne123@gmail.com>
+Date:   Mon Mar 11 20:39:31 2024 -0400
+
+    Imported Polygon packs
+
+commit c814a65d91db2488efbf16c0343cc1582531380e
+Author: Thomas Claiborne <thomas.claiborne123@gmail.com>
+Date:   Mon Mar 11 00:34:12 2024 -0400
+
+    Started creation of Third Person Controller
+    - Imported input actions and cinemachine
+    - Imported Sprites and Polygon characters
+    - Bullet Controller script for projectile control
+    - SwitchVCam to aim and toggle reticles
+    - Third Person Controller for shooting and movement
+    - Made a temporary materials folder for my scene use
