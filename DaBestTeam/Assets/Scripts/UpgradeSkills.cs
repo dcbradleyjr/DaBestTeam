@@ -91,8 +91,7 @@ public class UpgradeSkills : MonoBehaviour, IInteract
 
     public void Start()
     {
-        LoadUpgradeState();
-        EnableUpgradeGameObjects();
+        
     }
     public void interact()
     {
@@ -326,7 +325,6 @@ public class UpgradeSkills : MonoBehaviour, IInteract
         gameManager.instance.stateUnpaused();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        SaveUpgradeState();
     }
     public void SaveUpgradeState()
     {

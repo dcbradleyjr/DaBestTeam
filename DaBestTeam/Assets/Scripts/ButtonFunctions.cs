@@ -37,8 +37,6 @@ public class ButtonFunctions : MonoBehaviour
         AudioManager.instance.PlaySFX("ButtonPress");
         gameManager.instance.stateUnpaused();
         gameManager.instance.player.Respawn();
-
-
     }
 
     public void StartGame()
@@ -48,7 +46,16 @@ public class ButtonFunctions : MonoBehaviour
         AudioManager.instance.SetSFXVolume();
         AudioManager.instance.SetMusicVolume();
     }
+    public void Save()
+    {
+        UIManager.instance.upgradeSkills.SaveUpgradeState();
+    }
 
+    public void Load()
+    {
+        UIManager.instance.upgradeSkills.LoadUpgradeState();
+        UIManager.instance.upgradeSkills.EnableUpgradeGameObjects();
+    }
     public void Settings()
     {
         

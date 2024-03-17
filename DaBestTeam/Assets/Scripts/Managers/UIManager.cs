@@ -47,7 +47,7 @@ public class UIManager : MonoBehaviour
     public Loader _loader;
     public bool inSettings;
     public bool inCredits;
-
+    public UpgradeSkills upgradeSkills;
     // Start is called before the first frame update
     void Awake()
     {
@@ -58,6 +58,8 @@ public class UIManager : MonoBehaviour
 
         _loader = GameObject.FindWithTag("Loader").GetComponent<Loader>();
         _loader.isLoading = false;
+
+        upgradeSkills = FindAnyObjectByType<UpgradeSkills>();
     }
 
     // Update is called once per frame
