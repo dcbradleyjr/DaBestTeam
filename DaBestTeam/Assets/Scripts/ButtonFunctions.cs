@@ -36,6 +36,7 @@ public class ButtonFunctions : MonoBehaviour
     {
         AudioManager.instance.PlaySFX("ButtonPress");
         gameManager.instance.stateUnpaused();
+        gameManager.instance.player.Respawn();
 
     }
 

@@ -24,14 +24,18 @@ public class TutorialInteract : MonoBehaviour, IInteract
     {
         if (isMeleePickUp)
         {
+
             WeaponSlotManager.instance.ActivateMeleeSlot();
             WeaponSlotManager.instance.Melee.ActivateMelee(0);
+            WeaponSlotManager.instance.UnlockMeleeSlot();
             gameObject.SetActive(false);
         }
         if (isRangedPickUp)
         {
-            WeaponSlotManager.instance.ActivatePistolSlot();
             WeaponSlotManager.instance.Pistol.ActivateGun(0);
+            WeaponSlotManager.instance.ActivatePistolSlot();
+            WeaponSlotManager.instance.UnlockPistolSlot();        
+            
             gameObject.SetActive(false);
         }
     }

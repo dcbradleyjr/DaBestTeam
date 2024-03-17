@@ -1334,7 +1334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1029e2614d72596428af1a414ed09800, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthBox: {fileID: 3449207795767113933, guid: 7928a3fe23be9fc4fb2c2e408e302209, type: 3}
+  pickupBox: []
   headPosition: {fileID: 6562752048406277258}
   meshMilitaryOptions:
   - {fileID: 1938837853794670, guid: 30c23f6bcd4f35648bbfc61c9f671e51, type: 3}
@@ -1419,6 +1419,7 @@ MonoBehaviour:
   parentSpawner: {fileID: 0}
   hasBossMechs: 1
   _state: 1
+  startingPosition: {x: 0, y: 0, z: 0}
 --- !u!136 &3890669480965536237
 CapsuleCollider:
   m_ObjectHideFlags: 0

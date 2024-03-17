@@ -138,6 +138,7 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     {
         while (true)
         {
+            yield return new WaitForSeconds(0.5f);
             //AudioManager.instance.PlaySFX("ZombieRoam");
             if (!agent.pathPending && agent.remainingDistance < 0.1f)
             {
