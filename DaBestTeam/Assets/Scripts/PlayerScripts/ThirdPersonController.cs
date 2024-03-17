@@ -35,6 +35,7 @@ public class ThirdPersonController : MonoBehaviour, IDamage
     public bool isJumping;
     bool isGrounded;
     bool staminaDrained;
+    bool resetStats;
 
     //Stat max
     int HPMax;
@@ -80,6 +81,14 @@ public class ThirdPersonController : MonoBehaviour, IDamage
         jumpAction = input.actions["Jump"];
         sprintAction = input.actions["Sprint"];
         crouchAction = input.actions["Crouch"];
+
+        resetStats = PlayerPrefs.GetInt("ResetPlayer", 0) == 1 ? true : false;
+        if (resetStats)
+        {
+            WeaponSlotManager.instance.ResetWeapons();
+            PlayerPrefs.SetInt("ResetPlayer", 0);
+            WeaponSlotManager.instance.SaveWeapons();
+        }
     }
 
     private void Start()
@@ -93,6 +102,7 @@ public class ThirdPersonController : MonoBehaviour, IDamage
         StaminaColorOrig = gameManager.instance.playerStaminaBar.color;
         HealthColorOrig = gameManager.instance.playerHPBar.color;
         updateUI();
+        SaveManager.instance.LoadGame();
     }
 
     void Update()

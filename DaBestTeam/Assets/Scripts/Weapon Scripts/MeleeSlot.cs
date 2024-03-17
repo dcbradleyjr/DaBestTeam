@@ -16,7 +16,7 @@ public class MeleeSlot : MonoBehaviour
     [Header("---MeleeList---")]
     [SerializeField] List<GameObject> meleeList;
     [SerializeField] List<Melee> meleeStats;
-    [SerializeField] int currentGunIndex;
+    [SerializeField] int currentMeleeIndex;
 
     [Header("---Stats---")]
     [SerializeField] string meleeName;
@@ -37,9 +37,9 @@ public class MeleeSlot : MonoBehaviour
 
     private void Update()
     {
-        if (!IsAnyMeleeActive() && currentGunIndex != -1)
+        if (!IsAnyMeleeActive() && currentMeleeIndex != -1)
         {
-            ToggleMelee(currentGunIndex);
+            ToggleMelee(currentMeleeIndex);
         }
     }
 
@@ -65,7 +65,7 @@ public class MeleeSlot : MonoBehaviour
             DisableAllMelee();
 
             meleeList[index].SetActive(true);
-            currentGunIndex = index;
+            currentMeleeIndex = index;
             TransferStats(meleeStats[index]);
         }
         else
@@ -158,5 +158,10 @@ public class MeleeSlot : MonoBehaviour
     }
 
     public string GetName() { return meleeName; }
+
+    public int GetWeaponIndex() { return currentMeleeIndex; }
+
+    public void SetWeaponIndex(int value) { currentMeleeIndex = value; }
+
 
 }

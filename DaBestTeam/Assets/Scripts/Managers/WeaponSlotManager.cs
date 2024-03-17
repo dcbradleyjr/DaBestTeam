@@ -151,4 +151,61 @@ public class WeaponSlotManager : MonoBehaviour
     {
         return Gun.isReloading || Pistol.isReloading;
     }
+
+    public void SaveWeapons()
+    {
+        Debug.Log("Saving Weapons");
+        PlayerPrefs.SetInt("CurrentMeleeIndex", Melee.GetWeaponIndex());
+        PlayerPrefs.SetInt("CurrentPistolIndex", Pistol.GetWeaponIndex());
+        PlayerPrefs.SetInt("CurrentGunIndex", Gun.GetWeaponIndex());
+
+        PlayerPrefs.SetInt("CanToggleMelee", canToggleMelee ? 1 : 0);
+        PlayerPrefs.SetInt("CanTogglePistol", canTogglePistol ? 1 : 0);
+        PlayerPrefs.SetInt("CanToggleGun", canToggleGun ? 1 : 0);
+
+        PlayerPrefs.Save();
+    }
+
+    public void LoadWeapons()
+    {
+        Debug.Log("Loading Weapons");
+        int currentMeleeIndex = PlayerPrefs.GetInt("CurrentMeleeIndex", -1);
+        int currentPistolIndex = PlayerPrefs.GetInt("CurrentPistolIndex", -1);
+        int currentGunIndex = PlayerPrefs.GetInt("CurrentGunIndex", -1);
+
+        canToggleMelee = PlayerPrefs.GetInt("CanToggleMelee", 0) == 1 ? true : false;
+        canTogglePistol = PlayerPrefs.GetInt("CanTogglePistol", 0) == 1 ? true : false;
+        canToggleGun = PlayerPrefs.GetInt("CanToggleGun", 0) == 1 ? true : false;
+
+        ClearEquippedWeapons();
+        DeactivateSlots();
+
+        if (currentMeleeIndex != -1 && canToggleMelee)
+        {
+            UnlockMeleeSlot();
+            Melee.ToggleMelee(currentMeleeIndex);
+        }
+
+        if (currentPistolIndex != -1 && canTogglePistol)
+        {
+            UnlockPistolSlot();
+            Pistol.ToggleGun(currentPistolIndex);
+        }
+
+        if (currentGunIndex != -1 && canToggleGun)
+        {
+            UnlockGunSlot();
+            Gun.ToggleGun(currentGunIndex);
+        }
+    }
+
+    public void ResetWeapons()
+    {
+        Melee.SetWeaponIndex(-1);
+        Pistol.SetWeaponIndex(-1);
+        Gun.SetWeaponIndex(-1);
+
+        DeactivateSlots();
+        ClearEquippedWeapons();
+    }
 }

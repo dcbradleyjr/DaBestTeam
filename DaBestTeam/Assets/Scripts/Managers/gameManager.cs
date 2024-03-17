@@ -121,7 +121,20 @@ public class gameManager : MonoBehaviour
         return playerCurrency;
     }
 
+    public void SaveCurrency()
+    {
+        PlayerPrefs.SetInt("PlayerCurrency", playerCurrency);
+        PlayerPrefs.Save();
+    }
 
+    public void LoadCurrency()
+    {
+        playerCurrency = PlayerPrefs.GetInt("PlayerCurrency",0);
+    }
 
+    public void ResetCurrency()
+    {
+        playerCurrency = 0;
+    }
 }
 

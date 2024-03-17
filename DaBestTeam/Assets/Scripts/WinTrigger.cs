@@ -26,6 +26,7 @@ public class WinTrigger : MonoBehaviour
             }
             else
             {
+                SaveManager.instance.SaveGame();
                 SceneManager.LoadScene(sceneIndex + 1);
             }
         }

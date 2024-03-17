@@ -40,6 +40,7 @@ public class GunSlot : MonoBehaviour
     public bool isReloading;
     public bool isAuto;
     public bool isInfiniteAmmo;
+    public bool isShotgun;
 
     void Awake()
     {
@@ -255,6 +256,10 @@ public class GunSlot : MonoBehaviour
     }
 
     public int GetAmmo() { return ammo; }
+
+    public int GetWeaponIndex() { return currentGunIndex; } 
+
+    public void SetWeaponIndex(int value) { currentGunIndex = value; }
 
     public void AddAmmo(int value)
     {
