@@ -7,12 +7,13 @@ using UnityEngine.UI;
 public class Loader : MonoBehaviour
 {
     [SerializeField] Slider loadingSlider;
+    public bool isLoading;
 
     public void LoadLevelButton(string level)
     {
         UIManager.instance.loadingScreen.SetActive(true);
         UIManager.instance.MainMenu.SetActive(false);
-        
+        isLoading = true;
 
         // run async
         StartCoroutine(LoadLevelASync(level));

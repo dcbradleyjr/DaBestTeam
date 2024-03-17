@@ -18,6 +18,7 @@ TagManager:
   - MeleeList
   - GunList
   - PistolList
+  - Loader
   layers:
   - Default
   - TransparentFX

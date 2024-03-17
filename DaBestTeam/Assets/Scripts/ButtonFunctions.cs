@@ -8,13 +8,10 @@ using UnityEngine.UI;
 
 public class ButtonFunctions : MonoBehaviour
 {
-    
-    Loader loader;
     public void resume()
     {
         AudioManager.instance.PlaySFX("ButtonPress");
         gameManager.instance.stateUnpaused();
-        
     }
 
     public void restart()
@@ -39,10 +36,12 @@ public class ButtonFunctions : MonoBehaviour
     {
         AudioManager.instance.PlaySFX("ButtonPress");
         gameManager.instance.stateUnpaused();
+
     }
 
     public void StartGame()
     {
+        gameManager.instance.stateUnpaused();
         AudioManager.instance.PlaySFX("ButtonPress");
         AudioManager.instance.SetSFXVolume();
         AudioManager.instance.SetMusicVolume();
@@ -71,9 +70,6 @@ public class ButtonFunctions : MonoBehaviour
             Debug.Log("Here");
             
         }
-        
-       
-
     }
 
 

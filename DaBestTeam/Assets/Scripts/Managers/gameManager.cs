@@ -28,6 +28,8 @@ public class gameManager : MonoBehaviour
     public Animator playerAnim;
     public bool isPaused;
 
+    GameObject spawnPoint;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -41,6 +43,10 @@ public class gameManager : MonoBehaviour
             player = GameObject.FindWithTag("Player").GetComponent<ThirdPersonController>();
             playerAnim = GameObject.FindWithTag("Player").GetComponent<Animator>();
             playerInput = GameObject.FindWithTag("Player").GetComponent<PlayerInput>();
+        }
+        else
+        {
+            spawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint");
         }
 
         mainCamera = Camera.main;

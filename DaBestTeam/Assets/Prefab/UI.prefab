@@ -6322,8 +6322,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 8497874010324790665}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.434, y: 0}
-  m_AnchorMax: {x: 0.434, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -7390,7 +7390,7 @@ RectTransform:
   m_Father: {fileID: 8092965976311890300}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.434, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -7930,7 +7930,7 @@ MonoBehaviour:
   playerHPBar: {fileID: 6788207877374519442}
   playerStaminaBar: {fileID: 569790207610305808}
   player: {fileID: 0}
-  playerCurrency: 1000
+  playerCurrency: 0
   playerInput: {fileID: 0}
   playerAnim: {fileID: 0}
   isPaused: 0
@@ -8311,6 +8311,7 @@ MonoBehaviour:
   menuLose: {fileID: 3059117187695134327}
   MainMenu: {fileID: 1597649243127475062}
   SkillsMenu: {fileID: 658309901360945303}
+  loadingScreen: {fileID: 4249594998729874724}
   itemInfoText: {fileID: 978650603413318136}
   itemInfo:
   - XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
@@ -8323,6 +8324,7 @@ MonoBehaviour:
   ammoCurrentDisplay: {fileID: 3603433159195619886}
   weaponNameDisplay: {fileID: 1073276563274100964}
   ammoReloadDisplay: {fileID: 2520053299191416377}
+  _loader: {fileID: 0}
   inSettings: 0
   inCredits: 0
 --- !u!1 &5785065662031990710
@@ -10597,7 +10599,7 @@ GameObject:
   - component: {fileID: 5965899348552696845}
   m_Layer: 5
   m_Name: Loader
-  m_TagString: Untagged
+  m_TagString: Loader
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10633,9 +10635,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29dd3b1122db83d41ac2955bab25e026, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadingScreen: {fileID: 2740850426190374630}
-  mainMenu: {fileID: 1597649243127475062}
   loadingSlider: {fileID: 7419988244450561780}
+  isLoading: 0
 --- !u!1 &8058422952671233700
 GameObject:
   m_ObjectHideFlags: 0

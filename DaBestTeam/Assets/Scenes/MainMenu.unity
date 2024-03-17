@@ -123,11 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &336284594 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4249594998729874724, guid: 19d5ffaba77116645b48a45543a6e4f5, type: 3}
-  m_PrefabInstance: {fileID: 1323310891}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &465081164
 GameObject:
   m_ObjectHideFlags: 0
@@ -322,18 +317,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 38747560467736255, guid: 19d5ffaba77116645b48a45543a6e4f5, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 38747560467736255, guid: 19d5ffaba77116645b48a45543a6e4f5, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1108507521638265190, guid: 19d5ffaba77116645b48a45543a6e4f5, type: 3}
-      propertyPath: loadingScreen
-      value: 
-      objectReference: {fileID: 336284594}
     - target: {fileID: 1374656942754866665, guid: 19d5ffaba77116645b48a45543a6e4f5, type: 3}
       propertyPath: m_Name
       value: UI
@@ -417,30 +400,6 @@ PrefabInstance:
     - target: {fileID: 3455987031511820296, guid: 19d5ffaba77116645b48a45543a6e4f5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4249594998729874724, guid: 19d5ffaba77116645b48a45543a6e4f5, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5726392556448552307, guid: 19d5ffaba77116645b48a45543a6e4f5, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5726392556448552307, guid: 19d5ffaba77116645b48a45543a6e4f5, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5726392556448552307, guid: 19d5ffaba77116645b48a45543a6e4f5, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5965899348552696845, guid: 19d5ffaba77116645b48a45543a6e4f5, type: 3}
-      propertyPath: mainMenu
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6537319165140586309, guid: 19d5ffaba77116645b48a45543a6e4f5, type: 3}
-      propertyPath: m_PresetInfoIsWorld
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

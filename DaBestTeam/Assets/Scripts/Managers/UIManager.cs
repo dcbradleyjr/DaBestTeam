@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Animations;
 using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
@@ -43,7 +44,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] public TextMeshProUGUI weaponNameDisplay;
     [SerializeField] public TextMeshProUGUI ammoReloadDisplay;
 
-
+    public Loader _loader;
     public bool inSettings;
     public bool inCredits;
 
@@ -54,6 +55,9 @@ public class UIManager : MonoBehaviour
             instance = this;
         if (instance != this)
             Destroy(gameObject);
+
+        _loader = GameObject.FindWithTag("Loader").GetComponent<Loader>();
+        _loader.isLoading = false;
     }
 
     // Update is called once per frame
@@ -71,12 +75,12 @@ public class UIManager : MonoBehaviour
             MainMenu.gameObject.SetActive(false);
             if (!gameManager.instance.isPaused)
             {
-                Cursor.lockState = CursorLockMode.Confined;
+                Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
                 CurrencyDisplay.gameObject.SetActive(true);
                 StaminaDisplay.gameObject.SetActive(true);
                 AmmoDisplay.gameObject.SetActive(true);
-                HPDisplay.gameObject.SetActive(true); 
+                HPDisplay.gameObject.SetActive(true);
             }
             else
             {
@@ -85,6 +89,12 @@ public class UIManager : MonoBehaviour
                 AmmoDisplay.gameObject.SetActive(false);
                 HPDisplay.gameObject.SetActive(false);
             }
+        }
+        else
+        {
+            menuActive = MainMenu;
+            if (!gameManager.instance.isPaused && !_loader.isLoading)
+                gameManager.instance.statePaused();
         }
 
         currency.text = gameManager.instance.playerCurrency.ToString();
