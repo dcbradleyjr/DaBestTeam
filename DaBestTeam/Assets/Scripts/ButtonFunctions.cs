@@ -133,6 +133,29 @@ public class ButtonFunctions : MonoBehaviour
             UIManager.instance.inCredits = true;
         }
     }
+    public void HPUpgrade()
+    {
+        UIManager.instance.upgradeSkills.HPUpgrade();
+    }
 
-   
+    public void StaminaUpgrade()
+    {
+        UIManager.instance.upgradeSkills.StaminaUpgrade();
+    }
+
+    public void SpeedUpgrade()
+    {
+        UIManager.instance.upgradeSkills.SpeedUpgrade();
+    }
+
+    public void DamageUpgrade()
+    {
+        UIManager.instance.upgradeSkills.DamageUpgrade();
+    }
+
+    public void SkillsMenuback()
+    {
+        UIManager.instance.upgradeSkills.back();
+    }
+
 }

@@ -4278,8 +4278,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UpgradeSkills, Assembly-CSharp
+      - m_Target: {fileID: 7843552167112537386}
+        m_TargetAssemblyTypeName: ButtonFunctions, Assembly-CSharp
         m_MethodName: DamageUpgrade
         m_Mode: 1
         m_Arguments:
@@ -5111,8 +5111,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UpgradeSkills, Assembly-CSharp
+      - m_Target: {fileID: 7843552167112537386}
+        m_TargetAssemblyTypeName: ButtonFunctions, Assembly-CSharp
         m_MethodName: StaminaUpgrade
         m_Mode: 1
         m_Arguments:
@@ -5244,9 +5244,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UpgradeSkills, Assembly-CSharp
-        m_MethodName: back
+      - m_Target: {fileID: 7843552167112537386}
+        m_TargetAssemblyTypeName: ButtonFunctions, Assembly-CSharp
+        m_MethodName: SkillsMenuback
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7073,8 +7073,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UpgradeSkills, Assembly-CSharp
+      - m_Target: {fileID: 7843552167112537386}
+        m_TargetAssemblyTypeName: ButtonFunctions, Assembly-CSharp
         m_MethodName: SpeedUpgrade
         m_Mode: 1
         m_Arguments:
@@ -12254,8 +12254,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UpgradeSkills, Assembly-CSharp
+      - m_Target: {fileID: 7843552167112537386}
+        m_TargetAssemblyTypeName: ButtonFunctions, Assembly-CSharp
         m_MethodName: HPUpgrade
         m_Mode: 1
         m_Arguments:
