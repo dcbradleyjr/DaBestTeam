@@ -58,7 +58,7 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     int HPOriginal;
     float angleToPlayer;
 
-    Vector3 startingPosition;
+    public Vector3 startingPosition;
     Vector3 playerDir;
     float stoppingDistanceOrig;
     bool destChosen;
@@ -74,11 +74,11 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
 
     public enum AIStateId { Roam = 1, ChasePlayer = 2, Attack = 3, Death = 4 };
 
-    public void Start()
+    public void Awake()
     {
         state = AIStateId.Roam;
         HPOriginal = HP;
-        startingPosition = transform.position;
+        //startingPosition = transform.position;
         stoppingDistanceOrig = agent.stoppingDistance;
 
         updateUI();
@@ -142,9 +142,11 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
             if (!agent.pathPending && agent.remainingDistance < 0.1f)
             {
                 Vector3 randomPos = Random.insideUnitSphere * roamDistance;
+                //Debug.Log("randomPos :" + randomPos);
                 randomPos += startingPosition;
                 NavMeshHit hit;
                 NavMesh.SamplePosition(randomPos, out hit, roamDistance, 1);
+                //Debug.Log("hit positon: " + hit.position);
                 agent.SetDestination(hit.position);
                 
             }
