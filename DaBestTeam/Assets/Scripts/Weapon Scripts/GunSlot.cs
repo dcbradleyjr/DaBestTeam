@@ -149,6 +149,7 @@ public class GunSlot : MonoBehaviour
             Destroy(flash, 0.5f);
             BulletController bulletController = bullet.GetComponent<BulletController>();
             bulletController.damageAmount = damage;
+            bulletController.timeToDestroy = bulletDistance;
             if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out hit, Mathf.Infinity, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore))
             {
                 bulletController.target = hit.point;

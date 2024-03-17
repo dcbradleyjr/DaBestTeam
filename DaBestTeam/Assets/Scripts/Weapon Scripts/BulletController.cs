@@ -7,16 +7,16 @@ public class BulletController : MonoBehaviour
     [SerializeField] GameObject bloodSplat;
     [SerializeField] GameObject impact;
     [SerializeField] float speed = 50f;
-    [SerializeField] float timeToDestroy = 3f;
+    private float _timeToDestroy;
 
+    public float timeToDestroy 
+    {
+        get { return _timeToDestroy; } 
+        set {  _timeToDestroy = value; Destroy(gameObject, timeToDestroy); }
+    }
     public int damageAmount { get; set; }
     public Vector3 target { get; set; }
     public bool hit { get; set; }
-
-    private void OnEnable()
-    {
-        Destroy(gameObject, timeToDestroy);
-    }
 
     // Update is called once per frame
     void Update()

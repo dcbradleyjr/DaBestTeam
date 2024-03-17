@@ -1,17 +1,27 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 
 public class MeleeSlot : MonoBehaviour
 {
-    [SerializeField] int dmgAmount;
-    [SerializeField] int knockBack;
+    [Header("---Components---")]
     [SerializeField] PlayerInput input;
     [SerializeField] Animator animator;
     [SerializeField] GameObject bloodSplat;
     [SerializeField] float animationPlayTransition = 0.15f;
     [SerializeField] Transform HitPoint;
+
+    [Header("---MeleeList---")]
+    [SerializeField] List<GameObject> meleeList;
+    [SerializeField] List<Melee> meleeStats;
+    [SerializeField] int currentGunIndex;
+
+    [Header("---Stats---")]
+    [SerializeField] string meleeName;
+    [SerializeField] int dmgAmount;
+    [SerializeField] int knockBack;
     [SerializeField] float meleeRange;
 
     InputAction meleeAction;
@@ -23,6 +33,14 @@ public class MeleeSlot : MonoBehaviour
     {
         meleeAction = input.actions["Melee"];
         meleeAnimation = Animator.StringToHash("Melee");
+    }
+
+    private void Update()
+    {
+        if (!IsAnyMeleeActive() && currentGunIndex != -1)
+        {
+            ActivateMelee(currentGunIndex);
+        }
     }
 
     private void OnEnable()
@@ -38,6 +56,38 @@ public class MeleeSlot : MonoBehaviour
         meleeAction.performed -= _ => MeleeAttack();
         canMelee = false;
         animator.SetLayerWeight(2, 0);
+    }
+
+    public void ActivateMelee(int index)
+    {
+        if (index >= 0 && index < meleeList.Count)
+        {
+            DisableAllMelee();
+
+            meleeList[index].SetActive(true);
+            currentGunIndex = index;
+            TransferStats(meleeStats[index]);
+        }
+        else
+        {
+            Debug.LogError("Invalid gun index!");
+        }
+    }
+
+    private void TransferStats(Melee melee)
+    {
+        meleeName = melee.meleeName;
+        dmgAmount = melee.dmgAmount;
+        knockBack = melee.knockBack;
+        meleeRange = melee.meleeRange;
+    }
+
+    private void DisableAllMelee()
+    {
+        foreach (GameObject gunObject in meleeList)
+        {
+            gunObject.SetActive(false);
+        }
     }
 
     private void MeleeAttack()
@@ -82,6 +132,18 @@ public class MeleeSlot : MonoBehaviour
                 pushBack.pushBackDir((collider.transform.position + new Vector3(0, 1, 0) + transform.position).normalized * knockBack);
             }
         }
+    }
+
+    public bool IsAnyMeleeActive()
+    {
+        foreach (GameObject gunObject in meleeList)
+        {
+            if (gunObject.activeSelf)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     private void OnDrawGizmos()
