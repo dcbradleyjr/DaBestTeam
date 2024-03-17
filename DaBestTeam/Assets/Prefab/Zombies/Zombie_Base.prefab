@@ -2919,7 +2919,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6354978124117494526
 Transform:
   m_ObjectHideFlags: 0
@@ -3086,8 +3086,8 @@ MonoBehaviour:
   - {fileID: 445715397548507215}
   - {fileID: 6082811173345588783}
   - {fileID: 1059587069650662760}
-  canHoldWeapons: 0
-  randomMesh: 0
+  canHoldWeapons: 1
+  randomMesh: 1
   HitPoint: {fileID: 2246558348447114281}
   HitBox: {fileID: 9040440409492318489}
   meleeRange: 0.58

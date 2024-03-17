@@ -51,6 +51,7 @@ public class enemySpawner : MonoBehaviour
             toSpawn.GetComponent<ZombieAI>().canHoldWeapons = true;
         toSpawn.GetComponent<ZombieAI>().randomMesh = true;
         toSpawn.GetComponent<ZombieAI>().parentSpawner = gameObject;
+        toSpawn.GetComponent<ZombieAI>().startingPosition = spawnPos;
         GameObject hasSpawned = Instantiate(toSpawn, spawnPos, transform.rotation);
         spawnCount++;
         SpawnManager.instance.IncrementSpawnTotal();

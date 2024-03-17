@@ -120,7 +120,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objToSpawn: {fileID: 3268026767949517252, guid: 1c0cf48071815e343bf3c2e4b077b3e1, type: 3}
   spawnDelay: 5
-  spawnRadius: 5
+  spawnRadius: 10
   playerRadius: 15
   maxSpawn: 3
   canSpawn: 0
