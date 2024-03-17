@@ -569,11 +569,11 @@ MonoBehaviour:
   HPlevel3: {fileID: 8762780332520233458}
   HPlevel4: {fileID: 7988319749388542003}
   HPlevel5: {fileID: 4341961018599571589}
-  level1HPAcquired: 1
-  level2HPAcquired: 1
-  level3HPAcquired: 1
-  level4HPAcquired: 1
-  level5HPAcquired: 1
+  level1HPAcquired: 0
+  level2HPAcquired: 0
+  level3HPAcquired: 0
+  level4HPAcquired: 0
+  level5HPAcquired: 0
   level1HPAmount: 1
   level2HPAmount: 2
   level3HPAmount: 3
@@ -584,11 +584,11 @@ MonoBehaviour:
   Staminalevel3: {fileID: 4446706192719487001}
   Staminalevel4: {fileID: 6910705862416331454}
   Staminalevel5: {fileID: 448819448115689159}
-  level1StaminaAcquired: 1
-  level2StaminaAcquired: 1
-  level3StaminaAcquired: 1
-  level4StaminaAcquired: 1
-  level5StaminaAcquired: 1
+  level1StaminaAcquired: 0
+  level2StaminaAcquired: 0
+  level3StaminaAcquired: 0
+  level4StaminaAcquired: 0
+  level5StaminaAcquired: 0
   level1StaminaAmount: 1
   level2StaminaAmount: 2
   level3StaminaAmount: 3
@@ -599,11 +599,11 @@ MonoBehaviour:
   Speedlevel3: {fileID: 484119230553279692}
   Speedlevel4: {fileID: 4379707894397269750}
   Speedlevel5: {fileID: 3369381574016549913}
-  level1SpeedAcquired: 1
-  level2SpeedAcquired: 1
-  level3SpeedAcquired: 1
-  level4SpeedAcquired: 1
-  level5SpeedAcquired: 1
+  level1SpeedAcquired: 0
+  level2SpeedAcquired: 0
+  level3SpeedAcquired: 0
+  level4SpeedAcquired: 0
+  level5SpeedAcquired: 0
   level1SpeedAmount: 1
   level2SpeedAmount: 2
   level3SpeedAmount: 3
@@ -614,11 +614,11 @@ MonoBehaviour:
   Damagelevel3: {fileID: 6308413658686144551}
   Damagelevel4: {fileID: 4639904667347419161}
   Damagelevel5: {fileID: 4892846300038571410}
-  level1DamageAcquired: 1
-  level2DamageAcquired: 1
-  level3DamageAcquired: 1
-  level4DamageAcquired: 1
-  level5DamageAcquired: 1
+  level1DamageAcquired: 0
+  level2DamageAcquired: 0
+  level3DamageAcquired: 0
+  level4DamageAcquired: 0
+  level5DamageAcquired: 0
   level1DamageAmount: 1
   level2DamageAmount: 2
   level3DamageAmount: 3
