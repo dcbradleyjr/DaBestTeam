@@ -118,6 +118,20 @@ public class WeaponSlotManager : MonoBehaviour
         isGunActive = false;
     }
 
+    public void UnlockMeleeSlot()
+    {
+        canToggleMelee = true;
+    }
+    public void UnlockPistolSlot()
+    {
+        canTogglePistol = true;
+    }
+
+    public void UnlockGunSlot()
+    {
+        canToggleGun = true;
+    }
+
     public bool IsReloadingGuns()
     {
         return Gun.isReloading || Pistol.isReloading;
