@@ -44,6 +44,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] public TextMeshProUGUI weaponNameDisplay;
     [SerializeField] public TextMeshProUGUI ammoReloadDisplay;
 
+    [SerializeField] public GameObject DamageScreenOne;
+    [SerializeField] public GameObject DamageScreenTwo;
+    [SerializeField] public GameObject DamageScreenThree;
+
+
     public Loader _loader;
     public bool inSettings;
     public bool inCredits;

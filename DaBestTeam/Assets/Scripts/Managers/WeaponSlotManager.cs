@@ -154,7 +154,6 @@ public class WeaponSlotManager : MonoBehaviour
 
     public void SaveWeapons()
     {
-        Debug.Log("Saving Weapons");
         PlayerPrefs.SetInt("CurrentMeleeIndex", Melee.GetWeaponIndex());
         PlayerPrefs.SetInt("CurrentPistolIndex", Pistol.GetWeaponIndex());
         PlayerPrefs.SetInt("CurrentGunIndex", Gun.GetWeaponIndex());
@@ -168,7 +167,6 @@ public class WeaponSlotManager : MonoBehaviour
 
     public void LoadWeapons()
     {
-        Debug.Log("Loading Weapons");
         int currentMeleeIndex = PlayerPrefs.GetInt("CurrentMeleeIndex", -1);
         int currentPistolIndex = PlayerPrefs.GetInt("CurrentPistolIndex", -1);
         int currentGunIndex = PlayerPrefs.GetInt("CurrentGunIndex", -1);

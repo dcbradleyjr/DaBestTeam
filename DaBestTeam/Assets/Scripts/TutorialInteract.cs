@@ -15,7 +15,7 @@ public class TutorialInteract : MonoBehaviour, IInteract
     void Start()
     {
         if (this.name == "Melee Pickup")
-            isMeleePickUp = true;
+            isMeleePickUp = true;     
         if (this.name == "Ranged Pickup")
             isRangedPickUp = true;
     }

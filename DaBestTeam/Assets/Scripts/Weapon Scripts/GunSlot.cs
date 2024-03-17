@@ -99,6 +99,7 @@ public class GunSlot : MonoBehaviour
         {
             Debug.LogError("Invalid gun index!");
         }
+        UpdateUI();
     }
 
     private void TransferStats(Gun gun)

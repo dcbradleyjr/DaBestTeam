@@ -85,6 +85,7 @@ public class ThirdPersonController : MonoBehaviour, IDamage
         resetStats = PlayerPrefs.GetInt("ResetPlayer", 0) == 1 ? true : false;
         if (resetStats)
         {
+            Debug.Log("Reset");
             WeaponSlotManager.instance.ResetWeapons();
             PlayerPrefs.SetInt("ResetPlayer", 0);
             WeaponSlotManager.instance.SaveWeapons();
@@ -115,14 +116,14 @@ public class ThirdPersonController : MonoBehaviour, IDamage
             {
                 DrainStamina();
                 ResetRecharge();
-            } 
+            }
         }
     }
 
     public void takeDamage(int amount)
     {
         HP -= amount;
-
+        StartCoroutine(flashDamage());
         if (HP <= 0)
         {
             //death logic
@@ -260,8 +261,8 @@ public class ThirdPersonController : MonoBehaviour, IDamage
         if (canCrouch && !isSprinting)
         {
             isCrouching = false;
-            if(!staminaDrained)
-            canSprint = true;
+            if (!staminaDrained)
+                canSprint = true;
             if (controller != null)
             {
                 controller.height = 1.63f;
@@ -345,5 +346,27 @@ public class ThirdPersonController : MonoBehaviour, IDamage
         controller.enabled = false;
         transform.position = gameManager.instance.spawnPoint.transform.position;
         controller.enabled = true;
+    }
+
+    IEnumerator flashDamage()
+    {
+        if ((float)HP / HPMax > 0.6 )
+        {
+            UIManager.instance.DamageScreenOne.SetActive(true);
+            yield return new WaitForSeconds(0.2f);
+            UIManager.instance.DamageScreenOne.SetActive(false); 
+        }
+        else if ((float)HP / HPMax <= 0.6 && (float)HP / HPMax >= 0.3)
+        {
+            UIManager.instance.DamageScreenTwo.SetActive(true);
+            yield return new WaitForSeconds(0.2f);
+            UIManager.instance.DamageScreenTwo.SetActive(false);
+        }
+        else
+        {
+            UIManager.instance.DamageScreenThree.SetActive(true);
+            yield return new WaitForSeconds(0.2f);
+            UIManager.instance.DamageScreenThree.SetActive(false);
+        }
     }
 }
