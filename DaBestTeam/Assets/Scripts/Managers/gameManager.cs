@@ -29,8 +29,6 @@ public class gameManager : MonoBehaviour
     public bool isPaused;
 
     public GameObject spawnPoint;
-
-    public GameObject SaveStuff;
     // Start is called before the first frame update
     void Awake()
     {
@@ -39,13 +37,12 @@ public class gameManager : MonoBehaviour
         if (instance != this)
             Destroy(gameObject);
 
-        if (SceneManager.GetActiveScene().name != "MainMenu")
-        {
-            player = GameObject.FindWithTag("Player").GetComponent<ThirdPersonController>();
-            playerAnim = GameObject.FindWithTag("Player").GetComponent<Animator>();
-            playerInput = GameObject.FindWithTag("Player").GetComponent<PlayerInput>();
-            spawnPoint = GameObject.FindWithTag("SpawnPoint");
-        }        
+        
+        player = GameObject.FindWithTag("Player").GetComponent<ThirdPersonController>();
+        playerAnim = GameObject.FindWithTag("Player").GetComponent<Animator>();
+        playerInput = GameObject.FindWithTag("Player").GetComponent<PlayerInput>();
+        spawnPoint = GameObject.FindWithTag("SpawnPoint");
+        
         
         mainCamera = Camera.main;
     }
@@ -54,8 +51,6 @@ public class gameManager : MonoBehaviour
     void Update()
     {
 
-
-        
     }
 
     public void statePaused()
@@ -64,9 +59,11 @@ public class gameManager : MonoBehaviour
         Time.timeScale = 0;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
-
+        UIManager.instance.StaminaDisplay.SetActive(false);
+        UIManager.instance.HPDisplay.SetActive(false);
+        UIManager.instance.AmmoDisplay.SetActive(false);
+        UIManager.instance.CurrencyDisplay.SetActive(false);
     }
-
     public void stateUnpaused()
     {
         isPaused = !isPaused;
@@ -75,7 +72,10 @@ public class gameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         UIManager.instance.menuActive.SetActive(false);
         UIManager.instance.menuActive = null;
-
+        UIManager.instance.StaminaDisplay.SetActive(true);
+        UIManager.instance.HPDisplay.SetActive(true);
+        UIManager.instance.AmmoDisplay.SetActive(true);
+        UIManager.instance.CurrencyDisplay.SetActive(true);
     }
 
     public void youWin()
@@ -89,7 +89,10 @@ public class gameManager : MonoBehaviour
     public void youLose()
     {
         //you lose!!
-        statePaused();
+
+        Cursor.visible = true;//temp fix 
+        Cursor.lockState = CursorLockMode.Confined;//temp fix
+
         UIManager.instance.menuActive = UIManager.instance.menuLose;
         UIManager.instance.menuActive.SetActive(true);
     }

@@ -13,25 +13,22 @@ public class SaveManager : MonoBehaviour
     public void SaveGame()
     {
         WeaponSlotManager.instance.SaveWeapons();
-        UIManager.instance.upgradeSkills.SaveUpgradeState();
         gameManager.instance.SaveCurrency();
     }
 
     public void LoadGame()
     {
         WeaponSlotManager.instance.LoadWeapons();
-        UIManager.instance.upgradeSkills.LoadUpgradeState();
-        UIManager.instance.upgradeSkills.EnableUpgradeGameObjects();
         gameManager.instance.LoadCurrency();
     }
 
     public void ResetStats()
     {
         PlayerPrefs.SetInt("ResetPlayer", 1);
-        UIManager.instance.upgradeSkills.StatReset();
-        gameManager.instance.ResetCurrency();
+        //UIManager.instance.upgradeSkills.StatReset();
+        //gameManager.instance.ResetCurrency();
         //save the reset
-        UIManager.instance.upgradeSkills.SaveUpgradeState();
-        gameManager.instance.SaveCurrency();
+        //UIManager.instance.upgradeSkills.SaveUpgradeState();
+        //gameManager.instance.SaveCurrency();
     }
 }

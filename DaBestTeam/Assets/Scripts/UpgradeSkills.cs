@@ -96,10 +96,7 @@ public class UpgradeSkills : MonoBehaviour, IInteract
     public void interact()
     {
         AudioManager.instance.PlaySFX("ButtonPress");
-        UIManager.instance.SkillsMenu.SetActive(true);
-        gameManager.instance.statePaused();
-        UIManager.instance.menuActive = UIManager.instance.SkillsMenu;
-        UIManager.instance.menuActive.SetActive(true);        
+        gameManager.instance.statePaused();      
     }
     public void Update()
     {
@@ -321,7 +318,6 @@ public class UpgradeSkills : MonoBehaviour, IInteract
     public void back()
     {
         AudioManager.instance.PlaySFX("ButtonPress");
-        UIManager.instance.SkillsMenu.SetActive(false);
         gameManager.instance.stateUnpaused();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;

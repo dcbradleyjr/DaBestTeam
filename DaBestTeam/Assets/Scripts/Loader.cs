@@ -7,28 +7,54 @@ using UnityEngine.UI;
 public class Loader : MonoBehaviour
 {
     [SerializeField] Slider loadingSlider;
+    [SerializeField] GameObject deactivatedScreen;
+    [SerializeField] GameObject loadedScreen;
     public bool isLoading;
 
     public void LoadLevelButton(string level)
     {
-        UIManager.instance.loadingScreen.SetActive(true);
-        UIManager.instance.MainMenu.SetActive(false);
+        if (deactivatedScreen)
+        deactivatedScreen.SetActive(false);
+        loadedScreen.SetActive(true);
         isLoading = true;
 
-        // run async
-        StartCoroutine(LoadLevelASync(level));
-    }
+        Debug.Log("Trying to load");
 
-    IEnumerator LoadLevelASync(string level)
+        //fake load for time 
+        StartCoroutine(FakeLoadLevelASync(level));
+    }
+    IEnumerator FakeLoadLevelASync(string level)
     {
-        yield return new WaitForSeconds(5f);
+        Debug.Log("loading");
+        float elapsedTime = 0f;
+        float duration = 10f; // 3 seconds
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            float progressValue = Mathf.Clamp01(elapsedTime / duration);
+            loadingSlider.value = progressValue;
+            yield return null; // Wait for the next frame
+        }
         AsyncOperation op = SceneManager.LoadSceneAsync(level);
 
         while (!op.isDone)
         {
             float progressValue = Mathf.Clamp01(op.progress / 0.9f);
             loadingSlider.value = progressValue;
-            yield return new WaitForSeconds(5f);
+            yield return null; // Wait for the next frame
         }
+    }
+    IEnumerator LoadLevelASync(string level)
+    {
+
+        AsyncOperation op = SceneManager.LoadSceneAsync(level);
+
+        while (!op.isDone)
+        {
+            float progressValue = Mathf.Clamp01(op.progress / 0.9f);
+            loadingSlider.value = progressValue;
+            yield return new WaitForSecondsRealtime(5f);
+        }
+
     }
 }
