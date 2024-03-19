@@ -286,12 +286,11 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     }
     public void takeDamage(int amount)
     {
+        anim.SetTrigger("ZombieHurt1");
         if (!isDamage)
         {
             isDamage = true;
-            AudioManager.instance.PlaySFX("ZombieHurt");
-
-            anim.SetTrigger("Hurt");
+            AudioManager.instance.PlaySFX("ZombieHurt");                        
             isDamage = false;
         }
 

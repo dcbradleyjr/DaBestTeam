@@ -1,18 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.Timeline.TimelinePlaybackControls;
 
 
 public class UpgradeSkills : MonoBehaviour, IInteract
-{    
+{
+    [Header("--Menu--")]
+    [SerializeField] GameObject SkillsMenu;
+
     public string interactPrompt => ("Skills Crate!");
-   
+
+    [Header("--Level Cost--")]
     public int level1Cost;
     public int level2Cost;
     public int level3Cost;
     public int level4Cost;
     public int level5Cost;
-   
+    [SerializeField] public TextMeshProUGUI costText;
+
     [Header("--HP--")]
     [SerializeField] GameObject HPlevel1;
     [SerializeField] GameObject HPlevel2;
@@ -88,6 +96,7 @@ public class UpgradeSkills : MonoBehaviour, IInteract
     [Range(0, 100)] public int level3DamageAmount;
     [Range(0, 100)] public int level4DamageAmount;
     [Range(0, 100)] public int level5DamageAmount;
+    private bool interactingWithCrate;
 
     public void Start()
     {
@@ -95,12 +104,33 @@ public class UpgradeSkills : MonoBehaviour, IInteract
     }
     public void interact()
     {
+        interactingWithCrate = true;
+        SkillsMenu.SetActive(true);        
         AudioManager.instance.PlaySFX("ButtonPress");
-        gameManager.instance.statePaused();      
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
+        UIManager.instance.CurrencyDisplay.SetActive(true);
+        UIManager.instance.StaminaDisplay.SetActive(false);
+        UIManager.instance.HPDisplay.SetActive(false);
+        UIManager.instance.AmmoDisplay.SetActive(false);
+        
     }
     public void Update()
     {
-        
+        if (interactingWithCrate)
+        {
+            if (Input.GetButtonDown("Cancel"))
+            {
+                return; 
+            }
+        }
+    }
+    private void UpdateCostText(int cost)
+    {
+        if (costText != null)
+        {
+            costText.text = "Cost: " + cost.ToString(); // Update the text with the cost value
+        }
     }
     public static bool GetBool(string key, bool defaultValue = false)
     {
@@ -318,9 +348,14 @@ public class UpgradeSkills : MonoBehaviour, IInteract
     public void back()
     {
         AudioManager.instance.PlaySFX("ButtonPress");
-        gameManager.instance.stateUnpaused();
+        SkillsMenu.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        UIManager.instance.StaminaDisplay.SetActive(true);
+        UIManager.instance.HPDisplay.SetActive(true);
+        UIManager.instance.AmmoDisplay.SetActive(true);
+        UIManager.instance.CurrencyDisplay.SetActive(true);
+        interactingWithCrate = false;
     }
     public void StatReset()
     {
