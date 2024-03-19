@@ -97,9 +97,17 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
 
     public void Update()
     {
-        /*if(state != AIStateId.Death)
-        takeDamage(1);*/
-        playerDir = gameManager.instance.player.transform.position - HitPoint.position;
+        if (gameManager.instance != null && gameManager.instance.player != null)
+        {
+            playerDir = gameManager.instance.player.transform.position - HitPoint.position;
+        }
+        else
+        {
+            // Handle the case when the GameManager or player is null
+            // For example, you could set a default direction or take alternative actions.
+            // Here, I'll set playerDir to a zero vector.
+            playerDir = Vector3.zero;
+        }
     }
     public AIStateId state
         {
@@ -206,15 +214,6 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
                 yield return new WaitForSeconds(attackCooldown);
                 isAttacking = false;
             }
-           
-            // Check if the player is still in range
-           /* float distanceToPlayer = Vector3.Distance(transform.position, gameManager.instance.player.transform.position);
-            if (distanceToPlayer > attackRange)
-            {
-                state = AIStateId.ChasePlayer;
-                yield break;
-            }*/
-
             yield return new WaitForSeconds(0.1f);
         }
     }
