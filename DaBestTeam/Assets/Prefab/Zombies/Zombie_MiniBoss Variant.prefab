@@ -6080,7 +6080,7 @@ MonoBehaviour:
   startingPosition: {x: 0, y: 0, z: 0}
   shockwaveAnimationTimeOffset: 3
   stompDist: 10
-  countdownTimer: 0.1
+  countdownTimer: 3
 --- !u!95 &9210252676715706523
 Animator:
   serializedVersion: 5
@@ -6091,7 +6091,7 @@ Animator:
   m_GameObject: {fileID: 6141841788362268699}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: b20a3c10714a6ac439af479e3273de65, type: 3}
-  m_Controller: {fileID: 9100000, guid: 70941e32e413b184089cb2a5f0eeac5b, type: 2}
+  m_Controller: {fileID: 9100000, guid: 101514df05b9bcd45a781e36c8011454, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -9929,6 +9929,10 @@ PrefabInstance:
     - target: {fileID: 198361330790749672, guid: e7473d9620ab29341b98bf21b400e598, type: 3}
       propertyPath: playOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198361330790749672, guid: e7473d9620ab29341b98bf21b400e598, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 199139856173615580, guid: e7473d9620ab29341b98bf21b400e598, type: 3}
       propertyPath: m_Materials.Array.size

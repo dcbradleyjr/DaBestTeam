@@ -75,7 +75,7 @@ public class ZombieBossAI : MonoBehaviour, IDamage, IPushBack
     ParticleSystem shockwavePS;
     float distanceToPlayer;
     bool isStomping;
-    float timeBetweenAttacks = 1.0f;
+    float timeBetweenAttacks;
 
     public enum AIStateId { Roam = 1, ChasePlayer = 2, Attack = 3, Death = 4, Stomp = 5, Waiting = 6 };
 
@@ -98,6 +98,7 @@ public class ZombieBossAI : MonoBehaviour, IDamage, IPushBack
         walkAnim = Animator.StringToHash("Zombie@Walk01");
 
         shockwavePS = transform.Find("Shockwave").GetComponent<ParticleSystem>();
+        timeBetweenAttacks = countdownTimer;
 
         _ragdollRigidbodies = GetComponentsInChildren<Rigidbody>();
     }
@@ -136,13 +137,15 @@ public class ZombieBossAI : MonoBehaviour, IDamage, IPushBack
                     UpdateAttackState();
                     break;
                 case AIStateId.Waiting:
-                    while(countdownTimer > 0)
+                    while (countdownTimer > 0)
+                    {
                         countdownTimer -= Time.deltaTime;
+                        Debug.Log(countdownTimer);
+                    }
                     countdownTimer = timeBetweenAttacks;
                     state = AIStateId.ChasePlayer;
                     break;
             }
-
         }
     }
 
@@ -282,19 +285,19 @@ public class ZombieBossAI : MonoBehaviour, IDamage, IPushBack
     IEnumerator stompShockwave()
     {
         anim.SetTrigger("Stomp");
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.0f);
         shockwavePS.Play();
         GameObject detonate = Instantiate(shockwaveDetonate, transform.position, transform.rotation);
         detonate.GetComponent<ZombieScratch>().damage = damageAmount;
-        state = AIStateId.Waiting;
         yield return new WaitForSeconds(1f);
+        state = AIStateId.Waiting;
         yield return null;
     }
 
     void UpdateAttackState()
     {
         distanceToPlayer = Vector3.Distance(gameManager.instance.player.transform.position, transform.position);
-        transform.LookAt(gameManager.instance.player.transform.position);
+        faceTarget();
 
             switch (state)
             {
@@ -309,12 +312,6 @@ public class ZombieBossAI : MonoBehaviour, IDamage, IPushBack
                 {
                     countdownTimer = timeBetweenAttacks;
                     StartCoroutine(stompShockwave());
-                }   break;
-                case AIStateId.Waiting:
-                {
-                    while (countdownTimer > 0)
-                        countdownTimer -= Time.deltaTime;
-                    state = AIStateId.ChasePlayer;
                 }   break;
             }
     }
