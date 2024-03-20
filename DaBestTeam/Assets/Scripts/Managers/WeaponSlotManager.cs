@@ -63,11 +63,11 @@ public class WeaponSlotManager : MonoBehaviour
         if (!isMeleeActive)
             AudioManager.instance.PlaySFX("ToggleMelee");
 
-        UIManager.instance.ammoCurrentDisplay.text = "";
-        UIManager.instance.weaponNameDisplay.text = Melee.GetName();
         isMeleeActive = true;
         isPistolActive = false;
         isGunActive = false;
+        UIManager.instance.ammoCurrentDisplay.text = "";
+        UIManager.instance.weaponNameDisplay.text = Melee.GetName();
     }
 
     public void TogglePistolSlot()
@@ -80,10 +80,10 @@ public class WeaponSlotManager : MonoBehaviour
             AudioManager.instance.PlaySFX("TogglePistol");
 
         UIManager.instance.AmmoDisplay.SetActive(true);
-        Pistol.UpdateUI();
         isPistolActive = true;
         isMeleeActive = false;
         isGunActive = false;
+        Pistol.UpdateUI();
     }
     public void ToggleGunSlot()
     {
@@ -95,10 +95,10 @@ public class WeaponSlotManager : MonoBehaviour
             AudioManager.instance.PlaySFX("ToggleGun"); 
 
         UIManager.instance.AmmoDisplay.SetActive(true);
-        Gun.UpdateUI();
         isGunActive = true;
         isPistolActive = false;
         isMeleeActive = false;
+        Gun.UpdateUI();
     }
 
     public void DeactivateSlots()
