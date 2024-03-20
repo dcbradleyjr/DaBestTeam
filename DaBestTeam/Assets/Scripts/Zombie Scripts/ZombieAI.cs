@@ -40,9 +40,9 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     [Range(1, 1000)][SerializeField] int targetFaceSpeed;
     [SerializeField] float attackCooldown;
     [SerializeField] float attackRange;
-    [SerializeField] float attackAnimSpeed;
     [SerializeField] float dropRate;
     [SerializeField] int damageAmount;
+    [SerializeField] int animSpeedTrans;
 
 
     [Header("--UI--")]
@@ -68,7 +68,7 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     int hurtAnim;
     int attackAnim;
     int walkAnim;
-    bool animOrignal;
+    
 
     
 
@@ -78,19 +78,13 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     {
         state = AIStateId.Roam;
         HPOriginal = HP;
-        //startingPosition = transform.position;
+        startingPosition = transform.position;
         stoppingDistanceOrig = agent.stoppingDistance;
 
         updateUI();
         chooseRandomMesh();
         chooseWeapon();
         DisableRagdoll();
-
-        animOrignal = anim;
-
-        attackAnim = Animator.StringToHash("Zombie@Attack01");
-        hurtAnim = Animator.StringToHash("Zombie@Damage01");
-        walkAnim = Animator.StringToHash("Zombie@Walk01");
 
         _ragdollRigidbodies = GetComponentsInChildren<Rigidbody>();        
     }
@@ -103,11 +97,11 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
         }
         else
         {
-            // Handle the case when the GameManager or player is null
-            // For example, you could set a default direction or take alternative actions.
-            // Here, I'll set playerDir to a zero vector.
             playerDir = Vector3.zero;
         }
+
+        float animSpeed = agent.velocity.normalized.magnitude;
+        anim.SetFloat("Speed", Mathf.Lerp(anim.GetFloat("Speed"), animSpeed, Time.deltaTime * animSpeedTrans));
     }
     public AIStateId state
         {
@@ -173,16 +167,12 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
             float distanceToPlayer = Vector3.Distance(transform.position, gameManager.instance.player.transform.position);
             if (distanceToPlayer < attackRange)
             {
-                Debug.Log(distanceToPlayer + "Player Distance");
                 // Transition to attack state
                 StartCoroutine(attackState());
                 // Exit chase state
                 yield break;
             }
 
-            int AnimSpeed = Random.Range(0, 1);
-
-            anim.CrossFade(walkAnim, AnimSpeed);
             // Chase the player
             agent.SetDestination(gameManager.instance.player.transform.position);
 
@@ -195,16 +185,13 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
         {
             faceTarget();
             
-            //angleToPlayer = Vector3.Angle(new Vector3(playerDir.x, 0, playerDir.z), transform.forward);
-
             agent.SetDestination(gameManager.instance.player.transform.position);
             
-
             if (!isAttacking)
             {
                 isAttacking = true;
-                anim.SetTrigger("Attack");
-                yield return new WaitForSeconds(attackAnimSpeed);
+                anim.SetTrigger("AttackRarm");
+                yield return new WaitForSeconds(0.5f);
 
                 //AudioManager.instance.PlaySFX("ZombieAttack");
 
@@ -286,7 +273,7 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     }
     public void takeDamage(int amount)
     {
-        anim.SetTrigger("ZombieHurt1");
+        anim.SetTrigger("Hurt");
         if (!isDamage)
         {
             isDamage = true;

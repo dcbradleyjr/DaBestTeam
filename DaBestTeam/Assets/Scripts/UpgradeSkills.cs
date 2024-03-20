@@ -103,7 +103,7 @@ public class UpgradeSkills : MonoBehaviour, IInteract
         
     }
     public void interact()
-    {
+    {        
         interactingWithCrate = true;
         SkillsMenu.SetActive(true);        
         AudioManager.instance.PlaySFX("ButtonPress");
@@ -112,17 +112,14 @@ public class UpgradeSkills : MonoBehaviour, IInteract
         UIManager.instance.CurrencyDisplay.SetActive(true);
         UIManager.instance.StaminaDisplay.SetActive(false);
         UIManager.instance.HPDisplay.SetActive(false);
-        UIManager.instance.AmmoDisplay.SetActive(false);
-        
+        UIManager.instance.AmmoDisplay.SetActive(false);        
     }
     public void Update()
     {
-        if (interactingWithCrate)
+      if(interactingWithCrate && gameManager.instance.isPaused)
         {
-            if (Input.GetButtonDown("Cancel"))
-            {
-                return; 
-            }
+            SkillsMenu.SetActive(false);
+            interactingWithCrate=false;
         }
     }
     private void UpdateCostText(int cost)

@@ -3097,20 +3097,21 @@ MonoBehaviour:
   anim: {fileID: 8406844948181873872}
   HP: 4
   roamPauseTime: 3
-  roamDistance: 5
+  roamDistance: 15
   viewCone: 30
-  targetFaceSpeed: 10
+  targetFaceSpeed: 15
   attackCooldown: 2
   attackRange: 2
   attackAnimSpeed: 1
   dropRate: 0.5
   damageAmount: 1
+  animSpeedTrans: 15
   HealthBar: {fileID: 602742350953240676}
   EnemyUI: {fileID: 4023311822676355477}
   parentSpawner: {fileID: 0}
   hasBossMechs: 0
   _state: 1
-  startingPosition: {x: -108.47237, y: 0.066986084, z: 46.998627}
+  startingPosition: {x: 0, y: 0, z: 0}
 --- !u!136 &8938389325397104656
 CapsuleCollider:
   m_ObjectHideFlags: 0
