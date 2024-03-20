@@ -18,19 +18,22 @@ public class BulletController : MonoBehaviour
     public Vector3 target { get; set; }
     public bool hit { get; set; }
 
+    public bool piercingShot { get; set; }
+
     // Update is called once per frame
     void Update()
     {
         transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
         if (!hit && Vector3.Distance(transform.position, target) < 0.1f)
         {
-            Destroy(gameObject);
+            //if (!piercingShot)
+            //    Destroy(gameObject);
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.isTrigger)
+        if (other.isTrigger || other.CompareTag("Player"))
             return;
 
         IDamage dmg = other.GetComponent<IDamage>();
@@ -46,6 +49,8 @@ public class BulletController : MonoBehaviour
             GameObject spark = Instantiate(impact, transform.position, Quaternion.identity);
             Destroy(spark, 0.5f);
         }
-        Destroy(gameObject);
+
+        //if(!piercingShot)
+        //Destroy(gameObject);
     }
 }

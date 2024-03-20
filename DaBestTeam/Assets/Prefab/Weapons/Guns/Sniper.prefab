@@ -488,7 +488,11 @@ MonoBehaviour:
   fireRate: 2
   reloadRate: 2.5
   bulletDistance: 1.5
+  maxSpreadAngle: 1
+  bulletCount: 1
   isAuto: 0
+  isShotgun: 0
+  isSniper: 1
 --- !u!1 &6815156461392110182
 GameObject:
   m_ObjectHideFlags: 0

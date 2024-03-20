@@ -31,10 +31,13 @@ public class GunSlot : MonoBehaviour
     [SerializeField] int ammo;
     [SerializeField] float reloadRate;
     [SerializeField] float fireRate;
-    [SerializeField] float bulletDistance = 25f;
+    [SerializeField] float bulletDistance;
     [SerializeField] List<string> audioClips;
     [SerializeField] List<string> reloadAudio;
     [SerializeField] string emptyAudio = "Empty1";
+    [SerializeField] float maxSpreadAngle;
+    [SerializeField] int bulletCount;
+
     Transform cameraTransform;
     InputAction shootAction;
     InputAction reloadAction;
@@ -47,6 +50,7 @@ public class GunSlot : MonoBehaviour
     public bool isAuto;
     public bool isInfiniteAmmo;
     public bool isShotgun;
+    public bool isSniper;
 
     void Awake()
     {
@@ -124,12 +128,17 @@ public class GunSlot : MonoBehaviour
         fireRate = gun.fireRate;
         reloadRate = gun.reloadRate;
         bulletDistance = gun.bulletDistance;
+        maxSpreadAngle = gun.maxSpreadAngle;
+        bulletCount = gun.bulletCount;
+
         audioClips = gun.shotAudio;
         reloadAudio = gun.reloadAudio;
         shootPoint = gun.shootPoint;
         ejectPoint = gun.ejectPoint;
 
         isAuto = gun.isAuto;
+        isShotgun = gun.isShotgun;
+        isSniper = gun.isSniper;
     }
 
     public void DisableAllGuns()
@@ -166,7 +175,6 @@ public class GunSlot : MonoBehaviour
         if (canShoot)
         {
             RaycastHit hit;
-            GameObject bullet = GameObject.Instantiate(bulletPrefab, shootPoint.position, Quaternion.identity);
             GameObject flash = Instantiate(muzzleFlash, shootPoint.position, shootPoint.rotation);
             if(ejectBullet)
             {
@@ -179,20 +187,43 @@ public class GunSlot : MonoBehaviour
             clipSize--;
             UpdateUI();
             Destroy(flash, 0.5f);
-            BulletController bulletController = bullet.GetComponent<BulletController>();
-            bulletController.damageAmount = damage;
-            bulletController.timeToDestroy = bulletDistance;
-            if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out hit, Mathf.Infinity, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore))
+
+            for (int i = 0; i < bulletCount; i++)
             {
-                bulletController.target = hit.point;
-                bulletController.hit = true;
-            }
-            else
-            {
-                bulletController.target = cameraTransform.position + cameraTransform.forward * bulletDistance;
-                bulletController.hit = false;
+                GameObject bullet = GameObject.Instantiate(bulletPrefab, shootPoint.position, Quaternion.identity);
+                BulletController bulletController = bullet.GetComponent<BulletController>();
+                bulletController.damageAmount = damage;
+                bulletController.timeToDestroy = bulletDistance;
+
+
+                if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out hit, Mathf.Infinity, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore))
+                {
+                    if (isSniper)
+                        bulletController.piercingShot = true;
+                    // Calculate random spread
+                    Vector3 spreadOffset = Random.insideUnitCircle * maxSpreadAngle; // Random spread within a cone
+                    Vector3 spreadTarget = hit.point + spreadOffset; // Apply spread to target point
+
+                    if (WeaponSlotManager.instance.switchCam.isAiming && !isShotgun)
+                    {
+                        bulletController.target = hit.point;
+                        bulletController.hit = true;
+                    }
+                    else
+                    {
+                        bulletController.target = spreadTarget;
+                        bulletController.hit = true;
+                    }
+                }
+                else
+                {
+                    bulletController.target = cameraTransform.position + cameraTransform.forward * bulletDistance;
+                    bulletController.hit = false;
+                } 
             }
         }
+        if (isShotgun || isSniper)
+            StartCoroutine(PlayRecharge());
         yield return new WaitForSeconds(fireRate);
         animator.SetTrigger("DoneShooting");
         animator.ResetTrigger("ShootGun");
@@ -302,6 +333,14 @@ public class GunSlot : MonoBehaviour
     private void PlayReloadAudio(int index)
     {
         AudioManager.instance.PlaySFX(reloadAudio[index]);
+    }
+
+    IEnumerator PlayRecharge()
+    {
+        yield return new WaitForSeconds(0.6f);
+        AudioManager.instance.PlaySFX("ShotgunCharge1");
+        yield return new WaitForSeconds(0.4f);
+        AudioManager.instance.PlaySFX("ShotgunCharge2");
     }
 
     private void PlayEmptyAudio()

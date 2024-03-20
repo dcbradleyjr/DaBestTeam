@@ -1,4 +1,4 @@
-using UnityEngine;
+ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using Cinemachine;
@@ -26,7 +26,7 @@ public class SwitchVCam : MonoBehaviour
     public CinemachineVirtualCamera ThirdPersonCam;
     InputAction aimAction;
 
-    //bool isAiming;
+    public bool isAiming;
     bool isPaused;
 
 
@@ -83,7 +83,7 @@ public class SwitchVCam : MonoBehaviour
     {
         if (WeaponSlotManager.instance.isPistolActive || WeaponSlotManager.instance.isGunActive)
         {
-            //isAiming = true;
+            isAiming = true;
             AimCam.Priority = aimPriority;
             if (aimCanvas != null)
                 aimCanvas.enabled = true;
@@ -94,7 +94,7 @@ public class SwitchVCam : MonoBehaviour
 
     private void CancelAim()
     {
-        //isAiming = false;
+        isAiming = false;
         AimCam.Priority = regularPriority;
         if (aimCanvas != null)
             aimCanvas.enabled = false;

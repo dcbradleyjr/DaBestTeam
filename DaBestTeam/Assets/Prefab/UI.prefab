@@ -7709,7 +7709,7 @@ PrefabInstance:
       objectReference: {fileID: 341357119139712196}
     - target: {fileID: 4221010413006885893, guid: 557baac4f07a1194aa83110e42a186e4, type: 3}
       propertyPath: sfxSounds.Array.size
-      value: 67
+      value: 69
       objectReference: {fileID: 0}
     - target: {fileID: 4221010413006885893, guid: 557baac4f07a1194aa83110e42a186e4, type: 3}
       propertyPath: sfxSounds.Array.data[16].clip
@@ -8118,6 +8118,22 @@ PrefabInstance:
     - target: {fileID: 4221010413006885893, guid: 557baac4f07a1194aa83110e42a186e4, type: 3}
       propertyPath: sfxSounds.Array.data[66].name
       value: ToggleGun
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221010413006885893, guid: 557baac4f07a1194aa83110e42a186e4, type: 3}
+      propertyPath: sfxSounds.Array.data[67].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 898caaec88da92442a3347f993ca6c05, type: 3}
+    - target: {fileID: 4221010413006885893, guid: 557baac4f07a1194aa83110e42a186e4, type: 3}
+      propertyPath: sfxSounds.Array.data[67].name
+      value: ShotgunCharge1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221010413006885893, guid: 557baac4f07a1194aa83110e42a186e4, type: 3}
+      propertyPath: sfxSounds.Array.data[68].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 0a971ecc960d09a469232115cc04db6e, type: 3}
+    - target: {fileID: 4221010413006885893, guid: 557baac4f07a1194aa83110e42a186e4, type: 3}
+      propertyPath: sfxSounds.Array.data[68].name
+      value: ShotgunCharge2
       objectReference: {fileID: 0}
     - target: {fileID: 4496517678974164465, guid: 557baac4f07a1194aa83110e42a186e4, type: 3}
       propertyPath: m_LocalPosition.x
