@@ -332,6 +332,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &5175859560476432169
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3975199684040005101}
+  m_Layer: 0
+  m_Name: Eject Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3975199684040005101
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5175859560476432169}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.0712, y: 0.133, z: 0.148}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2290586558344783846}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5339241709830014185
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,7 +381,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2290586558344783846
 Transform:
   m_ObjectHideFlags: 0
@@ -371,6 +402,7 @@ Transform:
   - {fileID: 1178042353196238792}
   - {fileID: 7774624639727464761}
   - {fileID: 9106154854758452465}
+  - {fileID: 3975199684040005101}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &9098152287262116911
@@ -436,8 +468,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunName: Sniper
-  bulletPrefab: {fileID: 1109251562612524554, guid: a21e31ac3a446f24b8b0c2b77c21fad3, type: 3}
-  muzzleFlash: {fileID: 8573344195166953213, guid: 599f177c3e7351e469cc55e9800ed44b, type: 3}
+  bulletPrefab: {fileID: 1109251562612524554, guid: d26b589c404bbd840a0b534672c071d0, type: 3}
+  muzzleFlash: {fileID: 4347453240543446349, guid: e501e188e9ba69049b73ea48e93b41fd, type: 3}
+  ejectBullet: {fileID: 1387755909660202429, guid: 02dc21be686d55d41a97032c40811cd6, type: 3}
   shotAudio:
   - Sniper1
   - Sniper2
@@ -448,6 +481,7 @@ MonoBehaviour:
   - SniperReload2
   - SniperReload1
   shootPoint: {fileID: 9106154854758452465}
+  ejectPoint: {fileID: 3975199684040005101}
   damage: 10
   ammo: 40
   clipSizeMax: 5

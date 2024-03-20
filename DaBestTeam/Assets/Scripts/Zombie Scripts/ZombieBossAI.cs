@@ -288,13 +288,18 @@ public class ZombieBossAI : MonoBehaviour, IDamage, IPushBack
     IEnumerator stompShockwave()
     {
         anim.SetTrigger("Stomp");
-        yield return new WaitForSeconds(1f);
+        Debug.Log("stomp");
+        yield return new WaitForSeconds(3f);
+        state = AIStateId.Waiting;
+        yield return null;
+    }
+
+    void shockwaveAnimation()
+    {
+        Debug.Log("anim play");
         shockwavePS.Play();
         GameObject detonate = Instantiate(shockwaveDetonate, transform.position, transform.rotation);
         detonate.GetComponent<ZombieScratch>().damage = damageAmount;
-        yield return new WaitForSeconds(1f);
-        state = AIStateId.Waiting;
-        yield return null;
     }
 
     void UpdateAttackState()

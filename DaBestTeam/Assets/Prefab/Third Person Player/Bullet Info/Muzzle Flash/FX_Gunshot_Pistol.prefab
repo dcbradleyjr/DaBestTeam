@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 1174549276286423066}
   - component: {fileID: 609950866378108262}
   m_Layer: 0
-  m_Name: FX_Gunshot_Flash
+  m_Name: FX_Gunshot_Pistol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

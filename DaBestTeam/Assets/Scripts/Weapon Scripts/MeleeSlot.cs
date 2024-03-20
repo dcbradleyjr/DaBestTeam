@@ -10,8 +10,10 @@ public class MeleeSlot : MonoBehaviour
     [SerializeField] PlayerInput input;
     [SerializeField] Animator animator;
     [SerializeField] GameObject bloodSplat;
+    [SerializeField] GameObject slashFX;
     [SerializeField] float animationPlayTransition = 0.15f;
     [SerializeField] Transform HitPoint;
+    [SerializeField] Transform slashPoint;
 
     [Header("---MeleeList---")]
     [SerializeField] List<GameObject> meleeList;
@@ -142,6 +144,9 @@ public class MeleeSlot : MonoBehaviour
             PlayRandomMeleeHitSound();
         else
             PlayRandomMeleeMissSound();
+
+        GameObject slash = Instantiate(slashFX, slashPoint.position, slashPoint.rotation);
+        Destroy(slash, 0.5f);
     }
 
     public bool IsAnyMeleeActive()

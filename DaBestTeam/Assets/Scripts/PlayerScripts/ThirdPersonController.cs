@@ -11,6 +11,7 @@ public class ThirdPersonController : MonoBehaviour, IDamage
     private PlayerInput input;
     Animator animator;
     Vector3 playerVelocity;
+    [SerializeField] CanvasGroup deathScreen;
 
     [Header("--Stats--")]
     [SerializeField] int HP;
@@ -34,6 +35,7 @@ public class ThirdPersonController : MonoBehaviour, IDamage
     public bool isCrouching;
     public bool isJumping;
     bool isGrounded;
+    bool isDead;
     bool staminaDrained;
     bool resetStats;
 
@@ -110,7 +112,7 @@ public class ThirdPersonController : MonoBehaviour, IDamage
 
     void Update()
     {
-        if (!gameManager.instance.isPaused)
+        if (!gameManager.instance.isPaused && !isDead)
         {
             Movement();
 
@@ -124,14 +126,19 @@ public class ThirdPersonController : MonoBehaviour, IDamage
 
     public void takeDamage(int amount)
     {
-        HP -= amount;
-        StartCoroutine(flashDamage());
-        if (HP <= 0)
+        if (!isDead)
         {
-            //death logic
-            gameManager.instance.youLose();
+            HP -= amount;
+            StartCoroutine(flashDamage());
+            if (HP <= 0)
+            {
+                isDead = true;
+
+                //death logic
+                StartCoroutine(deathEffect());
+            }
+            updateHealthUI(); 
         }
-        updateHealthUI();
     }
 
     private void OnEnable()
@@ -344,6 +351,7 @@ public class ThirdPersonController : MonoBehaviour, IDamage
         HP = HPMax;
         Stamina = StaminaMax;
         canSprint = true;
+        deathScreen.alpha = 0f;
         updateUI();
         controller.enabled = false;
         transform.position = gameManager.instance.spawnPoint.transform.position;
@@ -370,5 +378,27 @@ public class ThirdPersonController : MonoBehaviour, IDamage
             yield return new WaitForSeconds(0.2f);
             UIManager.instance.DamageScreenThree.SetActive(false);
         }
+    }
+
+    IEnumerator deathEffect()
+    {
+        float fadeDuration = 3f;
+        float elapsedTime = 0f;
+        float startAlpha = deathScreen.alpha;
+        animator.SetLayerWeight(1, 0);
+        animator.SetLayerWeight(2, 0);
+        animator.SetLayerWeight(3, 0);
+        animator.SetTrigger("Death");
+        UIManager.instance.CurrencyDisplay.SetActive(false);
+        UIManager.instance.HPDisplay.SetActive(false);
+        UIManager.instance.StaminaDisplay.SetActive(false);
+        while (elapsedTime < fadeDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsedTime/fadeDuration);
+            deathScreen.alpha = Mathf.Lerp(startAlpha, 1f, t);
+            yield return null;
+        }
+        gameManager.instance.youLose();
     }
 }

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -4281584656255469711}
   - component: {fileID: -3860956637548938955}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: AR Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,9 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bloodSplat: {fileID: 166404, guid: 78e1c8c5b281b8b439229473779ac9aa, type: 3}
   impact: {fileID: 884326172801230177, guid: 2bf680748796d104e8f89809d5614bfd, type: 3}
-  damageAmount: 1
   speed: 200
-  timeToDestroy: 3
 --- !u!33 &4175670671025552776
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -194,11 +192,11 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.5
+  m_Time: 0.1
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.02
+    widthMultiplier: 0.08
     widthCurve:
       serializedVersion: 2
       m_Curve:
