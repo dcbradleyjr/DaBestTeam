@@ -1729,7 +1729,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &9153169781548239369
 Transform:
   m_ObjectHideFlags: 0
@@ -2862,16 +2862,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5508692462450634383, guid: aad9faa790a89624a9062df2f1831813, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.083
-      objectReference: {fileID: 0}
-    - target: {fileID: 5508692462450634383, guid: aad9faa790a89624a9062df2f1831813, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.026
-      objectReference: {fileID: 0}
-    - target: {fileID: 5508692462450634383, guid: aad9faa790a89624a9062df2f1831813, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.339
+      value: 0.349
       objectReference: {fileID: 0}
     - target: {fileID: 5508692462450634383, guid: aad9faa790a89624a9062df2f1831813, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3541,10 +3533,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1932437995151443395}
     m_Modifications:
-    - target: {fileID: 1238053938618522285, guid: cdf44dba437102e4291170664e23dcf2, type: 3}
-      propertyPath: fireRate
-      value: 0.2
-      objectReference: {fileID: 0}
     - target: {fileID: 2308321133433054257, guid: cdf44dba437102e4291170664e23dcf2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3584,26 +3572,6 @@ PrefabInstance:
     - target: {fileID: 2308321133433054257, guid: cdf44dba437102e4291170664e23dcf2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2957091795644482609, guid: cdf44dba437102e4291170664e23dcf2, type: 3}
-      propertyPath: damage
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 2957091795644482609, guid: cdf44dba437102e4291170664e23dcf2, type: 3}
-      propertyPath: fireRate
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2957091795644482609, guid: cdf44dba437102e4291170664e23dcf2, type: 3}
-      propertyPath: reloadRate
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5016534110849369560, guid: cdf44dba437102e4291170664e23dcf2, type: 3}
-      propertyPath: damage
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5016534110849369560, guid: cdf44dba437102e4291170664e23dcf2, type: 3}
-      propertyPath: reloadRate
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5667177403596355865, guid: cdf44dba437102e4291170664e23dcf2, type: 3}
       propertyPath: m_Name

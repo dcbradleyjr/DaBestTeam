@@ -122,7 +122,7 @@ MonoBehaviour:
   spawnDelay: 5
   spawnRadius: 10
   playerRadius: 15
-  maxSpawn: 6
+  maxSpawn: 3
   canSpawn: 0
   playerInRange: 0
   spawned: []

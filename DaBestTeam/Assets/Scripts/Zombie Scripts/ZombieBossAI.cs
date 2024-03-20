@@ -65,7 +65,6 @@ public class ZombieBossAI : MonoBehaviour, IDamage, IPushBack
     public int shockwaveAnimationTimeOffset;
     public int stompDist;
     public float countdownTimer;
-    public bool isBigBoss;
 
     int hurtAnim;
     int attackAnim;
@@ -288,7 +287,7 @@ public class ZombieBossAI : MonoBehaviour, IDamage, IPushBack
     IEnumerator stompShockwave()
     {
         anim.SetTrigger("Stomp");
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.0f);
         shockwavePS.Play();
         GameObject detonate = Instantiate(shockwaveDetonate, transform.position, transform.rotation);
         detonate.GetComponent<ZombieScratch>().damage = damageAmount;

@@ -85,10 +85,7 @@ public class GunSlot : MonoBehaviour
         shootAction.canceled -= _ => StopShooting();
         canShoot = false;
         isShooting = false;
-        isReloading = false;
-        StopCoroutine(reloadGun());
-        StopCoroutine(reloadingVisuals());
-        UIManager.instance.ammoReloadDisplay.text = "";
+        StopAllCoroutines();
         animator.SetLayerWeight(layerIndex, 0);
     }
 
@@ -164,8 +161,6 @@ public class GunSlot : MonoBehaviour
             GameObject bullet = GameObject.Instantiate(bulletPrefab, shootPoint.position, Quaternion.identity);
             GameObject flash = Instantiate(muzzleFlash, shootPoint.position, shootPoint.rotation);
             PlayRandomShotSound();
-            animator.ResetTrigger("DoneShooting");
-            animator.SetTrigger("ShootGun");
             clipSize--;
             UpdateUI();
             Destroy(flash, 0.5f);
@@ -184,8 +179,6 @@ public class GunSlot : MonoBehaviour
             }
         }
         yield return new WaitForSeconds(fireRate);
-        animator.SetTrigger("DoneShooting");
-        animator.ResetTrigger("ShootGun");
         isShooting = false;
     }
 
@@ -194,11 +187,7 @@ public class GunSlot : MonoBehaviour
         //audio 
         isReloading = true;
         StartCoroutine(reloadingVisuals());
-        animator.ResetTrigger("DoneReloading");
-        animator.SetTrigger("Reload");
         yield return new WaitForSeconds(reloadRate);
-        animator.ResetTrigger("Reload");
-        animator.SetTrigger("DoneReloading");
         ammoDeduction();
         UpdateUI();
         isReloading = false;

@@ -119,7 +119,7 @@ MonoBehaviour:
   clipSizeMax: 30
   fireRate: 0.2
   reloadRate: 1.5
-  bulletDistance: 0.25
+  bulletDistance: 1
   isAuto: 1
 --- !u!1 &5123597831668537006
 GameObject:
