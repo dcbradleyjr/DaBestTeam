@@ -81,17 +81,6 @@ public class ThirdPersonController : MonoBehaviour, IDamage
         jumpAction = input.actions["Jump"];
         sprintAction = input.actions["Sprint"];
         crouchAction = input.actions["Crouch"];
-
-        resetStats = PlayerPrefs.GetInt("ResetPlayer", 0) == 1 ? true : false;
-        if (resetStats)
-        {
-            Debug.Log("Reset");
-            WeaponSlotManager.instance.ResetWeapons();
-            gameManager.instance.ResetCurrency();
-
-            PlayerPrefs.SetInt("ResetPlayer", 0);
-            WeaponSlotManager.instance.SaveWeapons();
-        }
     }
 
     private void Start()
@@ -105,6 +94,17 @@ public class ThirdPersonController : MonoBehaviour, IDamage
         StaminaColorOrig = gameManager.instance.playerStaminaBar.color;
         HealthColorOrig = gameManager.instance.playerHPBar.color;
         updateUI();
+        resetStats = PlayerPrefs.GetInt("ResetPlayer", 0) == 1 ? true : false;
+        if (resetStats)
+        {
+            Debug.Log("Reset");
+            WeaponSlotManager.instance.ResetWeapons();
+            gameManager.instance.ResetCurrency();
+            WeaponSlotManager.instance.SaveWeapons();
+            gameManager.instance.SaveCurrency();
+            PlayerPrefs.SetInt("ResetPlayer", 0);
+            PlayerPrefs.Save();
+        }
         SaveManager.instance.LoadGame();
     }
 
