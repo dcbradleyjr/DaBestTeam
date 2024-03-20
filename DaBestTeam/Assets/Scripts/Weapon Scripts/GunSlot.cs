@@ -10,7 +10,9 @@ public class GunSlot : MonoBehaviour
     [SerializeField] PlayerInput input;
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] GameObject muzzleFlash;
+    [SerializeField] GameObject ejectBullet;
     [SerializeField] Transform shootPoint;
+    [SerializeField] Transform ejectPoint;
     [SerializeField] Animator animator;
 
     [Header("---Pistol = 1, Gun = 3---")]
@@ -115,6 +117,7 @@ public class GunSlot : MonoBehaviour
         damage = gun.damage;
         bulletPrefab = gun.bulletPrefab;
         muzzleFlash = gun.muzzleFlash;
+        ejectBullet = gun.ejectBullet;
         ammo = gun.ammo;
         clipSizeMax = gun.clipSizeMax;
         clipSize = clipSizeMax;
@@ -123,6 +126,8 @@ public class GunSlot : MonoBehaviour
         bulletDistance = gun.bulletDistance;
         audioClips = gun.shotAudio;
         reloadAudio = gun.reloadAudio;
+        shootPoint = gun.shootPoint;
+        ejectPoint = gun.ejectPoint;
 
         isAuto = gun.isAuto;
     }
@@ -163,6 +168,11 @@ public class GunSlot : MonoBehaviour
             RaycastHit hit;
             GameObject bullet = GameObject.Instantiate(bulletPrefab, shootPoint.position, Quaternion.identity);
             GameObject flash = Instantiate(muzzleFlash, shootPoint.position, shootPoint.rotation);
+            if(ejectBullet)
+            {
+                GameObject eject = GameObject.Instantiate(ejectBullet, ejectPoint.position, ejectPoint.rotation);
+                Destroy(eject, 0.5f);
+            }
             PlayRandomShotSound();
             animator.ResetTrigger("DoneShooting");
             animator.SetTrigger("ShootGun");
@@ -194,11 +204,13 @@ public class GunSlot : MonoBehaviour
         //audio 
         isReloading = true;
         StartCoroutine(reloadingVisuals());
-        animator.ResetTrigger("DoneReloading");
+        //animator.ResetTrigger("DoneReloading");
         animator.SetTrigger("Reload");
+        Debug.Log("Set Reload");
         yield return new WaitForSeconds(reloadRate);
-        animator.ResetTrigger("Reload");
         animator.SetTrigger("DoneReloading");
+        Debug.Log("Set Done Reload");
+        //animator.ResetTrigger("Reload");
         ammoDeduction();
         UpdateUI();
         isReloading = false;
