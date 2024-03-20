@@ -1,5 +1,24 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!243 &-9201902754511721641
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Zombie
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 67002ee68082a31458e0d8ab9b26dfcf
+  m_Children: []
+  m_Volume: a26eb8cb42fedc944b841f17712961c1
+  m_Pitch: 7f2856ffa2d691d42b82c877a60c4077
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: -7650556253246976730}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!244 &-8400855198117786150
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -10,6 +29,20 @@ AudioMixerEffectController:
   m_EffectID: 5d008f0cde259224ab2aaef465bba0f1
   m_EffectName: Attenuation
   m_MixLevel: 11a00b28af488454bb7e7af665bdeacf
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &-7650556253246976730
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: bf048921e2a219a4ea96f1e2505f5571
+  m_EffectName: Attenuation
+  m_MixLevel: 3e585939d80e67240a60654cee0abcc5
   m_Parameters: []
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
@@ -49,15 +82,20 @@ AudioMixerController:
   m_EnableSuspend: 1
   m_UpdateMode: 0
   m_ExposedParameters:
+  - guid: bcba6ae009acc704b878596e94393146
+    name: master
   - guid: f1ccc2d71bd9af94bb6ae27f69e450cd
     name: music
   - guid: 013555a2c95db0d4f9f682fa5204de61
     name: sfx
+  - guid: a26eb8cb42fedc944b841f17712961c1
+    name: zombie
   m_AudioMixerGroupViews:
   - guids:
     - e8e759c6ca5503b4ebc0e1762f29ba76
     - bd9b50832a9382d418e73d74dd6290be
     - 0fab999961a48e34784d4a49b991d5d2
+    - 67002ee68082a31458e0d8ab9b26dfcf
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -73,6 +111,7 @@ AudioMixerGroupController:
   m_Children:
   - {fileID: 5943236470976809689}
   - {fileID: -7240494703164212060}
+  - {fileID: -9201902754511721641}
   m_Volume: bcba6ae009acc704b878596e94393146
   m_Pitch: 92ab5e3faf17ed04faf9d26174db9de2
   m_Send: 00000000000000000000000000000000

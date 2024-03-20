@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
@@ -31,6 +32,7 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     [SerializeField] Rigidbody[] _ragdollRigidbodies;
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Animator anim;
+    public AudioSource zombieSource;
 
     [Header("--Stats--")]
     [Range(1, 50000)][SerializeField] int HP;
@@ -43,7 +45,10 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     [SerializeField] float dropRate;
     [SerializeField] int damageAmount;
     [SerializeField] int animSpeedTrans;
-
+    [SerializeField] List<string> zombieHurtAudio;
+    [SerializeField] List<string> zombieAttackAudio;
+    [SerializeField] List<string> zombieChaseAudio;
+    [SerializeField] List<string> zombieRoamAudio;
 
     [Header("--UI--")]
     public UnityEngine.UI.Image HealthBar;
@@ -57,9 +62,8 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     public Vector3 startingPosition;
     Vector3 playerDir;
     public float stoppingDistanceOrig;
-    
 
-    
+    float pathLockedTimer;
 
     public enum AIStateId { Roam = 1, ChasePlayer = 2, Attack = 3, Death = 4 };
 
@@ -74,7 +78,6 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
         chooseRandomMesh();
         chooseWeapon();
         DisableRagdoll();
-
         _ragdollRigidbodies = GetComponentsInChildren<Rigidbody>();        
     }
 
@@ -89,9 +92,16 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
             playerDir = Vector3.zero;
         }
 
+        if(AIStateId.Roam == state) 
+        {
+            pathLockedTimer -= Time.deltaTime;
+        }
+            
+
         float animSpeed = agent.velocity.normalized.magnitude;
         anim.SetFloat("Speed", Mathf.Lerp(anim.GetFloat("Speed"), animSpeed, Time.deltaTime * animSpeedTrans));
     }
+    
     public AIStateId state
         {
         get {return _state;}
@@ -122,18 +132,20 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
         }
 
     private bool isDead;
-    private bool isAttacking;
-    private bool isDamage;
+    private bool isAttacking; 
 
     public IEnumerator roamState()
     {
         while (true)
         {
+            
             Debug.Log("Roam");
             yield return new WaitForSeconds(0.5f);
             //AudioManager.instance.PlaySFX("ZombieRoam");
-            if (!agent.pathPending && agent.remainingDistance < 0.1f)
+            if (!agent.pathPending && (agent.remainingDistance < 0.1f || pathLockedTimer <= 0f))
             {
+                PlayRandomRoamSound();
+                pathLockedTimer = 10f;
                 Vector3 randomPos = Random.insideUnitSphere * roamDistance;
                 //Debug.Log("randomPos :" + randomPos);
                 randomPos += startingPosition;
@@ -142,8 +154,7 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
                 //Debug.Log("hit positon: " + hit.position);
                 agent.SetDestination(hit.position);
                 
-            }
-
+            }        
             yield return new WaitForSeconds(roamPauseTime);
         }
 
@@ -190,13 +201,11 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
             yield return new WaitForSeconds(0.1f);
         }
     }
-
     public void SpawnScratch()
     {
         GameObject scratch = Instantiate(zombieScratch, HitBox.position, HitBox.rotation);
         scratch.GetComponent<ZombieScratch>().damage = damageAmount;
     }
-
     public IEnumerator deathState()
     {
         if (!isDead)
@@ -233,13 +242,11 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
             Destroy(gameObject, 2f);
             yield return null;
         }
-    }
-    
+    }    
     void updateUI()
     {
         HealthBar.fillAmount = (float)HP / HPOriginal;
     }
-
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -250,7 +257,6 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
         }
 
     }
-
     void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -267,13 +273,8 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     public void takeDamage(int amount)
     {
         anim.SetTrigger("Hurt");
-        if (!isDamage)
-        {
-            isDamage = true;
-            AudioManager.instance.PlaySFX("ZombieHurt");                        
-            isDamage = false;
-        }
-
+        AudioManager.instance.PlaySFX("ZombieHurt");
+        
         HP -= amount;
 
         updateUI();
@@ -294,12 +295,12 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
             state = AIStateId.ChasePlayer;
         }
     }
-
     public void pushBackDir(Vector3 dir)
     {
+        agent.enabled = false;
         agent.velocity += (dir / 2);
+        agent.enabled = true;
     }
-
     public void chooseRandomMesh()
     {
         if (randomMesh && meshZombie.Length > 0)
@@ -323,7 +324,6 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
             zombieWeapon[randomIndex].gameObject.SetActive(true);
         }
     }
-
     private void DisableRagdoll()
     {
         foreach (var rigidbody in _ragdollRigidbodies)
@@ -332,7 +332,6 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
         }
         
     }
-
     private void EnableRagdoll()
     {
         foreach (var rigidbody in _ragdollRigidbodies)
@@ -340,5 +339,27 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
             rigidbody.isKinematic = false;
         }
     }
+    private void PlayRandomHurtSound()
+    {
+        string randomClipName = zombieHurtAudio[Random.Range(0, zombieHurtAudio.Count)];
+        AudioManager.instance.PlayZombieSFX(randomClipName);
+    }
+    private void PlayRandomAttackSound()
+    {
+        string randomClipName = zombieAttackAudio[Random.Range(0, zombieAttackAudio.Count)];
+        AudioManager.instance.PlayZombieSFX(randomClipName);
+    }
+    private void PlayRandomChaseSound()
+    {
+        string randomClipName = zombieChaseAudio[Random.Range(0, zombieChaseAudio.Count)];
+        AudioManager.instance.PlayZombieSFX(randomClipName);
+    }
+    public void PlayRandomRoamSound()
+    {
+        string randomClipName = zombieRoamAudio[Random.Range(0, zombieRoamAudio.Count)];
+        AudioManager.instance.PlayZombieSFX(randomClipName);
+        
+    }
+
 }
 

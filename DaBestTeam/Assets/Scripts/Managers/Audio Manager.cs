@@ -9,13 +9,14 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
 
-    public Sound[] musicSounds, sfxSounds;
+    public Sound[] musicSounds, sfxSounds, zombieSounds;
     public AudioSource musicSource, sfxSource;
-
+    public AudioSource zombieSource;
 
     [SerializeField] private AudioMixer myMixer;
     [SerializeField] private Slider musicSlider;
     [SerializeField] private Slider sfxSlider;
+    [SerializeField] private Slider zombieSlider;
 
     private void Start()
     {
@@ -28,10 +29,37 @@ public class AudioManager : MonoBehaviour
         {
             SetMusicVolume();
             SetSFXVolume();
+            SetZombieSFXVolume();
         }
 
+        GameObject zombieGameObject = GameObject.FindGameObjectWithTag("Enemy");
+
+        if (zombieGameObject != null)
+        {
+            // Get the ZombieAI component from the GameObject
+            ZombieAI zombieAI = zombieGameObject.GetComponent<ZombieAI>();
+
+            if (zombieAI != null)
+            {
+                // Get the AudioSource from the ZombieAI component
+                zombieSource = zombieAI.zombieSource;
+            }
+            else
+            {
+                Debug.Log("component not found ");
+            }
+        }
+        else
+        {
+            Debug.Log("Enemy not found.");
+        }
 
         PlayMusic("Theme");
+
+    }
+    public void Update()
+    {      
+            
     }
     public void PlayMusic(string name)
     {
@@ -62,6 +90,19 @@ public class AudioManager : MonoBehaviour
             
         }
     }
+    public void PlayZombieSFX(string name)
+    {
+        Sound s = Array.Find(zombieSounds, x => x.name == name);
+
+        if (s == null)
+        {
+            Debug.Log("Not Found");
+        }
+        else
+        {
+            zombieSource.PlayOneShot(s.clip);            
+        }
+    }
 
     public void ToggleMusic()
     {
@@ -70,6 +111,10 @@ public class AudioManager : MonoBehaviour
     public void ToggleSFX()
     {
         sfxSource.mute = !sfxSource.mute;
+    }
+    public void ToggleZombieSFX()
+    {
+        zombieSource.mute = !zombieSource.mute;
     }
 
     public void MusicVolume(float volume)
@@ -81,12 +126,18 @@ public class AudioManager : MonoBehaviour
     {
         sfxSource.volume = volume;
     }
+    public void ZombieSFXVolume(float volume)
+    {
+        zombieSource.volume = volume;
+    }
     public void LoadVolumeSetting()
     {
         musicSlider.value = PlayerPrefs.GetFloat("musicVolume");
         sfxSlider.value = PlayerPrefs.GetFloat("sfxVolume");
+        zombieSlider.value = PlayerPrefs.GetFloat("zombieVolume");
         SetMusicVolume();
         SetSFXVolume();
+        SetZombieSFXVolume();
     }
 
     public void SetMusicVolume()
@@ -102,5 +153,10 @@ public class AudioManager : MonoBehaviour
         myMixer.SetFloat("sfx", Mathf.Log10(volume) * 20);
         PlayerPrefs.SetFloat("sfxVolume", volume);
     }
-
+    public void SetZombieSFXVolume()
+    {
+        float volume = zombieSlider.value;
+        myMixer.SetFloat("zombie", Mathf.Log10(volume) * 20);
+        PlayerPrefs.SetFloat("zombieVolume", volume);
+    }
 }

@@ -1237,9 +1237,9 @@ PrefabInstance:
       value: Zombie_Base
       objectReference: {fileID: 0}
     - target: {fileID: 3575731009818431903, guid: 1c0cf48071815e343bf3c2e4b077b3e1, type: 3}
-      propertyPath: attackRange
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: zombieSource
+      value: 
+      objectReference: {fileID: 1003342477}
     - target: {fileID: 6354978124117494526, guid: 1c0cf48071815e343bf3c2e4b077b3e1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8
@@ -2020,6 +2020,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1795686234}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1003342477 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8151053374942047312, guid: 1c0cf48071815e343bf3c2e4b077b3e1, type: 3}
+  m_PrefabInstance: {fileID: 738664461}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1021874638
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2230,6 +2235,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 280053154239720458c4b6093bfea66a, type: 3}
+--- !u!1001 &1260769225
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 627788128367591389, guid: 26dab841e33f5964d8f5195b9792a79d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -10.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 627788128367591389, guid: 26dab841e33f5964d8f5195b9792a79d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 627788128367591389, guid: 26dab841e33f5964d8f5195b9792a79d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -9.117874
+      objectReference: {fileID: 0}
+    - target: {fileID: 627788128367591389, guid: 26dab841e33f5964d8f5195b9792a79d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7073925
+      objectReference: {fileID: 0}
+    - target: {fileID: 627788128367591389, guid: 26dab841e33f5964d8f5195b9792a79d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 627788128367591389, guid: 26dab841e33f5964d8f5195b9792a79d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.706821
+      objectReference: {fileID: 0}
+    - target: {fileID: 627788128367591389, guid: 26dab841e33f5964d8f5195b9792a79d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 627788128367591389, guid: 26dab841e33f5964d8f5195b9792a79d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 627788128367591389, guid: 26dab841e33f5964d8f5195b9792a79d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -89.954
+      objectReference: {fileID: 0}
+    - target: {fileID: 627788128367591389, guid: 26dab841e33f5964d8f5195b9792a79d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9071044910169232696, guid: 26dab841e33f5964d8f5195b9792a79d, type: 3}
+      propertyPath: m_Name
+      value: Random Weapon Crate
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 26dab841e33f5964d8f5195b9792a79d, type: 3}
 --- !u!1 &1270364893
 GameObject:
   m_ObjectHideFlags: 0
@@ -4019,7 +4081,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5297751713201815644, guid: 05c8fcbebe71d7c4181966d752bd27a2, type: 3}
   m_PrefabInstance: {fileID: 4748606887905583376}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &6410840468293599769
+--- !u!1001 &5797781650526192810
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -4112,17 +4174,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5432442830158225183, guid: 19d5ffaba77116645b48a45543a6e4f5, type: 3}
-      propertyPath: sfxSounds.Array.size
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 5432442830158225183, guid: 19d5ffaba77116645b48a45543a6e4f5, type: 3}
-      propertyPath: sfxSounds.Array.data[9].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: b2b9a54139be81e489f278637bff4e7a, type: 3}
-    - target: {fileID: 5432442830158225183, guid: 19d5ffaba77116645b48a45543a6e4f5, type: 3}
-      propertyPath: sfxSounds.Array.data[9].name
+      propertyPath: zombieSource
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 5432442830158225183, guid: 19d5ffaba77116645b48a45543a6e4f5, type: 3}
+      propertyPath: zombieSource.Array.data[0]
+      value: 
+      objectReference: {fileID: 1003342477}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4133,7 +4191,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 17724386}
-  - {fileID: 6410840468293599769}
   - {fileID: 1795686234}
   - {fileID: 442443904}
   - {fileID: 1042003265}
@@ -4143,3 +4200,5 @@ SceneRoots:
   - {fileID: 1780694805}
   - {fileID: 1021874638}
   - {fileID: 738664461}
+  - {fileID: 1260769225}
+  - {fileID: 5797781650526192810}
