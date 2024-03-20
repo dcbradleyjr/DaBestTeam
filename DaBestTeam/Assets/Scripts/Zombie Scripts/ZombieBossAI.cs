@@ -215,31 +215,33 @@ public class ZombieBossAI : MonoBehaviour, IDamage, IPushBack
             {
                 isAttacking = true;
                 float shockwaveAttackChance = Random.Range(0f, 1f);
-                if (shockwaveAttackChance < 1f)
+                if (shockwaveAttackChance < 0.5f)
                     state = AIStateId.Stomp;
                 else
                 {
                     anim.SetTrigger("Attack");
-                    yield return new WaitForSeconds(attackAnimSpeed);
+                    yield return new WaitForSeconds(attackAnimSpeed/3);
 
                     //AudioManager.instance.PlaySFX("ZombieAttack");
 
                     GameObject scratch = Instantiate(zombieScratch, HitBox.position, HitBox.rotation);
                     scratch.GetComponent<ZombieScratch>().damage = damageAmount;
 
-                    yield return new WaitForSeconds(attackCooldown);
+                    yield return new WaitForSeconds(attackAnimSpeed / 5);
+
+                    yield return null;
                 }
 
                 isAttacking = false;
             }
 
             // Check if the player is still in range
-            /* float distanceToPlayer = Vector3.Distance(transform.position, gameManager.instance.player.transform.position);
+            float distanceToPlayer = Vector3.Distance(transform.position, gameManager.instance.player.transform.position);
              if (distanceToPlayer > attackRange)
              {
                  state = AIStateId.ChasePlayer;
                  yield break;
-             }*/
+             }
 
             yield return new WaitForSeconds(0.1f);
         }
