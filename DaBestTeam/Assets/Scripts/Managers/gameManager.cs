@@ -70,6 +70,7 @@ public class gameManager : MonoBehaviour
         Time.timeScale = 1;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        if(UIManager.instance.menuActive)
         UIManager.instance.menuActive.SetActive(false);
         UIManager.instance.menuActive = null;
         UIManager.instance.StaminaDisplay.SetActive(true);

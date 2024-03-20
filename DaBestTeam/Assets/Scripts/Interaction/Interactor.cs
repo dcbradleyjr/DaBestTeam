@@ -33,6 +33,7 @@ public class Interactor : MonoBehaviour
             if (interactable != null)
             {
                 if (!interactionPromptUI.IsDisplayed) interactionPromptUI.SetUp(interactable.interactPrompt);
+                interactionPromptUI.SetUp(interactable.interactPrompt);
 
                 if (interactAction.triggered) interactable.interact();
             }

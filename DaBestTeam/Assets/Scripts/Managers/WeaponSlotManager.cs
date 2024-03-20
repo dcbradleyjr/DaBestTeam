@@ -65,7 +65,6 @@ public class WeaponSlotManager : MonoBehaviour
         switchCam.MeleeReticle();
         UIManager.instance.ammoCurrentDisplay.text = "";
         UIManager.instance.weaponNameDisplay.text = Melee.GetName();
-        Debug.Log(Melee.GetName().ToString());
     }
 
     public void TogglePistolSlot()
