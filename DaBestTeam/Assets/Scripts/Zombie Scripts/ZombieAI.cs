@@ -51,23 +51,12 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
 
     public GameObject parentSpawner; //needed for SpawnManager
 
-    public bool hasBossMechs;
-
     [SerializeField] private AIStateId _state = AIStateId.Roam;
 
     int HPOriginal;
-    float angleToPlayer;
-
     public Vector3 startingPosition;
     Vector3 playerDir;
-    float stoppingDistanceOrig;
-    bool destChosen;
-    private bool playerInRange;
-    
-
-    int hurtAnim;
-    int attackAnim;
-    int walkAnim;
+    public float stoppingDistanceOrig;
     
 
     
@@ -140,6 +129,7 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     {
         while (true)
         {
+            Debug.Log("Roam");
             yield return new WaitForSeconds(0.5f);
             //AudioManager.instance.PlaySFX("ZombieRoam");
             if (!agent.pathPending && agent.remainingDistance < 0.1f)
@@ -162,6 +152,7 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     {
         while (true)
         {
+            Debug.Log("Chase");
             faceTarget();
             //AudioManager.instance.PlaySFX("ZombieChase");
             float distanceToPlayer = Vector3.Distance(transform.position, gameManager.instance.player.transform.position);
@@ -183,27 +174,29 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     {
         while (true)
         {
-            faceTarget();
-            
+            Debug.Log("Attack");
+            faceTarget();            
             agent.SetDestination(gameManager.instance.player.transform.position);
             
             if (!isAttacking)
             {
                 isAttacking = true;
-                anim.SetTrigger("AttackRarm");
-                yield return new WaitForSeconds(0.5f);
-
                 //AudioManager.instance.PlaySFX("ZombieAttack");
-
-                GameObject scratch = Instantiate(zombieScratch, HitBox.position, HitBox.rotation);
-                scratch.GetComponent<ZombieScratch>().damage = damageAmount;
-
+                anim.SetTrigger("AttackLarm");
+                Debug.Log("Attacked");
                 yield return new WaitForSeconds(attackCooldown);
                 isAttacking = false;
             }
             yield return new WaitForSeconds(0.1f);
         }
     }
+
+    public void SpawnScratch()
+    {
+        GameObject scratch = Instantiate(zombieScratch, HitBox.position, HitBox.rotation);
+        scratch.GetComponent<ZombieScratch>().damage = damageAmount;
+    }
+
     public IEnumerator deathState()
     {
         if (!isDead)

@@ -2999,7 +2999,7 @@ Animator:
   m_GameObject: {fileID: 3268026767949517252}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: b20a3c10714a6ac439af479e3273de65, type: 3}
-  m_Controller: {fileID: 9100000, guid: 63c532e23a4d1824c933333ea595eebd, type: 2}
+  m_Controller: {fileID: 9100000, guid: 5b88764027571064bb557febcb56464c, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -3102,7 +3102,6 @@ MonoBehaviour:
   targetFaceSpeed: 15
   attackCooldown: 2
   attackRange: 2
-  attackAnimSpeed: 1
   dropRate: 0.5
   damageAmount: 1
   animSpeedTrans: 15

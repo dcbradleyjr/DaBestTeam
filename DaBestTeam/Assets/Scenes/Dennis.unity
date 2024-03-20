@@ -1236,6 +1236,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zombie_Base
       objectReference: {fileID: 0}
+    - target: {fileID: 3575731009818431903, guid: 1c0cf48071815e343bf3c2e4b077b3e1, type: 3}
+      propertyPath: attackRange
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6354978124117494526, guid: 1c0cf48071815e343bf3c2e4b077b3e1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8
@@ -2994,21 +2998,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: ZombieScratch
       objectReference: {fileID: 0}
+    - target: {fileID: 3257358659001034792, guid: d1fcf89608676454689916f9d5d59492, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3746364892044326287, guid: d1fcf89608676454689916f9d5d59492, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6415923486001193213, guid: d1fcf89608676454689916f9d5d59492, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.27
+      value: 8.02
       objectReference: {fileID: 0}
     - target: {fileID: 6415923486001193213, guid: d1fcf89608676454689916f9d5d59492, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.00000011920929
+      value: 1.499
       objectReference: {fileID: 0}
     - target: {fileID: 6415923486001193213, guid: d1fcf89608676454689916f9d5d59492, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 20.72
+      value: 3.8
       objectReference: {fileID: 0}
     - target: {fileID: 6415923486001193213, guid: d1fcf89608676454689916f9d5d59492, type: 3}
       propertyPath: m_LocalRotation.w

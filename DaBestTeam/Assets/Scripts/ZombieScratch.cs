@@ -9,6 +9,7 @@ public class ZombieScratch : MonoBehaviour
 
     void Awake()
     {
+        Debug.Log("SpawnScratch");
         Destroy(gameObject, timeToDestroy);
     }
 
