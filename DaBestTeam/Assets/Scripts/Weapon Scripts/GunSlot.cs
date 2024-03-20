@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -29,6 +30,9 @@ public class GunSlot : MonoBehaviour
     [SerializeField] float reloadRate;
     [SerializeField] float fireRate;
     [SerializeField] float bulletDistance = 25f;
+    [SerializeField] List<string> audioClips;
+    [SerializeField] List<string> reloadAudio;
+    [SerializeField] string emptyAudio = "Empty1";
     Transform cameraTransform;
     InputAction shootAction;
     InputAction reloadAction;
@@ -114,6 +118,8 @@ public class GunSlot : MonoBehaviour
         fireRate = gun.fireRate;
         reloadRate = gun.reloadRate;
         bulletDistance = gun.bulletDistance;
+        audioClips = gun.shotAudio;
+        reloadAudio = gun.reloadAudio;
 
         isAuto = gun.isAuto;
     }
@@ -128,9 +134,17 @@ public class GunSlot : MonoBehaviour
 
     private void StartShooting()
     {
-        toggleShoot = true;
-        if (CanShoot())
-            StartCoroutine(ShootGun());
+        if (!gameManager.instance.isPaused)
+        {
+            toggleShoot = true;
+            if (CanShoot())
+                StartCoroutine(ShootGun());
+
+            if (ammo == 0 && clipSize == 0 && this.isActiveAndEnabled)
+            {
+                PlayEmptyAudio();
+            } 
+        }
     }
 
     private void StopShooting()
@@ -146,6 +160,7 @@ public class GunSlot : MonoBehaviour
             RaycastHit hit;
             GameObject bullet = GameObject.Instantiate(bulletPrefab, shootPoint.position, Quaternion.identity);
             GameObject flash = Instantiate(muzzleFlash, shootPoint.position, shootPoint.rotation);
+            PlayRandomShotSound();
             clipSize--;
             UpdateUI();
             Destroy(flash, 0.5f);
@@ -200,14 +215,17 @@ public class GunSlot : MonoBehaviour
 
     IEnumerator reloadingVisuals()
     {
+        PlayReloadAudio(0);
         UIManager.instance.ammoReloadDisplay.text = "Reloading";
         yield return new WaitForSeconds(reloadRate / 4);
         UIManager.instance.ammoReloadDisplay.text = "Reloading.";
         yield return new WaitForSeconds(reloadRate / 4);
+        PlayReloadAudio(1);
         UIManager.instance.ammoReloadDisplay.text = "Reloading..";
         yield return new WaitForSeconds(reloadRate / 4);
         UIManager.instance.ammoReloadDisplay.text = "Reloading...";
         yield return new WaitForSeconds(reloadRate / 4);
+        PlayReloadAudio(2);
         UIManager.instance.ammoReloadDisplay.text = "";
     }
 
@@ -251,6 +269,23 @@ public class GunSlot : MonoBehaviour
         return false;
     }
 
+
+    private void PlayRandomShotSound()
+    {
+        string randomClipName = audioClips[Random.Range(0, audioClips.Count)];
+        AudioManager.instance.PlaySFX(randomClipName);
+    }
+
+    private void PlayReloadAudio(int index)
+    {
+        AudioManager.instance.PlaySFX(reloadAudio[index]);
+    }
+
+    private void PlayEmptyAudio()
+    {
+        AudioManager.instance.PlaySFX(emptyAudio);
+    }
+
     public void IncreaseDamage(int value)
     {
         damage += value;
@@ -258,7 +293,7 @@ public class GunSlot : MonoBehaviour
 
     public int GetAmmo() { return ammo; }
 
-    public int GetWeaponIndex() { return currentGunIndex; } 
+    public int GetWeaponIndex() { return currentGunIndex; }
 
     public void SetWeaponIndex(int value) { currentGunIndex = value; }
 

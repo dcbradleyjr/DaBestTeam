@@ -8,4 +8,5 @@ public class Melee : MonoBehaviour
     public int dmgAmount;
     public int knockBack;
     public float meleeRange;
+    public List<string> meleeHitAudio;
 }

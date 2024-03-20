@@ -7,6 +7,8 @@ public class Gun : MonoBehaviour
     public string gunName;
     public GameObject bulletPrefab;
     public GameObject muzzleFlash;
+    public List<string> shotAudio;
+    public List<string> reloadAudio;
     public Transform shootPoint;
     public int damage;
     public int ammo;

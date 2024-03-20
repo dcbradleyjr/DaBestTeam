@@ -630,16 +630,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c05a24632afc41645a4ffdec03e34aca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunName: 
-  bulletPrefab: {fileID: 0}
-  muzzleFlash: {fileID: 0}
+  gunName: Revolver
+  bulletPrefab: {fileID: 1109251562612524554, guid: a21e31ac3a446f24b8b0c2b77c21fad3, type: 3}
+  muzzleFlash: {fileID: 8573344195166953213, guid: 599f177c3e7351e469cc55e9800ed44b, type: 3}
+  shotAudio:
+  - Revolver1
+  - Revolver2
+  - Revolver3
+  - Revolver4
+  reloadAudio:
+  - RevolverReload1
+  - RevolverReload2
+  - RevolverReload3
   shootPoint: {fileID: 1658757529516902374}
-  damage: 0
-  ammo: 0
-  clipSizeMax: 0
-  fireRate: 0
-  reloadRate: 0
-  bulletDistance: 0
+  damage: 3
+  ammo: 10
+  clipSizeMax: 6
+  fireRate: 0.9
+  reloadRate: 1.1
+  bulletDistance: 1
   isAuto: 0
 --- !u!1 &6771408134271856495
 GameObject:

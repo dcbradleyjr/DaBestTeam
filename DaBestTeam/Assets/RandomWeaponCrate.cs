@@ -87,7 +87,7 @@ public class RandomWeaponCrate : MonoBehaviour, IInteract
         {
             if (selectedWeapon >= 0 && selectedWeapon < 4)
             {
-                if (!WeaponSlotManager.instance.canToggleMelee)
+                if (!WeaponSlotManager.instance.canToggleGun)
                     WeaponSlotManager.instance.UnlockGunSlot();
 
                 WeaponSlotManager.instance.Gun.ToggleGun(selectedWeapon);

@@ -185,6 +185,136 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 69ddd7ac6eeab7144840ce681dc5a7c6, type: 3}
   - name: ButtonPress
     clip: {fileID: 8300000, guid: 0e533f4281aa8b7449080e7b686f4ed6, type: 3}
+  - name: ButtonPress
+    clip: {fileID: 8300000, guid: 0e533f4281aa8b7449080e7b686f4ed6, type: 3}
+  - name: ButtonPress
+    clip: {fileID: 8300000, guid: 0e533f4281aa8b7449080e7b686f4ed6, type: 3}
+  - name: ButtonPress
+    clip: {fileID: 8300000, guid: 0e533f4281aa8b7449080e7b686f4ed6, type: 3}
+  - name: ButtonPress
+    clip: {fileID: 8300000, guid: 0e533f4281aa8b7449080e7b686f4ed6, type: 3}
+  - name: ButtonPress
+    clip: {fileID: 8300000, guid: 0e533f4281aa8b7449080e7b686f4ed6, type: 3}
+  - name: ButtonPress
+    clip: {fileID: 8300000, guid: 0e533f4281aa8b7449080e7b686f4ed6, type: 3}
+  - name: BasicPistol1
+    clip: {fileID: 8300000, guid: 01372f3f45df69b47b225b8ecf155a23, type: 3}
+  - name: BasicPistol2
+    clip: {fileID: 8300000, guid: 021f8a0c1c43acb48a4d8d00b2e7d0c8, type: 3}
+  - name: BasicPistol3
+    clip: {fileID: 8300000, guid: 940e37a8dbd17ae4c9ca33d146add3a6, type: 3}
+  - name: BasicPistol4
+    clip: {fileID: 8300000, guid: a0284348ff14c674486975cf177196b1, type: 3}
+  - name: BasicPistolReload1
+    clip: {fileID: 8300000, guid: 2d962c242dbe753479ee48f7e1d9b5e8, type: 3}
+  - name: BasicPistolReload2
+    clip: {fileID: 8300000, guid: 1e35984c0d010cb4f88e812796acb5b3, type: 3}
+  - name: BasicPistolReload3
+    clip: {fileID: 8300000, guid: f1802ad68aed758418e5a44c4ff5d3a8, type: 3}
+  - name: ARReload1
+    clip: {fileID: 8300000, guid: 0423206a5befa8c4398655a452765300, type: 3}
+  - name: ARReload2
+    clip: {fileID: 8300000, guid: fd96fdb3487538f4990284c7a1aeab3f, type: 3}
+  - name: SMGReload1
+    clip: {fileID: 8300000, guid: e60b6e06a6a757847a0dfab6a9f69caa, type: 3}
+  - name: SMGReload2
+    clip: {fileID: 8300000, guid: a6e4ed656776f31499ee72057eb08834, type: 3}
+  - name: SMGReload3
+    clip: {fileID: 8300000, guid: bceead53a64924a4b99552dd21d32f2a, type: 3}
+  - name: ShotgunReload1
+    clip: {fileID: 8300000, guid: 52349f6737ad64749ac96b7bd156fa0c, type: 3}
+  - name: ShotgunReload2
+    clip: {fileID: 8300000, guid: 1f4c7f390bcedfb4da19d90a7697da70, type: 3}
+  - name: ShotgunReload3
+    clip: {fileID: 8300000, guid: d6d8cbb5e759b324c9ed5e8478fa5276, type: 3}
+  - name: SniperReload1
+    clip: {fileID: 8300000, guid: 8004055b50300fb45b3d68a0fd4b34f6, type: 3}
+  - name: SniperReload2
+    clip: {fileID: 8300000, guid: b76aca346246ae841882f0a71790a732, type: 3}
+  - name: SniperReload3
+    clip: {fileID: 8300000, guid: 0a971ecc960d09a469232115cc04db6e, type: 3}
+  - name: RevolverReload1
+    clip: {fileID: 8300000, guid: d94af81128b79f44db5839ba1a62187d, type: 3}
+  - name: RevolverReload2
+    clip: {fileID: 8300000, guid: 6f55b2753837ead47b594b8d60f3a2e6, type: 3}
+  - name: RevolverReload3
+    clip: {fileID: 8300000, guid: ed8d08dacb97f084b849f35ad0d6b511, type: 3}
+  - name: Revolver1
+    clip: {fileID: 8300000, guid: bbf77cbfa005f3d4f98f155f7293340d, type: 3}
+  - name: Revolver2
+    clip: {fileID: 8300000, guid: 5e71daf9283361140a89cd487c9aadce, type: 3}
+  - name: Revolver3
+    clip: {fileID: 8300000, guid: d51741b13fbfd7e4f918f9b01102e589, type: 3}
+  - name: Revolver4
+    clip: {fileID: 8300000, guid: a9e967d8acf264742adcb5eac2d0e4ea, type: 3}
+  - name: Sniper1
+    clip: {fileID: 8300000, guid: 273c1f2ef68cf8f4395ab0d0e8f561db, type: 3}
+  - name: Sniper2
+    clip: {fileID: 8300000, guid: 9e1dff44eb4d93d4088ec4978fd50e09, type: 3}
+  - name: Sniper3
+    clip: {fileID: 8300000, guid: 5fb2d2b2930044f469c57736e66523c2, type: 3}
+  - name: Sniper4
+    clip: {fileID: 8300000, guid: 974a0b4ad559fd04d919b512c52c73e7, type: 3}
+  - name: Shotgun1
+    clip: {fileID: 8300000, guid: 7fb3a43f1aa6ff04683db117cc7cf348, type: 3}
+  - name: Shotgun2
+    clip: {fileID: 8300000, guid: ef43509994db7bc48bce02df322ba7b3, type: 3}
+  - name: Shotgun3
+    clip: {fileID: 8300000, guid: aa09e3c3e0edc214194d37b198ed17ad, type: 3}
+  - name: Shotgun4
+    clip: {fileID: 8300000, guid: b51c0ecbcf928b344b381b22a6387b32, type: 3}
+  - name: SMG1
+    clip: {fileID: 8300000, guid: b4f4942c2e23f4c4e8e7bdac9f12e1d0, type: 3}
+  - name: SMG2
+    clip: {fileID: 8300000, guid: 65c05231d90a9e644bf73aed1f58e567, type: 3}
+  - name: SMG3
+    clip: {fileID: 8300000, guid: 25f02769c37d5df45bfa1fa47caf9b83, type: 3}
+  - name: SMG4
+    clip: {fileID: 8300000, guid: e93754f0004d4de4a88d55da9d88cc2b, type: 3}
+  - name: AR1
+    clip: {fileID: 8300000, guid: 2271b1b9625e7cd4885d91a87476f430, type: 3}
+  - name: AR2
+    clip: {fileID: 8300000, guid: f2ca6bf5b980960408a8c61798db05d4, type: 3}
+  - name: AR3
+    clip: {fileID: 8300000, guid: 85d9da37a8da16e46849c9d978d24b6b, type: 3}
+  - name: AR4
+    clip: {fileID: 8300000, guid: 70ac3b71b070f924ab2e5d5f733c0cc8, type: 3}
+  - name: Empty1
+    clip: {fileID: 8300000, guid: a5cba2e524933db4a8b5c292c5acfcb5, type: 3}
+  - name: Metal1
+    clip: {fileID: 8300000, guid: 4e7a9f408abdba8459fdccbeaea95215, type: 3}
+  - name: Metal2
+    clip: {fileID: 8300000, guid: e4b229d1cd4c5954c982c44b6f42eb27, type: 3}
+  - name: Bat1
+    clip: {fileID: 8300000, guid: 605611dd6463bbc4090ab6408907d9e8, type: 3}
+  - name: Bat2
+    clip: {fileID: 8300000, guid: d7ea6b2cca581414e87717a0d085aa62, type: 3}
+  - name: Sword1
+    clip: {fileID: 8300000, guid: 7cbd6cd765888ff418d01d98bd1ce9c2, type: 3}
+  - name: Sword2
+    clip: {fileID: 8300000, guid: 3df9bbbc130ccb344af5f3fc793a630f, type: 3}
+  - name: Axe1
+    clip: {fileID: 8300000, guid: 5174415e9879415498f7b0dd794d19c5, type: 3}
+  - name: Axe2
+    clip: {fileID: 8300000, guid: 2a295373a10441545bcaf619b61bea94, type: 3}
+  - name: Stick1
+    clip: {fileID: 8300000, guid: 0147661c12ea814488259f82d4a4aed8, type: 3}
+  - name: Stick2
+    clip: {fileID: 8300000, guid: a91b6eb6aee93de4fa0b41a96fd36c96, type: 3}
+  - name: Miss1
+    clip: {fileID: 8300000, guid: 482611fe6bc559142a00be6e726b4862, type: 3}
+  - name: Miss2
+    clip: {fileID: 8300000, guid: c266e86e5ec11e344bf66dede26cbc46, type: 3}
+  - name: Miss3
+    clip: {fileID: 8300000, guid: 4d4ef7516a431934681038a3dc391e55, type: 3}
+  - name: Miss4
+    clip: {fileID: 8300000, guid: 90fb91c5d9f18df4183363d36d921429, type: 3}
+  - name: ToggleMelee
+    clip: {fileID: 8300000, guid: 51e0a672984795b4087c49f005adf8f8, type: 3}
+  - name: TogglePistol
+    clip: {fileID: 8300000, guid: 5793f7967e479b349ab4be076bd020b8, type: 3}
+  - name: ToggleGun
+    clip: {fileID: 8300000, guid: 898caaec88da92442a3347f993ca6c05, type: 3}
   musicSource: {fileID: 198422193453456200}
   sfxSource: {fileID: 6752192949235332525}
   myMixer: {fileID: 24100000, guid: 2de08a1bb0b01a74993aaf1940c1b217, type: 2}

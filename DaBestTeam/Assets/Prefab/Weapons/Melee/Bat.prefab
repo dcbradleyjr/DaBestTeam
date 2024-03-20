@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2849073089258093063}
   - component: {fileID: 7632719731411561129}
   - component: {fileID: 8221873620574775856}
-  - component: {fileID: 8036924714143785601}
+  - component: {fileID: 2897827051149424496}
   m_Layer: 0
   m_Name: Bat
   m_TagString: Untagged
@@ -84,25 +84,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8036924714143785601
-MeshCollider:
+--- !u!114 &2897827051149424496
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6516634877070936290}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43486926167823266, guid: 0ed27f1e69e9f0244a0e0f170fc4828b, type: 2}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b440302f8e4253944a44f612ae585a4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meleeName: Bat
+  dmgAmount: 2
+  knockBack: 3
+  meleeRange: 0.8
+  meleeHitAudio:
+  - Bat1
+  - Bat2

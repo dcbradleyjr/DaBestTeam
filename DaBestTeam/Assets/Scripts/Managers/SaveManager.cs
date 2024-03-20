@@ -25,10 +25,10 @@ public class SaveManager : MonoBehaviour
     public void ResetStats()
     {
         PlayerPrefs.SetInt("ResetPlayer", 1);
+        PlayerPrefs.SetInt("ResetUpgrades", 1);
+
+        //logic in start/awake of upgrade skills
         //UIManager.instance.upgradeSkills.StatReset();
-        //gameManager.instance.ResetCurrency();
-        //save the reset
         //UIManager.instance.upgradeSkills.SaveUpgradeState();
-        //gameManager.instance.SaveCurrency();
     }
 }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8871752365717474130}
   - component: {fileID: 4172966734734907155}
   - component: {fileID: 5559742382507605774}
-  - component: {fileID: 58276327700615640}
+  - component: {fileID: -8095626520972757100}
   m_Layer: 0
   m_Name: Crowbar
   m_TagString: Untagged
@@ -84,25 +84,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &58276327700615640
-MeshCollider:
+--- !u!114 &-8095626520972757100
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2424855554478216502}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43405637380362722, guid: c50e085e0bd29e2489ee3ce4a4832a70, type: 2}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b440302f8e4253944a44f612ae585a4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meleeName: Crowbar
+  dmgAmount: 1
+  knockBack: 10
+  meleeRange: 0.7
+  meleeHitAudio:
+  - Metal1
+  - Metal2

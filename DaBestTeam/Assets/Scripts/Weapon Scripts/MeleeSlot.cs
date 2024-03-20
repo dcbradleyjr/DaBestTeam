@@ -23,6 +23,8 @@ public class MeleeSlot : MonoBehaviour
     [SerializeField] int dmgAmount;
     [SerializeField] int knockBack;
     [SerializeField] float meleeRange;
+    [SerializeField] List<string> meleeHitAudio;
+    [SerializeField] List<string> meleeMissAudio;
 
     InputAction meleeAction;
     int meleeAnimation;
@@ -80,6 +82,7 @@ public class MeleeSlot : MonoBehaviour
         dmgAmount = melee.dmgAmount;
         knockBack = melee.knockBack;
         meleeRange = melee.meleeRange;
+        meleeHitAudio = melee.meleeHitAudio;
     }
 
     public void DisableAllMelee()
@@ -114,12 +117,15 @@ public class MeleeSlot : MonoBehaviour
     public void CheckForDamageable()
     {
         Collider[] colliders = Physics.OverlapSphere(HitPoint.position, meleeRange);
+        bool hitTarget = false;
+
         foreach (Collider collider in colliders)
         {
             IDamage dmg = collider.GetComponent<IDamage>();
 
             if (dmg != null && !collider.CompareTag("Player") && !collider.isTrigger)
             {
+                hitTarget = true;
                 dmg.takeDamage(dmgAmount);
                 GameObject blood = Instantiate(bloodSplat, collider.transform.position + new Vector3(0,1,0), Quaternion.identity);
                 Destroy(blood, 0.5f);
@@ -132,6 +138,10 @@ public class MeleeSlot : MonoBehaviour
                 pushBack.pushBackDir((collider.transform.position + new Vector3(0, 1, 0) + transform.position).normalized * knockBack);
             }
         }
+        if (hitTarget)
+            PlayRandomMeleeHitSound();
+        else
+            PlayRandomMeleeMissSound();
     }
 
     public bool IsAnyMeleeActive()
@@ -145,6 +155,19 @@ public class MeleeSlot : MonoBehaviour
         }
         return false;
     }
+
+    private void PlayRandomMeleeHitSound()
+    {
+        string randomClipName = meleeHitAudio[Random.Range(0, meleeHitAudio.Count)];
+        AudioManager.instance.PlaySFX(randomClipName);
+    }
+
+    private void PlayRandomMeleeMissSound()
+    {
+        string randomClipName = meleeMissAudio[Random.Range(0, meleeMissAudio.Count)];
+        AudioManager.instance.PlaySFX(randomClipName);
+    }
+
 
     private void OnDrawGizmos()
     {

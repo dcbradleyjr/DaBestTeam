@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9007440534540591994}
   - component: {fileID: 6445871326387015049}
   - component: {fileID: 1844647950932184142}
-  - component: {fileID: 8557827320395972722}
+  - component: {fileID: 2651737547343990983}
   m_Layer: 0
   m_Name: Pan
   m_TagString: Untagged
@@ -84,25 +84,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8557827320395972722
-MeshCollider:
+--- !u!114 &2651737547343990983
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1231011283575265212}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43534444970763158, guid: c2d088898df5557458a3b8d3dc81f45f, type: 2}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b440302f8e4253944a44f612ae585a4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meleeName: Pan
+  dmgAmount: 2
+  knockBack: 15
+  meleeRange: 0.6
+  meleeHitAudio:
+  - Metal1
+  - Metal2

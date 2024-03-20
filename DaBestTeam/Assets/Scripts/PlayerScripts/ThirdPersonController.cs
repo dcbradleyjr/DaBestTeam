@@ -87,6 +87,8 @@ public class ThirdPersonController : MonoBehaviour, IDamage
         {
             Debug.Log("Reset");
             WeaponSlotManager.instance.ResetWeapons();
+            gameManager.instance.ResetCurrency();
+
             PlayerPrefs.SetInt("ResetPlayer", 0);
             WeaponSlotManager.instance.SaveWeapons();
         }

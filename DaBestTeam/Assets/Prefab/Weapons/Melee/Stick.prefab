@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4230277891276273700}
   - component: {fileID: 3165429917890527695}
   - component: {fileID: 2847561366044375077}
+  - component: {fileID: -4011723142790051079}
   m_Layer: 9
   m_Name: Stick
   m_TagString: Untagged
@@ -83,3 +84,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &-4011723142790051079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5892806275833088637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b440302f8e4253944a44f612ae585a4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meleeName: Stick
+  dmgAmount: 1
+  knockBack: 1
+  meleeRange: 0.6
+  meleeHitAudio:
+  - Stick1
+  - Stick2

@@ -101,17 +101,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c05a24632afc41645a4ffdec03e34aca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunName: 
-  bulletPrefab: {fileID: 0}
-  muzzleFlash: {fileID: 0}
+  gunName: AR
+  bulletPrefab: {fileID: 1109251562612524554, guid: a21e31ac3a446f24b8b0c2b77c21fad3, type: 3}
+  muzzleFlash: {fileID: 8573344195166953213, guid: 599f177c3e7351e469cc55e9800ed44b, type: 3}
+  shotAudio:
+  - AR1
+  - AR2
+  - AR3
+  - AR4
+  reloadAudio:
+  - ARReload1
+  - ARReload2
+  - ARReload3
   shootPoint: {fileID: 3995396677509228786}
-  damage: 0
-  ammo: 0
-  clipSizeMax: 0
-  fireRate: 0
-  reloadRate: 0
-  bulletDistance: 0
-  isAuto: 0
+  damage: 1
+  ammo: 210
+  clipSizeMax: 30
+  fireRate: 0.2
+  reloadRate: 1.5
+  bulletDistance: 1
+  isAuto: 1
 --- !u!1 &5123597831668537006
 GameObject:
   m_ObjectHideFlags: 0
