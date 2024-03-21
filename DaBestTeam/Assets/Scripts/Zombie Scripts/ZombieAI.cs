@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UIElements;
@@ -78,7 +79,16 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
         chooseRandomMesh();
         chooseWeapon();
         DisableRagdoll();
-        _ragdollRigidbodies = GetComponentsInChildren<Rigidbody>();        
+        _ragdollRigidbodies = GetComponentsInChildren<Rigidbody>();
+
+        AudioManager.instance.ZombieSpawnAudio(this);
+
+        zombieSource = GetComponent<AudioSource>();
+        if (zombieSource == null)
+        {
+            // If AudioSource component is not found, add it
+            zombieSource = gameObject.AddComponent<AudioSource>();
+        }
     }
 
     public void Update()

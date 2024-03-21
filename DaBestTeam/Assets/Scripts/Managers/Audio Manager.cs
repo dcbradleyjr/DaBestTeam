@@ -11,7 +11,9 @@ public class AudioManager : MonoBehaviour
 
     public Sound[] musicSounds, sfxSounds, zombieSounds;
     public AudioSource musicSource, sfxSource;
-    public AudioSource zombieSource;
+
+    public List<AudioSource> zombieSource = new List<AudioSource>();
+
 
     [SerializeField] private AudioMixer myMixer;
     [SerializeField] private Slider musicSlider;
@@ -31,36 +33,28 @@ public class AudioManager : MonoBehaviour
             SetSFXVolume();
             SetZombieSFXVolume();
         }
-
-        GameObject zombieGameObject = GameObject.FindGameObjectWithTag("Enemy");
-
-        if (zombieGameObject != null)
-        {
-            // Get the ZombieAI component from the GameObject
-            ZombieAI zombieAI = zombieGameObject.GetComponent<ZombieAI>();
-
-            if (zombieAI != null)
-            {
-                // Get the AudioSource from the ZombieAI component
-                zombieSource = zombieAI.zombieSource;
-            }
-            else
-            {
-                Debug.Log("component not found ");
-            }
-        }
-        else
-        {
-            Debug.Log("Enemy not found.");
-        }
-
+       
         PlayMusic("Theme");
 
     }
     public void Update()
-    {      
-            
+    {
+        
     }
+
+    public void ZombieSpawnAudio(ZombieAI obj)
+    {      
+        if (obj != null)
+        {
+            zombieSource.Add(obj.zombieSource);
+        }
+        else
+        {
+            Debug.Log("ZombieAI component not found on " + obj.name);
+        }
+       
+    }
+
     public void PlayMusic(string name)
     {
         Sound s = Array.Find(musicSounds, x => x.name == name);
@@ -96,11 +90,14 @@ public class AudioManager : MonoBehaviour
 
         if (s == null)
         {
-            Debug.Log("Not Found");
+            Debug.Log("Zombie sound not found: " + name);
         }
         else
         {
-            zombieSource.PlayOneShot(s.clip);            
+            foreach (AudioSource source in zombieSource)
+            {
+                source.PlayOneShot(s.clip);
+            }
         }
     }
 
@@ -114,9 +111,11 @@ public class AudioManager : MonoBehaviour
     }
     public void ToggleZombieSFX()
     {
-        zombieSource.mute = !zombieSource.mute;
+        foreach (AudioSource source in zombieSource)
+        {
+            source.mute = !source.mute;
+        }
     }
-
     public void MusicVolume(float volume)
     {
         musicSource.volume = volume;
@@ -128,7 +127,10 @@ public class AudioManager : MonoBehaviour
     }
     public void ZombieSFXVolume(float volume)
     {
-        zombieSource.volume = volume;
+        foreach (AudioSource source in zombieSource)
+        {
+            source.volume = volume;
+        }
     }
     public void LoadVolumeSetting()
     {
