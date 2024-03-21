@@ -19087,7 +19087,7 @@ MonoBehaviour:
   movement: {fileID: 8863556495490776282}
   openBox: 0
   purchasableState: 1
-  cost: 500
+  cost: 200
 --- !u!1 &9071490620136555610
 GameObject:
   m_ObjectHideFlags: 0

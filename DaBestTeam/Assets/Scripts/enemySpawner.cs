@@ -16,9 +16,11 @@ public class enemySpawner : MonoBehaviour
     public bool canSpawn;
     public bool playerInRange;
     public GameObject[] spawned;
+    public bool isBossSpawner;
 
     bool isSpawning;
     int spawnCount;
+    bool hasSpawnedOnce;
     
     void Start()
     {
@@ -31,46 +33,64 @@ public class enemySpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (canSpawn && !isSpawning && spawnCount < maxSpawn)
+        if (!isBossSpawner || !hasSpawnedOnce)
         {
-            StartCoroutine(spawn());
+            if (canSpawn && !isSpawning && spawnCount < maxSpawn)
+            {
+                StartCoroutine(spawn());
+            }
         }
     }
 
     IEnumerator spawn()
     { 
         isSpawning = true;
-        Vector3 randomPos = UnityEngine.Random.insideUnitSphere * spawnRadius;
-        randomPos += transform.position;
-
-        NavMeshHit hit;
-        NavMesh.SamplePosition(randomPos, out hit, spawnRadius, 1);
-        Vector3 spawnPos = hit.position;
-        GameObject toSpawn = objToSpawn;
-        float wep = UnityEngine.Random.Range(0f, 1f);
-        if (wep >= 0.5f)
-            toSpawn.GetComponent<ZombieAI>().canHoldWeapons = true;
-        toSpawn.GetComponent<ZombieAI>().randomMesh = true;
-        toSpawn.GetComponent<ZombieAI>().parentSpawner = gameObject;
-        toSpawn.GetComponent<ZombieAI>().startingPosition = spawnPos;
-        sys.transform.position = spawnPos;
-        ParticleSystem particleSystem = Instantiate(sys, spawnPos, Quaternion.identity) as ParticleSystem;
-        particleSystem.Play();
-        GameObject hasSpawned = Instantiate(toSpawn, spawnPos, transform.rotation);
-        //AudioManager.instance.PlayZombieSFX("SpawnSound");
-        yield return new WaitForSeconds(2f);
-        Destroy(particleSystem);
-        spawnCount++;
-        SpawnManager.instance.IncrementSpawnTotal();
-        for (int i = 0; i < maxSpawn; i++)
+        if (!isBossSpawner)
         {
-            if (spawned[i] == null)
+            Vector3 randomPos = UnityEngine.Random.insideUnitSphere * spawnRadius;
+            randomPos += transform.position;
+
+            NavMeshHit hit;
+            NavMesh.SamplePosition(randomPos, out hit, spawnRadius, 1);
+            Vector3 spawnPos = hit.position;
+            GameObject toSpawn = objToSpawn;
+            float wep = UnityEngine.Random.Range(0f, 1f);
+            if (wep >= 0.5f)
+                toSpawn.GetComponent<ZombieAI>().canHoldWeapons = true;
+            toSpawn.GetComponent<ZombieAI>().randomMesh = true;
+            toSpawn.GetComponent<ZombieAI>().parentSpawner = gameObject;
+            toSpawn.GetComponent<ZombieAI>().startingPosition = spawnPos;
+            sys.transform.position = spawnPos;
+            ParticleSystem particleSystem = Instantiate(sys, spawnPos, Quaternion.identity) as ParticleSystem;
+            particleSystem.Play();
+            GameObject hasSpawned = Instantiate(toSpawn, spawnPos, transform.rotation);
+            //AudioManager.instance.PlayZombieSFX("SpawnSound");
+            yield return new WaitForSeconds(2f);
+            Destroy(particleSystem);
+            spawnCount++;
+            SpawnManager.instance.IncrementSpawnTotal();
+            for (int i = 0; i < maxSpawn; i++)
             {
-                spawned[i] = hasSpawned;
-                break;
+                if (spawned[i] == null)
+                {
+                    spawned[i] = hasSpawned;
+                    break;
+                }
             }
+            yield return new WaitForSeconds(spawnDelay);
         }
-        yield return new WaitForSeconds(spawnDelay);
+        else
+        {
+            Vector3 spawnPos = transform.position;
+            GameObject toSpawn = objToSpawn;
+            toSpawn.GetComponent<ZombieBossAI>().startingPosition = spawnPos;
+            toSpawn.GetComponent<ZombieBossAI>().parentSpawner = gameObject;
+            GameObject hasSpawned = Instantiate(toSpawn, spawnPos, transform.rotation);
+            hasSpawnedOnce = true;
+            spawnCount++;
+            yield return new WaitForSeconds(spawnDelay);
+        }
+        
         isSpawning = false;
     }
 
