@@ -19589,7 +19589,7 @@ MonoBehaviour:
   healAmount: 0
   MagazineMultiplier: 2
   lifeSpan: 12
-  effect: {fileID: 0}
+  effect: {fileID: 1055585006069982, guid: c7f93a0255162fd47bbe40874f339bf4, type: 3}
   Health: 0
   GunAmmo: 1
 --- !u!135 &2726680790368937263
