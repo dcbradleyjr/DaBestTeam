@@ -348,14 +348,14 @@ public class ThirdPersonController : MonoBehaviour, IDamage
 
     public void Respawn()
     {
-        HP = HPMax;
-        Stamina = StaminaMax;
-        canSprint = true;
-        deathScreen.alpha = 0f;
-        updateUI();
-        controller.enabled = false;
-        transform.position = gameManager.instance.spawnPoint.transform.position;
-        controller.enabled = true;
+        //HP = HPMax;
+        //Stamina = StaminaMax;
+        //canSprint = true;
+        //deathScreen.alpha = 0f;
+        //updateUI();
+        //controller.enabled = false;
+        //transform.position = gameManager.instance.spawnPoint.transform.position;
+        //controller.enabled = true;
     }
 
     IEnumerator flashDamage()
@@ -392,6 +392,8 @@ public class ThirdPersonController : MonoBehaviour, IDamage
         UIManager.instance.CurrencyDisplay.SetActive(false);
         UIManager.instance.HPDisplay.SetActive(false);
         UIManager.instance.StaminaDisplay.SetActive(false);
+        UIManager.instance.AmmoDisplay.SetActive(false);
+        WeaponSlotManager.instance.FreezeWeapons(true);
         while (elapsedTime < fadeDuration)
         {
             elapsedTime += Time.deltaTime;

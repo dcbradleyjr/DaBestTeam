@@ -47,6 +47,7 @@ public class GunSlot : MonoBehaviour
 
     bool canShoot;
     public bool toggleShoot;
+    public bool freezeWeapon;
     [Header("---States---")]
     public bool isShooting;
     public bool isReloading;
@@ -65,7 +66,7 @@ public class GunSlot : MonoBehaviour
 
     private void Update()
     {
-        if (!gameManager.instance.isPaused)
+        if (!gameManager.instance.isPaused && !freezeWeapon)
         {
             if (CanShootAuto())
                 StartCoroutine(ShootGun());
@@ -155,7 +156,7 @@ public class GunSlot : MonoBehaviour
 
     private void StartShooting()
     {
-        if (!gameManager.instance.isPaused)
+        if (!gameManager.instance.isPaused && !freezeWeapon)
         {
             toggleShoot = true;
             if (CanShoot())
@@ -359,6 +360,8 @@ public class GunSlot : MonoBehaviour
     }
 
     public int GetAmmo() { return ammo; }
+
+    public int GetClipSize() { return clipSizeMax; }
 
     public int GetWeaponIndex() { return currentGunIndex; }
 

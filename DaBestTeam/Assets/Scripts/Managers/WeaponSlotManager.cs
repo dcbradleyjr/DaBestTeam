@@ -171,6 +171,10 @@ public class WeaponSlotManager : MonoBehaviour
         PlayerPrefs.SetInt("CanTogglePistol", canTogglePistol ? 1 : 0);
         PlayerPrefs.SetInt("CanToggleGun", canToggleGun ? 1 : 0);
 
+        PlayerPrefs.SetInt("isMelee", isMeleeActive ? 1 : 0);
+        PlayerPrefs.SetInt("isPistol", isPistolActive ? 1 : 0);
+        PlayerPrefs.SetInt("isGun", isGunActive ? 1 : 0);
+
         PlayerPrefs.Save();
     }
 
@@ -204,6 +208,10 @@ public class WeaponSlotManager : MonoBehaviour
             UnlockGunSlot();
             Gun.ToggleGun(currentGunIndex);
         }
+
+        if (PlayerPrefs.GetInt("isMelee", 0) == 1 ? true : false) ToggleMeleeSlot();
+        if (PlayerPrefs.GetInt("isPistol", 0) == 1 ? true : false) TogglePistolSlot();
+        if (PlayerPrefs.GetInt("isGun", 0) == 1 ? true : false) ToggleGunSlot();
     }
 
     public void ResetWeapons()
@@ -226,6 +234,14 @@ public class WeaponSlotManager : MonoBehaviour
         hitMarker.SetActive(true);
         yield return new WaitForSeconds(0.1f);
         hitMarker.SetActive(false);
+    }
+
+    public void FreezeWeapons(bool force)
+    {
+        if (force)
+        { Melee.freezeWeapon = true; Pistol.freezeWeapon = true; Gun.freezeWeapon = true; }
+        else
+        { Melee.freezeWeapon = false; Pistol.freezeWeapon = false; Gun.freezeWeapon = false; }
     }
 
 }

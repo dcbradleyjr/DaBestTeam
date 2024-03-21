@@ -5,12 +5,17 @@ using UnityEngine;
 public class playerPickUp : MonoBehaviour
 {
     [SerializeField] int healAmount;
-    [SerializeField] int PistolAmmoAmount;
-    [SerializeField] int GunAmmoAmount;
+    [SerializeField] int MagazineMultiplier;
+    [SerializeField] float lifeSpan = 12f;
+    [SerializeField] GameObject effect;
 
     public bool Health;
     public bool GunAmmo;
-    public bool PistolAmmo;
+
+    private void Start()
+    {
+        Destroy(gameObject, lifeSpan);
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -19,11 +24,14 @@ public class playerPickUp : MonoBehaviour
 
             if (other.CompareTag("Player")&&Health)
                 gameManager.instance.player.HealPlayer(healAmount);
-            if (other.CompareTag("Player")&& GunAmmo)
-                WeaponSlotManager.instance.Gun.AddAmmo(GunAmmoAmount);
-
+            if (other.CompareTag("Player") && GunAmmo)
+            {
+                int value = MagazineMultiplier * WeaponSlotManager.instance.Gun.GetClipSize();
+                WeaponSlotManager.instance.Gun.AddAmmo(value);
+            }
+            GameObject spawnEffect = GameObject.Instantiate(effect, transform.position - new Vector3(0,1f,0),transform.rotation);
+            Destroy(spawnEffect,0.5f);
             Destroy(gameObject);
-        }
-            
+        }    
     }
 }

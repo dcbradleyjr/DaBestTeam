@@ -32,6 +32,8 @@ public class MeleeSlot : MonoBehaviour
     int meleeAnimation;
     bool canMelee;
     public bool isAttacking;
+    public bool freezeWeapon;
+
 
     void Awake()
     {
@@ -97,7 +99,7 @@ public class MeleeSlot : MonoBehaviour
 
     private void MeleeAttack()
     {
-        if (canMelee && !isAttacking)
+        if (canMelee && !isAttacking && !freezeWeapon)
         {
             animator.CrossFade(meleeAnimation, animationPlayTransition);
             StartCoroutine(MeleeDamage());

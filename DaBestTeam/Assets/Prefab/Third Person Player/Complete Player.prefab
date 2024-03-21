@@ -967,6 +967,7 @@ MonoBehaviour:
   bulletCount: 0
   recoil: 0
   toggleShoot: 0
+  freezeWeapon: 0
   isShooting: 0
   isReloading: 0
   isAuto: 0
@@ -1247,6 +1248,7 @@ MonoBehaviour:
   bulletCount: 0
   recoil: 0
   toggleShoot: 0
+  freezeWeapon: 0
   isShooting: 0
   isReloading: 0
   isAuto: 1
@@ -1941,6 +1943,7 @@ MonoBehaviour:
   - Miss3
   - Miss4
   isAttacking: 0
+  freezeWeapon: 0
 --- !u!1 &5791115153234258182
 GameObject:
   m_ObjectHideFlags: 0
@@ -4056,7 +4059,7 @@ PrefabInstance:
       objectReference: {fileID: 5349426378656238502}
     - target: {fileID: 7395496186127156928, guid: 4df748577a7d4154081ae548807cab8a, type: 3}
       propertyPath: HP
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7395496186127156928, guid: 4df748577a7d4154081ae548807cab8a, type: 3}
       propertyPath: Stamina
@@ -4518,7 +4521,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8636006364680736496, guid: 993217dc485d70040841088ea93cd2d8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.881447
+      value: -4.8814464
       objectReference: {fileID: 0}
     - target: {fileID: 8636006364680736496, guid: 993217dc485d70040841088ea93cd2d8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4623,7 +4626,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1607408290639340835, guid: e5cae9fa75076254995502218f523ea5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.881447
+      value: -4.8814464
       objectReference: {fileID: 0}
     - target: {fileID: 1607408290639340835, guid: e5cae9fa75076254995502218f523ea5, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4862,15 +4865,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8871752365717474130, guid: fbbd1783810fc0845a6318b6d2fc6e14, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.061
+      value: 0.017
       objectReference: {fileID: 0}
     - target: {fileID: 8871752365717474130, guid: fbbd1783810fc0845a6318b6d2fc6e14, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.01
+      value: -0.119
       objectReference: {fileID: 0}
     - target: {fileID: 8871752365717474130, guid: fbbd1783810fc0845a6318b6d2fc6e14, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.107
+      value: 0.338
       objectReference: {fileID: 0}
     - target: {fileID: 8871752365717474130, guid: fbbd1783810fc0845a6318b6d2fc6e14, type: 3}
       propertyPath: m_LocalRotation.w
