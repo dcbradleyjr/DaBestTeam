@@ -358,7 +358,7 @@ public class ZombieBossAI : MonoBehaviour, IDamage, IPushBack
         if (!isDamage)
         {
             isDamage = true;
-            AudioManager.instance.PlaySFX("ZombieHurt");
+            /*AudioManager.instance.PlayZombieSFX("ZombieHurt");*/
 
             anim.SetTrigger("Hurt");
             isDamage = false;

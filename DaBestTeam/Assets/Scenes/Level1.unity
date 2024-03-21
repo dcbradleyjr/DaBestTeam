@@ -55757,6 +55757,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 39.80005
       objectReference: {fileID: 0}
+    - target: {fileID: 3189525821167730359, guid: 19d5ffaba77116645b48a45543a6e4f5, type: 3}
+      propertyPath: Mute
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3442792759658854964, guid: 19d5ffaba77116645b48a45543a6e4f5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -55865,6 +55869,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 39.80005
       objectReference: {fileID: 0}
+    - target: {fileID: 5139646244091303023, guid: 19d5ffaba77116645b48a45543a6e4f5, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -9201902754511721641, guid: 2de08a1bb0b01a74993aaf1940c1b217, type: 2}
     - target: {fileID: 5805555146581058563, guid: 19d5ffaba77116645b48a45543a6e4f5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

@@ -81,7 +81,7 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
         DisableRagdoll();
         _ragdollRigidbodies = GetComponentsInChildren<Rigidbody>();
 
-        AudioManager.instance.ZombieSpawnAudio(this);
+        /*AudioManager.instance.ZombieSpawnAudio(this);*/
 
         zombieSource = GetComponent<AudioSource>();
         if (zombieSource == null)
@@ -151,7 +151,7 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
             
             Debug.Log("Roam");
             yield return new WaitForSeconds(0.5f);
-            //AudioManager.instance.PlaySFX("ZombieRoam");
+            //AudioManager.instance.PlayZombieSFX("ZombieRoam");
             if (!agent.pathPending && (agent.remainingDistance < 0.1f || pathLockedTimer <= 0f))
             {
                 PlayRandomRoamSound();
@@ -175,7 +175,7 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
         {
             Debug.Log("Chase");
             faceTarget();
-            //AudioManager.instance.PlaySFX("ZombieChase");
+            //AudioManager.instance.PlayZombieSFX("ZombieChase");
             float distanceToPlayer = Vector3.Distance(transform.position, gameManager.instance.player.transform.position);
             if (distanceToPlayer < attackRange)
             {
@@ -202,7 +202,7 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
             if (!isAttacking)
             {
                 isAttacking = true;
-                //AudioManager.instance.PlaySFX("ZombieAttack");
+                //AudioManager.instance.PlayZombieSFX("ZombieAttack");
                 anim.SetTrigger("AttackLarm");
                 Debug.Log("Attacked");
                 yield return new WaitForSeconds(attackCooldown);
@@ -221,8 +221,8 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
         if (!isDead)
         {
             isDead = true;
-            
-            //AudioManager.instance.PlaySFX("ZombieDeath");
+
+            //AudioManager.instance.PlayZombieSFX("ZombieDeath");
 
             gameManager.instance.EarnCurrency(10);
 
@@ -283,7 +283,7 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     public void takeDamage(int amount)
     {
         anim.SetTrigger("Hurt");
-        AudioManager.instance.PlaySFX("ZombieHurt");
+        AudioManager.instance.PlayZombieSFX("ZombieHurt", zombieSource);
         
         HP -= amount;
 
@@ -352,22 +352,22 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     private void PlayRandomHurtSound()
     {
         string randomClipName = zombieHurtAudio[Random.Range(0, zombieHurtAudio.Count)];
-        AudioManager.instance.PlayZombieSFX(randomClipName);
+        AudioManager.instance.PlayZombieSFX(randomClipName, zombieSource);
     }
     private void PlayRandomAttackSound()
     {
         string randomClipName = zombieAttackAudio[Random.Range(0, zombieAttackAudio.Count)];
-        AudioManager.instance.PlayZombieSFX(randomClipName);
+        AudioManager.instance.PlayZombieSFX(randomClipName, zombieSource);
     }
     private void PlayRandomChaseSound()
     {
         string randomClipName = zombieChaseAudio[Random.Range(0, zombieChaseAudio.Count)];
-        AudioManager.instance.PlayZombieSFX(randomClipName);
+        AudioManager.instance.PlayZombieSFX(randomClipName, zombieSource);
     }
     public void PlayRandomRoamSound()
     {
         string randomClipName = zombieRoamAudio[Random.Range(0, zombieRoamAudio.Count)];
-        AudioManager.instance.PlayZombieSFX(randomClipName);
+        AudioManager.instance.PlayZombieSFX(randomClipName, zombieSource);
         
     }
 

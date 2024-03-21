@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+using UnityEngine.Assertions.Must;
 
 public class AudioManager : MonoBehaviour
 {
@@ -12,17 +13,18 @@ public class AudioManager : MonoBehaviour
     public Sound[] musicSounds, sfxSounds, zombieSounds;
     public AudioSource musicSource, sfxSource;
 
-    public List<AudioSource> zombieSource = new List<AudioSource>();
+    /*public List<AudioSource> zombieSource = new List<AudioSource>();*/
 
 
     [SerializeField] private AudioMixer myMixer;
     [SerializeField] private Slider musicSlider;
     [SerializeField] private Slider sfxSlider;
     [SerializeField] private Slider zombieSlider;
+    private bool isMuted;
 
     private void Start()
     {
-            instance = this;
+        instance = this;
         if (PlayerPrefs.HasKey("musicVolume") || PlayerPrefs.HasKey("sfxVolume"))
         {
             LoadVolumeSetting();
@@ -33,27 +35,27 @@ public class AudioManager : MonoBehaviour
             SetSFXVolume();
             SetZombieSFXVolume();
         }
-       
+
         PlayMusic("Theme");
 
     }
     public void Update()
     {
-        
+
     }
 
-    public void ZombieSpawnAudio(ZombieAI obj)
-    {      
-        if (obj != null)
-        {
-            zombieSource.Add(obj.zombieSource);
-        }
-        else
-        {
-            Debug.Log("ZombieAI component not found on " + obj.name);
-        }
-       
-    }
+    /* public void ZombieSpawnAudio(ZombieAI obj)
+     {      
+         if (obj != null)
+         {
+             zombieSource.Add(obj.zombieSource);
+         }
+         else
+         {
+             Debug.Log("ZombieAI component not found on " + obj.name);
+         }
+
+     }*/
 
     public void PlayMusic(string name)
     {
@@ -81,10 +83,9 @@ public class AudioManager : MonoBehaviour
         else
         {
             sfxSource.PlayOneShot(s.clip);
-            
         }
     }
-    public void PlayZombieSFX(string name)
+    public void PlayZombieSFX(string name, AudioSource aud)
     {
         Sound s = Array.Find(zombieSounds, x => x.name == name);
 
@@ -94,10 +95,8 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            foreach (AudioSource source in zombieSource)
-            {
-                source.PlayOneShot(s.clip);
-            }
+            if(!isMuted)
+            aud.PlayOneShot(s.clip);
         }
     }
 
@@ -111,26 +110,21 @@ public class AudioManager : MonoBehaviour
     }
     public void ToggleZombieSFX()
     {
-        foreach (AudioSource source in zombieSource)
-        {
-            source.mute = !source.mute;
-        }
+     
+         isMuted = !isMuted;
+     
     }
     public void MusicVolume(float volume)
     {
         musicSource.volume = volume;
     }
-
     public void SFXVolume(float volume)
     {
         sfxSource.volume = volume;
     }
-    public void ZombieSFXVolume(float volume)
+    public void ZombieSFXVolume(float volume, AudioSource aud)
     {
-        foreach (AudioSource source in zombieSource)
-        {
-            source.volume = volume;
-        }
+        aud.volume = volume;
     }
     public void LoadVolumeSetting()
     {
