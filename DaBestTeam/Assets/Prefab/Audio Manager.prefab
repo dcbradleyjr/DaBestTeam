@@ -313,11 +313,17 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 5793f7967e479b349ab4be076bd020b8, type: 3}
   - name: ToggleGun
     clip: {fileID: 8300000, guid: 898caaec88da92442a3347f993ca6c05, type: 3}
+  - name: ShotgunCharge1
+    clip: {fileID: 8300000, guid: 898caaec88da92442a3347f993ca6c05, type: 3}
+  - name: ShotgunCharge2
+    clip: {fileID: 8300000, guid: 0a971ecc960d09a469232115cc04db6e, type: 3}
   zombieSounds:
   - name: ZombieRoam1
     clip: {fileID: 8300000, guid: 821b6440d8e269c40b5a0eb8a44a079d, type: 3}
   - name: ZombieRoam2
     clip: {fileID: 8300000, guid: ff8240148ee026c4babb53949381e1cd, type: 3}
+  - name: SpawnSound
+    clip: {fileID: 8300000, guid: f45e23eae5ef03147a48355842a8e901, type: 3}
   musicSource: {fileID: 198422193453456200}
   sfxSource: {fileID: 6752192949235332525}
   zombieSource:

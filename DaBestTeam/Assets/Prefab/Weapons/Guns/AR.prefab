@@ -117,13 +117,17 @@ MonoBehaviour:
   - ARReload3
   shootPoint: {fileID: 3995396677509228786}
   ejectPoint: {fileID: 2086582213952006922}
-  damage: 1
+  damage: 2
   ammo: 210
   clipSizeMax: 30
   fireRate: 0.2
   reloadRate: 1.5
   bulletDistance: 0.3
+  maxSpreadAngle: 1
+  bulletCount: 1
   isAuto: 1
+  isShotgun: 0
+  isSniper: 0
 --- !u!1 &4624653560243677655
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,7 +10,7 @@ public class WeaponSlotManager : MonoBehaviour
     public GameObject MeleeSlot;
     public GameObject PistolSlot;
     public GameObject GunSlot;
-    [SerializeField] SwitchVCam switchCam;
+    [SerializeField] public SwitchVCam switchCam;
     [SerializeField] PlayerInput input;
 
     //inputs

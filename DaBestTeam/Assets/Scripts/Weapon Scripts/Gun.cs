@@ -18,6 +18,10 @@ public class Gun : MonoBehaviour
     public float fireRate;
     public float reloadRate;
     public float bulletDistance;
+    public float maxSpreadAngle;
+    public int bulletCount;
 
     public bool isAuto;
+    public bool isShotgun;
+    public bool isSniper;
 }

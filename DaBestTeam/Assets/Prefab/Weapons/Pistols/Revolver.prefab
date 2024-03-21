@@ -633,6 +633,7 @@ MonoBehaviour:
   gunName: Revolver
   bulletPrefab: {fileID: 1109251562612524554, guid: a21e31ac3a446f24b8b0c2b77c21fad3, type: 3}
   muzzleFlash: {fileID: 8573344195166953213, guid: 599f177c3e7351e469cc55e9800ed44b, type: 3}
+  ejectBullet: {fileID: 0}
   shotAudio:
   - Revolver1
   - Revolver2
@@ -650,7 +651,10 @@ MonoBehaviour:
   fireRate: 0.9
   reloadRate: 1.1
   bulletDistance: 1
+  maxSpreadAngle: 0.8
+  bulletCount: 1
   isAuto: 0
+  isShotgun: 0
 --- !u!1 &6771408134271856495
 GameObject:
   m_ObjectHideFlags: 0
