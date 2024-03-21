@@ -119,8 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objToSpawn: {fileID: 1807747722236585964, guid: d53a827ecbd764c48a114ce39b2d8f29, type: 3}
-  sys: {fileID: 0}
-  dirtSound: {fileID: 8300000, guid: f45e23eae5ef03147a48355842a8e901, type: 3}
+  sys: {fileID: 700472559305976272, guid: 5df2e95398d25c04983768d58e278e92, type: 3}
   spawnDelay: 5
   spawnRadius: 10
   playerRadius: 25
