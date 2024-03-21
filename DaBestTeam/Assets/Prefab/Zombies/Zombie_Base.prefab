@@ -3024,7 +3024,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickupBox:
-  - {fileID: 5158426682093927698, guid: bdb1e03499950024c8bbef8f91698145, type: 3}
   - {fileID: 3449207795767113933, guid: a77c0523a76e8f9498544cd5f3651556, type: 3}
   - {fileID: 4957860631320672637, guid: e65193fd0b948284ca006a081f6e9b32, type: 3}
   headPosition: {fileID: 2765989629564435325}
