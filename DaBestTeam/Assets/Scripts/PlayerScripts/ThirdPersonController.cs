@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.InputSystem;
+using TMPro;
 
 [RequireComponent(typeof(CharacterController), typeof(PlayerInput))]
 public class ThirdPersonController : MonoBehaviour, IDamage
@@ -12,6 +13,7 @@ public class ThirdPersonController : MonoBehaviour, IDamage
     Animator animator;
     Vector3 playerVelocity;
     [SerializeField] CanvasGroup deathScreen;
+    [SerializeField] GameObject floatingText;
 
     [Header("--Stats--")]
     [SerializeField] int HP;
@@ -129,6 +131,10 @@ public class ThirdPersonController : MonoBehaviour, IDamage
         if (!isDead)
         {
             HP -= amount;
+
+            if (floatingText)
+                ShowFloatingText(amount);
+
             StartCoroutine(flashDamage());
             if (HP <= 0)
             {
@@ -402,5 +408,11 @@ public class ThirdPersonController : MonoBehaviour, IDamage
             yield return null;
         }
         gameManager.instance.youLose();
+    }
+
+    void ShowFloatingText(int value)
+    {
+        GameObject text = GameObject.Instantiate(floatingText, transform.position, Quaternion.identity);
+        text.GetComponent<TextMeshPro>().text = value.ToString();
     }
 }

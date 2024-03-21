@@ -248,10 +248,8 @@ public class GunSlot : MonoBehaviour
         StartCoroutine(reloadingVisuals());
         //animator.ResetTrigger("DoneReloading");
         animator.SetTrigger("Reload");
-        Debug.Log("Set Reload");
         yield return new WaitForSeconds(reloadRate);
         animator.SetTrigger("DoneReloading");
-        Debug.Log("Set Done Reload");
         //animator.ResetTrigger("Reload");
         ammoDeduction();
         UpdateUI();

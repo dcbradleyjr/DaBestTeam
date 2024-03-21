@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
@@ -20,10 +21,11 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     [SerializeField] GameObject[] pickupBox;
 
     [Header("--Components--")]
-    [SerializeField] Transform headPosition;    
+    [SerializeField] Transform headPosition;
     [SerializeField] GameObject[] meshMilitaryOptions;
     [SerializeField] GameObject[] meshZombie;
     [SerializeField] GameObject[] zombieWeapon;
+    [SerializeField] GameObject floatingText;
     public bool canHoldWeapons;
     public bool randomMesh;
     [SerializeField] Transform HitPoint;
@@ -102,53 +104,54 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
             playerDir = Vector3.zero;
         }
 
-        if(AIStateId.Roam == state) 
+        if (AIStateId.Roam == state)
         {
             pathLockedTimer -= Time.deltaTime;
         }
-            
+
 
         float animSpeed = agent.velocity.normalized.magnitude;
         anim.SetFloat("Speed", Mathf.Lerp(anim.GetFloat("Speed"), animSpeed, Time.deltaTime * animSpeedTrans));
     }
-    
-    public AIStateId state
-        {
-        get {return _state;}
 
-        set {
+    public AIStateId state
+    {
+        get { return _state; }
+
+        set
+        {
 
             StopAllCoroutines();
             _state = value;
 
             switch (state)
-                {
+            {
                 case AIStateId.Roam:
-                        StartCoroutine(roamState());
+                    StartCoroutine(roamState());
                     break;
                 case AIStateId.ChasePlayer:
-                        StartCoroutine(chaseState());
+                    StartCoroutine(chaseState());
                     break;
                 case AIStateId.Attack:
-                        StartCoroutine(attackState());
+                    StartCoroutine(attackState());
                     break;
                 case AIStateId.Death:
-                        StartCoroutine (deathState());
+                    StartCoroutine(deathState());
                     break;
 
-                }
-
             }
+
         }
+    }
 
     private bool isDead;
-    private bool isAttacking; 
+    private bool isAttacking;
 
     public IEnumerator roamState()
     {
         while (true)
         {
-            
+
             Debug.Log("Roam");
             yield return new WaitForSeconds(0.5f);
             //AudioManager.instance.PlayZombieSFX("ZombieRoam");
@@ -163,8 +166,8 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
                 NavMesh.SamplePosition(randomPos, out hit, roamDistance, 1);
                 //Debug.Log("hit positon: " + hit.position);
                 agent.SetDestination(hit.position);
-                
-            }        
+
+            }
             yield return new WaitForSeconds(roamPauseTime);
         }
 
@@ -196,9 +199,9 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
         while (true)
         {
             Debug.Log("Attack");
-            faceTarget();            
+            faceTarget();
             agent.SetDestination(gameManager.instance.player.transform.position);
-            
+
             if (!isAttacking)
             {
                 isAttacking = true;
@@ -252,7 +255,7 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
             Destroy(gameObject, 2f);
             yield return null;
         }
-    }    
+    }
     void updateUI()
     {
         HealthBar.fillAmount = (float)HP / HPOriginal;
@@ -262,8 +265,8 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
         if (other.CompareTag("Player"))
         {
             faceTarget();
-            if (state  != AIStateId.Death)
-            state = AIStateId.ChasePlayer;
+            if (state != AIStateId.Death)
+                state = AIStateId.ChasePlayer;
         }
 
     }
@@ -271,7 +274,7 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     {
         if (other.CompareTag("Player"))
         {
-            
+
         }
         agent.stoppingDistance = 0;
     }
@@ -284,13 +287,16 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     {
         anim.SetTrigger("Hurt");
         AudioManager.instance.PlayZombieSFX("ZombieHurt", zombieSource);
-        
+
         HP -= amount;
 
         updateUI();
 
         if (!EnemyUI.gameObject.activeSelf)
             EnemyUI.gameObject.SetActive(true);
+
+        if (floatingText)
+            ShowFloatingText(amount);
 
         faceTarget();
 
@@ -323,8 +329,8 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
             int randomIndex = Random.Range(0, meshMilitaryOptions.Length);
             meshMilitaryOptions[randomIndex].gameObject.SetActive(true);
         }
-        
-                
+
+
     }
     public void chooseWeapon()
     {
@@ -340,7 +346,7 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
         {
             rigidbody.isKinematic = true;
         }
-        
+
     }
     private void EnableRagdoll()
     {
@@ -368,7 +374,13 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     {
         string randomClipName = zombieRoamAudio[Random.Range(0, zombieRoamAudio.Count)];
         AudioManager.instance.PlayZombieSFX(randomClipName, zombieSource);
-        
+
+    }
+
+    void ShowFloatingText(int value)
+    {
+        GameObject text = GameObject.Instantiate(floatingText, transform.position, Quaternion.identity);
+        text.GetComponent<TextMeshPro>().text = value.ToString();
     }
 
 }
