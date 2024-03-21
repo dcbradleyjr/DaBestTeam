@@ -12,6 +12,7 @@ public class Gun : MonoBehaviour
     public List<string> reloadAudio;
     public Transform shootPoint;
     public Transform ejectPoint;
+    public Transform raycast;
     public int damage;
     public int ammo;
     public int clipSizeMax;

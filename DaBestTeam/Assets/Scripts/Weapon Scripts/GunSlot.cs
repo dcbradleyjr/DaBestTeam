@@ -14,8 +14,10 @@ public class GunSlot : MonoBehaviour
     [SerializeField] GameObject ejectBullet;
     [SerializeField] Transform shootPoint;
     [SerializeField] Transform ejectPoint;
+    [SerializeField] Transform raycast;
     [SerializeField] Animator animator;
     [SerializeField] CinemachineImpulseSource recoilSource;
+    [SerializeField] WeaponIK weaponIK;
 
     [Header("---Pistol = 1, Gun = 3---")]
     [SerializeField] int layerIndex;
@@ -140,6 +142,9 @@ public class GunSlot : MonoBehaviour
         reloadAudio = gun.reloadAudio;
         shootPoint = gun.shootPoint;
         ejectPoint = gun.ejectPoint;
+
+        if(weaponIK)
+        weaponIK.aimTransform = gun.raycast;
 
         isAuto = gun.isAuto;
         isShotgun = gun.isShotgun;
