@@ -20,6 +20,7 @@ public class Gun : MonoBehaviour
     public float bulletDistance;
     public float maxSpreadAngle;
     public int bulletCount;
+    public float recoil;
 
     public bool isAuto;
     public bool isShotgun;

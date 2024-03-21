@@ -125,6 +125,7 @@ MonoBehaviour:
   bulletDistance: 0.3
   maxSpreadAngle: 1
   bulletCount: 1
+  recoil: -0.1
   isAuto: 1
   isShotgun: 0
   isSniper: 0

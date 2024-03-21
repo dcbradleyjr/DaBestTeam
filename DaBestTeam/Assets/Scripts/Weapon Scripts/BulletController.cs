@@ -43,6 +43,7 @@ public class BulletController : MonoBehaviour
             dmg.takeDamage(damageAmount);
             GameObject blood = Instantiate(bloodSplat, transform.position, Quaternion.identity);
             Destroy(blood, 0.5f);
+            WeaponSlotManager.instance.StartHitmarker();
         }
         else
         {

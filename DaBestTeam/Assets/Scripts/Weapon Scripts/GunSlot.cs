@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -14,6 +15,7 @@ public class GunSlot : MonoBehaviour
     [SerializeField] Transform shootPoint;
     [SerializeField] Transform ejectPoint;
     [SerializeField] Animator animator;
+    [SerializeField] CinemachineImpulseSource recoilSource;
 
     [Header("---Pistol = 1, Gun = 3---")]
     [SerializeField] int layerIndex;
@@ -37,6 +39,7 @@ public class GunSlot : MonoBehaviour
     [SerializeField] string emptyAudio = "Empty1";
     [SerializeField] float maxSpreadAngle;
     [SerializeField] int bulletCount;
+    [SerializeField] float recoil;
 
     Transform cameraTransform;
     InputAction shootAction;
@@ -130,6 +133,7 @@ public class GunSlot : MonoBehaviour
         bulletDistance = gun.bulletDistance;
         maxSpreadAngle = gun.maxSpreadAngle;
         bulletCount = gun.bulletCount;
+        recoil = gun.recoil;
 
         audioClips = gun.shotAudio;
         reloadAudio = gun.reloadAudio;
@@ -160,7 +164,7 @@ public class GunSlot : MonoBehaviour
             if (ammo == 0 && clipSize == 0 && this.isActiveAndEnabled)
             {
                 PlayEmptyAudio();
-            } 
+            }
         }
     }
 
@@ -176,7 +180,7 @@ public class GunSlot : MonoBehaviour
         {
             RaycastHit hit;
             GameObject flash = Instantiate(muzzleFlash, shootPoint.position, shootPoint.rotation);
-            if(ejectBullet)
+            if (ejectBullet)
             {
                 GameObject eject = GameObject.Instantiate(ejectBullet, ejectPoint.position, ejectPoint.rotation);
                 Destroy(eject, 0.5f);
@@ -198,6 +202,7 @@ public class GunSlot : MonoBehaviour
 
                 if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out hit, Mathf.Infinity, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore))
                 {
+                    recoilSource.GenerateImpulseWithVelocity(new Vector3 (0, -0.01f, recoil));
                     if (isSniper)
                         bulletController.piercingShot = true;
                     // Calculate random spread
@@ -217,9 +222,9 @@ public class GunSlot : MonoBehaviour
                 }
                 else
                 {
-                    bulletController.target = cameraTransform.position + cameraTransform.forward * bulletDistance;
+                    bulletController.target = cameraTransform.position + cameraTransform.forward * 100f;
                     bulletController.hit = false;
-                } 
+                }
             }
         }
         if (isShotgun || isSniper)

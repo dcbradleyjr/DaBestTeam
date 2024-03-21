@@ -653,8 +653,10 @@ MonoBehaviour:
   bulletDistance: 1
   maxSpreadAngle: 0.8
   bulletCount: 1
+  recoil: -0.3
   isAuto: 0
   isShotgun: 0
+  isSniper: 0
 --- !u!1 &6771408134271856495
 GameObject:
   m_ObjectHideFlags: 0

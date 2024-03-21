@@ -12,6 +12,7 @@ public class WeaponSlotManager : MonoBehaviour
     public GameObject GunSlot;
     [SerializeField] public SwitchVCam switchCam;
     [SerializeField] PlayerInput input;
+    [SerializeField] GameObject hitMarker;
 
     //inputs
     InputAction meleeSwitch;
@@ -92,7 +93,7 @@ public class WeaponSlotManager : MonoBehaviour
         GunSlot.SetActive(true);
         switchCam.GunReticle();
         if (!isGunActive)
-            AudioManager.instance.PlaySFX("ToggleGun"); 
+            AudioManager.instance.PlaySFX("ToggleGun");
 
         UIManager.instance.AmmoDisplay.SetActive(true);
         isGunActive = true;
@@ -214,4 +215,17 @@ public class WeaponSlotManager : MonoBehaviour
         DeactivateSlots();
         ClearEquippedWeapons();
     }
+
+    public void StartHitmarker()
+    {
+        StartCoroutine(HitMarkerToggle());
+    }
+
+    IEnumerator HitMarkerToggle()
+    {
+        hitMarker.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        hitMarker.SetActive(false);
+    }
+
 }
