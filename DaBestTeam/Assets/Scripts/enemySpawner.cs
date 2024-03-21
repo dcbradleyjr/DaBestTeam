@@ -7,6 +7,7 @@ using UnityEngine.AI;
 public class enemySpawner : MonoBehaviour
 {
     [SerializeField] GameObject objToSpawn;
+    [SerializeField] ParticleSystem sys;
     [SerializeField] float spawnDelay;
     [SerializeField] int spawnRadius;
     [SerializeField] int playerRadius;
@@ -52,7 +53,13 @@ public class enemySpawner : MonoBehaviour
         toSpawn.GetComponent<ZombieAI>().randomMesh = true;
         toSpawn.GetComponent<ZombieAI>().parentSpawner = gameObject;
         toSpawn.GetComponent<ZombieAI>().startingPosition = spawnPos;
+        sys.transform.position = spawnPos;
+        ParticleSystem particleSystem = Instantiate(sys, spawnPos, Quaternion.identity) as ParticleSystem;
+        particleSystem.Play();
         GameObject hasSpawned = Instantiate(toSpawn, spawnPos, transform.rotation);
+        //AudioManager.instance.PlayZombieSFX("SpawnSound");
+        yield return new WaitForSeconds(2f);
+        Destroy(particleSystem);
         spawnCount++;
         SpawnManager.instance.IncrementSpawnTotal();
         for (int i = 0; i < maxSpawn; i++)
