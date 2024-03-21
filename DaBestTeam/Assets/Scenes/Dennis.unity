@@ -1224,6 +1224,75 @@ RectTransform:
   m_AnchoredPosition: {x: -14.930531, y: -4.0148}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1001 &725950128
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2263841404939669151, guid: 45bba76b332c68c498e6f13f63b0ce23, type: 3}
+      propertyPath: Gun
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2263841404939669151, guid: 45bba76b332c68c498e6f13f63b0ce23, type: 3}
+      propertyPath: Melee
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2263841404939669151, guid: 45bba76b332c68c498e6f13f63b0ce23, type: 3}
+      propertyPath: Pistol
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8186698116107695679, guid: 45bba76b332c68c498e6f13f63b0ce23, type: 3}
+      propertyPath: m_Name
+      value: Weapon Crate Base
+      objectReference: {fileID: 0}
+    - target: {fileID: 8470225940143945976, guid: 45bba76b332c68c498e6f13f63b0ce23, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -8.993643
+      objectReference: {fileID: 0}
+    - target: {fileID: 8470225940143945976, guid: 45bba76b332c68c498e6f13f63b0ce23, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.00000047683716
+      objectReference: {fileID: 0}
+    - target: {fileID: 8470225940143945976, guid: 45bba76b332c68c498e6f13f63b0ce23, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.7339997
+      objectReference: {fileID: 0}
+    - target: {fileID: 8470225940143945976, guid: 45bba76b332c68c498e6f13f63b0ce23, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8470225940143945976, guid: 45bba76b332c68c498e6f13f63b0ce23, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8470225940143945976, guid: 45bba76b332c68c498e6f13f63b0ce23, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8470225940143945976, guid: 45bba76b332c68c498e6f13f63b0ce23, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8470225940143945976, guid: 45bba76b332c68c498e6f13f63b0ce23, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8470225940143945976, guid: 45bba76b332c68c498e6f13f63b0ce23, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8470225940143945976, guid: 45bba76b332c68c498e6f13f63b0ce23, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 45bba76b332c68c498e6f13f63b0ce23, type: 3}
 --- !u!1001 &738664461
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2248,7 +2317,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 627788128367591389, guid: 26dab841e33f5964d8f5195b9792a79d, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7073925
+      value: 0.70682305
       objectReference: {fileID: 0}
     - target: {fileID: 627788128367591389, guid: 26dab841e33f5964d8f5195b9792a79d, type: 3}
       propertyPath: m_LocalRotation.x
@@ -2256,7 +2325,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 627788128367591389, guid: 26dab841e33f5964d8f5195b9792a79d, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.706821
+      value: 0.7073905
       objectReference: {fileID: 0}
     - target: {fileID: 627788128367591389, guid: 26dab841e33f5964d8f5195b9792a79d, type: 3}
       propertyPath: m_LocalRotation.z
@@ -2268,7 +2337,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 627788128367591389, guid: 26dab841e33f5964d8f5195b9792a79d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -89.954
+      value: 90.046
       objectReference: {fileID: 0}
     - target: {fileID: 627788128367591389, guid: 26dab841e33f5964d8f5195b9792a79d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -4185,3 +4254,4 @@ SceneRoots:
   - {fileID: 738664461}
   - {fileID: 1260769225}
   - {fileID: 5797781650526192810}
+  - {fileID: 725950128}
