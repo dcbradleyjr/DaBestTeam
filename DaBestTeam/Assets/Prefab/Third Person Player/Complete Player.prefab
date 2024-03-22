@@ -4001,7 +4001,7 @@ PrefabInstance:
       objectReference: {fileID: 1578805394600632393}
     - target: {fileID: 6364993074499178700, guid: b72389ecc4e1b97409856c617ff6d262, type: 3}
       propertyPath: m_Lens.FarClipPlane
-      value: 300
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 8682184584121381333, guid: b72389ecc4e1b97409856c617ff6d262, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4615,7 +4615,7 @@ PrefabInstance:
       objectReference: {fileID: 1578805394600632393}
     - target: {fileID: 4724137736416392616, guid: 993217dc485d70040841088ea93cd2d8, type: 3}
       propertyPath: m_Lens.FarClipPlane
-      value: 300
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 6848860328455215859, guid: 993217dc485d70040841088ea93cd2d8, type: 3}
       propertyPath: m_Sprite
@@ -4772,7 +4772,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2934547634455383337, guid: e5cae9fa75076254995502218f523ea5, type: 3}
       propertyPath: far clip plane
-      value: 300
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 6810390118114826135, guid: e5cae9fa75076254995502218f523ea5, type: 3}
       propertyPath: m_Name
