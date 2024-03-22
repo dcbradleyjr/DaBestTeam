@@ -6063,7 +6063,7 @@ MonoBehaviour:
   _ragdollRigidbodies: []
   agent: {fileID: 4478751989516085852}
   anim: {fileID: 9210252676715706523}
-  HP: 15
+  HP: 30
   roamPauseTime: 0
   roamDistance: 10
   viewCone: 70
@@ -6081,6 +6081,7 @@ MonoBehaviour:
   shockwaveAnimationTimeOffset: 3
   stompDist: 10
   countdownTimer: 3
+  isBigBoss: 0
 --- !u!95 &9210252676715706523
 Animator:
   serializedVersion: 5

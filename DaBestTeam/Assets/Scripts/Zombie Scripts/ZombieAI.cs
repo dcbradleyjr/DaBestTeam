@@ -199,8 +199,8 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
         while (true)
         {
             Debug.Log("Attack");
-            faceTarget();
-            agent.SetDestination(gameManager.instance.player.transform.position);
+            //faceTarget();
+            //agent.SetDestination(gameManager.instance.player.transform.position);
 
             if (!isAttacking)
             {
@@ -210,6 +210,7 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
                 Debug.Log("Attacked");
                 yield return new WaitForSeconds(attackCooldown);
                 isAttacking = false;
+                state = AIStateId.ChasePlayer;
             }
             yield return new WaitForSeconds(0.1f);
         }
@@ -298,7 +299,7 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
         if (floatingText)
             ShowFloatingText(amount);
 
-        faceTarget();
+        //faceTarget();
 
         if (HP <= 0)
         {
