@@ -4001,7 +4001,7 @@ PrefabInstance:
       objectReference: {fileID: 1578805394600632393}
     - target: {fileID: 8682184584121381333, guid: b72389ecc4e1b97409856c617ff6d262, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.7101592
+      value: 0.71015924
       objectReference: {fileID: 0}
     - target: {fileID: 8682184584121381333, guid: b72389ecc4e1b97409856c617ff6d262, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4153,7 +4153,7 @@ PrefabInstance:
       objectReference: {fileID: 5349426378656238502}
     - target: {fileID: 7395496186127156928, guid: 4df748577a7d4154081ae548807cab8a, type: 3}
       propertyPath: HP
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7395496186127156928, guid: 4df748577a7d4154081ae548807cab8a, type: 3}
       propertyPath: Stamina
@@ -4191,6 +4191,10 @@ PrefabInstance:
       propertyPath: playerSpeed
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 7395496186127156928, guid: 4df748577a7d4154081ae548807cab8a, type: 3}
+      propertyPath: floatingText
+      value: 
+      objectReference: {fileID: 7680587725456750566, guid: f650bf5ba25d44d48ad384ae26d540d9, type: 3}
     - target: {fileID: 7395496186127156928, guid: 4df748577a7d4154081ae548807cab8a, type: 3}
       propertyPath: gravityValue
       value: -25

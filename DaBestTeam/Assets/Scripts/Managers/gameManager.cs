@@ -12,6 +12,7 @@ public class gameManager : MonoBehaviour
     [Header("--Components--")]
     public static gameManager instance;
     [SerializeField] Camera mainCamera;
+    [SerializeField] TextInstantiator textInstantiator;
 
     [Header("--HUD--")]
     public Image playerHPBar;
@@ -103,6 +104,7 @@ public class gameManager : MonoBehaviour
     public void EarnCurrency(int amount)
     {
         playerCurrency += amount;
+        textInstantiator.ScoreViewer(amount);
     }
 
     // Method to spend currency
