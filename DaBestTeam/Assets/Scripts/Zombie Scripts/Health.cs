@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Health : MonoBehaviour, IDamage, IHealth, IPushBack
+public class Health : MonoBehaviour, IHealth, IPushBack
 {
 
     [Range(1, 50)][SerializeField] int HP;

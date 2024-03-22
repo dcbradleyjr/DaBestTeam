@@ -353,7 +353,7 @@ public class ZombieBossAI : MonoBehaviour, IDamage, IPushBack
         Quaternion rot = Quaternion.LookRotation(new Vector3(playerDir.x, transform.position.y, playerDir.z));
         transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * targetFaceSpeed);
     }
-    public void takeDamage(int amount)
+    public void takeDamage(int amount, bool headshot)
     {
         if (!isDamage)
         {

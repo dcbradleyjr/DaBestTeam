@@ -23,7 +23,7 @@ public class ZombieScratch : MonoBehaviour
         if (dmg != null)
         {
             Debug.Log(other.name);
-            dmg.takeDamage(damage);
+            dmg.takeDamage(damage, false);
             Destroy(gameObject);
         }
     }

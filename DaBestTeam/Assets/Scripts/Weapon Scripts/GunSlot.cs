@@ -81,6 +81,7 @@ public class GunSlot : MonoBehaviour
                 ToggleGun(currentGunIndex);
             }
         }
+        Debug.DrawRay(cameraTransform.position, cameraTransform.forward, Color.red);
     }
 
     private void OnEnable()
@@ -208,6 +209,7 @@ public class GunSlot : MonoBehaviour
 
                 if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out hit, Mathf.Infinity, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore))
                 {
+                    Debug.DrawRay(cameraTransform.position, cameraTransform.forward * hit.distance);
                     recoilSource.GenerateImpulseWithVelocity(new Vector3 (0, -0.01f, recoil));
                     if (isSniper)
                         bulletController.piercingShot = true;

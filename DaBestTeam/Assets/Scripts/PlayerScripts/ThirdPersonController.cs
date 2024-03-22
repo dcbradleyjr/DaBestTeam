@@ -126,7 +126,7 @@ public class ThirdPersonController : MonoBehaviour, IDamage
         }
     }
 
-    public void takeDamage(int amount)
+    public void takeDamage(int amount,bool headshot)
     {
         if (!isDead)
         {

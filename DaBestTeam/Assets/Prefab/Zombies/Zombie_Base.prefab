@@ -46,10 +46,9 @@ GameObject:
   - component: {fileID: 6508070058996562035}
   - component: {fileID: 6808050603437545259}
   - component: {fileID: 6250943919935201572}
-  - component: {fileID: 8020676493897868510}
   m_Layer: 3
   m_Name: UpperLeg_R
-  m_TagString: Untagged
+  m_TagString: Bone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -89,7 +88,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.11979278
+  m_Radius: 0.09
   m_Height: 0.39930925
   m_Direction: 0
   m_Center: {x: -0.19965462, y: 0, z: 0}
@@ -117,9 +116,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!144 &6250943919935201572
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -166,18 +165,6 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!114 &8020676493897868510
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 182749054471916725}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9310e53ca188fa0468f341b71a70316d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &483621607046271431
 GameObject:
   m_ObjectHideFlags: 0
@@ -422,7 +409,7 @@ GameObject:
   - component: {fileID: 90933095171726757}
   m_Layer: 3
   m_Name: LowerLeg_L
-  m_TagString: Untagged
+  m_TagString: Bone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -462,7 +449,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.10788681
+  m_Radius: 0.09
   m_Height: 0.43154725
   m_Direction: 0
   m_Center: {x: 0.21577363, y: 0, z: 0}
@@ -490,9 +477,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!144 &90933095171726757
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -614,10 +601,9 @@ GameObject:
   - component: {fileID: 3455593174117493261}
   - component: {fileID: 3605960602271590720}
   - component: {fileID: 1031407515367854510}
-  - component: {fileID: 1022810454523873659}
   m_Layer: 3
   m_Name: Shoulder_R
-  m_TagString: Untagged
+  m_TagString: Bone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -657,7 +643,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.084868655
+  m_Radius: 0.09
   m_Height: 0.33947462
   m_Direction: 0
   m_Center: {x: 0.16973731, y: 0, z: 0}
@@ -685,9 +671,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!144 &1031407515367854510
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -734,18 +720,6 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!114 &1022810454523873659
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 810369179408826649}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9310e53ca188fa0468f341b71a70316d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1051318766749742261
 GameObject:
   m_ObjectHideFlags: 0
@@ -1615,10 +1589,9 @@ GameObject:
   - component: {fileID: 4818681055736559040}
   - component: {fileID: 8936441818056016871}
   - component: {fileID: 4678475152750874485}
-  - component: {fileID: 8172990265478124868}
   m_Layer: 3
   m_Name: Head
-  m_TagString: Untagged
+  m_TagString: Bone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1686,9 +1659,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!144 &4678475152750874485
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -1735,18 +1708,6 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!114 &8172990265478124868
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2445184853809678952}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9310e53ca188fa0468f341b71a70316d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2544851004528449397
 GameObject:
   m_ObjectHideFlags: 0
@@ -2601,10 +2562,9 @@ GameObject:
   - component: {fileID: 8541854867731811087}
   - component: {fileID: 2564872886015105380}
   - component: {fileID: 5783083681230817795}
-  - component: {fileID: 8354184039167874459}
   m_Layer: 3
   m_Name: Elbow_L
-  m_TagString: Untagged
+  m_TagString: Bone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2644,7 +2604,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.09811708
+  m_Radius: 0.09
   m_Height: 0.49058542
   m_Direction: 0
   m_Center: {x: -0.24529271, y: 0, z: 0}
@@ -2672,9 +2632,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!144 &5783083681230817795
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -2721,18 +2681,6 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!114 &8354184039167874459
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3029160951031251056}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9310e53ca188fa0468f341b71a70316d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &3088979243887671604
 GameObject:
   m_ObjectHideFlags: 0
@@ -2910,10 +2858,10 @@ GameObject:
   - component: {fileID: 6354978124117494526}
   - component: {fileID: 8406844948181873872}
   - component: {fileID: 3575731009818431903}
-  - component: {fileID: 8938389325397104656}
   - component: {fileID: 315453727248882514}
   - component: {fileID: 7234920471940303235}
   - component: {fileID: 8151053374942047312}
+  - component: {fileID: 689048255372273437}
   m_Layer: 0
   m_Name: Zombie_Base
   m_TagString: Enemy
@@ -3086,6 +3034,7 @@ MonoBehaviour:
   - {fileID: 445715397548507215}
   - {fileID: 6082811173345588783}
   - {fileID: 1059587069650662760}
+  floatingText: {fileID: 7680587725456750566, guid: f650bf5ba25d44d48ad384ae26d540d9, type: 3}
   canHoldWeapons: 1
   randomMesh: 1
   HitPoint: {fileID: 2246558348447114281}
@@ -3136,29 +3085,6 @@ MonoBehaviour:
   _state: 1
   startingPosition: {x: 0, y: 0, z: 0}
   stoppingDistanceOrig: 0
---- !u!136 &8938389325397104656
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3268026767949517252}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!135 &315453727248882514
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3298,6 +3224,29 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!136 &689048255372273437
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3268026767949517252}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.4
+  m_Height: 2.5
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &3377812130693251025
 GameObject:
   m_ObjectHideFlags: 0
@@ -5993,7 +5942,7 @@ GameObject:
   - component: {fileID: 6052226142233871561}
   m_Layer: 3
   m_Name: LowerLeg_R
-  m_TagString: Untagged
+  m_TagString: Bone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6033,7 +5982,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.10788697
+  m_Radius: 0.09
   m_Height: 0.43154788
   m_Direction: 0
   m_Center: {x: -0.21577394, y: 0, z: 0}
@@ -6061,9 +6010,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!144 &6052226142233871561
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -6257,10 +6206,9 @@ GameObject:
   - component: {fileID: 5320066490713777562}
   - component: {fileID: 6698314086547303741}
   - component: {fileID: 5080054627502022500}
-  - component: {fileID: 876538510245204755}
   m_Layer: 3
   m_Name: Elbow_R
-  m_TagString: Untagged
+  m_TagString: Bone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6305,7 +6253,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.0981164
+  m_Radius: 0.09
   m_Height: 0.490582
   m_Direction: 0
   m_Center: {x: 0.245291, y: 0, z: 0}
@@ -6333,9 +6281,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!144 &5080054627502022500
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -6382,18 +6330,6 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!114 &876538510245204755
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5777301592137319525}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9310e53ca188fa0468f341b71a70316d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5790002644764510229
 GameObject:
   m_ObjectHideFlags: 0
@@ -7206,10 +7142,9 @@ GameObject:
   - component: {fileID: 8834516767712101758}
   - component: {fileID: 5706982349577102849}
   - component: {fileID: 7769342146499844661}
-  - component: {fileID: 1601279692557162632}
   m_Layer: 3
   m_Name: UpperLeg_L
-  m_TagString: Untagged
+  m_TagString: Bone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7249,7 +7184,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.11979278
+  m_Radius: 0.09
   m_Height: 0.39930925
   m_Direction: 0
   m_Center: {x: 0.19965462, y: 0, z: 0}
@@ -7277,9 +7212,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!144 &7769342146499844661
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -7326,18 +7261,6 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!114 &1601279692557162632
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6595269360824244474}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9310e53ca188fa0468f341b71a70316d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6632662221159252742
 GameObject:
   m_ObjectHideFlags: 0
@@ -7382,10 +7305,9 @@ GameObject:
   - component: {fileID: 1904151610025336558}
   - component: {fileID: 1138457345837900469}
   - component: {fileID: 7437101795636559243}
-  - component: {fileID: 172571378810718847}
   m_Layer: 3
   m_Name: Spine_01
-  m_TagString: Untagged
+  m_TagString: Bone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7425,8 +7347,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.40920776, y: 0.2783776, z: 0.38197827}
-  m_Center: {x: -0.20460391, y: 0.025450103, z: -0.00000011920929}
+  m_Size: {x: 0.43385866, y: 0.2783776, z: 0.3699759}
+  m_Center: {x: -0.21692432, y: 0.02545011, z: 0.020505873}
 --- !u!54 &1138457345837900469
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7451,9 +7373,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!144 &7437101795636559243
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -7500,18 +7422,6 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!114 &172571378810718847
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6733997022013299798}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9310e53ca188fa0468f341b71a70316d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6871074906026005906
 GameObject:
   m_ObjectHideFlags: 0
@@ -8667,10 +8577,9 @@ GameObject:
   - component: {fileID: 1447614199681442508}
   - component: {fileID: 1660250563607967768}
   - component: {fileID: 8818174699766561321}
-  - component: {fileID: 7745519253146073078}
   m_Layer: 3
   m_Name: Shoulder_L
-  m_TagString: Untagged
+  m_TagString: Bone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8710,7 +8619,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.0848685
+  m_Radius: 0.09
   m_Height: 0.339474
   m_Direction: 0
   m_Center: {x: -0.169737, y: 0, z: 0}
@@ -8738,9 +8647,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!144 &8818174699766561321
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -8787,18 +8696,6 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!114 &7745519253146073078
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8094773473912472937}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9310e53ca188fa0468f341b71a70316d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8101500211764109405
 GameObject:
   m_ObjectHideFlags: 0
@@ -8977,10 +8874,9 @@ GameObject:
   - component: {fileID: 3952807327712235965}
   - component: {fileID: 9213122607767257797}
   - component: {fileID: 8120184379741150428}
-  - component: {fileID: 4725361296074607692}
   m_Layer: 3
   m_Name: Hips
-  m_TagString: Untagged
+  m_TagString: Bone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9022,8 +8918,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.14509045, y: 0.27836922, z: 0.38197827}
-  m_Center: {x: -0.03138744, y: 0.0010077804, z: 0.00000011920929}
+  m_Size: {x: 0.17296515, y: 0.24171387, z: 0.36710358}
+  m_Center: {x: 0.023340909, y: -0.017319972, z: -0.004545212}
 --- !u!54 &8120184379741150428
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9048,21 +8944,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &4725361296074607692
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8268259375086441712}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9310e53ca188fa0468f341b71a70316d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_CollisionDetection: 1
 --- !u!1 &8438345084780722029
 GameObject:
   m_ObjectHideFlags: 0

@@ -130,7 +130,7 @@ public class MeleeSlot : MonoBehaviour
             if (dmg != null && !collider.CompareTag("Player") && !collider.isTrigger)
             {
                 hitTarget = true;
-                dmg.takeDamage(dmgAmount);
+                dmg.takeDamage(dmgAmount, false);
                 GameObject blood = Instantiate(bloodSplat, collider.transform.position + new Vector3(0,1,0), Quaternion.identity);
                 Destroy(blood, 0.5f);
             }
