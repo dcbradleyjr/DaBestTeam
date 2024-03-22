@@ -57,8 +57,6 @@ public class SpawnManager : MonoBehaviour
                 {
                     curSpawner.canSpawn = true;
                 }
-                        
-                
             }
         }
 
@@ -71,10 +69,10 @@ public class SpawnManager : MonoBehaviour
 
     public void DecrementSpawnTotal(GameObject enemy)
     {
-
-        enemySpawner parent = enemy.GetComponent<ZombieAI>().parentSpawner.GetComponent<enemySpawner>();
-        if (parent != null)
+        enemySpawner parent;
+        if (enemy.TryGetComponent<ZombieAI>(out ZombieAI enemyAI))
         {
+            parent = enemy.GetComponent<ZombieAI>().parentSpawner.GetComponent<enemySpawner>();
             for (int i = 0; i < parent.spawned.Length; i++)
             {
                 if (enemy == parent.spawned[i])
@@ -90,6 +88,7 @@ public class SpawnManager : MonoBehaviour
         else
         {
             parent = enemy.GetComponent<ZombieBossAI>().parentSpawner.GetComponent<enemySpawner>();
+
             if (parent != null)
             {
                 parent.spawned[0] = null;
