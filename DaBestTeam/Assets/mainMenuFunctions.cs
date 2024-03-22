@@ -110,7 +110,7 @@ public class mainMenuFunctions : MonoBehaviour
     public void StartNewGame()
     {
         AudioManager.instance.PlaySFX("ButtonPress");
-        if (PlayerPrefs.HasKey("SavedSceneIndex")|| PlayerPrefs.GetInt("SavedSceneIndex") > 1)
+        if (PlayerPrefs.HasKey("SavedSceneIndex") && PlayerPrefs.GetInt("SavedSceneIndex") > 1)
         {
             yesButton.SetActive(true);
             noButton.SetActive(true);
