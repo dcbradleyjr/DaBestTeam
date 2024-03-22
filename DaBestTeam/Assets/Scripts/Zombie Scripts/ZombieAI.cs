@@ -290,7 +290,7 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
         AudioManager.instance.PlayZombieSFX("ZombieHurt", zombieSource);
 
         HP -= amount;
-
+        
         updateUI();
 
         if (!EnemyUI.gameObject.activeSelf)
@@ -309,6 +309,7 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
         }
         else if (HP > 0 && !isAttacking)
         {
+            gameManager.instance.EarnCurrency(1);
             state = AIStateId.ChasePlayer;
         }
     }

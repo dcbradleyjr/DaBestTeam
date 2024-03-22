@@ -5994,7 +5994,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd3b396954656f847abea10f32db743e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickupBox: []
+  pickupBox:
+  - {fileID: 3449207795767113933, guid: a77c0523a76e8f9498544cd5f3651556, type: 3}
   headPosition: {fileID: 6808960187230788421}
   meshZombie:
   - {fileID: 3088979243887671604, guid: 1c0cf48071815e343bf3c2e4b077b3e1, type: 3}
