@@ -50,7 +50,7 @@ public class ButtonFunctions : MonoBehaviour
     {
         AudioManager.instance.PlaySFX("ButtonPress");
         gameManager.instance.stateUnpaused();
-        SceneManager.LoadScene(0);       
+        SceneManager.LoadScene(0);
     }   
     
 }

@@ -14,6 +14,9 @@ public class mainMenuFunctions : MonoBehaviour
     public GameObject[] settingsMenuButtons;
     public GameObject creditScene;
     public GameObject backButton;
+    public GameObject yesButton;
+    public GameObject noButton;
+    public GameObject confirmText;
 
     [Header("--Text Credit Settings--")]
     [SerializeField] private TextMeshProUGUI itemInfoText;
@@ -107,8 +110,36 @@ public class mainMenuFunctions : MonoBehaviour
     public void StartNewGame()
     {
         AudioManager.instance.PlaySFX("ButtonPress");
-        SaveManager.instance.ResetStats();
+        if (PlayerPrefs.HasKey("SavedSceneIndex")|| PlayerPrefs.GetInt("SavedSceneIndex") > 1)
+        {
+            yesButton.SetActive(true);
+            noButton.SetActive(true);
+            confirmText.SetActive(true);
+        }
+        else
+        {
+            SaveManager.instance.ResetStats();
+            _loader.LoadLevelButton();
+        }
+        
     }
+    public void MainMenuNoButton()
+    {
+        AudioManager.instance.PlaySFX("ButtonPress");
+        yesButton.SetActive(false);
+        noButton.SetActive(false);
+        confirmText.SetActive(false);
+    }
+    public void MainMenuYesButton()
+    {
+        AudioManager.instance.PlaySFX("ButtonPress");
+        yesButton.SetActive(false);
+        noButton.SetActive(false);
+        confirmText.SetActive(false);
+        SaveManager.instance.ResetStats();
+        _loader.LoadLevelButton();
+    }
+
     public void LoadGame()
     {
         AudioManager.instance.PlaySFX("ButtonPress");
