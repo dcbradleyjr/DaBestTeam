@@ -446,7 +446,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3575731009818431903, guid: 1c0cf48071815e343bf3c2e4b077b3e1, type: 3}
       propertyPath: HP
-      value: 200
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3575731009818431903, guid: 1c0cf48071815e343bf3c2e4b077b3e1, type: 3}
       propertyPath: randomMesh
@@ -462,15 +462,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3575731009818431903, guid: 1c0cf48071815e343bf3c2e4b077b3e1, type: 3}
       propertyPath: startingPosition.x
-      value: -135.8034
+      value: -119.8418
       objectReference: {fileID: 0}
     - target: {fileID: 3575731009818431903, guid: 1c0cf48071815e343bf3c2e4b077b3e1, type: 3}
       propertyPath: startingPosition.y
-      value: 0.4621632
+      value: 0.027761683
       objectReference: {fileID: 0}
     - target: {fileID: 3575731009818431903, guid: 1c0cf48071815e343bf3c2e4b077b3e1, type: 3}
       propertyPath: startingPosition.z
-      value: 93.47701
+      value: -59.677692
       objectReference: {fileID: 0}
     - target: {fileID: 3674468779189375883, guid: 1c0cf48071815e343bf3c2e4b077b3e1, type: 3}
       propertyPath: m_LocalPosition.x
