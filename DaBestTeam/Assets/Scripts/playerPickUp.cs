@@ -22,12 +22,16 @@ public class playerPickUp : MonoBehaviour
         {
              IHealth health = other.GetComponent<IHealth>();
 
-            if (other.CompareTag("Player")&&Health)
+            if (other.CompareTag("Player") && Health)
+            {
                 gameManager.instance.player.HealPlayer(healAmount);
+                gameManager.instance.textInstantiator.Pickup("+ Health Pickup", Color.green);
+            }
             if (other.CompareTag("Player") && GunAmmo)
             {
                 int value = MagazineMultiplier * WeaponSlotManager.instance.Gun.GetClipSize();
                 WeaponSlotManager.instance.Gun.AddAmmo(value);
+                gameManager.instance.textInstantiator.Pickup("+ Gun Ammo", Color.cyan);
             }
             GameObject spawnEffect = GameObject.Instantiate(effect, transform.position - new Vector3(0,1f,0),transform.rotation);
             Destroy(spawnEffect,0.5f);

@@ -83653,6 +83653,42 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1370745189569719407, guid: 6af9a78c97087cc4e99e2d98a619069e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1854369836142033253, guid: 6af9a78c97087cc4e99e2d98a619069e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2579501674371760894, guid: 6af9a78c97087cc4e99e2d98a619069e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2583736140006052107, guid: 6af9a78c97087cc4e99e2d98a619069e, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2583736140006052107, guid: 6af9a78c97087cc4e99e2d98a619069e, type: 3}
+      propertyPath: m_Color.g
+      value: 0.061411314
+      objectReference: {fileID: 0}
+    - target: {fileID: 2583736140006052107, guid: 6af9a78c97087cc4e99e2d98a619069e, type: 3}
+      propertyPath: m_Color.r
+      value: 0.49803922
+      objectReference: {fileID: 0}
+    - target: {fileID: 5116833981554981438, guid: 6af9a78c97087cc4e99e2d98a619069e, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5116833981554981438, guid: 6af9a78c97087cc4e99e2d98a619069e, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5116833981554981438, guid: 6af9a78c97087cc4e99e2d98a619069e, type: 3}
+      propertyPath: m_Color.r
+      value: 0.066037714
+      objectReference: {fileID: 0}
     - target: {fileID: 5537705884282204404, guid: 6af9a78c97087cc4e99e2d98a619069e, type: 3}
       propertyPath: m_Name
       value: MainMenu
@@ -83696,6 +83732,14 @@ PrefabInstance:
     - target: {fileID: 5690065796637540096, guid: 6af9a78c97087cc4e99e2d98a619069e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6218794375978732201, guid: 6af9a78c97087cc4e99e2d98a619069e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550024253222387208, guid: 6af9a78c97087cc4e99e2d98a619069e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

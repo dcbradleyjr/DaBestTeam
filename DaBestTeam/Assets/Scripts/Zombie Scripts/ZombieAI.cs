@@ -228,7 +228,7 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
 
             PlayRandomHurtSound();
 
-            gameManager.instance.EarnCurrency(10);
+            gameManager.instance.EarnCurrency(10,"Zombie Kill");
 
             this.EnemyUI.SetActive(false);
 
@@ -245,7 +245,7 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
             if (dropItem)
             {
                 int i = Random.Range(0, pickupBox.Length);
-                Instantiate(pickupBox[i], HitPoint.position, Quaternion.identity);
+                Instantiate(pickupBox[i], transform.position + new Vector3(0,1,0), Quaternion.identity);
             }
 
             if (SpawnManager.instance != null)
@@ -311,8 +311,9 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
         }
         else if (HP > 0 && !isAttacking)
         {
-            
-            gameManager.instance.EarnCurrency(1);
+            if (headshot)
+            gameManager.instance.EarnCurrency(2, "Headshot Bonus");
+
             state = AIStateId.ChasePlayer;
         }
     }
@@ -389,7 +390,7 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     }
     void ShowFloatingText(int value, bool headshot)
     {
-        GameObject text = GameObject.Instantiate(floatingText, transform.position, Quaternion.identity);
+        GameObject text = GameObject.Instantiate(floatingText, transform.position + new Vector3(0,5,0), Quaternion.identity);
         text.GetComponent<TextMeshPro>().text = value.ToString();
         if (headshot)
             text.GetComponent<TextMeshPro>().color = Color.yellow;

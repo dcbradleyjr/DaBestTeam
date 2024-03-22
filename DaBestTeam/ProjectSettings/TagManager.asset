@@ -21,6 +21,7 @@ TagManager:
   - Loader
   - Bone
   - Head
+  - UpgradeSkills
   layers:
   - Default
   - TransparentFX

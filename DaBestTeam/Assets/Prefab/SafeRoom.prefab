@@ -900,7 +900,7 @@ GameObject:
   - component: {fileID: 736201582352587116}
   m_Layer: 8
   m_Name: OpenCrate
-  m_TagString: Untagged
+  m_TagString: UpgradeSkills
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

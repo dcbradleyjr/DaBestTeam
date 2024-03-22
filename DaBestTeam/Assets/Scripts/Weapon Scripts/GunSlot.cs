@@ -375,6 +375,7 @@ public class GunSlot : MonoBehaviour
     public void AddAmmo(int value)
     {
         ammo += value;
+        if(WeaponSlotManager.instance.isGunActive)
         UpdateUI();
     }
 }

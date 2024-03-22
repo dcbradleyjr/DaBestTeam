@@ -48,7 +48,7 @@ public class BulletController : MonoBehaviour
         if (dmg != null)
         {
             if (other.CompareTag("Head"))
-                dmg.takeDamage(damageAmount * 2, true);
+                dmg.takeDamage(damageAmount, true);
             else
                 dmg.takeDamage(damageAmount, false);
 

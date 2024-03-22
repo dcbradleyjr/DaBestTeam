@@ -11,7 +11,7 @@ public class Loader : MonoBehaviour
     [SerializeField] GameObject loadedScreen;
     public bool isLoading;
 
-    public void LoadLevelButton(string level)
+    public void LoadLevelButton()
     {
         if (deactivatedScreen)
         deactivatedScreen.SetActive(false);
@@ -20,14 +20,19 @@ public class Loader : MonoBehaviour
 
         Debug.Log("Trying to load");
 
-        //fake load for time 
-        StartCoroutine(FakeLoadLevelASync(level));
+        if(PlayerPrefs.HasKey("SavedSceneIndex"))
+        {
+            int index = PlayerPrefs.GetInt("SavedSceneIndex", 1);
+            StartCoroutine(FakeLoadLevelASync(index));
+        }
+        else
+        StartCoroutine(FakeLoadLevelASync(1));
     }
-    IEnumerator FakeLoadLevelASync(string level)
+    IEnumerator FakeLoadLevelASync(int index)
     {
         Debug.Log("loading");
         float elapsedTime = 0f;
-        float duration = 10f; // 3 seconds
+        float duration = 1f; // 3 seconds
         while (elapsedTime < duration)
         {
             elapsedTime += Time.deltaTime;
@@ -35,7 +40,7 @@ public class Loader : MonoBehaviour
             loadingSlider.value = progressValue;
             yield return null; // Wait for the next frame
         }
-        AsyncOperation op = SceneManager.LoadSceneAsync(level);
+        AsyncOperation op = SceneManager.LoadSceneAsync(index);
 
         while (!op.isDone)
         {
@@ -44,10 +49,10 @@ public class Loader : MonoBehaviour
             yield return null; // Wait for the next frame
         }
     }
-    IEnumerator LoadLevelASync(string level)
+    IEnumerator LoadLevelASync(int index)
     {
 
-        AsyncOperation op = SceneManager.LoadSceneAsync(level);
+        AsyncOperation op = SceneManager.LoadSceneAsync(index);
 
         while (!op.isDone)
         {

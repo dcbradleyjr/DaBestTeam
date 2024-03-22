@@ -1589,9 +1589,10 @@ GameObject:
   - component: {fileID: 4818681055736559040}
   - component: {fileID: 8936441818056016871}
   - component: {fileID: 4678475152750874485}
+  - component: {fileID: 2461569699463244587}
   m_Layer: 3
   m_Name: Head
-  m_TagString: Bone
+  m_TagString: Head
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1633,7 +1634,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.2
+  m_Radius: 0.14
   m_Center: {x: 0, y: 0.09549457, z: 0}
 --- !u!54 &8936441818056016871
 Rigidbody:
@@ -1708,6 +1709,19 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &2461569699463244587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2445184853809678952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04c619720a96b584b865bf7e6a911581, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentZombie: {fileID: 3575731009818431903}
 --- !u!1 &2544851004528449397
 GameObject:
   m_ObjectHideFlags: 0
