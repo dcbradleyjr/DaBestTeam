@@ -46,10 +46,9 @@ GameObject:
   - component: {fileID: 6508070058996562035}
   - component: {fileID: 6808050603437545259}
   - component: {fileID: 6250943919935201572}
-  - component: {fileID: 2406219104525566046}
   m_Layer: 3
   m_Name: UpperLeg_R
-  m_TagString: Untagged
+  m_TagString: Bone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -89,7 +88,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.12
+  m_Radius: 0.09
   m_Height: 0.39930925
   m_Direction: 0
   m_Center: {x: -0.19965462, y: 0, z: 0}
@@ -166,19 +165,6 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!114 &2406219104525566046
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 182749054471916725}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04c619720a96b584b865bf7e6a911581, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentZombie: {fileID: 3575731009818431903}
 --- !u!1 &483621607046271431
 GameObject:
   m_ObjectHideFlags: 0
@@ -421,10 +407,9 @@ GameObject:
   - component: {fileID: 7588531824430712315}
   - component: {fileID: 7720496178597548221}
   - component: {fileID: 90933095171726757}
-  - component: {fileID: 9160440626192792636}
   m_Layer: 3
   m_Name: LowerLeg_L
-  m_TagString: Untagged
+  m_TagString: Bone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -464,7 +449,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.12
+  m_Radius: 0.09
   m_Height: 0.43154725
   m_Direction: 0
   m_Center: {x: 0.21577363, y: 0, z: 0}
@@ -541,19 +526,6 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!114 &9160440626192792636
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 726452929919864103}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04c619720a96b584b865bf7e6a911581, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentZombie: {fileID: 3575731009818431903}
 --- !u!1 &750500813734276386
 GameObject:
   m_ObjectHideFlags: 0
@@ -629,10 +601,9 @@ GameObject:
   - component: {fileID: 3455593174117493261}
   - component: {fileID: 3605960602271590720}
   - component: {fileID: 1031407515367854510}
-  - component: {fileID: 2645576180185010738}
   m_Layer: 3
   m_Name: Shoulder_R
-  m_TagString: Untagged
+  m_TagString: Bone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -672,7 +643,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.12
+  m_Radius: 0.09
   m_Height: 0.33947462
   m_Direction: 0
   m_Center: {x: 0.16973731, y: 0, z: 0}
@@ -749,19 +720,6 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!114 &2645576180185010738
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 810369179408826649}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04c619720a96b584b865bf7e6a911581, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentZombie: {fileID: 3575731009818431903}
 --- !u!1 &1051318766749742261
 GameObject:
   m_ObjectHideFlags: 0
@@ -1631,10 +1589,9 @@ GameObject:
   - component: {fileID: 4818681055736559040}
   - component: {fileID: 8936441818056016871}
   - component: {fileID: 4678475152750874485}
-  - component: {fileID: 7281856184417911070}
   m_Layer: 3
   m_Name: Head
-  m_TagString: Head
+  m_TagString: Bone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1751,19 +1708,6 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!114 &7281856184417911070
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2445184853809678952}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04c619720a96b584b865bf7e6a911581, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentZombie: {fileID: 3575731009818431903}
 --- !u!1 &2544851004528449397
 GameObject:
   m_ObjectHideFlags: 0
@@ -2618,10 +2562,9 @@ GameObject:
   - component: {fileID: 8541854867731811087}
   - component: {fileID: 2564872886015105380}
   - component: {fileID: 5783083681230817795}
-  - component: {fileID: 4554506398047390270}
   m_Layer: 3
   m_Name: Elbow_L
-  m_TagString: Untagged
+  m_TagString: Bone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2661,7 +2604,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.12
+  m_Radius: 0.09
   m_Height: 0.49058542
   m_Direction: 0
   m_Center: {x: -0.24529271, y: 0, z: 0}
@@ -2738,19 +2681,6 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!114 &4554506398047390270
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3029160951031251056}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04c619720a96b584b865bf7e6a911581, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentZombie: {fileID: 3575731009818431903}
 --- !u!1 &3088979243887671604
 GameObject:
   m_ObjectHideFlags: 0
@@ -2931,6 +2861,7 @@ GameObject:
   - component: {fileID: 315453727248882514}
   - component: {fileID: 7234920471940303235}
   - component: {fileID: 8151053374942047312}
+  - component: {fileID: 689048255372273437}
   m_Layer: 0
   m_Name: Zombie_Base
   m_TagString: Enemy
@@ -3293,6 +3224,29 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!136 &689048255372273437
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3268026767949517252}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.4
+  m_Height: 2.5
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &3377812130693251025
 GameObject:
   m_ObjectHideFlags: 0
@@ -5986,10 +5940,9 @@ GameObject:
   - component: {fileID: 6067072356712511883}
   - component: {fileID: 4675871337164482572}
   - component: {fileID: 6052226142233871561}
-  - component: {fileID: 2142809198902489290}
   m_Layer: 3
   m_Name: LowerLeg_R
-  m_TagString: Untagged
+  m_TagString: Bone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6029,7 +5982,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.12
+  m_Radius: 0.09
   m_Height: 0.43154788
   m_Direction: 0
   m_Center: {x: -0.21577394, y: 0, z: 0}
@@ -6106,19 +6059,6 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!114 &2142809198902489290
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5712470088376749054}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04c619720a96b584b865bf7e6a911581, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentZombie: {fileID: 3575731009818431903}
 --- !u!1 &5717803192945917904
 GameObject:
   m_ObjectHideFlags: 0
@@ -6266,10 +6206,9 @@ GameObject:
   - component: {fileID: 5320066490713777562}
   - component: {fileID: 6698314086547303741}
   - component: {fileID: 5080054627502022500}
-  - component: {fileID: 7246357797084636115}
   m_Layer: 3
   m_Name: Elbow_R
-  m_TagString: Untagged
+  m_TagString: Bone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6314,7 +6253,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.12
+  m_Radius: 0.09
   m_Height: 0.490582
   m_Direction: 0
   m_Center: {x: 0.245291, y: 0, z: 0}
@@ -6391,19 +6330,6 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!114 &7246357797084636115
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5777301592137319525}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04c619720a96b584b865bf7e6a911581, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentZombie: {fileID: 3575731009818431903}
 --- !u!1 &5790002644764510229
 GameObject:
   m_ObjectHideFlags: 0
@@ -7216,10 +7142,9 @@ GameObject:
   - component: {fileID: 8834516767712101758}
   - component: {fileID: 5706982349577102849}
   - component: {fileID: 7769342146499844661}
-  - component: {fileID: 8853988313388096030}
   m_Layer: 3
   m_Name: UpperLeg_L
-  m_TagString: Untagged
+  m_TagString: Bone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7259,7 +7184,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.12
+  m_Radius: 0.09
   m_Height: 0.39930925
   m_Direction: 0
   m_Center: {x: 0.19965462, y: 0, z: 0}
@@ -7336,19 +7261,6 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!114 &8853988313388096030
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6595269360824244474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04c619720a96b584b865bf7e6a911581, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentZombie: {fileID: 3575731009818431903}
 --- !u!1 &6632662221159252742
 GameObject:
   m_ObjectHideFlags: 0
@@ -7393,10 +7305,9 @@ GameObject:
   - component: {fileID: 1904151610025336558}
   - component: {fileID: 1138457345837900469}
   - component: {fileID: 7437101795636559243}
-  - component: {fileID: 3760902900192135866}
   m_Layer: 3
   m_Name: Spine_01
-  m_TagString: Untagged
+  m_TagString: Bone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7436,8 +7347,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.5339807, y: 0.2783776, z: 0.50118047}
-  m_Center: {x: -0.26698673, y: 0.025450114, z: 0.011486981}
+  m_Size: {x: 0.43385866, y: 0.2783776, z: 0.3699759}
+  m_Center: {x: -0.21692432, y: 0.02545011, z: 0.020505873}
 --- !u!54 &1138457345837900469
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7511,19 +7422,6 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!114 &3760902900192135866
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6733997022013299798}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04c619720a96b584b865bf7e6a911581, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentZombie: {fileID: 3575731009818431903}
 --- !u!1 &6871074906026005906
 GameObject:
   m_ObjectHideFlags: 0
@@ -8679,10 +8577,9 @@ GameObject:
   - component: {fileID: 1447614199681442508}
   - component: {fileID: 1660250563607967768}
   - component: {fileID: 8818174699766561321}
-  - component: {fileID: 5817916406325504193}
   m_Layer: 3
   m_Name: Shoulder_L
-  m_TagString: Untagged
+  m_TagString: Bone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8722,7 +8619,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.12
+  m_Radius: 0.09
   m_Height: 0.339474
   m_Direction: 0
   m_Center: {x: -0.169737, y: 0, z: 0}
@@ -8799,19 +8696,6 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!114 &5817916406325504193
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8094773473912472937}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04c619720a96b584b865bf7e6a911581, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentZombie: {fileID: 3575731009818431903}
 --- !u!1 &8101500211764109405
 GameObject:
   m_ObjectHideFlags: 0
@@ -8990,10 +8874,9 @@ GameObject:
   - component: {fileID: 3952807327712235965}
   - component: {fileID: 9213122607767257797}
   - component: {fileID: 8120184379741150428}
-  - component: {fileID: 235731020976196337}
   m_Layer: 3
   m_Name: Hips
-  m_TagString: Untagged
+  m_TagString: Bone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9035,8 +8918,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.21375614, y: 0.27836922, z: 0.47844505}
-  m_Center: {x: 0.0029454937, y: 0.0010077804, z: -0.015213966}
+  m_Size: {x: 0.17296515, y: 0.24171387, z: 0.36710358}
+  m_Center: {x: 0.023340909, y: -0.017319972, z: -0.004545212}
 --- !u!54 &8120184379741150428
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9064,19 +8947,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &235731020976196337
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8268259375086441712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04c619720a96b584b865bf7e6a911581, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentZombie: {fileID: 3575731009818431903}
 --- !u!1 &8438345084780722029
 GameObject:
   m_ObjectHideFlags: 0

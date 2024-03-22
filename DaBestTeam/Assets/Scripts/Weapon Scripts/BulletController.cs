@@ -40,7 +40,7 @@ public class BulletController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.isTrigger || other.CompareTag("Player"))
+        if (other.isTrigger || other.CompareTag("Player") || other.CompareTag("Bone"))
             return;
 
         IDamage dmg = other.GetComponent<IDamage>();
