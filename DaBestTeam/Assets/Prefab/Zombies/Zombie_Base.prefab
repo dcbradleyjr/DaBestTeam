@@ -3081,6 +3081,9 @@ MonoBehaviour:
   - ZombieRoam2
   HealthBar: {fileID: 602742350953240676}
   EnemyUI: {fileID: 4023311822676355477}
+  attackList:
+  - AttackRarm
+  - AttackLarm
   parentSpawner: {fileID: 0}
   _state: 1
   startingPosition: {x: 0, y: 0, z: 0}
