@@ -19,6 +19,8 @@ TagManager:
   - GunList
   - PistolList
   - Loader
+  - Bone
+  - Head
   layers:
   - Default
   - TransparentFX

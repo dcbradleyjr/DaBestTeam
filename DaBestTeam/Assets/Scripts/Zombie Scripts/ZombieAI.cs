@@ -284,20 +284,25 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
         Quaternion rot = Quaternion.LookRotation(new Vector3(playerDir.x, transform.position.y, playerDir.z));
         transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * targetFaceSpeed);
     }
-    public void takeDamage(int amount)
+    public void takeDamage(int amount, bool headshot)
     {
         anim.SetTrigger("Hurt");
         AudioManager.instance.PlayZombieSFX("ZombieHurt", zombieSource);
 
         HP -= amount;
-        
+
         updateUI();
 
         if (!EnemyUI.gameObject.activeSelf)
             EnemyUI.gameObject.SetActive(true);
 
         if (floatingText)
-            ShowFloatingText(amount);
+        {
+            if (headshot)
+                ShowFloatingText(amount, true);
+            else
+                ShowFloatingText(amount, false);
+        }
 
         //faceTarget();
 
@@ -379,10 +384,12 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
 
     }
 
-    void ShowFloatingText(int value)
+    void ShowFloatingText(int value, bool headshot)
     {
         GameObject text = GameObject.Instantiate(floatingText, transform.position, Quaternion.identity);
         text.GetComponent<TextMeshPro>().text = value.ToString();
+        if (headshot)
+            text.GetComponent<TextMeshPro>().color = Color.yellow;
     }
 
 }

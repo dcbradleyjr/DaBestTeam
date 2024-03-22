@@ -16,7 +16,7 @@ public class TargetProp : MonoBehaviour, IDamage
         
     }
 
-    public void takeDamage(int amount)
+    public void takeDamage(int amount, bool headshot)
     {
         /*Debug.Log(amount);*/
     }
