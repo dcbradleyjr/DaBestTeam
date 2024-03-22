@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEditor.Timeline.TimelinePlaybackControls;
 
 
 public class UpgradeSkills : MonoBehaviour, IInteract
