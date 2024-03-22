@@ -95,11 +95,19 @@ public class UpgradeSkills : MonoBehaviour, IInteract
     [Range(0, 100)] public int level3DamageAmount;
     [Range(0, 100)] public int level4DamageAmount;
     [Range(0, 100)] public int level5DamageAmount;
+
     private bool interactingWithCrate;
+    private bool resetStats;
 
     public void Start()
     {
-        
+        resetStats = PlayerPrefs.GetInt("ResetUpgrades", 0) == 1 ? true : false;
+        if (resetStats)
+        {
+            Debug.Log("Reset");
+            StatReset();
+            PlayerPrefs.SetInt("ResetUpgrades", 0);
+        }
     }
     public void interact()
     {        

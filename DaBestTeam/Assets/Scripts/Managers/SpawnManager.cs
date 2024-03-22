@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SpawnManager : MonoBehaviour
 {
@@ -41,14 +42,23 @@ public class SpawnManager : MonoBehaviour
             {
                 enemySpawner curSpawner = spawners[i];
 
-                if (!curSpawner.playerInRange && Vector3.Distance(curSpawner.transform.position, gameManager.instance.player.transform.position) <= 75)
+                if (SceneManager.GetActiveScene().name != "MainMenu")
                 {
-                    curSpawner.canSpawn = true;
+                    if (!curSpawner.playerInRange && Vector3.Distance(curSpawner.transform.position, gameManager.instance.player.transform.position) <= 75)
+                    {
+                        curSpawner.canSpawn = true;
+                    }
+                    else
+                    {
+                        curSpawner.canSpawn = false;
+                    } 
                 }
                 else
                 {
-                    curSpawner.canSpawn = false;
+                    curSpawner.canSpawn = true;
                 }
+                        
+                
             }
         }
 
