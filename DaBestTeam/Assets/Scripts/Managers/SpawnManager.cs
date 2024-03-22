@@ -41,7 +41,7 @@ public class SpawnManager : MonoBehaviour
             {
                 enemySpawner curSpawner = spawners[i];
 
-                if (!curSpawner.playerInRange)
+                if (!curSpawner.playerInRange && Vector3.Distance(curSpawner.transform.position, gameManager.instance.player.transform.position) <= 75)
                 {
                     curSpawner.canSpawn = true;
                 }
