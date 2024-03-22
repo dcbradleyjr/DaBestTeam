@@ -360,7 +360,8 @@ public class ZombieBossAI : MonoBehaviour, IDamage, IPushBack
             isDamage = true;
             /*AudioManager.instance.PlayZombieSFX("ZombieHurt");*/
 
-            anim.SetTrigger("Hurt");
+            if(!isAttacking)
+                anim.SetTrigger("Hurt");
             isDamage = false;
         }
 

@@ -73,7 +73,7 @@ public class SpawnManager : MonoBehaviour
     {
 
         enemySpawner parent = enemy.GetComponent<ZombieAI>().parentSpawner.GetComponent<enemySpawner>();
-        if (parent == null)
+        if (parent != null)
         {
             for (int i = 0; i < parent.spawned.Length; i++)
             {
@@ -85,7 +85,17 @@ public class SpawnManager : MonoBehaviour
                     currentSpawn--;
                     break;
                 }
-            } 
+            }
+        }
+        else
+        {
+            parent = enemy.GetComponent<ZombieBossAI>().parentSpawner.GetComponent<enemySpawner>();
+            if (parent != null)
+            {
+                parent.spawned[0] = null;
+                parent.DecrementSpawnCount();
+                currentSpawn--;
+            }
         }
     }
 }

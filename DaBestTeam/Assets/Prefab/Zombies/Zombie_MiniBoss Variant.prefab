@@ -6081,7 +6081,7 @@ MonoBehaviour:
   startingPosition: {x: 0, y: 0, z: 0}
   shockwaveAnimationTimeOffset: 3
   stompDist: 10
-  countdownTimer: 3
+  countdownTimer: 1
   isBigBoss: 0
 --- !u!95 &9210252676715706523
 Animator:
