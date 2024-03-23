@@ -116,7 +116,7 @@ public class ThirdPersonController : MonoBehaviour, IDamage
             PlayerPrefs.SetInt("ResetPlayer", 0);
             PlayerPrefs.Save();
         }
-        SaveManager.instance.LoadGame();
+        Invoke("loadDelay", .1f);
     }
 
     void Update()
@@ -132,7 +132,10 @@ public class ThirdPersonController : MonoBehaviour, IDamage
             }
         }
     }
-
+    private void loadDelay()
+    {
+        SaveManager.instance.LoadGame();
+    }
     public void takeDamage(int amount, bool headshot)
     {
         if (!isDead)
