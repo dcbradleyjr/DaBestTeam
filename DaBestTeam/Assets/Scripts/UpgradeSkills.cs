@@ -488,7 +488,6 @@ public class UpgradeSkills : MonoBehaviour, IInteract
         SetBool("Level4DamageAcquired", level4DamageAcquired);
         SetBool("Level5DamageAcquired", level5DamageAcquired);
 
-        PlayerPrefs.SetInt("ResetUpgrades", 1);
         PlayerPrefs.Save();
     }
     public void LoadUpgradeState()
