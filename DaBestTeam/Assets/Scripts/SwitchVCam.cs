@@ -9,8 +9,8 @@ public class SwitchVCam : MonoBehaviour
     [SerializeField] PlayerInput input;
     [SerializeField] int regularPriority;
     [SerializeField] int aimPriority;
-    [SerializeField] Canvas thirdPersonCanvas;
-    [SerializeField] Canvas aimCanvas;
+    [SerializeField] public Canvas thirdPersonCanvas;
+    [SerializeField] public Canvas aimCanvas;
 
     [SerializeField] Image RegularReticle;
     [SerializeField] Image AimReticle;
