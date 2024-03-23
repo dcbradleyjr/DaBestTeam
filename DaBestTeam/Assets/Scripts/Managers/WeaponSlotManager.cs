@@ -239,9 +239,21 @@ public class WeaponSlotManager : MonoBehaviour
     public void FreezeWeapons(bool force)
     {
         if (force)
-        { Melee.freezeWeapon = true; Pistol.freezeWeapon = true; Gun.freezeWeapon = true; }
+        {
+            Melee.freezeWeapon = true;
+            Pistol.freezeWeapon = true;
+            Gun.freezeWeapon = true;
+            switchCam.aimCanvas.enabled = false;
+            switchCam.thirdPersonCanvas.enabled = false;
+        }
         else
-        { Melee.freezeWeapon = false; Pistol.freezeWeapon = false; Gun.freezeWeapon = false; }
+        {
+            Melee.freezeWeapon = false;
+            Pistol.freezeWeapon = false;
+            Gun.freezeWeapon = false;
+            switchCam.aimCanvas.enabled = true;
+            switchCam.thirdPersonCanvas.enabled = true;
+        }
     }
 
 }
