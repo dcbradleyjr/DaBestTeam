@@ -138,6 +138,7 @@ public class ThirdPersonController : MonoBehaviour, IDamage
         if (!isDead)
         {
             HP -= amount;
+            animator.Play("RibHit");
 
             if (floatingText)
                 ShowFloatingText(amount);
