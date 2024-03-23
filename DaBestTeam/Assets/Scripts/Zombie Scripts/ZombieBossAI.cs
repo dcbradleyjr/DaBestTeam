@@ -12,7 +12,7 @@ Attack,
 Death*/
 
 
-public class ZombieBossAI : MonoBehaviour, IDamage, IPushBack
+public class ZombieBossAI : MonoBehaviour, IDamage
 {
     [Header("--Dropped Items--")]
     [SerializeField] GameObject[] pickupBox;
@@ -287,10 +287,12 @@ public class ZombieBossAI : MonoBehaviour, IDamage, IPushBack
 
     IEnumerator stompShockwave()
     {
+        isAttacking = true;
         anim.SetTrigger("Stomp");
         Debug.Log("stomp");
         yield return new WaitForSeconds(3f);
         state = AIStateId.Waiting;
+        isAttacking = false;
         yield return null;
     }
 
@@ -355,15 +357,6 @@ public class ZombieBossAI : MonoBehaviour, IDamage, IPushBack
     }
     public void takeDamage(int amount, bool headshot)
     {
-        if (!isDamage)
-        {
-            isDamage = true;
-            /*AudioManager.instance.PlayZombieSFX("ZombieHurt");*/
-
-            if(!isAttacking)
-                anim.SetTrigger("Hurt");
-            isDamage = false;
-        }
 
         HP -= amount;
 
@@ -372,23 +365,12 @@ public class ZombieBossAI : MonoBehaviour, IDamage, IPushBack
         if (!EnemyUI.gameObject.activeSelf)
             EnemyUI.gameObject.SetActive(true);
 
-        faceTarget();
-
         if (HP <= 0)
         {
             StopAllCoroutines();
             state = AIStateId.Death;
             return;
         }
-        else if (HP > 0 && !isAttacking)
-        {
-            state = AIStateId.ChasePlayer;
-        }
-    }
-
-    public void pushBackDir(Vector3 dir)
-    {
-        agent.velocity += (dir / 2);
     }
 
     public void chooseRandomMesh()

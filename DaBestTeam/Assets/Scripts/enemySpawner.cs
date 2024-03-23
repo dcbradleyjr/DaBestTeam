@@ -15,6 +15,7 @@ public class enemySpawner : MonoBehaviour
     public int maxSpawn;
     public bool canSpawn;
     public bool playerInRange;
+    public bool inSpawnRange;
     public GameObject[] spawned;
     public bool isBossSpawner;
 
