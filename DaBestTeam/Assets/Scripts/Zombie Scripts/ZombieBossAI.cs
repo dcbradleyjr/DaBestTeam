@@ -78,7 +78,7 @@ public class ZombieBossAI : MonoBehaviour, IDamage
     bool isStomping;
     float timeBetweenAttacks;
 
-    public enum AIStateId { Roam = 1, ChasePlayer = 2, Attack = 3, Death = 4, Stomp = 5, Waiting = 6 };
+    public enum AIStateId { Roam = 1, ChasePlayer = 2, Attack = 3, Death = 4, Stomp = 5 };
 
     public void Awake()
     {
@@ -136,15 +136,6 @@ public class ZombieBossAI : MonoBehaviour, IDamage
                     break;
                 case AIStateId.Stomp:
                     UpdateAttackState();
-                    break;
-                case AIStateId.Waiting:
-                    while (countdownTimer > 0)
-                    {
-                        countdownTimer -= Time.deltaTime;
-                        Debug.Log(countdownTimer);
-                    }
-                    countdownTimer = timeBetweenAttacks;
-                    state = AIStateId.ChasePlayer;
                     break;
             }
         }
@@ -217,7 +208,11 @@ public class ZombieBossAI : MonoBehaviour, IDamage
                 isAttacking = true;
                 float shockwaveAttackChance = Random.Range(0f, 1f);
                 if (shockwaveAttackChance < 0.5f)
+                {
                     state = AIStateId.Stomp;
+                    break;
+                }
+                
                 else
                 {
                     anim.SetTrigger("Attack");
@@ -230,21 +225,15 @@ public class ZombieBossAI : MonoBehaviour, IDamage
 
                     yield return new WaitForSeconds(attackAnimSpeed / 5);
 
+                    state = AIStateId.ChasePlayer;
+
                     yield return null;
                 }
 
                 isAttacking = false;
             }
 
-            // Check if the player is still in range
-            float distanceToPlayer = Vector3.Distance(transform.position, gameManager.instance.player.transform.position);
-             if (distanceToPlayer > attackRange)
-             {
-                 state = AIStateId.ChasePlayer;
-                 yield break;
-             }
-
-            yield return new WaitForSeconds(0.1f);
+            yield return null;
         }
     }
     public IEnumerator deathState()
@@ -291,7 +280,7 @@ public class ZombieBossAI : MonoBehaviour, IDamage
         anim.SetTrigger("Stomp");
         Debug.Log("stomp");
         yield return new WaitForSeconds(3f);
-        state = AIStateId.Waiting;
+        state = AIStateId.ChasePlayer;
         isAttacking = false;
         yield return null;
     }

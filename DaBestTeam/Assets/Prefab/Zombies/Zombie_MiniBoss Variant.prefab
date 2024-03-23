@@ -6058,7 +6058,7 @@ MonoBehaviour:
   randomMesh: 0
   HitPoint: {fileID: 6751829991727758522}
   HitBox: {fileID: 9126898628442019249}
-  meleeRange: 2
+  meleeRange: 5
   zombieScratch: {fileID: 3257358659001034792, guid: d1fcf89608676454689916f9d5d59492, type: 3}
   shockwaveDetonate: {fileID: 7511629698849719206, guid: 6e81a97d4c2b73144aa3bbd486294116, type: 3}
   _ragdollRigidbodies: []
@@ -6078,7 +6078,7 @@ MonoBehaviour:
   EnemyUI: {fileID: 6781782035361957830}
   parentSpawner: {fileID: 0}
   _state: 2
-  startingPosition: {x: 0, y: 0, z: 0}
+  startingPosition: {x: 24.75, y: 0.25, z: 38.25}
   shockwaveAnimationTimeOffset: 3
   stompDist: 10
   countdownTimer: 1
@@ -6158,7 +6158,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 7
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
