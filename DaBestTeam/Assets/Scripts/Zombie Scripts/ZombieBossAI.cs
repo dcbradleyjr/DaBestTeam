@@ -360,6 +360,11 @@ public class ZombieBossAI : MonoBehaviour, IDamage
             state = AIStateId.Death;
             return;
         }
+
+        if (HP > 0 && !isAttacking)
+        {
+            state = AIStateId.ChasePlayer;
+        }
     }
 
     public void chooseRandomMesh()
