@@ -26,8 +26,14 @@ public class WinTrigger : MonoBehaviour
             else
             {
                 SaveManager.instance.SaveGame();
+                StartCoroutine(stall());
                 SceneManager.LoadScene(sceneIndex + 1);
             }
         }
+    }
+
+    IEnumerator stall()
+    {
+        yield return new WaitForSeconds(0.5f);
     }
 }
