@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.InputSystem;
 using TMPro;
+using UnityEngine.Rendering.PostProcessing;
 
 [RequireComponent(typeof(CharacterController), typeof(PlayerInput))]
 public class ThirdPersonController : MonoBehaviour, IDamage
@@ -49,6 +50,9 @@ public class ThirdPersonController : MonoBehaviour, IDamage
     //animation timing
     [SerializeField] float animationSmoothTime = 0.1f;
     [SerializeField] float animationPlayTransition = 0.15f;
+    [SerializeField] float intensity = 0;
+    [SerializeField] PostProcessVolume _volume;
+    [SerializeField] Vignette _vignette;
 
     //input actions
     private InputAction moveAction;
@@ -68,6 +72,7 @@ public class ThirdPersonController : MonoBehaviour, IDamage
     //colors
     Color StaminaColorOrig;
     Color HealthColorOrig;
+    private bool isFlashingDamage;
 
     private void Awake()
     {
@@ -97,6 +102,8 @@ public class ThirdPersonController : MonoBehaviour, IDamage
         playerSpeedMax = playerSpeed;
         StaminaColorOrig = gameManager.instance.playerStaminaBar.color;
         HealthColorOrig = gameManager.instance.playerHPBar.color;
+        _volume.profile.TryGetSettings<Vignette>(out _vignette);
+        _vignette.enabled.Override(false);
         updateUI();
         resetStats = PlayerPrefs.GetInt("ResetPlayer", 0) == 1 ? true : false;
         if (resetStats)
@@ -126,7 +133,7 @@ public class ThirdPersonController : MonoBehaviour, IDamage
         }
     }
 
-    public void takeDamage(int amount,bool headshot)
+    public void takeDamage(int amount, bool headshot)
     {
         if (!isDead)
         {
@@ -135,7 +142,7 @@ public class ThirdPersonController : MonoBehaviour, IDamage
             if (floatingText)
                 ShowFloatingText(amount);
 
-            StartCoroutine(flashDamage());
+            StartCoroutine(newFlashDamage());
             if (HP <= 0)
             {
                 isDead = true;
@@ -143,7 +150,7 @@ public class ThirdPersonController : MonoBehaviour, IDamage
                 //death logic
                 StartCoroutine(deathEffect());
             }
-            updateHealthUI(); 
+            updateHealthUI();
         }
     }
 
@@ -297,6 +304,12 @@ public class ThirdPersonController : MonoBehaviour, IDamage
         {
             HP = HPMax;
         }
+        if ((float)HP / HPMax > 0.5f)
+        {
+            StopCoroutine(pulsingScreen());
+            _vignette.intensity.Override(0);
+        }
+
         updateHealthUI();
     }
 
@@ -364,25 +377,76 @@ public class ThirdPersonController : MonoBehaviour, IDamage
         //controller.enabled = true;
     }
 
-    IEnumerator flashDamage()
+
+
+    IEnumerator newFlashDamage()
     {
-        if ((float)HP / HPMax > 0.6 )
+        isFlashingDamage = true;
+        StopCoroutine(pulsingScreen());
+        intensity = 0.4f;
+        _vignette.enabled.Override(true);
+        _vignette.intensity.Override(0.4f);
+        _vignette.roundness.Override(1);
+
+        yield return new WaitForSeconds(0.2f);
+
+        while (intensity > 0)
         {
-            UIManager.instance.DamageScreenOne.SetActive(true);
-            yield return new WaitForSeconds(0.2f);
-            UIManager.instance.DamageScreenOne.SetActive(false); 
+            intensity -= 0.01f;
+
+            if (intensity < 0) intensity = 0;
+
+            _vignette.intensity.Override(intensity);
+            _vignette.roundness.Override(1);
+
+
+            yield return new WaitForSeconds(0.01f);
         }
-        else if ((float)HP / HPMax <= 0.6 && (float)HP / HPMax >= 0.3)
+        isFlashingDamage = false;
+        _vignette.enabled.Override(false);
+        if ((float)HP / HPMax <= 0.5f)
         {
-            UIManager.instance.DamageScreenTwo.SetActive(true);
-            yield return new WaitForSeconds(0.2f);
-            UIManager.instance.DamageScreenTwo.SetActive(false);
+            StartCoroutine(pulsingScreen());
         }
-        else
+        yield break;
+    }
+
+    IEnumerator pulsingScreen()
+    {
+        _vignette.intensity.Override(0.61f);
+        _vignette.enabled.Override(true);
+        float minRoundness = 0.1f;
+        float maxRoundness = 0.9f;
+
+        // Calculate the health percentage
+        float healthPercentage = 1 - (float)HP / HPMax;
+
+        while ((float)HP / HPMax <= 0.5f)
         {
-            UIManager.instance.DamageScreenThree.SetActive(true);
-            yield return new WaitForSeconds(0.2f);
-            UIManager.instance.DamageScreenThree.SetActive(false);
+            // Calculate the target roundness based on health percentage
+            float targetRoundness = Mathf.Lerp(minRoundness, maxRoundness, healthPercentage);
+
+            // Smoothly transition roundness to target value
+            float elapsedTime = 0f;
+            while (elapsedTime < 0.5f)
+            {
+                elapsedTime += Time.deltaTime;
+                float t = Mathf.SmoothStep(0f, 1f, elapsedTime);
+                if (!isFlashingDamage)
+                    _vignette.roundness.Override(Mathf.Lerp(minRoundness, targetRoundness, t));
+                yield return null;
+            }
+
+            // Reverse the roundness transition
+            elapsedTime = 0f;
+            while (elapsedTime < 0.5f)
+            {
+                elapsedTime += Time.deltaTime;
+                float t = Mathf.SmoothStep(0f, 1f, elapsedTime);
+                if (!isFlashingDamage)
+                    _vignette.roundness.Override(Mathf.Lerp(targetRoundness, minRoundness, t));
+                yield return null;
+            }
         }
     }
 
@@ -403,7 +467,7 @@ public class ThirdPersonController : MonoBehaviour, IDamage
         while (elapsedTime < fadeDuration)
         {
             elapsedTime += Time.deltaTime;
-            float t = Mathf.Clamp01(elapsedTime/fadeDuration);
+            float t = Mathf.Clamp01(elapsedTime / fadeDuration);
             deathScreen.alpha = Mathf.Lerp(startAlpha, 1f, t);
             yield return null;
         }

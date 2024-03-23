@@ -31,10 +31,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] public TextMeshProUGUI weaponNameDisplay;
     [SerializeField] public TextMeshProUGUI ammoReloadDisplay;
 
-    [SerializeField] public GameObject DamageScreenOne;
-    [SerializeField] public GameObject DamageScreenTwo;
-    [SerializeField] public GameObject DamageScreenThree;
-
     // Start is called before the first frame update
     void Awake()
     {
