@@ -3830,7 +3830,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -1352822688626934026, guid: 2f507f86aa441de4b9b7a82f4d3ac5c6, type: 3}
       propertyPath: maxSpawn
-      value: 30
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: -1352822688626934026, guid: 2f507f86aa441de4b9b7a82f4d3ac5c6, type: 3}
       propertyPath: spawnDelay
