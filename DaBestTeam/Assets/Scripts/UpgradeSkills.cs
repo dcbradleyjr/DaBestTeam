@@ -492,7 +492,6 @@ public class UpgradeSkills : MonoBehaviour, IInteract
     }
     public void LoadUpgradeState()
     {
-        Debug.Log("Load");
         level1HPAcquired = GetBool("Level1HPAcquired");
         level2HPAcquired = GetBool("Level2HPAcquired");
         level3HPAcquired = GetBool("Level3HPAcquired");
