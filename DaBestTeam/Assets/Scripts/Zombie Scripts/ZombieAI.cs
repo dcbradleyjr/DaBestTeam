@@ -36,6 +36,7 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Animator anim;
     public AudioSource zombieSource;
+    [SerializeField] Collider ZombieBase;
 
     [Header("--Stats--")]
     [Range(1, 50000)][SerializeField] int HP;
@@ -225,7 +226,6 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
         if (!isDead)
         {
             isDead = true;
-
             PlayRandomHurtSound();
 
             gameManager.instance.EarnCurrency(10,"Zombie Kill");
@@ -236,7 +236,8 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
 
             this.GetComponent<NavMeshAgent>().enabled = false;
 
-            this.GetComponent<Collider>().enabled = false;
+            this.ZombieBase.enabled = false;
+            
 
             EnableRagdoll();
 
@@ -289,7 +290,7 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
         anim.SetTrigger("Hurt");
         PlayRandomHurtSound();
         HP -= amount;
-
+        Debug.Log("Damage");
         updateUI();
 
         if (!EnemyUI.gameObject.activeSelf)

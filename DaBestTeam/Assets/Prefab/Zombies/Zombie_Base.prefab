@@ -3059,6 +3059,7 @@ MonoBehaviour:
   agent: {fileID: 7234920471940303235}
   anim: {fileID: 8406844948181873872}
   zombieSource: {fileID: 8151053374942047312}
+  ZombieBase: {fileID: 689048255372273437}
   HP: 4
   roamPauseTime: 3
   roamDistance: 15
