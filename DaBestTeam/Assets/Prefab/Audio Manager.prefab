@@ -178,6 +178,8 @@ MonoBehaviour:
   musicSounds:
   - name: Theme
     clip: {fileID: 8300000, guid: d136a200d356d7545a0e72a3bf8fb1ef, type: 3}
+  - name: ButtonPress
+    clip: {fileID: 8300000, guid: 0e533f4281aa8b7449080e7b686f4ed6, type: 3}
   sfxSounds:
   - name: Jump
     clip: {fileID: 8300000, guid: 69ddd7ac6eeab7144840ce681dc5a7c6, type: 3}
@@ -360,8 +362,11 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: e66b136e063cc4049b96679b13228187, type: 3}
   - name: ZombieChase6
     clip: {fileID: 8300000, guid: efc7bb9783bdf8a4797f4caae38bea34, type: 3}
+  - name: ButtonPress
+    clip: {fileID: 8300000, guid: 0e533f4281aa8b7449080e7b686f4ed6, type: 3}
   musicSource: {fileID: 198422193453456200}
   sfxSource: {fileID: 6752192949235332525}
+  zombieSource: {fileID: 3937362566841982837}
   myMixer: {fileID: 24100000, guid: 2de08a1bb0b01a74993aaf1940c1b217, type: 2}
   musicSlider: {fileID: 0}
   sfxSlider: {fileID: 0}
@@ -407,7 +412,7 @@ AudioSource:
   m_GameObject: {fileID: 6863489339717117033}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -7240494703164212060, guid: 2de08a1bb0b01a74993aaf1940c1b217, type: 2}
+  OutputAudioMixerGroup: {fileID: -9201902754511721641, guid: 2de08a1bb0b01a74993aaf1940c1b217, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 0.315
