@@ -125,7 +125,7 @@ public class ThirdPersonController : MonoBehaviour, IDamage
         {
             Movement();
 
-            if (isSprinting)
+            if (isSprinting && (moveAction.ReadValue<Vector2>().x != 0 || moveAction.ReadValue<Vector2>().y != 0))
             {
                 DrainStamina();
                 ResetRecharge();
@@ -208,7 +208,7 @@ public class ThirdPersonController : MonoBehaviour, IDamage
 
     private void StartSprint()
     {
-        if (canSprint && !isCrouching)
+        if (canSprint && !isCrouching && (moveAction.ReadValue<Vector2>().x != 0 || moveAction.ReadValue<Vector2>().y != 0))
         {
             playerSpeed *= sprintMod;
             isSprinting = true;
@@ -226,17 +226,20 @@ public class ThirdPersonController : MonoBehaviour, IDamage
 
     private void DrainStamina()
     {
-        Stamina -= staminaDrain * Time.deltaTime;
-        if (Stamina < 0)
+        if (moveAction.ReadValue<Vector2>().x != 0 || moveAction.ReadValue<Vector2>().y != 0)
         {
-            Stamina = 0;
-            canSprint = false;
-            staminaDrained = true;
-            isSprinting = false;
-            playerSpeed = playerSpeedMax;
+            Stamina -= staminaDrain * Time.deltaTime;
+            if (Stamina < 0)
+            {
+                Stamina = 0;
+                canSprint = false;
+                staminaDrained = true;
+                isSprinting = false;
+                playerSpeed = playerSpeedMax;
+            }
+            //update Stamina UI logic
+            updateStaminaUI(); 
         }
-        //update Stamina UI logic
-        updateStaminaUI();
     }
 
     private IEnumerator RechargeStamina()

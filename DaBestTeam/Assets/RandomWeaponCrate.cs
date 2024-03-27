@@ -18,17 +18,18 @@ public class RandomWeaponCrate : MonoBehaviour, IInteract
     [SerializeField] Transform movement;
     [SerializeField] bool openBox;
     [SerializeField] bool purchasableState;
-    [SerializeField] int cost = 500;
+    [SerializeField] int cost;
     bool obtainableState;
     bool startcooldown;
     bool acquiredWeapon;
+    string originalPrompt;
 
     float timer;
     int counter, counterCompare;
 
     void Start()
     {
-
+        originalPrompt = "Purchase Random Weapon Cost: " + cost;
     }
 
     void FixedUpdate()
@@ -73,12 +74,13 @@ public class RandomWeaponCrate : MonoBehaviour, IInteract
                 obtainableState = false;
                 acquiredWeapon = false;
                 DisableGuns();
-                prompt = "Purchase Random Weapon Cost: 500";
                 crateLight.SetActive(false);
                 if (!purchasableState)
                     StartCoroutine(Cooldown()); 
             }
         }
+        if (purchasableState)
+            prompt = originalPrompt;
     }
 
     public void interact()
