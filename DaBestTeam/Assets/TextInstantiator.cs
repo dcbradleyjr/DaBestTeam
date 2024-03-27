@@ -1,18 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
 
 public class TextInstantiator : MonoBehaviour
 {
     [SerializeField] Transform canvas;
     [SerializeField] GameObject text;
 
-    public void ScoreViewer(int value, string prompt)
+    public void ScoreViewer(int value, string prompt, Color color)
     {
         GameObject score = GameObject.Instantiate(text,canvas);
         score.GetComponent<TextMeshProUGUI>().text = "+" + value.ToString() + " " + prompt;
+        score.GetComponent<TextMeshProUGUI>().color = color;
     }
 
     public void Pickup(string prompt, Color color)

@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine.Rendering.PostProcessing;
 
 [RequireComponent(typeof(CharacterController), typeof(PlayerInput))]
-public class ThirdPersonController : MonoBehaviour, IDamage
+public class ThirdPersonController : MonoBehaviour, IDamage, IPushBack
 {
     [Header("--Components--")]
     public CharacterController controller;
@@ -37,6 +37,7 @@ public class ThirdPersonController : MonoBehaviour, IDamage
     public bool isSprinting;
     public bool isCrouching;
     public bool isJumping;
+    private Vector3 pushBack;
     bool isGrounded;
     bool isDead;
     bool staminaDrained;
@@ -73,6 +74,7 @@ public class ThirdPersonController : MonoBehaviour, IDamage
     Color StaminaColorOrig;
     Color HealthColorOrig;
     private bool isFlashingDamage;
+    [SerializeField] float pushBackResolve;
 
     private void Awake()
     {
@@ -130,6 +132,11 @@ public class ThirdPersonController : MonoBehaviour, IDamage
                 DrainStamina();
                 ResetRecharge();
             }
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, -transform.up, out hit, 2f, LayerMask.GetMask("Enemy")))
+            {
+                pushBack = new Vector3(6,0,0);
+            }
         }
     }
     private void loadDelay()
@@ -175,6 +182,7 @@ public class ThirdPersonController : MonoBehaviour, IDamage
     }
     private void Movement()
     {
+        pushBack = Vector3.Lerp(pushBack, Vector3.zero, Time.deltaTime * pushBackResolve);
         isGrounded = controller.isGrounded;
         if (isGrounded && playerVelocity.y < 0)
         {
@@ -199,7 +207,7 @@ public class ThirdPersonController : MonoBehaviour, IDamage
 
         //gravity logic 
         playerVelocity.y += gravityValue * Time.deltaTime;
-        controller.Move(playerVelocity * Time.deltaTime);
+        controller.Move((playerVelocity + pushBack) * Time.deltaTime);
 
         //rotate towards camera
         Quaternion TargetRotation = Quaternion.Euler(0, cameraTransform.eulerAngles.y, 0);
@@ -238,7 +246,7 @@ public class ThirdPersonController : MonoBehaviour, IDamage
                 playerSpeed = playerSpeedMax;
             }
             //update Stamina UI logic
-            updateStaminaUI(); 
+            updateStaminaUI();
         }
     }
 
@@ -289,19 +297,58 @@ public class ThirdPersonController : MonoBehaviour, IDamage
     {
         if (canCrouch && !isSprinting)
         {
-            isCrouching = false;
-            if (!staminaDrained)
-                canSprint = true;
-            if (controller != null)
-            {
-                controller.height = 1.63f;
-                controller.center = new Vector3(0, 0.88f, 0);
-            }
-            if (animator != null)
-                animator.SetLayerWeight(4, 0);
+            RaycastHit hit;
+            bool hitEnvironment = Physics.Raycast(transform.position, transform.up, out hit, 2f, LayerMask.GetMask("Environment"));
 
-            playerSpeed = playerSpeedMax;
+            if (hitEnvironment)
+            {
+                canCrouch = false;
+                StartCoroutine(Uncrouching());
+                return;
+            }
+            else
+            {
+                isCrouching = false;
+                if (!staminaDrained)
+                    canSprint = true;
+                if (controller != null)
+                {
+                    controller.height = 1.63f;
+                    controller.center = new Vector3(0, 0.88f, 0);
+                }
+                if (animator != null)
+                    animator.SetLayerWeight(4, 0);
+
+                playerSpeed = playerSpeedMax;
+            }
+
         }
+    }
+
+    IEnumerator Uncrouching()
+    {
+        RaycastHit hit;
+        bool hitEnvironment = Physics.Raycast(transform.position, transform.up, out hit, 2f, LayerMask.GetMask("Environment"));
+
+        while (hitEnvironment)
+        {
+            hitEnvironment = Physics.Raycast(transform.position, transform.up, out hit, 2f, LayerMask.GetMask("Environment"));
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        isCrouching = false;
+        if (!staminaDrained)
+            canSprint = true;
+        if (controller != null)
+        {
+            controller.height = 1.63f;
+            controller.center = new Vector3(0, 0.88f, 0);
+        }
+        if (animator != null)
+            animator.SetLayerWeight(4, 0);
+
+        playerSpeed = playerSpeedMax;
+        canCrouch = true;
     }
 
     public void HealPlayer(int value)
@@ -485,5 +532,10 @@ public class ThirdPersonController : MonoBehaviour, IDamage
     {
         GameObject text = GameObject.Instantiate(floatingText, transform.position, Quaternion.identity);
         text.GetComponent<TextMeshPro>().text = value.ToString();
+    }
+
+    public void pushBackDir(Vector3 dir)
+    {
+        pushBack += dir;
     }
 }

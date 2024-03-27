@@ -2,9 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using System.Xml.Linq;
-using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 
 public class gameManager : MonoBehaviour
@@ -101,10 +98,10 @@ public class gameManager : MonoBehaviour
 
 
     // Method to earn currency
-    public void EarnCurrency(int amount, string prompt)
+    public void EarnCurrency(int amount, string prompt, Color color)
     {
         playerCurrency += amount;
-        textInstantiator.ScoreViewer(amount, prompt);
+        textInstantiator.ScoreViewer(amount, prompt, color);
     }
 
     // Method to spend currency

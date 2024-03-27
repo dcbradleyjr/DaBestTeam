@@ -244,7 +244,7 @@ public class ZombieBossAI : MonoBehaviour, IDamage
 
             //AudioManager.instance.PlaySFX("ZombieDeath");
 
-            gameManager.instance.EarnCurrency(50, "Zombie Boss Kill");
+            gameManager.instance.EarnCurrency(50, "Zombie Boss Kill", Color.red);
 
             this.EnemyUI.SetActive(false);
 

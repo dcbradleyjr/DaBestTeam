@@ -228,7 +228,7 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
             isDead = true;
             PlayRandomHurtSound();
 
-            gameManager.instance.EarnCurrency(10,"Zombie Kill");
+            gameManager.instance.EarnCurrency(10,"Zombie Kill", Color.white);
 
             this.EnemyUI.SetActive(false);
 
@@ -313,7 +313,7 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
         else if (HP > 0 && !isAttacking)
         {
             if (headshot)
-            gameManager.instance.EarnCurrency(2, "Headshot Bonus");
+            gameManager.instance.EarnCurrency(2, "Critical Shot", Color.yellow);
 
             state = AIStateId.ChasePlayer;
         }

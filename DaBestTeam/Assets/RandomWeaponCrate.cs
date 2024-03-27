@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.Profiling.LowLevel;
 using UnityEngine;
 
 public class RandomWeaponCrate : MonoBehaviour, IInteract

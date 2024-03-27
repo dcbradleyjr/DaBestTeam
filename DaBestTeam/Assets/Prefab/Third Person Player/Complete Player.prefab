@@ -4269,6 +4269,10 @@ PrefabInstance:
       propertyPath: staminaDrain
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7395496186127156928, guid: 4df748577a7d4154081ae548807cab8a, type: 3}
+      propertyPath: pushBackResolve
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 9213852562276272281, guid: 4df748577a7d4154081ae548807cab8a, type: 3}
       propertyPath: m_Height
       value: 1.63

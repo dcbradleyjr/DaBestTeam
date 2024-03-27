@@ -1590,7 +1590,7 @@ GameObject:
   - component: {fileID: 8936441818056016871}
   - component: {fileID: 4678475152750874485}
   - component: {fileID: 2461569699463244587}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Head
   m_TagString: Head
   m_Icon: {fileID: 0}
@@ -2876,7 +2876,7 @@ GameObject:
   - component: {fileID: 7234920471940303235}
   - component: {fileID: 8151053374942047312}
   - component: {fileID: 689048255372273437}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Zombie_Base
   m_TagString: Enemy
   m_Icon: {fileID: 0}
