@@ -133,7 +133,7 @@ public class ThirdPersonController : MonoBehaviour, IDamage, IPushBack
                 ResetRecharge();
             }
             RaycastHit hit;
-            if (Physics.Raycast(transform.position, -transform.up, out hit, 0.2f, LayerMask.GetMask("Enemy")))
+            if (Physics.Raycast(transform.position, -transform.up, out hit, 0.2f, LayerMask.GetMask("Enemy"), QueryTriggerInteraction.Ignore))
             {
                 pushBack = new Vector3(6,0,0);
             }
@@ -216,7 +216,7 @@ public class ThirdPersonController : MonoBehaviour, IDamage, IPushBack
 
     private void StartSprint()
     {
-        if (canSprint && !isCrouching && (moveAction.ReadValue<Vector2>().x != 0 || moveAction.ReadValue<Vector2>().y != 0))
+        if (canSprint && !isCrouching)
         {
             playerSpeed *= sprintMod;
             isSprinting = true;

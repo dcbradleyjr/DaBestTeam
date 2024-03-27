@@ -2896,6 +2896,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1718531363232438908}
   - {fileID: 2246558348447114281}
   - {fileID: 9040440409492318489}
   - {fileID: 6411893139823719231}
@@ -3049,6 +3050,7 @@ MonoBehaviour:
   - {fileID: 6082811173345588783}
   - {fileID: 1059587069650662760}
   floatingText: {fileID: 7680587725456750566, guid: f650bf5ba25d44d48ad384ae26d540d9, type: 3}
+  floatingSpawnPos: {fileID: 1718531363232438908}
   canHoldWeapons: 1
   randomMesh: 1
   HitPoint: {fileID: 2246558348447114281}
@@ -8965,6 +8967,37 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!1 &8288909630889749430
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1718531363232438908}
+  m_Layer: 11
+  m_Name: FloatingDamageSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1718531363232438908
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8288909630889749430}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.448, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6354978124117494526}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8438345084780722029
 GameObject:
   m_ObjectHideFlags: 0

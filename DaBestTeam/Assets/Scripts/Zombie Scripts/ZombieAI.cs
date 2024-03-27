@@ -26,6 +26,7 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     [SerializeField] GameObject[] meshZombie;
     [SerializeField] GameObject[] zombieWeapon;
     [SerializeField] GameObject floatingText;
+    [SerializeField] Transform floatingSpawnPos;
     public bool canHoldWeapons;
     public bool randomMesh;
     [SerializeField] Transform HitPoint;
@@ -247,8 +248,8 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
 
             EnableRagdoll();
 
-            bool dropItem = Random.value <= dropRate;// Drop rate set on SerializedField .01 = 1%
-
+            bool dropItem = Random.value * 100f <= dropRate;// Drop rate set on SerializedField .01 = 1%
+            Debug.Log(dropItem);
             if (dropItem)
             {
                 int i = Random.Range(0, pickupBox.Length);
@@ -398,7 +399,7 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     }
     void ShowFloatingText(int value, bool headshot)
     {
-        GameObject text = GameObject.Instantiate(floatingText, transform.position + new Vector3(0,5,0), Quaternion.identity);
+        GameObject text = GameObject.Instantiate(floatingText, floatingSpawnPos.position, Quaternion.identity);
         text.GetComponent<TextMeshPro>().text = value.ToString();
         if (headshot)
             text.GetComponent<TextMeshPro>().color = Color.yellow;
