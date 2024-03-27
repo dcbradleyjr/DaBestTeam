@@ -99,13 +99,18 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
 
     public void Update()
     {
-        if (gameManager.instance != null && gameManager.instance.player != null)
+
+        if (playerInRange)
         {
-            playerDir = gameManager.instance.player.transform.position - HitPoint.position;
-        }
-        else
-        {
-            playerDir = Vector3.zero;
+            if (gameManager.instance != null && gameManager.instance.player != null)
+            {
+
+                playerDir = gameManager.instance.player.transform.position - HitPoint.position;
+            }
+            else
+            {
+                playerDir = Vector3.zero;
+            } 
         }
 
         if (AIStateId.Roam == state)
@@ -150,6 +155,7 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
 
     private bool isDead;
     private bool isAttacking;
+    private bool playerInRange;
 
     public IEnumerator roamState()
     {
@@ -266,6 +272,7 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     {
         if (other.CompareTag("Player"))
         {
+            playerInRange = true;
             faceTarget();
             if (state != AIStateId.Death)
                 state = AIStateId.ChasePlayer;
@@ -276,7 +283,7 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     {
         if (other.CompareTag("Player"))
         {
-
+            playerInRange = false;
         }
         agent.stoppingDistance = 0;
     }
