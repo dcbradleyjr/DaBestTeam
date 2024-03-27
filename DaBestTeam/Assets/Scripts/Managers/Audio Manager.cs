@@ -142,7 +142,6 @@ public class AudioManager : MonoBehaviour
         float volume = musicSlider.value;
         myMixer.SetFloat("music", Mathf.Log10(volume) * 20);
         PlayerPrefs.SetFloat("musicVolume", volume);
-        PlaySFX("ButtonPress");
     }
 
     public void SetSFXVolume()
@@ -150,15 +149,11 @@ public class AudioManager : MonoBehaviour
         float volume = sfxSlider.value;
         myMixer.SetFloat("sfx", Mathf.Log10(volume) * 20);
         PlayerPrefs.SetFloat("sfxVolume", volume);
-
-        PlaySFX("ButtonPress");
     }
     public void SetZombieSFXVolume()
     {
         float volume = zombieSlider.value;
         myMixer.SetFloat("zombie", Mathf.Log10(volume) * 20);
         PlayerPrefs.SetFloat("zombieVolume", volume);
-
-        PlayZombieSFX("ButtonPress", zombieSource);
     }
 }
