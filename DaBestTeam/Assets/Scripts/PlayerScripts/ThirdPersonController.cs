@@ -133,7 +133,7 @@ public class ThirdPersonController : MonoBehaviour, IDamage, IPushBack
                 ResetRecharge();
             }
             RaycastHit hit;
-            if (Physics.Raycast(transform.position, -transform.up, out hit, 2f, LayerMask.GetMask("Enemy")))
+            if (Physics.Raycast(transform.position, -transform.up, out hit, 0.2f, LayerMask.GetMask("Enemy")))
             {
                 pushBack = new Vector3(6,0,0);
             }

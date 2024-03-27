@@ -96,4 +96,20 @@ public class SpawnManager : MonoBehaviour
             }
         }
     }
+
+    public void ZombieAIReset()
+    { 
+        for(int i = 0; i < spawners.Length; i++) 
+        {
+            for (int j = 0; j < spawners[i].spawned.Length; j++)
+            {
+                if (spawners[i].spawned[j] != null)
+                {
+                    ZombieAI zombie = spawners[i].spawned[j].GetComponent<ZombieAI>();
+                    zombie.state = ZombieAI.AIStateId.Roam;
+                    zombie.agent.SetDestination(zombie.startingPosition);
+                }
+            }
+        }
+    }
 }

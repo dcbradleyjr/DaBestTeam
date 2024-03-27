@@ -33,7 +33,7 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     [SerializeField] float meleeRange;
     [SerializeField] GameObject zombieScratch;
     [SerializeField] Rigidbody[] _ragdollRigidbodies;
-    [SerializeField] NavMeshAgent agent;
+    [SerializeField]public  NavMeshAgent agent;
     [SerializeField] Animator anim;
     public AudioSource zombieSource;
     [SerializeField] Collider ZombieBase;
