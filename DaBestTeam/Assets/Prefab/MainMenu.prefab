@@ -4118,8 +4118,9 @@ MonoBehaviour:
   itemInfo:
   - "Credits\r\n\r\n*Models*\r\nPolygon Packages - Synty\r\n*Battle Royale\r\n*City
     Character\r\n*Farm\r\n*Particle FX\r\n*Starter\r\n*Town\r\n*Zombies\r\n\r\n*Sounds*\r\nDeadly
-    Kombat - Daniel SoundsGood\r\nGun & Weapon Sound Effects - Wes Sound Products\r\n\r\n*Images*\r\nSkyBox
-    - LaFinca\r\nMouse & Keyboard Icons - Qubits \r\n\r\n*Animations*\r\nMixamo -Adobe\r\n\r\n*Developers*\r\nDennis
+    Kombat - Daniel SoundsGood\r\nGun & Weapon Sound Effects - Wes Sound Products\r\n\rGranny
+    voice - Nos Hernandez\n\n*Images*\r\nSkyBox - LaFinca\r\nMouse & Keyboard Icons
+    - Qubits \r\n\r\n*Animations*\r\nMixamo -Adobe\r\n\r\n*Developers*\r\nDennis
     Bradley\r\nThomas Claiborne\r\nMichael Johnson"
   textSpeed: 0.01
   inSettings: 0
