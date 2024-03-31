@@ -157,6 +157,8 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     private bool isDead;
     private bool isAttacking;
     private bool playerInRange;
+    private bool isRoaming;
+    private bool isChasing;
 
     public IEnumerator roamState()
     {
@@ -167,7 +169,8 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
             //AudioManager.instance.PlayZombieSFX("ZombieRoam");
             if (!agent.pathPending && (agent.remainingDistance < 0.1f || pathLockedTimer <= 0f))
             {
-                PlayRandomRoamSound();
+                isChasing = false;
+                isRoaming = false;
                 pathLockedTimer = 10f;
                 Vector3 randomPos = Random.insideUnitSphere * roamDistance;
                 //Debug.Log("randomPos :" + randomPos);
@@ -177,6 +180,8 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
                 //Debug.Log("hit positon: " + hit.position);
                 agent.SetDestination(hit.position);
 
+                this.PlayRandomRoamSound();      
+                
             }
             yield return new WaitForSeconds(roamPauseTime);
         }
@@ -186,7 +191,7 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     {
         while (true)
         {
-            PlayRandomChaseSound();
+            
             faceTarget();
             //AudioManager.instance.PlayZombieSFX("ZombieChase");
             float distanceToPlayer = Vector3.Distance(transform.position, gameManager.instance.player.transform.position);
@@ -200,7 +205,11 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
 
             // Chase the player
             agent.SetDestination(gameManager.instance.player.transform.position);
-
+            if (!isChasing)
+            {
+                this.PlayRandomChaseSound();
+                isChasing = true;
+            }
             yield return null;
         }
     }
@@ -209,7 +218,7 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
         while (true)
         {
             
-
+            isChasing = false;
             if (!isAttacking)
             {
                 isAttacking = true;
@@ -235,7 +244,7 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
             isDead = true;
             PlayRandomHurtSound();
 
-            gameManager.instance.EarnCurrency(10,"Zombie Kill", Color.white);
+            gameManager.instance.EarnCurrency(50,"Zombie Kill", Color.white);
 
             this.EnemyUI.SetActive(false);
 
@@ -384,17 +393,19 @@ public class ZombieAI : MonoBehaviour, IDamage, IPushBack
     {
         string randomClipName = zombieChaseAudio[Random.Range(0, zombieChaseAudio.Count)];
         AudioManager.instance.PlayZombieSFX(randomClipName, zombieSource);
+        Debug.Log("ChaseSound");
     }
     public void PlayRandomRoamSound()
     {
         string randomClipName = zombieRoamAudio[Random.Range(0, zombieRoamAudio.Count)];
         AudioManager.instance.PlayZombieSFX(randomClipName, zombieSource);
+        Debug.Log("RoamSound");
     }
     public void PlayRandomAttackAnim()
     {
         int randomIndex = UnityEngine.Random.Range(0, attackList.Count);
         string randomString = attackList[randomIndex];
-
+        Debug.Log("AttackSound");
         anim.SetTrigger(randomString);
     }
     void ShowFloatingText(int value, bool headshot)
